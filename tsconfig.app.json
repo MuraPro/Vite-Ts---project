@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
+    "types": ["node", "jest", "istanbul-lib-coverage"],
     "outDir": "./dist/",
     "noImplicitAny": true,
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-    "target": "es5",
+    "target": "ES2020",
 
     /* Bundler mode */
     "allowJs": true,
@@ -23,9 +24,12 @@
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "."
+    "baseUrl": "./src",
+    "paths": {
+      "*": ["*"]
+    }
   },
-  "include": ["src"],
+  "include": ["src/**/*"],
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"

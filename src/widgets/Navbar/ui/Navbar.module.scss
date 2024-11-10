@@ -1,0 +1,18 @@
+.navbar {
+  &__list {
+    display: flex;
+    align-items: center;
+  }
+
+  &__li {
+    margin-right: 20px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    font: var(--font-m);
+  }
+}

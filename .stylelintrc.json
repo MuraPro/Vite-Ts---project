@@ -1,0 +1,10 @@
+{
+  "extends": ["stylelint-config-standard-scss"],
+  "rules": {
+    "font-family-name-quotes": "always-where-required",
+    "rule-empty-line-before": ["always", { "except": ["first-nested"] }],
+    "selector-class-pattern": null,
+    "no-descending-specificity": null,
+    "scss/double-slash-comment-whitespace-inside": null
+  }
+}

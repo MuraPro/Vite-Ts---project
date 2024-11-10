@@ -1,0 +1,41 @@
+.sidebar {
+  width: 300px;
+  background: var(--inverted-bg-color);
+  position: fixed;
+  top: 0;
+  left: -180px;
+  height: 100%;
+  overflow: auto;
+  transition:
+    left 0.3s ease 0s,
+    background-color 0.4s ease;
+
+  &__logo {
+    position: absolute;
+    right: 55px;
+    top: 27px;
+  }
+
+  &__burger {
+    position: absolute;
+    top: 43px;
+    right: 30px;
+  }
+
+  &__switchers {
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 0 30px;
+
+    &-lang {
+      margin-left: 20px;
+    }
+  }
+}
+
+.sidebar.collapsed {
+  left: 0;
+}

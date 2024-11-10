@@ -1,0 +1,16 @@
+@use "reset";
+@use "variables/global";
+@use "themes/light";
+@use "themes/dark";
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.theme {
+  font: var(--font-m);
+  background: var(--bg-color);
+  color: var(--primary-color);
+  min-height: 100vh;
+}
