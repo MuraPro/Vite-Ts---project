@@ -4,6 +4,7 @@ import tsParser from "@typescript-eslint/parser";
 import eslintConfigPrettier from "eslint-config-prettier";
 import i18next from "eslint-plugin-i18next";
 import importPlugin from "eslint-plugin-import";
+import jestPlugin from "eslint-plugin-jest";
 import prettier from "eslint-plugin-prettier";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
@@ -26,6 +27,10 @@ export default [
         HTMLButtonElement: "readonly",
         setTimeout: "readonly",
         __IS_DEV__: "readonly",
+        describe: "readonly",
+        test: "readonly",
+        expect: "readonly",
+        location: "readonly",
       },
     },
     plugins: {
@@ -34,6 +39,7 @@ export default [
       prettier,
       "react-hooks": reactHooks,
       i18next,
+      jest: jestPlugin,
     },
     rules: {
       "@typescript-eslint/explicit-module-boundary-types": "off",
@@ -66,6 +72,12 @@ export default [
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
       "i18next/no-literal-string": ["error", { markupOnly: true }],
+      // Добавляем правила для Jest
+      "jest/no-disabled-tests": "warn",
+      "jest/no-focused-tests": "error",
+      "jest/no-identical-title": "error",
+      "jest/prefer-to-have-length": "warn",
+      "jest/valid-expect": "error",
     },
   },
   {
@@ -80,6 +92,10 @@ export default [
         HTMLButtonElement: "readonly",
         setTimeout: "readonly",
         __IS_DEV__: "readonly",
+        describe: "readonly",
+        test: "readonly",
+        expect: "readonly",
+        location: "readonly",
       },
     },
     plugins: {
@@ -88,6 +104,7 @@ export default [
       prettier,
       "react-hooks": reactHooks,
       i18next,
+      jest: jestPlugin,
     },
     rules: {
       "constructor-super": "off",
@@ -134,6 +151,12 @@ export default [
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
       "i18next/no-literal-string": ["error", { markupOnly: true }],
+      // Добавляем правила для Jest
+      "jest/no-disabled-tests": "warn",
+      "jest/no-focused-tests": "error",
+      "jest/no-identical-title": "error",
+      "jest/prefer-to-have-length": "warn",
+      "jest/valid-expect": "error",
     },
   },
   eslintConfigPrettier,

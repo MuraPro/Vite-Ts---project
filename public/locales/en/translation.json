@@ -5,5 +5,9 @@
   "Информационная страница": "About page",
   "Главная": "Main",
   "О нас": "About us",
-  "Язык": "EN"
+  "Язык": "EN",
+  "Страница не найдена": "Page not found",
+  "Сбой": "throw error",
+  "Произошла непредвиденная ошибка": "There was an unforeseen error",
+  "Обновить страницу": "Refresh page"
 }
