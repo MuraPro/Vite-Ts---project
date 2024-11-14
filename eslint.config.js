@@ -12,7 +12,7 @@ import reactHooks from "eslint-plugin-react-hooks";
 export default [
   js.configs.recommended,
   {
-    ignores: ["dist/*"],
+    ignores: ["dist/*", "src/stories/*", ".storybook/*"],
   },
   {
     files: ["**/*.{ts,tsx}"],
@@ -157,6 +157,18 @@ export default [
       "jest/no-identical-title": "error",
       "jest/prefer-to-have-length": "warn",
       "jest/valid-expect": "error",
+    },
+  },
+  {
+    files: [
+      "__mocks__/SvgMock.js",
+      "babel.config.js",
+      "vite.config.ts",
+      "**/src/**/*.test.{ts,tsx}",
+    ],
+    rules: {
+      "no-undef": "off",
+      "i18next/no-literal-string": "off",
     },
   },
   eslintConfigPrettier,

@@ -7,6 +7,7 @@ import cls from "./Navbar.module.scss";
 
 interface NavbarProps {
   className?: string;
+  backgroundColor?: string;
 }
 
 export const Navbar = ({ className }: NavbarProps) => {

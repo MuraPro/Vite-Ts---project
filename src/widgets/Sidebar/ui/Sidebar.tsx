@@ -8,6 +8,7 @@ import cls from "./Sidebar.module.scss";
 
 interface SidebarProps {
   className?: string;
+  backgroundColor?: string;
 }
 
 export const Sidebar = ({ className }: SidebarProps) => {
@@ -15,12 +16,16 @@ export const Sidebar = ({ className }: SidebarProps) => {
 
   return (
     <div
+      data-testid="sidebar"
       className={classNames(cls.sidebar, { [cls.collapsed]: collapsed }, [
         className || "",
       ])}
     >
       <div className={cls.sidebar__container}>
-        <BurgerButton className={cls.sidebar__burger} />
+        <BurgerButton
+          className={cls.sidebar__burger}
+          toggle={"sidebar-toggle"}
+        />
         <Logo className={cls.sidebar__logo} />
       </div>
       <div className={cls.sidebar__switchers}>

@@ -16,7 +16,34 @@ const config: Config = {
   // The root directory that Jest should scan for tests and modules within
   rootDir: "./",
   // The glob patterns Jest uses to detect test files
-  testMatch: ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[tj]s?(x)"],
+  modulePaths: ["<rootDir>src"],
+  //   testMatch: ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[tj]s?(x)"],
+  testMatch: ["<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)"],
+  moduleFileExtensions: ["js", "jsx", "ts", "tsx", "json", "node"],
+  moduleNameMapper: {
+    "^src/(.*)$": "<rootDir>/src/$1", // Маппинг для использования абсолютных путей
+    "\\.(css|less|scss|sass)$": "identity-obj-proxy",
+    "\\.(svg|jpg|jpeg|png)$": "<rootDir>/__mocks__/SvgMock.js",
+  },
+  extensionsToTreatAsEsm: [".ts", ".tsx"],
+  transform: {
+    "^.+\\.tsx?$": [
+      "ts-jest",
+      {
+        tsconfig: "tsconfig.app.json", // если используется кастомный tsconfig
+      },
+    ],
+  },
+  forceExit: true,
+
+  //   transform: {
+  //     "^.+\\.(ts|tsx)$": "ts-jest", // Используем ts-jest для файлов .ts и .tsx
+  //   },
+  //   globals: {
+  //     "ts-jest": {
+  //       tsconfig: "tsconfig.app.json", // Указываем tsconfig
+  //     },
+  //   },
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 

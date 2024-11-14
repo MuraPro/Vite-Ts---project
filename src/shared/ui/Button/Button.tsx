@@ -4,11 +4,15 @@ import cls from "./Button.module.scss";
 
 export enum ThemeButton {
   CLEAR = "clear",
+  OUTLINE = "outline",
+  MEDIUM = "medium",
+  LARGE = "large",
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   theme?: ThemeButton;
+  backgroundColor?: string;
 }
 
 export const Button: FC<ButtonProps> = (props) => {

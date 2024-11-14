@@ -4,9 +4,13 @@ import eslint from "vite-plugin-eslint";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 import svgr from "vite-plugin-svgr";
 import tsconfigPaths from "vite-tsconfig-paths";
+// import { analyzer } from "vite-bundle-analyzer";
 
 export default defineConfig({
   plugins: [
+    // analyzer({
+    //   openAnalyzer: false,
+    // }),
     react(),
     tsconfigPaths(),
     svgr({
@@ -25,7 +29,7 @@ export default defineConfig({
   ],
 
   define: {
-    __IS_DEV__: Boolean,
+    __IS_DEV__: JSON.stringify(process.env.NODE_ENV === "development"),
   },
   optimizeDeps: {
     exclude: ["chunk-XPR23Y44"],
