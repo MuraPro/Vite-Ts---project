@@ -5,13 +5,15 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
   p {
     font: var(--font-l);
     color: var(--inverted-primary-color);
     margin-bottom: 20px;
   }
+
   button {
-    padding: 10px 10px;
+    padding: 10px;
     font: var(--font-m);
     background-color: var(--bug-bg);
     color: var(--bug-btn);
