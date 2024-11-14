@@ -29,7 +29,7 @@ jobs:
         run: npm run test:unit
       - name: build storybook
         run: npm run sb:build
-      - name: Wait for Storybook to start
-        run: sleep 10
+      - name: Start Storybook server
+        run: npm run sb
       - name: screenshot testing
         run: npm run test:ui:ci
