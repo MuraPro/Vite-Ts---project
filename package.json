@@ -11,9 +11,13 @@
     "fix": "eslint . --fix",
     "lint:css": "stylelint '**/*.{css,scss}'",
     "fix:css": "stylelint '**/*.{css,scss}' --fix",
+    "test:unit": "jest",
+    "test:ui": "npx loki test",
+    "test:ui:ok": "npx loki approve",
+    "test:ui:ci": "loki --requireReference --reactUri file:./storybook-static",
     "test": "jest",
     "sb": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "sb:build": "storybook build"
   },
   "dependencies": {
     "i18next": "^23.16.5",
