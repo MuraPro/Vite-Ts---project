@@ -171,5 +171,13 @@ export default [
       "i18next/no-literal-string": "off",
     },
   },
+  {
+    ignores: [
+      "dist/*",
+      ".storybook/*",
+      ".node_modules/*",
+      "storybook-static/*",
+    ],
+  },
   eslintConfigPrettier,
 ];
