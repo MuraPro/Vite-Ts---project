@@ -1,5 +1,5 @@
 export default {
-  singleQuote: false,
+  singleQuote: true,
   trailingComma: "all",
   bracketSpacing: true,
 };
