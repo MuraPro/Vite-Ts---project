@@ -2,7 +2,6 @@ import { useCollapse } from "app/providers/CollapseProvider";
 import { classNames } from "shared/lib/classNames/classNames";
 import { BurgerButton } from "shared/ui/BurgerButton/BurgerButton";
 import { LangSwitcher } from "shared/ui/LangSwitcher/LangSwitcher";
-import { Logo } from "shared/ui/Logo/Logo";
 import cls from "./Sidebar.module.scss";
 
 interface SidebarProps {
