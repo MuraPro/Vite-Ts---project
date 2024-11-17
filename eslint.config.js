@@ -177,6 +177,7 @@ export default [
       ".storybook/*",
       ".node_modules/*",
       "storybook-static/*",
+      "scripts/*",
     ],
   },
   eslintConfigPrettier,
