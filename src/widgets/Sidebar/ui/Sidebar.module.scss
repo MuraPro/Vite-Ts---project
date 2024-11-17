@@ -1,5 +1,6 @@
 .sidebar {
   width: 300px;
+  padding: 20px;
   z-index: 1100;
   background: var(--inverted-bg-color);
   position: fixed;
@@ -8,8 +9,8 @@
   height: 100%;
   overflow: auto;
   transition:
-    left 0.3s ease 0s,
-    background-color 0.4s ease;
+    left 0.5s ease 0s,
+    background-color 0.5s ease;
 
   &__logo {
     position: absolute;
@@ -23,20 +24,28 @@
     right: 30px;
   }
 
-  &__switchers {
-    position: absolute;
-    bottom: 20px;
+  &__list {
+    margin-top: var(--header-height);
     display: flex;
-    justify-content: center;
-    width: 100%;
-    padding: 0 30px;
-
-    &-lang {
-      margin-left: 20px;
-    }
+    flex-direction: column;
   }
-}
-
-.sidebar.collapsed {
-  left: 0;
+  &__li {
+  }
+  &__link {
+    font: var(--font-s);
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+  }
+  &__text {
+    margin-left: 10px;
+    opacity: 1;
+  }
+  &__icon {
+    transition: fill 0.4s ease;
+    fill: var(--link-primay-color);
+  }
+  &.collapsed {
+    left: 0;
+  }
 }

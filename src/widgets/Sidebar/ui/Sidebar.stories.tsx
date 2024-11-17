@@ -20,11 +20,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Light: Story = {
-  args: {},
+  args: { className: "_collapsed_1re01_42" },
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const Dark: Story = {
-  args: {},
+  args: { className: "_collapsed_1re01_42" },
   decorators: [ThemeDecorator(Theme.DARK)],
 };

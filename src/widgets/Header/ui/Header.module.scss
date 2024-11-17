@@ -6,8 +6,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000; /* Убедитесь, что header поверх других элементов */
-  box-shadow: 0 2px 5px rgb(0 0 0 / 20%);
+  z-index: 1000;
 
   &__container {
     width: 100%;
