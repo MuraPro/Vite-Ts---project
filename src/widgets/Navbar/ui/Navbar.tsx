@@ -22,24 +22,6 @@ export const Navbar = ({ className }: NavbarProps) => {
     >
       <ul className={cls.navbar__list}>
         <li className={cls.navbar__li}>
-          <AppLink
-            theme={AppLinkTheme.SECONDARY}
-            to={"/"}
-            className={cls.navbar__link}
-          >
-            {t("Главная")}
-          </AppLink>
-        </li>
-        <li className={cls.navbar__li}>
-          <AppLink
-            theme={AppLinkTheme.SECONDARY}
-            to={"/about"}
-            className={cls.navbar__link}
-          >
-            {t("О нас")}
-          </AppLink>
-        </li>
-        <li className={cls.navbar__li}>
           <BugButton />
         </li>
         <li className={cls.navbar__li}>
