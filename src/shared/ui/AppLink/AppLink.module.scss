@@ -1,6 +1,6 @@
 .AppLink {
   color: var(--primary-color);
-  transition: color 0.4s ease; // Плавный переход цвета
+  transition: color 0.4s ease;
 }
 
 .primary {
@@ -8,7 +8,7 @@
 }
 
 .secondary {
-  color: var(--inverted-primary-color);
+  color: var(--link-primay-color);
 }
 
 .red {

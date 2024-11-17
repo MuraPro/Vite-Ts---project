@@ -3,13 +3,18 @@
   height: var(--header-height);
   background: var(--inverted-bg-color);
   transition: background-color 0.4s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Убедитесь, что header поверх других элементов */
+  box-shadow: 0 2px 5px rgb(0 0 0 / 20%);
 
   &__container {
     width: 100%;
     height: var(--header-height);
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     padding: 0 20px;
   }
 

@@ -2,6 +2,8 @@ import { BugButton } from "app/providers/ErrorBoundary";
 import { useTranslation } from "react-i18next";
 import { classNames } from "shared/lib/classNames/classNames";
 import { AppLink, AppLinkTheme } from "shared/ui/AppLink/AppLink";
+import { BurgerButton } from "shared/ui/BurgerButton/BurgerButton";
+import { LangSwitcher } from "shared/ui/LangSwitcher/LangSwitcher";
 import { ThemeSwitcher } from "shared/ui/ThemeSwitcher";
 import cls from "./Navbar.module.scss";
 
@@ -40,6 +42,9 @@ export const Navbar = ({ className }: NavbarProps) => {
         </li>
         <li className={cls.navbar__li}>
           <BugButton />
+        </li>
+        <li className={cls.navbar__li}>
+          <LangSwitcher />
         </li>
         <li className={cls.navbar__li}>
           <ThemeSwitcher />

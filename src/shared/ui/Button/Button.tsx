@@ -2,33 +2,63 @@ import { ButtonHTMLAttributes, FC } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 import cls from "./Button.module.scss";
 
-export enum ThemeButton {
+export enum ButtonTheme {
   CLEAR = "clear",
   OUTLINE = "outline",
+  PRIMARY = "primary",
+  SECONDARY = "secondary",
+  DEFAULT = "default",
+  SMALL = "small",
   MEDIUM = "medium",
   LARGE = "large",
+  BACKGROUND = "background",
+  BACKGROUND_INVERTED = "backgroundInverted",
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
-  theme?: ThemeButton;
+  theme?: ButtonTheme;
   backgroundColor?: string;
+  size?: ButtonSize;
+  square?: boolean;
+}
+
+export enum ButtonSize {
+  D = "size_d",
+  S = "size_s",
+  M = "size_m",
+  L = "size_l",
 }
 
 export const Button: FC<ButtonProps> = (props) => {
   const {
     className,
     children,
-    theme = ThemeButton.CLEAR,
+    theme = ButtonTheme.CLEAR,
+    square,
+    size = ButtonSize.D,
     ...otherProps
   } = props;
 
+  const mods: Record<string, boolean> = {
+    [cls[theme]]: true!,
+    [cls.square]: square!,
+    [cls[size]]: true!,
+  };
+
   return (
     <button
-      className={classNames(cls.Button, {}, [className || "", cls[theme]])}
+      className={classNames(cls.Button, mods, [className || ""])}
       {...otherProps}
     >
       {children}
     </button>
   );
 };
+
+// export enum ButtonTheme {
+//     CLEAR = 'clear',
+//     OUTLINE = 'outline',
+//     BACKGROUND = 'background',
+//     BACKGROUND_INVERTED = 'backgroundInverted',
+// }

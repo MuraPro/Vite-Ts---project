@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import DarkIcon from "shared/assets/icons/theme-dark.svg";
 import LightIcon from "shared/assets/icons/theme-light.svg";
 import { classNames } from "shared/lib/classNames/classNames";
-import { Button, ThemeButton } from "shared/ui/Button/Button";
+import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import cls from "./ThemeSwitcher.module.scss";
 
 interface ThemeSwitcherProps {
@@ -25,27 +25,24 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
 
   return (
     <Button
-      theme={ThemeButton.CLEAR}
-      className={classNames(cls.themeswitcher, {}, [className || ""])}
+      square
+      theme={ButtonTheme.CLEAR}
+      className={classNames(
+        `${cls.themeswitcher} ${isChecked ? cls.dark : ""}`,
+        {},
+        [className || ""],
+      )}
       onClick={handleToggle}
       type="button"
     >
       <div
-        className={`${cls.themeswitcher__switcher} ${
-          isChecked ? cls.dark : ""
-        }`}
+        className={`${cls.themeswitcher__circle} ${isChecked ? cls.dark : ""}`}
       >
-        <div
-          className={`${cls.themeswitcher__circle} ${
-            isChecked ? cls.dark : ""
-          }`}
-        >
-          {isChecked ? (
-            <DarkIcon className={cls.themeswitcher__icon} />
-          ) : (
-            <LightIcon className={cls.themeswitcher__icon} />
-          )}
-        </div>
+        {isChecked ? (
+          <DarkIcon className={cls.themeswitcher__icon} />
+        ) : (
+          <LightIcon className={cls.themeswitcher__icon} />
+        )}
       </div>
     </Button>
   );

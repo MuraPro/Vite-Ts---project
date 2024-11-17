@@ -1,5 +1,6 @@
 .Button {
   cursor: pointer;
+  box-sizing: border-box;
 }
 
 .clear {
@@ -8,27 +9,110 @@
   border: none;
   background: none;
   outline: none;
+  color: var(--secondary-color);
+}
+
+.primary {
+  padding: 10px 20px;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  background: var(--inverted-primary-color);
+}
+
+.secondary {
+  padding: 10px 20px;
+  border: 1px solid var(--secondary-color);
+  color: var(--secondary-color);
+  background: none;
 }
 
 .outline {
-  padding: 10px 15px;
+  padding: 10px 20px;
   border: 1px solid var(--secondary-color);
   color: var(--secondary-color);
-  background: none;
+  background: transparent;
 }
 
-.large {
-  font: var(--font-l);
-  padding: 10px 15px;
-  border: 1px solid var(--secondary-color);
-  color: var(--secondary-color);
+.background {
+  background: var(--bg-color);
+  border: none;
+}
+
+.backgroundInverted {
+  background: var(--inverted-bg-color);
+  border: none;
+}
+
+.small {
+  font: var(--font-s);
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
   background: none;
+  padding: 10px 20px;
 }
 
 .medium {
   font: var(--font-m);
-  padding: 10px 15px;
-  border: 1px solid var(--secondary-color);
-  color: var(--secondary-color);
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
   background: none;
+  padding: 10px 20px;
+}
+
+.large {
+  font: var(--font-l);
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  background: none;
+  padding: 10px 20px;
+}
+
+.square {
+  padding: 0;
+}
+
+.square.size_d {
+  border: 1px solid var(--bg-color);
+  color: var(--bg-color);
+  padding: 10px 20px;
+}
+
+.square.size_s {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--bg-color);
+  color: var(--bg-color);
+  padding: 2px;
+}
+
+.square.size_m {
+  width: 60px;
+  height: 60px;
+  border: 1px solid var(--bg-color);
+  color: var(--bg-color);
+  padding: 4px;
+}
+
+.square.size_l {
+  width: 80px;
+  height: 80px;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  padding: 5px;
+}
+
+.size_d {
+  font: var(--font-s);
+}
+
+.size_s {
+  font: var(--font-s);
+}
+
+.size_m {
+  font: var(--font-m);
+}
+
+.size_l {
+  font: var(--font-l);
 }
