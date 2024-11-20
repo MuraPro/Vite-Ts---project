@@ -1,7 +1,7 @@
 import { StyleDecorator } from "../src/shared/config/storybook/StyleDecorator/StyleDecorator";
-import { ThemeDecorator } from "../src/shared/config/storybook/ThemeDecorator/ThemeDecorator";
-import { CollapseDecorator } from "../src/shared/config/storybook/CollapseProvider/CollapseProvider";
-import { Theme } from "../src/app/providers/ThemeProvider";
+import { ThemeDecorator } from "./../src/shared/config/storybook/ThemeDecorator/ThemeDecorator";
+import { ModalDecorator } from "../src/shared/config/storybook/ModalDecorator/ModalDecorator";
+import { CollapseDecorator } from "../src/shared/config/storybook/CollapseDecorator/CollapseDecorator";
 import { RouterDecorator } from "../src/shared/config/storybook/RouterDecorator/RouterDecorator";
 
 export const parameters = {
@@ -17,4 +17,9 @@ export const parameters = {
   },
 };
 
-export const decorators = [StyleDecorator, CollapseDecorator, RouterDecorator];
+export const decorators = [
+  StyleDecorator,
+  ModalDecorator,
+  CollapseDecorator,
+  RouterDecorator,
+];

@@ -26,4 +26,16 @@
 
   // Размеры
   --header-height: 100px;
+
+  // z - Индексы
+  --modal-z-index: 200;
+
+  // Цвета
+  --overlay-color: rgba(0 0 0 / 60%);
+
+  //Модальное окно
+  --modal-bg-dark: #e8e8ea;
+  --modal-bg-light: #090949;
+  --modal-color-dark: #0232c2;
+  --modal-color-light: #04ff04;
 }

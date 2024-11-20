@@ -1,5 +1,6 @@
 import { CollapseProvider } from "app/providers/CollapseProvider";
 import { ErrorBoundary } from "app/providers/ErrorBoundary";
+import { ModalProvider } from "app/providers/ModalProvider";
 import { ThemeProvider } from "app/providers/ThemeProvider";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
@@ -10,11 +11,13 @@ import "./app/styles/index.scss";
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
     <ErrorBoundary>
-      <ThemeProvider>
-        <CollapseProvider>
-          <App />
-        </CollapseProvider>
-      </ThemeProvider>
+      <ModalProvider>
+        <ThemeProvider>
+          <CollapseProvider>
+            <App />
+          </CollapseProvider>
+        </ThemeProvider>
+      </ModalProvider>
     </ErrorBoundary>
   </BrowserRouter>,
 );
