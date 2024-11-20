@@ -4,6 +4,7 @@
   opacity: 0;
   pointer-events: none;
   z-index: -1;
+
   &__overlay {
     width: 100%;
     height: 100%;
@@ -21,12 +22,14 @@
     transform: scale(0.5);
     max-width: 60%;
   }
+
   &.dark {
     .modal__content {
       background: var(--modal-bg-dark);
       color: var(--modal-color-dark);
     }
   }
+
   &.light {
     .modal__content {
       background: var(--modal-bg-light);
