@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
+import { MdLanguage } from "react-icons/md";
 import { classNames } from "shared/lib/classNames/classNames";
-import { Button, ButtonTheme } from "shared/ui/Button/Button";
+import { Button, ButtonSize, ButtonTheme } from "shared/ui/Button/Button";
 import cls from "./LangSwitcher.module.scss";
 
 interface LangSwitcherProps {
@@ -18,11 +19,13 @@ export const LangSwitcher = ({ className }: LangSwitcherProps) => {
 
   return (
     <Button
-      className={classNames(cls.LangSwitcher, {}, [className || ""])}
+      className={classNames(cls.langSwitcher, {}, [className || ""])}
       theme={ButtonTheme.CLEAR}
       onClick={toggle}
+      size={ButtonSize.S}
     >
       {t("Язык")}
+      <MdLanguage size={20} className={cls.langSwitcher__icon} />
     </Button>
   );
 };

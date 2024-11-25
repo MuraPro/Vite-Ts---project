@@ -1,6 +1,7 @@
 import { Theme } from "app/providers/ThemeProvider";
 import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator/ThemeDecorator";
 import { Sidebar } from "./Sidebar";
+import "./Sidebar.module.scss";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Sidebar> = {
@@ -20,11 +21,11 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Light: Story = {
-  args: { className: "_collapsed_1re01_42" },
+  args: {},
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const Dark: Story = {
-  args: { className: "_collapsed_1re01_42" },
+  args: {},
   decorators: [ThemeDecorator(Theme.DARK)],
 };

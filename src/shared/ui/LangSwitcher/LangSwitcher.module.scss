@@ -1,5 +1,12 @@
-.LangSwitcher {
-  color: var(--link-primay-color);
-  font: var(--font-s);
+.langSwitcher {
   transition: color 0.4s ease;
+  color: var(--inverted-primary-color);
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__icon {
+    margin-bottom: 2px;
+  }
 }

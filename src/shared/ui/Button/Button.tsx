@@ -17,11 +17,14 @@ export enum ButtonTheme {
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  type?: "button" | "reset" | "submit";
   className?: string;
   theme?: ButtonTheme;
   backgroundColor?: string;
   size?: ButtonSize;
   square?: boolean;
+  ariaLabel?: string;
+  onClick?: () => void;
 }
 
 export enum ButtonSize {
@@ -33,11 +36,14 @@ export enum ButtonSize {
 
 export const Button: FC<ButtonProps> = (props) => {
   const {
+    type = "button",
     className,
     children,
     theme = ButtonTheme.CLEAR,
     square,
     size = ButtonSize.D,
+    ariaLabel,
+    onClick,
     ...otherProps
   } = props;
 
@@ -50,16 +56,12 @@ export const Button: FC<ButtonProps> = (props) => {
   return (
     <button
       className={classNames(cls.Button, mods, [className || ""])}
+      type={type}
+      aria-label={ariaLabel}
+      onClick={onClick}
       {...otherProps}
     >
       {children}
     </button>
   );
 };
-
-// export enum ButtonTheme {
-//     CLEAR = 'clear',
-//     OUTLINE = 'outline',
-//     BACKGROUND = 'background',
-//     BACKGROUND_INVERTED = 'backgroundInverted',
-// }

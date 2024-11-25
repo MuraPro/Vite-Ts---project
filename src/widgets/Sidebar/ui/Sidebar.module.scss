@@ -38,13 +38,15 @@
   }
 
   &__text {
+    transition: color 0.4s ease;
     margin-left: 10px;
     opacity: 1;
+    color: var(--inverted-primary-color);
   }
 
   &__icon {
     transition: fill 0.4s ease;
-    fill: var(--link-primay-color);
+    fill: var(--inverted-primary-color);
   }
 
   &.collapsed {

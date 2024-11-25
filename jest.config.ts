@@ -24,6 +24,9 @@ const config: Config = {
     "^src/(.*)$": "<rootDir>/src/$1", // Маппинг для использования абсолютных путей
     "\\.(css|less|scss|sass)$": "identity-obj-proxy",
     "\\.(svg|jpg|jpeg|png)$": "<rootDir>/__mocks__/SvgMock.js",
+    "^entities/(.*)$": "<rootDir>/src/entities/$1",
+    "^shared/(.*)$": "<rootDir>/src/shared/$1",
+    "^app/(.*)$": "<rootDir>/src/app/$1",
   },
   extensionsToTreatAsEsm: [".ts", ".tsx"],
   transform: {
@@ -35,6 +38,9 @@ const config: Config = {
     ],
   },
   forceExit: true,
+  globals: {
+    __IS_DEV__: JSON.stringify(process.env.NODE_ENV === "development"),
+  },
 
   //   transform: {
   //     "^.+\\.(ts|tsx)$": "ts-jest", // Используем ts-jest для файлов .ts и .tsx

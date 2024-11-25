@@ -18,12 +18,12 @@ export default meta;
 
 type Story = StoryObj<typeof ThemeSwitcher>;
 
-export const Normal: Story = {
+export const Light: Story = {
   args: {},
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
-export const Secondary: Story = {
+export const Dark: Story = {
   args: {},
   decorators: [ThemeDecorator(Theme.DARK)],
 };

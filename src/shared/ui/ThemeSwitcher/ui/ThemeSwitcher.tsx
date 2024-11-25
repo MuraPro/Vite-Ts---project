@@ -25,7 +25,6 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
 
   return (
     <Button
-      square
       theme={ButtonTheme.CLEAR}
       className={classNames(
         `${cls.themeswitcher} ${isChecked ? cls.dark : ""}`,
@@ -33,7 +32,6 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
         [className || ""],
       )}
       onClick={handleToggle}
-      type="button"
     >
       <div
         className={`${cls.themeswitcher__circle} ${isChecked ? cls.dark : ""}`}

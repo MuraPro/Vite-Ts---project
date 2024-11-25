@@ -11,5 +11,11 @@
   "Произошла непредвиденная ошибка": "There was an unforeseen error",
   "Обновить страницу": "Refresh page",
   "Короткий язык": "EN",
-  "Войти": "Enter"
+  "Войти": "Sign In",
+  "Инкремент": "increment",
+  "Дикремент": "dicrement",
+  "Введите имя пользователя": "Enter username",
+  "Введите пароль": "Enter password",
+  "Скрыть пароль": "Hide password",
+  "Показать пароль": "Show password"
 }

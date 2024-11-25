@@ -35,6 +35,7 @@ export default [
         KeyboardEvent: "readonly",
         SVGSVGElement: "readonly",
         HTMLButtonElement: "readonly",
+        HTMLInputElement: "readonly",
         clearTimeout: "readonly",
         // ES6 (ES2015+) глобальные переменные
         Promise: "readonly",
@@ -45,6 +46,9 @@ export default [
         WeakSet: "readonly",
         Reflect: "readonly",
         Proxy: "readonly",
+        DeepPartial: "readonly",
+        process: "readonly",
+        __dirname: "readonly",
       },
     },
     plugins: {
@@ -114,6 +118,7 @@ export default [
         KeyboardEvent: "readonly",
         SVGSVGElement: "readonly",
         HTMLButtonElement: "readonly",
+        HTMLInputElement: "readonly",
         // ES6 (ES2015+) глобальные переменные
         Promise: "readonly",
         Map: "readonly",
@@ -123,6 +128,9 @@ export default [
         WeakSet: "readonly",
         Reflect: "readonly",
         Proxy: "readonly",
+        DeepPartial: "readonly",
+        process: "readonly",
+        __dirname: "readonly",
       },
     },
     plugins: {
@@ -205,6 +213,7 @@ export default [
       ".node_modules/*",
       "storybook-static/*",
       "scripts/*",
+      "json-server/*",
     ],
   },
   eslintConfigPrettier,

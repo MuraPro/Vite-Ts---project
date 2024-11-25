@@ -1,18 +1,28 @@
-.navbar {
-  &__list {
+.header__navbar {
+  &-list {
     display: flex;
     align-items: center;
   }
 
-  &__li {
+  &-li {
     margin-right: 20px;
+    transition:
+      border 0.4s ease,
+      color 0.4s ease;
+    font: var(--font-s);
 
     &:last-child {
       margin-right: 0;
     }
+
+    &:nth-child(2) {
+      border: 1px solid var(--inverted-primary-color);
+      padding: 2px;
+    }
   }
 
-  &__link {
-    font: var(--font-s);
+  &-btn {
+    color: var(--inverted-primary-color);
+    transition: color 0.4s ease;
   }
 }

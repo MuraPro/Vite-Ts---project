@@ -3,7 +3,6 @@ import { Suspense } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Header } from "widgets/Header";
 import cls from "./App.module.scss";
-import { useTheme } from "./providers/ThemeProvider";
 import "./styles/index.scss";
 
 interface mainProps {
@@ -11,15 +10,8 @@ interface mainProps {
 }
 
 const App = ({ className }: mainProps) => {
-  const { theme } = useTheme();
-
   return (
-    <div
-      className={classNames(`${cls.wrapper} theme`, {}, [
-        theme,
-        className || "",
-      ])}
-    >
+    <div className={classNames(`${cls.wrapper} app`, {}, [className || ""])}>
       <Suspense fallback="">
         <Header />
         <div className={cls.main}>

@@ -6,7 +6,6 @@
 .clear {
   padding: 0;
   margin: 0;
-  border: none;
   background: none;
   outline: none;
   color: var(--secondary-color);
@@ -17,21 +16,20 @@
   border: none;
   background: none;
   outline: none;
-  color: var(--link-primay-color);
+  color: var(--inverted-secondary-color);
 }
 
 .primary {
   padding: 10px 20px;
   border: 1px solid var(--primary-color);
   color: var(--primary-color);
-  background: var(--inverted-primary-color);
+  background: none;
 }
 
 .secondary {
   padding: 10px 20px;
   border: 1px solid var(--secondary-color);
   color: var(--secondary-color);
-  background: none;
 }
 
 .outline {
@@ -39,6 +37,7 @@
   border: 1px solid var(--secondary-color);
   color: var(--secondary-color);
   background: transparent;
+  outline: none;
 }
 
 .background {

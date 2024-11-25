@@ -4,6 +4,8 @@
   opacity: 0;
   pointer-events: none;
   z-index: -1;
+  color: var(--inverted-primary-color);
+  font: var(--font-s);
 
   &__overlay {
     width: 100%;
@@ -17,23 +19,13 @@
   &__content {
     padding: 20px;
     border-radius: 12px;
-    background: var(--bg-color);
-    transition: 0.3s transform;
+    background: var(--inverted-bg-color);
+    transition: 0.4s transform;
     transform: scale(0.5);
-    max-width: 60%;
-  }
+    width: 400px;
 
-  &.dark {
-    .modal__content {
-      background: var(--modal-bg-dark);
-      color: var(--modal-color-dark);
-    }
-  }
-
-  &.light {
-    .modal__content {
-      background: var(--modal-bg-light);
-      color: var(--modal-color-light);
+    @media (width <= 480px) {
+      width: 300px;
     }
   }
 }

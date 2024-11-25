@@ -3,10 +3,11 @@ import { ThemeProvider, Theme } from "app/providers/ThemeProvider";
 
 export const ThemeDecorator =
   (theme: Theme) => (StoryComponent: StoryFn, context: StoryContext) => {
+    document.body.className = theme;
     return (
       <ThemeProvider initialTheme={theme}>
         <div
-          className={`theme ${theme}`}
+          className={`app ${theme}`}
           style={{
             width: "1400px",
             height: "100vh",
