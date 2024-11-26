@@ -7,6 +7,13 @@ import tsconfigPaths from "vite-tsconfig-paths";
 // import { analyzer } from "vite-bundle-analyzer";
 
 export default defineConfig({
+  build: {
+    rollupOptions: {
+      input: {
+        main: "./src/index.html",
+      },
+    },
+  },
   plugins: [
     // analyzer({
     //   openAnalyzer: false,

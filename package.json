@@ -22,7 +22,7 @@
     "test": "jest",
     "sb": "storybook dev -p 6006",
     "sb:build": "storybook build",
-    "prepare": "husky"
+    "prepare": "husky install"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.3.0",
@@ -120,5 +120,19 @@
       }
     },
     "reactUri": "http://localhost:6006"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "npm run lint",
+      "npm run test:unit"
+    ],
+    "*.{css, scss}": [
+      "npm run lint:css"
+    ],
+    "src/**/*.{html,ts,tsx,js,jsx}": [
+      "npm run build",
+      "npm run sb:build",
+      "npm run test:ui"
+    ]
   }
 }
