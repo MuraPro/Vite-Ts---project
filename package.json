@@ -21,7 +21,8 @@
     "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
     "test": "jest",
     "sb": "storybook dev -p 6006",
-    "sb:build": "storybook build"
+    "sb:build": "storybook build",
+    "prepare": "husky"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.3.0",

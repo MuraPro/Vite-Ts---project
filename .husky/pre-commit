@@ -1,0 +1,6 @@
+npm run build
+npm run lint
+linting css
+npm run test:unit
+npm run sb:build
+npm run test:ui
