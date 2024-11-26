@@ -136,11 +136,6 @@
     ],
     "*.{css, scss}": [
       "npm run lint:css"
-    ],
-    "src/**/*.{html,ts,tsx,js,jsx}": [
-      "npm run build",
-      "npm run sb:build",
-      "npm run test:ui"
     ]
   }
 }

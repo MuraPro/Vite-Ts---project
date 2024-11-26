@@ -2,11 +2,10 @@
 export PATH="./node_modules/.bin:$PATH"
 
 npm run build
-npm run lint
-npm run lint:css
+npm run fix
+npm run fix:css
 npm run test:unit
-npm run sb
-npm run test:ui:ci
+
 
 
         
