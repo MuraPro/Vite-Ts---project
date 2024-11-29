@@ -18,4 +18,4 @@ i18n.use(initReactI18next).init({
   },
 });
 
-export { i18n as i18nForTest };
+export default i18n;
