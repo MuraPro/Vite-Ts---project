@@ -14,8 +14,9 @@ body {
 }
 
 .app {
-  background: var(--bg-color);
+  background: var(--inverted-bg-color);
   min-height: 100vh;
+  width: 100%;
 }
 
 #storybook-root {

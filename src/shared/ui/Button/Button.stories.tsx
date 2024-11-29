@@ -8,7 +8,7 @@ const meta: Meta<typeof Button> = {
   title: "shared/Button",
   component: Button,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   tags: ["autodocs"],
   argTypes: {
@@ -33,7 +33,7 @@ export const Primary: Story = {
   args: { children: "Text", theme: ButtonTheme.PRIMARY },
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
-export const PrimaryDark: Story = {
+export const PrimaryLight: Story = {
   args: { children: "Text", theme: ButtonTheme.PRIMARY },
   decorators: [ThemeDecorator(Theme.DARK)],
 };
@@ -41,7 +41,7 @@ export const Secondary: Story = {
   args: { children: "Text", theme: ButtonTheme.SECONDARY },
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
-export const SecondaryDark: Story = {
+export const SecondaryLight: Story = {
   args: { children: "Text", theme: ButtonTheme.SECONDARY },
   decorators: [ThemeDecorator(Theme.DARK)],
 };
@@ -50,7 +50,7 @@ export const Clear: Story = {
   args: { children: "Text" },
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
-export const ClearDark: Story = {
+export const ClearLight: Story = {
   args: { children: "Text" },
   decorators: [ThemeDecorator(Theme.DARK)],
 };
@@ -60,7 +60,7 @@ export const Outline: Story = {
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
-export const OutlineDark: Story = {
+export const OutlineLight: Story = {
   args: { children: "Text", theme: ButtonTheme.OUTLINE },
   decorators: [ThemeDecorator(Theme.DARK)],
 };

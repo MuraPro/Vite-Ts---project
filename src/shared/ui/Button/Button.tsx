@@ -25,6 +25,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   square?: boolean;
   ariaLabel?: string;
   onClick?: () => void;
+  disabled?: boolean;
 }
 
 export enum ButtonSize {
@@ -44,6 +45,7 @@ export const Button: FC<ButtonProps> = (props) => {
     size = ButtonSize.D,
     ariaLabel,
     onClick,
+    disabled,
     ...otherProps
   } = props;
 
@@ -51,6 +53,7 @@ export const Button: FC<ButtonProps> = (props) => {
     [cls[theme]]: true!,
     [cls.square]: square!,
     [cls[size]]: true!,
+    [cls.disabled]: disabled!,
   };
 
   return (
@@ -59,6 +62,7 @@ export const Button: FC<ButtonProps> = (props) => {
       type={type}
       aria-label={ariaLabel}
       onClick={onClick}
+      disabled={disabled}
       {...otherProps}
     >
       {children}

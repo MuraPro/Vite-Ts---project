@@ -7,11 +7,22 @@ const meta: Meta<typeof ThemeSwitcher> = {
   title: "shared/ThemeSwitcher",
   component: ThemeSwitcher,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   tags: ["autodocs"],
   argTypes: {},
   args: {},
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          padding: "20px",
+        }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;

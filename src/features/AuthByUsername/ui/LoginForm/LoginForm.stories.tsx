@@ -1,26 +1,64 @@
 import { Theme } from "app/providers/ThemeProvider";
+import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDecorator";
 import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator/ThemeDecorator";
-import { LoginForm } from "./LoginForm";
+import LoginForm from "./LoginForm";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof LoginForm> = {
   title: "features/LoginForm",
   component: LoginForm,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   tags: ["autodocs"],
   argTypes: {},
   args: {},
+  decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export default meta;
 
 type Story = StoryObj<typeof LoginForm>;
 
-export const Normal: Story = {
-  decorators: [ThemeDecorator(Theme.LIGHT)],
+export const Primary: Story = {
+  decorators: [
+    ThemeDecorator(Theme.LIGHT),
+    StoreDecorator({
+      loginForm: {
+        username: "123",
+        password: "asd",
+        error: null,
+        isLoading: false,
+      },
+    }),
+  ],
 };
-export const Dark: Story = {
-  decorators: [ThemeDecorator(Theme.DARK)],
+
+export const withError: Story = {
+  decorators: [
+    ThemeDecorator(Theme.DARK),
+    StoreDecorator({
+      loginForm: {
+        username: "123",
+        password: "asd",
+        error: "error",
+        isLoading: false,
+      },
+    }),
+  ],
+};
+
+export const Loading: Story = {
+  args: {},
+  decorators: [
+    ThemeDecorator(Theme.DARK),
+    StoreDecorator({
+      loginForm: {
+        username: "123",
+        password: "asd",
+        error: null,
+        isLoading: true,
+      },
+    }),
+  ],
 };

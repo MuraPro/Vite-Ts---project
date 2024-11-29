@@ -1,11 +1,23 @@
 .loginForm {
+  width: 430px;
   display: flex;
   flex-direction: column;
   gap: 20px;
   margin: 0 auto;
-  padding: 30px;
+  padding: 50px;
   border-radius: 8px;
-  background: var(--inverted-bg-color);
+  background: var(--bg-color);
+  position: relative;
+  min-height: 300px;
+  /* stylelint-disable */
+  @media (max-width: 480px) {
+    width: 300px;
+    padding: 25px;
+  }
+  /* stylelint-enable */
+  &__title {
+    margin-bottom: 20px;
+  }
 
   &__group {
     display: flex;
@@ -14,20 +26,20 @@
 
   &__label {
     margin-bottom: 10px;
-    color: var(--inverted-primary-color);
+    color: var(--primary-color);
   }
 
   &__input {
-    border-bottom: 1px solid var(--inverted-primary-color);
+    border-bottom: 1px solid var(--primary-color);
     padding: 5px;
-    color: var(--inverted-primary-color);
+    color: var(--primary-color);
     font: var(--font-s);
   }
 
   &__btn {
     padding: 10px;
-    color: var(--inverted-primary-color);
-    border: 1px solid var(--inverted-primary-color);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -39,6 +51,7 @@
   position: relative;
   display: flex;
   align-items: center;
+  margin-bottom: 20px;
 }
 
 .togglePasswordBtn {
@@ -48,5 +61,28 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--inverted-primary-color);
+  color: var(--primary-color);
+}
+
+.loginForm__error {
+  position: absolute;
+  bottom: 100px;
+  left: 75px;
+  right: 0;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+  display: none;
+  /* stylelint-disable */
+  @media (max-width: 480px) {
+    bottom: 77px;
+    left: 40px;
+  }
+  /* stylelint-enable */
+  &.fade-in {
+    display: block;
+  }
+
+  &.fade-out {
+    display: none;
+  }
 }

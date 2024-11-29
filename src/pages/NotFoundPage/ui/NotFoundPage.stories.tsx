@@ -7,7 +7,7 @@ const meta: Meta<typeof NotFoundPage> = {
   title: "page/NotFoundPage",
   component: NotFoundPage,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   tags: ["autodocs"],
   argTypes: {},
@@ -18,7 +18,7 @@ export default meta;
 
 type Story = StoryObj<typeof NotFoundPage>;
 
-export const Normal: Story = {
+export const Light: Story = {
   args: {},
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };

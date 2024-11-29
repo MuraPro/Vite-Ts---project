@@ -7,13 +7,9 @@ export const ThemeDecorator =
     return (
       <ThemeProvider initialTheme={theme}>
         <div
-          className={`app ${theme}`}
+          className="app"
           style={{
-            width: "1400px",
-            height: "100vh",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            paddingTop: "30px",
           }}
         >
           <StoryComponent {...context.args} />

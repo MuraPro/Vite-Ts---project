@@ -1,4 +1,3 @@
-import "@testing-library/jest-dom";
 import { StateSchema } from "app/providers/StoreProvider";
 import { getCounterValue } from "./getCounterValue";
 

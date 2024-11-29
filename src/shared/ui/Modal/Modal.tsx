@@ -1,3 +1,4 @@
+import { getUserAuthData } from "entities/User";
 import React, {
   ReactNode,
   useCallback,
@@ -5,6 +6,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { useSelector } from "react-redux";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Portal } from "shared/ui/Portal/Portal";
 import cls from "./Modal.module.scss";
@@ -24,6 +26,7 @@ export const Modal = (props: ModalProps) => {
   const [isClosing, setIsClosing] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
+  const authData = useSelector(getUserAuthData);
 
   useEffect(() => {
     if (isOpen) {
@@ -40,6 +43,12 @@ export const Modal = (props: ModalProps) => {
       }, ANIMATION_DELAY);
     }
   }, [onClose]);
+
+  useEffect(() => {
+    if (authData) {
+      closeHandler();
+    }
+  }, [authData, closeHandler]);
 
   const onKeyDown = useCallback(
     (e: KeyboardEvent) => {

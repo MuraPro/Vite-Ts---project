@@ -49,6 +49,7 @@ export default [
         DeepPartial: "readonly",
         process: "readonly",
         __dirname: "readonly",
+        jest: "readonly",
       },
     },
     plugins: {
@@ -131,6 +132,7 @@ export default [
         DeepPartial: "readonly",
         process: "readonly",
         __dirname: "readonly",
+        jest: "readonly",
       },
     },
     plugins: {

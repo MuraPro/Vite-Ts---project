@@ -68,13 +68,10 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  box-shadow: 0 0 0 1000px var(--inverted-bg-color) inset !important;
-  -webkit-text-fill-color: var(--inverted-primary-color) !important;
-  color: var(--inverted-primary-color) !important;
-  caret-color: var(
-    --inverted-primary-color
-  ) !important; /* Добавьте эту строку */
-
+  box-shadow: 0 0 0 1000px var(--bg-color) inset !important;
+  -webkit-text-fill-color: var(--primary-color) !important;
+  color: var(--primary-color) !important;
+  caret-color: var(--primary-color) !important; /* Добавьте эту строку */
   transition: background-color 5000s ease-in-out 0s !important;
 }
 

@@ -1,5 +1,9 @@
 @use "../fonts";
 
+/* stylelint-disable */
+@media (max-width: 480px) {
+}
+
 :root {
   --fl: "l";
   --fr: "r";
@@ -38,4 +42,7 @@
   --modal-bg-light: #090949;
   --modal-color-dark: #0232c2;
   --modal-color-light: #04ff04;
+  --red-light: #f00;
+  --red-dark: #ce0505;
+  --switcher-bg: #000000;
 }

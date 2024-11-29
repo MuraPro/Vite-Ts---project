@@ -7,7 +7,7 @@ const meta: Meta<typeof AboutPage> = {
   title: "page/AboutPage",
   component: AboutPage,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   tags: ["autodocs"],
   argTypes: {},

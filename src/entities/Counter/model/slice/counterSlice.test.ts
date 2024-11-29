@@ -1,4 +1,3 @@
-import "@testing-library/jest-dom";
 import { CounterSchema } from "../types/counterSchema";
 import { counterReducer, counterActions } from "./counterSlice";
 

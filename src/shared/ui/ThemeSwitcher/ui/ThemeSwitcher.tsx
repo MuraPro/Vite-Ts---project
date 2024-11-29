@@ -37,9 +37,9 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
         className={`${cls.themeswitcher__circle} ${isChecked ? cls.dark : ""}`}
       >
         {isChecked ? (
-          <DarkIcon className={cls.themeswitcher__icon} />
-        ) : (
           <LightIcon className={cls.themeswitcher__icon} />
+        ) : (
+          <DarkIcon className={cls.themeswitcher__icon} />
         )}
       </div>
     </Button>

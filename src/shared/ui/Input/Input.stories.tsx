@@ -7,7 +7,7 @@ const meta: Meta<typeof Input> = {
   title: "shared/Input",
   component: Input,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   tags: ["autodocs"],
   argTypes: {},
@@ -18,7 +18,7 @@ export default meta;
 
 type Story = StoryObj<typeof Input>;
 
-export const Normal: Story = {
+export const Light: Story = {
   args: {
     placeholder: "Type text",
     value: "123123",

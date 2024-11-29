@@ -8,7 +8,7 @@ const meta: Meta<typeof AppLink> = {
   title: "shared/AppLink",
   component: AppLink,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   tags: ["autodocs"],
   argTypes: {},

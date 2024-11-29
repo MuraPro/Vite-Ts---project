@@ -7,7 +7,7 @@ const meta: Meta<typeof Modal> = {
   title: "shared/Modal",
   component: Modal,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
   tags: ["autodocs"],
   argTypes: {},
@@ -18,7 +18,7 @@ export default meta;
 
 type Story = StoryObj<typeof Modal>;
 
-export const Light: Story = {
+export const Dark: Story = {
   args: {
     isOpen: true,
     children:
@@ -26,7 +26,7 @@ export const Light: Story = {
   },
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
-export const Dark: Story = {
+export const Light: Story = {
   args: {
     isOpen: true,
     children:

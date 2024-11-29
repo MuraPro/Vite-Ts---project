@@ -12,10 +12,13 @@
   "Обновить страницу": "Refresh page",
   "Короткий язык": "EN",
   "Войти": "Sign In",
+  "Выйти": "Sign Out",
   "Инкремент": "increment",
   "Дикремент": "dicrement",
   "Введите имя пользователя": "Enter username",
   "Введите пароль": "Enter password",
   "Скрыть пароль": "Hide password",
-  "Показать пароль": "Show password"
+  "Показать пароль": "Show password",
+  "Форма авторизации": "Authorization form",
+  "Некорректный логин или пароль": "Incorrect login or password"
 }

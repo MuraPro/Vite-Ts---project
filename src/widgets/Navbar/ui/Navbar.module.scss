@@ -16,13 +16,15 @@
     }
 
     &:nth-child(2) {
-      border: 1px solid var(--inverted-primary-color);
-      padding: 2px;
+      button {
+        color: var(--primary-color);
+        border: 1px solid var(--primary-color);
+      }
     }
   }
 
   &-btn {
-    color: var(--inverted-primary-color);
+    color: var(--primary-color);
     transition: color 0.4s ease;
   }
 }

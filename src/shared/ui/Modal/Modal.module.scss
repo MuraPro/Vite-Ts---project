@@ -4,7 +4,7 @@
   opacity: 0;
   pointer-events: none;
   z-index: -1;
-  color: var(--inverted-primary-color);
+  color: var(--primary-color);
   font: var(--font-s);
 
   &__overlay {
@@ -17,16 +17,10 @@
   }
 
   &__content {
-    padding: 20px;
     border-radius: 12px;
-    background: var(--inverted-bg-color);
+    background: transparent;
     transition: 0.4s transform;
     transform: scale(0.5);
-    width: 400px;
-
-    @media (width <= 480px) {
-      width: 300px;
-    }
   }
 }
 
