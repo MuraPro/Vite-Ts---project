@@ -10,11 +10,24 @@ const router = jsonServer.router(path.resolve(__dirname, "db.json"));
 const upload = multer({ dest: "uploads/" }); // Директория для хранения файлов
 
 // Настройка CORS
-server.use(
-  cors({
-    origin: "https://vite-ts-project.vercel.app/", // Разрешение только с этого домена
-  }),
-);
+const corsOptions = {
+  origin: (origin, callback) => {
+    // Поддержка варианта с косой чертой или без нее
+    const allowedOrigins = [
+      "https://vite-ts-project.vercel.app",
+      "https://vite-ts-project.vercel.app/", // вариант с косой чертой
+    ];
+
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS policy violation"));
+    }
+  },
+};
+
+// Настройка CORS с указанными опциями
+server.use(cors(corsOptions));
 
 // Использование дефолтных middleware от json-server
 server.use(jsonServer.defaults({}));
