@@ -14,6 +14,8 @@ export const loginByUsername = createAsyncThunk<
   ThunkConfig<string>
 >("login/loginByUsername", async (authData, thunkAPI) => {
   const { extra, dispatch, rejectWithValue } = thunkAPI;
+  console.log(extra);
+
   try {
     const response = await extra.api.post<User>("/login", {
       ...authData,
