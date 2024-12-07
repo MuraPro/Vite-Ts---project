@@ -50,7 +50,7 @@ export const Sidebar = ({ className }: SidebarProps) => {
           />
         </li>
       )),
-    [collapsed],
+    [collapsed, handleLinkHandler],
   );
 
   return (
