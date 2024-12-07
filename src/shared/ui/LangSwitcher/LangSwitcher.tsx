@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { MdLanguage } from "react-icons/md";
 import { classNames } from "shared/lib/classNames/classNames";
@@ -8,7 +9,7 @@ interface LangSwitcherProps {
   className?: string;
 }
 
-export const LangSwitcher = ({ className }: LangSwitcherProps) => {
+export const LangSwitcher = memo(({ className }: LangSwitcherProps) => {
   const { t, i18n } = useTranslation();
 
   const toggle = async () => {
@@ -19,7 +20,7 @@ export const LangSwitcher = ({ className }: LangSwitcherProps) => {
 
   return (
     <Button
-      className={classNames(cls.langSwitcher, {}, [className || ""])}
+      className={classNames(cls.langSwitcher, {}, [className])}
       theme={ButtonTheme.CLEAR}
       onClick={toggle}
       size={ButtonSize.S}
@@ -28,4 +29,4 @@ export const LangSwitcher = ({ className }: LangSwitcherProps) => {
       <MdLanguage size={20} className={cls.langSwitcher__icon} />
     </Button>
   );
-};
+});

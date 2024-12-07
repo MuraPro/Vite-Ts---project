@@ -1,11 +1,12 @@
-import { ButtonHTMLAttributes, FC } from "react";
-import { classNames } from "shared/lib/classNames/classNames";
+import { ButtonHTMLAttributes, memo } from "react";
+import { classNames, Mods } from "shared/lib/classNames/classNames";
 import cls from "./Button.module.scss";
 
 export enum ButtonTheme {
   CLEAR = "clear",
   CLEAR_INVERTED = "clearInverted",
   OUTLINE = "outline",
+  OUTLINE_RED = "outline_red",
   PRIMARY = "primary",
   SECONDARY = "secondary",
   DEFAULT = "default",
@@ -35,7 +36,7 @@ export enum ButtonSize {
   L = "size_l",
 }
 
-export const Button: FC<ButtonProps> = (props) => {
+export const Button = memo((props: ButtonProps) => {
   const {
     type = "button",
     className,
@@ -49,7 +50,7 @@ export const Button: FC<ButtonProps> = (props) => {
     ...otherProps
   } = props;
 
-  const mods: Record<string, boolean> = {
+  const mods: Mods = {
     [cls[theme]]: true!,
     [cls.square]: square!,
     [cls[size]]: true!,
@@ -58,7 +59,7 @@ export const Button: FC<ButtonProps> = (props) => {
 
   return (
     <button
-      className={classNames(cls.Button, mods, [className || ""])}
+      className={classNames(cls.Button, mods, [className])}
       type={type}
       aria-label={ariaLabel}
       onClick={onClick}
@@ -68,4 +69,4 @@ export const Button: FC<ButtonProps> = (props) => {
       {children}
     </button>
   );
-};
+});

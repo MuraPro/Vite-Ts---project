@@ -9,6 +9,53 @@ import prettier from "eslint-plugin-prettier";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 
+const commonGlobals = {
+  localStorage: "readonly",
+  console: "readonly",
+  window: "readonly",
+  document: "readonly",
+  setTimeout: "readonly",
+  VITE_IS_DEV: "readonly",
+  VITE_API_URL: "readonly",
+  VITE_MODE: "readonly",
+  VITE_PORT: "readonly",
+  describe: "readonly",
+  test: "readonly",
+  expect: "readonly",
+  location: "readonly",
+  HTMLElement: "readonly",
+  KeyboardEvent: "readonly",
+  SVGSVGElement: "readonly",
+  HTMLButtonElement: "readonly",
+  HTMLInputElement: "readonly",
+  clearTimeout: "readonly",
+  // ES6 (ES2015+) глобальные переменные
+  Promise: "readonly",
+  Map: "readonly",
+  Set: "readonly",
+  Symbol: "readonly",
+  WeakMap: "readonly",
+  WeakSet: "readonly",
+  Reflect: "readonly",
+  Proxy: "readonly",
+  DeepPartial: "readonly",
+  process: "readonly",
+  __dirname: "readonly",
+  jest: "readonly",
+  __PROJECT__: true,
+};
+
+const importOrderConfig = [
+  "builtin", // Стандартные модули (например, fs, path)
+  "external", // Внешние модули (например, react, lodash)
+  "internal", // Локальные модули (например, app/, widgets/)
+  "parent", // Родительские модули (например, '../')
+  "sibling", // Соседние модули (например, './')
+  "index", // Индексные файлы (например, './index.js')
+  "object", // Импорты объектов
+  "type", // Типы (для TypeScript)
+];
+
 export default [
   js.configs.recommended,
   {
@@ -20,37 +67,7 @@ export default [
       parser: tsParser,
       ecmaVersion: 2022,
       sourceType: "module",
-      globals: {
-        localStorage: "readonly",
-        console: "readonly",
-        window: "readonly",
-        document: "readonly",
-        setTimeout: "readonly",
-        __IS_DEV__: "readonly",
-        describe: "readonly",
-        test: "readonly",
-        expect: "readonly",
-        location: "readonly",
-        HTMLElement: "readonly",
-        KeyboardEvent: "readonly",
-        SVGSVGElement: "readonly",
-        HTMLButtonElement: "readonly",
-        HTMLInputElement: "readonly",
-        clearTimeout: "readonly",
-        // ES6 (ES2015+) глобальные переменные
-        Promise: "readonly",
-        Map: "readonly",
-        Set: "readonly",
-        Symbol: "readonly",
-        WeakMap: "readonly",
-        WeakSet: "readonly",
-        Reflect: "readonly",
-        Proxy: "readonly",
-        DeepPartial: "readonly",
-        process: "readonly",
-        __dirname: "readonly",
-        jest: "readonly",
-      },
+      globals: commonGlobals,
     },
     plugins: {
       "@typescript-eslint": tsPlugin,
@@ -67,16 +84,7 @@ export default [
       "import/order": [
         "error",
         {
-          groups: [
-            "builtin", // Стандартные модули (например, fs, path)
-            "external", // Внешние модули (например, react, lodash)
-            "internal", // Локальные модули (например, app/, widgets/)
-            "parent", // Родительские модули (например, '../')
-            "sibling", // Соседние модули (например, './')
-            "index", // Индексные файлы (например, './index.js')
-            "object", // Импорты объектов
-            "type", // Типы (для TypeScript)
-          ],
+          groups: importOrderConfig,
           pathGroups: [
             {
               pattern: "@/**/**",
@@ -91,12 +99,12 @@ export default [
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
       "i18next/no-literal-string": ["error", { markupOnly: true }],
-      // Добавляем правила для Jest
       "jest/no-disabled-tests": "warn",
       "jest/no-focused-tests": "error",
       "jest/no-identical-title": "error",
       "jest/prefer-to-have-length": "warn",
       "jest/valid-expect": "error",
+      "no-undef": "off",
     },
   },
   {
@@ -104,36 +112,7 @@ export default [
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: "module",
-      globals: {
-        localStorage: "readonly",
-        console: "readonly",
-        window: "readonly",
-        document: "readonly",
-        setTimeout: "readonly",
-        __IS_DEV__: "readonly",
-        describe: "readonly",
-        test: "readonly",
-        expect: "readonly",
-        location: "readonly",
-        HTMLElement: "readonly",
-        KeyboardEvent: "readonly",
-        SVGSVGElement: "readonly",
-        HTMLButtonElement: "readonly",
-        HTMLInputElement: "readonly",
-        // ES6 (ES2015+) глобальные переменные
-        Promise: "readonly",
-        Map: "readonly",
-        Set: "readonly",
-        Symbol: "readonly",
-        WeakMap: "readonly",
-        WeakSet: "readonly",
-        Reflect: "readonly",
-        Proxy: "readonly",
-        DeepPartial: "readonly",
-        process: "readonly",
-        __dirname: "readonly",
-        jest: "readonly",
-      },
+      globals: commonGlobals,
     },
     plugins: {
       react,
@@ -164,16 +143,7 @@ export default [
       "import/order": [
         "error",
         {
-          groups: [
-            "builtin", // Стандартные модули (например, fs, path)
-            "external", // Внешние модули (например, react, lodash)
-            "internal", // Локальные модули (например, app/, widgets/)
-            "parent", // Родительские модули (например, '../')
-            "sibling", // Соседние модули (например, './')
-            "index", // Индексные файлы (например, './index.js')
-            "object", // Импорты объектов
-            "type", // Типы (для TypeScript)
-          ],
+          groups: importOrderConfig,
           pathGroups: [
             {
               pattern: "@/**/**",
@@ -188,12 +158,12 @@ export default [
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "error",
       "i18next/no-literal-string": ["error", { markupOnly: true }],
-      // Добавляем правила для Jest
       "jest/no-disabled-tests": "warn",
       "jest/no-focused-tests": "error",
       "jest/no-identical-title": "error",
       "jest/prefer-to-have-length": "warn",
       "jest/valid-expect": "error",
+      "no-undef": "off",
     },
   },
   {

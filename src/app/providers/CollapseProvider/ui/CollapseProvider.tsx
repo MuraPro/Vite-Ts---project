@@ -16,6 +16,7 @@ const CollapseProvider: FC<CollapseProviderProps> = ({ children }) => {
     () => ({
       collapsed: collapsed,
       toggleCollapse: toggleCollapse,
+      setCollapsed: setCollapsed,
     }),
     [collapsed],
   );

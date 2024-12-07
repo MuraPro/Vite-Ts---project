@@ -1,0 +1,59 @@
+.sidebar {
+  &__item {
+    font: var(--font-s);
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    position: absolute;
+    right: 55px;
+    top: 27px;
+  }
+
+  &__burger {
+    position: absolute;
+    top: 43px;
+    right: 30px;
+  }
+
+  &__list {
+    margin-top: var(--header-height);
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__li {
+    &:nth-child(3) {
+      margin-left: 3px;
+    }
+  }
+
+  &__link {
+    font: var(--font-s);
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__text {
+    transition: color 0.4s ease;
+    margin-left: 10px;
+    opacity: 1;
+    color: var(--primary-color);
+  }
+
+  &__icon {
+    transition: fill 0.4s ease;
+    fill: var(--primary-color);
+  }
+
+  .collapsed {
+    &__link {
+      opacity: 0;
+      transition: 0.2s opacity;
+      width: 0;
+    }
+  }
+}

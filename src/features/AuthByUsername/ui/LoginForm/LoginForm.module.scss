@@ -50,7 +50,7 @@
 .passwordWrapper {
   position: relative;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   margin-bottom: 20px;
 }
 
@@ -58,6 +58,7 @@
   cursor: pointer;
   position: absolute;
   right: 10px;
+  bottom: 10px;
   display: flex;
   align-items: center;
   justify-content: center;

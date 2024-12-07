@@ -25,5 +25,15 @@
       "password": "123"
     }
   ],
-  "profile": { "name": "typicode" }
+  "profile": {
+    "first": "Dilmurad",
+    "lastname": "Masharipov",
+    "age": "37",
+    "currency": "KRW",
+    "country": "South Korea",
+    "city": "Gwandju",
+    "username": "admin",
+    "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8jxQTHW7LA3cDSg_zvmuzF7TFDjln2tzcPg&s",
+    "email": "Chalanamdo@gmail.com"
+  }
 }

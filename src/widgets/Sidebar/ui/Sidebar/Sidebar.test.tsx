@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom";
 import { fireEvent, screen } from "@testing-library/react";
 import { renderWithTranslation } from "shared/lib/tests/renderWithTranslation/renderWithTranslation";
-import { Sidebar } from "widgets/Sidebar/ui/Sidebar";
+import { Sidebar } from "./Sidebar";
 
 describe("Sidebar", () => {
   test("with only first param", () => {

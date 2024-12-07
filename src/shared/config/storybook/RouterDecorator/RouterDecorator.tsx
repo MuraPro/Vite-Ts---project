@@ -1,8 +1,10 @@
-import { StoryFn } from "@storybook/react";
-import { BrowserRouter } from "react-router-dom";
+import { StoryFn, StoryContext } from "@storybook/react";
+import { MemoryRouter } from "react-router-dom";
 
-export const RouterDecorator = (Story: StoryFn) => (
-  <BrowserRouter>
-    <Story />
-  </BrowserRouter>
-);
+export const RouterDecorator = (StoryFn: StoryFn, context: StoryContext) => {
+  return (
+    <MemoryRouter initialEntries={["/"]}>
+      <StoryFn {...context.args} />
+    </MemoryRouter>
+  );
+};

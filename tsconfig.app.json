@@ -2,6 +2,7 @@
   "compilerOptions": {
     "types": [
       "node",
+      "vite/client",
       "jest",
       "istanbul-lib-coverage",
       "@testing-library/jest-dom"
@@ -32,10 +33,11 @@
     // "baseUrl": "./src",
     "baseUrl": ".",
     "paths": {
-      "*": ["./src/*"]
+      "*": ["./src/*"],
+      "@storybook/*": ["./.storybook/*"]
     }
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "jest.setup.ts"],
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"

@@ -1,11 +1,13 @@
 .title {
   font: var(--font-m);
-  color: var(--primary-color);
+  color: inherit;
+  display: flex;
+  align-items: center;
 }
 
 .text {
   font: var(--font-s);
-  color: var(--secondary-color);
+  color: inherit;
 }
 
 .error {
@@ -17,4 +19,20 @@
     font: var(--font-s);
     color: var(--red-dark);
   }
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.center {
+  text-align: center;
+}
+
+.icon {
+  margin-right: 3px;
 }

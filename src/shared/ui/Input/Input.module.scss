@@ -2,10 +2,23 @@
   display: flex;
   width: 100%;
   background-color: transparent;
-  color: var(--inverted-primary-color);
+  color: var(--primary-color);
+
+  &__error {
+    font: var(--font-s);
+    color: var(--red-light);
+  }
 }
 
 .placeholder {
   margin-right: 5px;
   font: var(--font-s);
+}
+
+.default__label {
+  color: var(--primary-color);
+}
+
+.readonly {
+  opacity: 0.7;
 }

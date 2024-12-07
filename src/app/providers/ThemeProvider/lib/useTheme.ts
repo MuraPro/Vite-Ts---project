@@ -19,7 +19,7 @@ export function useTheme(): UseThemeResult {
   const toggleTheme = () => {
     if (setTheme) {
       const newTheme = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK;
-      setTheme(newTheme);
+      setTheme?.(newTheme);
 
       document.body.classList.remove(newTheme);
       document.body.classList.add(newTheme);
@@ -33,7 +33,7 @@ export function useTheme(): UseThemeResult {
   };
 
   return {
-    theme,
+    theme: theme || Theme.LIGHT,
     toggleTheme,
   };
 }

@@ -22,3 +22,10 @@ body {
 #storybook-root {
   padding: 0 !important;
 }
+
+._container {
+  max-width: 1400px;
+  padding: 2px;
+  border: 1px solid red;
+  margin: 0 auto;
+}

@@ -1,5 +1,5 @@
 import { Theme, useTheme } from "app/providers/ThemeProvider";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import DarkIcon from "shared/assets/icons/theme-dark.svg";
 import LightIcon from "shared/assets/icons/theme-light.svg";
 import { classNames } from "shared/lib/classNames/classNames";
@@ -10,7 +10,7 @@ interface ThemeSwitcherProps {
   className?: string;
 }
 
-export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
+export const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps) => {
   const { theme, toggleTheme } = useTheme();
   const [isChecked, setIsChecked] = useState(theme === Theme.DARK);
 
@@ -29,7 +29,7 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
       className={classNames(
         `${cls.themeswitcher} ${isChecked ? cls.dark : ""}`,
         {},
-        [className || ""],
+        [className],
       )}
       onClick={handleToggle}
     >
@@ -44,4 +44,4 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
       </div>
     </Button>
   );
-};
+});

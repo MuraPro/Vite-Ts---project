@@ -1,8 +1,8 @@
 import { AppRouter } from "app/providers/router";
 import { userActions } from "entities/User";
 import { Suspense, useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { classNames } from "shared/lib/classNames/classNames";
+import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { Header } from "widgets/Header";
 import cls from "./App.module.scss";
 import "./styles/index.scss";
@@ -12,21 +12,21 @@ interface mainProps {
 }
 
 const App = ({ className }: mainProps) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(userActions.initAuthData());
   }, [dispatch]);
 
   return (
-    <div className={classNames(`${cls.wrapper} app`, {}, [className || ""])}>
+    <div className={classNames(`${cls.wrapper} app`, {}, [className])}>
       <Suspense fallback="">
         <Header />
-        <div className={cls.main}>
-          <section className={cls.main__content}>
+        <main className={cls.main}>
+          <div className="_container">
             <AppRouter />
-          </section>
-        </div>
+          </div>
+        </main>
       </Suspense>
     </div>
   );

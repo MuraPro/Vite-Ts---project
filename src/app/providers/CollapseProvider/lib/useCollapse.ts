@@ -1,9 +1,11 @@
-import { useContext } from "react";
+import { useContext, Dispatch, SetStateAction } from "react";
+
 import { CollapseContext } from "./CollapseContext";
 
 interface CollapseResult {
   collapsed: boolean;
   toggleCollapse: () => void;
+  setCollapsed: Dispatch<SetStateAction<boolean>>;
 }
 
 export function useCollapse(): CollapseResult {
@@ -11,7 +13,7 @@ export function useCollapse(): CollapseResult {
   if (!context) {
     throw new Error("useSidebar must be used within a SidebarProvider");
   }
-  const { collapsed, toggleCollapse } = context;
+  const { collapsed, toggleCollapse, setCollapsed } = context;
 
-  return { collapsed, toggleCollapse };
+  return { collapsed, toggleCollapse, setCollapsed };
 }

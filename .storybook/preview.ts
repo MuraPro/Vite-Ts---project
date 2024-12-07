@@ -19,10 +19,10 @@ export const parameters = {
 };
 
 export const decorators = [
+  StoreDecorator({}),
+  RouterDecorator,
+  CollapseDecorator,
+  ThemeDecorator({}),
   StyleDecorator,
   ModalDecorator,
-  CollapseDecorator,
-  RouterDecorator,
-  ThemeDecorator({}),
-  StoreDecorator({}),
 ];

@@ -2,6 +2,7 @@
   "compilerOptions": {
     "types": [
       "node",
+      "vite/client",
       "jest",
       "istanbul-lib-coverage",
       "@testing-library/jest-dom"
@@ -19,7 +20,8 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "jsx": "react-jsx"
   },
   "include": ["vite.config.ts"]
 }

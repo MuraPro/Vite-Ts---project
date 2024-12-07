@@ -1,5 +1,7 @@
 .langSwitcher {
-  transition: color 0.4s ease;
+  transition:
+    color 0.4s ease,
+    border 0.4s ease;
   color: var(--inverted-primary-color);
   width: 50px;
   display: flex;

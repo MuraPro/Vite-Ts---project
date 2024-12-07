@@ -12,8 +12,14 @@ declare module "*.svg" {
   export default content;
 }
 
-declare const __IS_DEV__: boolean;
+declare const VITE_IS_DEV: boolean;
+declare const VITE_API_URL: string;
+declare const __PROJECT__: "storybook" | "frontend" | "jest";
 
 type DeepPartial<T> = {
   [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P];
+};
+
+type CombinedStateEquivalent<T> = {
+  [K in keyof T]: T[K] extends object ? CombinedStateEquivalent<T[K]> : T[K];
 };

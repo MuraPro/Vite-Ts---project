@@ -10,8 +10,8 @@ import "./shared/config/i18n/i18n";
 import "./app/styles/index.scss";
 
 createRoot(document.getElementById("root")!).render(
-  <StoreProvider>
-    <BrowserRouter>
+  <BrowserRouter>
+    <StoreProvider>
       <ErrorBoundary>
         <ModalProvider>
           <ThemeProvider>
@@ -21,6 +21,6 @@ createRoot(document.getElementById("root")!).render(
           </ThemeProvider>
         </ModalProvider>
       </ErrorBoundary>
-    </BrowserRouter>
-  </StoreProvider>,
+    </StoreProvider>
+  </BrowserRouter>,
 );

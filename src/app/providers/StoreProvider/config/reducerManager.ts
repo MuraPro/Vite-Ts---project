@@ -19,13 +19,20 @@ export function createReducerManager(
     getReducerMap: () => reducers,
     reduce: (state: StateSchema, action: Action) => {
       if (keysToRemove.length > 0) {
+        // Создаем глубокую копию состояния, чтобы избежать мутаций
         state = { ...state };
         keysToRemove.forEach((key) => {
-          delete state[key];
+          delete state[key]; // Удаляем ключи
         });
-        keysToRemove = [];
+        keysToRemove = []; // Очищаем список удалённых ключей
       }
-      return combinedReducer(state as any, action);
+      const filteredState = state
+        ? Object.fromEntries(
+            Object.entries(state).filter(([_, value]) => value !== undefined),
+          )
+        : {}; //
+      // Отправляем отфильтрованное состояние в combinedReducer
+      return combinedReducer(filteredState, action);
     },
     add: (key: StateSchemaKey, reducer: Reducer) => {
       if (!key || reducers[key]) {

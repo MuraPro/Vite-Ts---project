@@ -1,9 +1,10 @@
 import "@testing-library/jest-dom";
 import { loginByUsername } from "../services/loginByUsername/loginByUsername";
+import { LoginSchema } from "../types/loginSchema";
 import { loginSlice, loginActions } from "./loginSlice";
 
 describe("loginSlice", () => {
-  const initialState = {
+  const initialState: LoginSchema = {
     isLoading: false,
     username: "",
     password: "",

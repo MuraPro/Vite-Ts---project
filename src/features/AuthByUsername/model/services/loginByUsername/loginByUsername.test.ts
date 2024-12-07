@@ -1,123 +1,78 @@
-import axios from "axios";
 import { userActions } from "entities/User";
-import { USER_LOCALSTORAGE_KEY } from "shared/const/localstorage";
+import { TestAsyncThunk } from "shared/lib/tests/TestAsyncThunk/TestAsyncThunk";
 import { loginByUsername } from "./loginByUsername";
 
-// Мокируем axios
-jest.mock("axios");
-const mockedAxios = axios as jest.Mocked<typeof axios>;
+describe("loginByUsername tests", () => {
+  // Тест для успешной аутентификации
+  test("should login successfully", async () => {
+    const mockUser = { username: "admin", id: "1" };
 
-describe("loginByUsername async thunk", () => {
-  const dispatch = jest.fn();
-  const getState = jest.fn();
-  const authData = { username: "admin", password: "123" };
-  const userResponse = { id: "1", username: "testUser" };
+    // Создаем экземпляр тестовой обертки
+    const thunk = new TestAsyncThunk(loginByUsername);
 
-  beforeEach(() => {
-    jest.clearAllMocks();
+    // Мокаем запрос API для возвращения mockUser
+    thunk.api.post.mockReturnValue(Promise.resolve({ data: mockUser }));
 
-    // Мокируем методы localStorage
-    jest.spyOn(Storage.prototype, "setItem");
-    jest.spyOn(Storage.prototype, "getItem");
-    jest.spyOn(Storage.prototype, "clear");
-  });
+    // Вызываем callThunk с данными для аутентификации
+    const result = await thunk.callThunk({
+      username: "admin",
+      password: "123",
+    });
 
-  afterEach(() => {
-    jest.restoreAllMocks(); // Восстанавливаем оригинальные реализации
-  });
-
-  it("должен выполнить успешный запрос и сохранить данные пользователя", async () => {
-    // Мокируем успешный ответ от сервера
-    mockedAxios.post.mockResolvedValueOnce({ data: userResponse });
-
-    const thunk = loginByUsername(authData);
-    const result = await thunk(dispatch, getState, undefined);
-
-    // Проверяем, что axios.post был вызван с нужными параметрами
-    expect(mockedAxios.post).toHaveBeenCalledWith(
-      "http://localhost:8000/login",
-      authData,
+    // Проверяем, что экшн был выполнен и результат успешный
+    expect(thunk.dispatch).toHaveBeenCalledWith(
+      userActions.setAuthData(mockUser),
     );
-
-    // Проверяем, что локальное хранилище было обновлено
-    expect(localStorage.setItem).toHaveBeenCalledWith(
-      USER_LOCALSTORAGE_KEY,
-      JSON.stringify(userResponse),
-    );
-
-    // Проверяем, что вызвано действие setAuthData с правильными данными
-    expect(dispatch).toHaveBeenCalledWith(
-      userActions.setAuthData(userResponse),
-    );
-
-    // Проверяем, что результат thunka успешный
-    expect(result.payload).toEqual(userResponse);
+    expect(thunk.dispatch).toHaveBeenCalledTimes(3); // Проверка количества вызовов dispatch
+    expect(thunk.api.post).toHaveBeenCalledWith("/login", {
+      username: "admin",
+      password: "123",
+    });
     expect(result.meta.requestStatus).toBe("fulfilled");
+    expect(result.payload).toEqual(mockUser);
   });
 
-  it("должен выполнить запрос и вернуть reject при ошибке", async () => {
-    // Мокируем ошибку сети
-    mockedAxios.post.mockRejectedValueOnce("error");
+  // Тест для неудачной аутентификации (например, сервер вернул 403)
+  test("should handle login failure", async () => {
+    const thunk = new TestAsyncThunk(loginByUsername);
 
-    const thunk = loginByUsername(authData);
-    const result = await thunk(dispatch, getState, undefined);
+    // Мокаем ошибку от API
+    thunk.api.post.mockReturnValue(Promise.resolve({ status: 403 }));
 
-    // Проверяем, что axios.post был вызван с нужными параметрами
-    expect(mockedAxios.post).toHaveBeenCalledWith(
-      "http://localhost:8000/login",
-      authData,
-    );
+    // Вызываем callThunk с данными для аутентификации
+    const result = await thunk.callThunk({
+      username: "john_doe",
+      password: "wrong_password",
+    });
 
-    // Проверяем, что rejectWithValue вернулось с ошибкой
-    expect(result.payload).toBe("error");
+    // Проверяем, что был вызван rejectWithValue
+    expect(thunk.dispatch).toHaveBeenCalledTimes(2); // Ожидаем 2 вызова dispatch
+    expect(thunk.api.post).toHaveBeenCalledWith("/login", {
+      username: "john_doe",
+      password: "wrong_password",
+    });
     expect(result.meta.requestStatus).toBe("rejected");
+    expect(result.payload).toBe("error");
+  });
 
-    // Локальное хранилище не должно было быть обновлено
-    expect(localStorage.setItem).not.toHaveBeenCalled();
+  // Тест для неудачной аутентификации с отсутствующим API
+  test("should handle error if API is unavailable", async () => {
+    const thunk = new TestAsyncThunk(loginByUsername);
 
-    // Действие setAuthData не должно было быть вызвано
-    expect(dispatch).not.toHaveBeenCalledWith(
-      userActions.setAuthData(expect.anything()),
-    );
+    // Мокаем API, чтобы он был недоступен
+    thunk.api.post.mockImplementation(() => {
+      throw new Error("API is not available");
+    });
+
+    // Вызываем callThunk
+    const result = await thunk.callThunk({
+      username: "john_doe",
+      password: "password",
+    });
+
+    // Проверяем, что был вызван rejectWithValue
+    expect(thunk.dispatch).toHaveBeenCalledTimes(2);
+    expect(result.meta.requestStatus).toBe("rejected");
+    expect(result.payload).toBe("error");
   });
 });
-
-//TestAsyncThunk
-
-// import axios from "axios";
-// import { userActions } from "entities/User";
-// import { TestAsyncThunk } from "shared/lib/tests/TestAsyncThunk/TestAsyncThunk";
-// import { loginByUsername } from "./loginByUsername";
-
-// jest.mock("axios");
-
-// const mockedAxios = jest.mocked(axios, { shallow: false });
-
-// describe("loginByUsername.test", () => {
-//   test("success login", async () => {
-//     const userValue = { username: "123", id: "1" };
-//     mockedAxios.post.mockReturnValue(Promise.resolve({ data: userValue }));
-
-//     const thunk = new TestAsyncThunk(loginByUsername);
-//     const result = await thunk.callThunk({ username: "123", password: "123" });
-
-//     expect(thunk.dispatch).toHaveBeenCalledWith(
-//       userActions.setAuthData(userValue),
-//     );
-//     expect(thunk.dispatch).toHaveBeenCalledTimes(3);
-//     expect(mockedAxios.post).toHaveBeenCalled();
-//     expect(result.meta.requestStatus).toBe("fulfilled");
-//     expect(result.payload).toEqual(userValue);
-//   });
-
-//   test("error login", async () => {
-//     mockedAxios.post.mockReturnValue(Promise.resolve({ status: 403 }));
-//     const thunk = new TestAsyncThunk(loginByUsername);
-//     const result = await thunk.callThunk({ username: "123", password: "123" });
-
-//     expect(thunk.dispatch).toHaveBeenCalledTimes(2);
-//     expect(mockedAxios.post).toHaveBeenCalled();
-//     expect(result.meta.requestStatus).toBe("rejected");
-//     expect(result.payload).toBe("error");
-//   });
-// });

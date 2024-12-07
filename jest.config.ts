@@ -28,18 +28,21 @@ const config: Config = {
     "^shared/(.*)$": "<rootDir>/src/shared/$1",
     "^app/(.*)$": "<rootDir>/src/app/$1",
   },
-  extensionsToTreatAsEsm: [".ts", ".tsx"],
   transform: {
     "^.+\\.tsx?$": [
       "ts-jest",
       {
-        tsconfig: "tsconfig.app.json", // если используется кастомный tsconfig
+        tsconfig: "tsconfig.app.json",
       },
     ],
+    "^.+\\.(ts|tsx|js|jsx)$": "ts-jest",
   },
+  extensionsToTreatAsEsm: [".ts", ".tsx"],
   forceExit: true,
   globals: {
-    __IS_DEV__: JSON.stringify(process.env.NODE_ENV === "development"),
+    VITE_API_URL: "http://localhost:8000",
+    VITE_IS_DEV: JSON.stringify(process.env.NODE_ENV === "development"),
+    __PROJECT__: "jest",
   },
 
   //   transform: {

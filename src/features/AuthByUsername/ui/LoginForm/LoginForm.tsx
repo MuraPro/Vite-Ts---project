@@ -1,14 +1,14 @@
-import { AppDispatch } from "app/providers/StoreProvider/config/store";
 import { getUserAuthData } from "entities/User";
 import React, { memo, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"; // Импорты иконок
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { classNames } from "shared/lib/classNames/classNames";
 import {
   DynamicModuleLoader,
   ReducersList,
 } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
+import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { Button, ButtonSize, ButtonTheme } from "shared/ui/Button/Button";
 import { Input } from "shared/ui/Input/Input";
 import { Text, TextTheme } from "shared/ui/Text/Text";
@@ -23,6 +23,7 @@ import cls from "./LoginForm.module.scss";
 export interface LoginFormProps {
   className?: string;
   disabled?: boolean;
+  onSuccess?: () => void;
 }
 
 const initialReducers: ReducersList = {
@@ -34,7 +35,7 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
   const [showPassword, setShowPassword] = useState(false);
   const [errorVisible, setErrorVisible] = useState(false);
   const authData = useSelector(getUserAuthData);
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useAppDispatch();
   const username = useSelector(getLoginUsername);
   const password = useSelector(getLoginPassword);
   const isLoading = useSelector(getLoginIsLoading);
@@ -89,7 +90,7 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
     <DynamicModuleLoader removeAfterUnmount reducers={initialReducers}>
       <form
         data-testid="auth-form"
-        className={classNames(cls.loginForm, {}, [className || ""])}
+        className={classNames(cls.loginForm, {}, [className])}
         onSubmit={onLoginClick}
       >
         <Text title={t("Форма авторизации")} className={cls.loginForm__title} />
@@ -104,29 +105,27 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
         )}
 
         <div className={cls.loginForm__group}>
-          <label htmlFor="username" className={cls.loginForm__label}>
-            {t("Введите имя пользователя")}
-          </label>
           <Input
             id="username"
             autofocus
             type="text"
             className={cls.loginForm__input}
+            personalClassNames={cls.loginForm__label}
             onChange={onChangeUsername}
             value={username}
+            placeholder={t("Введите имя пользователя")}
           />
         </div>
         <div className={cls.loginForm__group}>
-          <label htmlFor="password" className={cls.loginForm__label}>
-            {t("Введите пароль")}
-          </label>
           <div className={cls.passwordWrapper}>
             <Input
               id="password"
               type={showPassword ? "text" : "password"}
               className={cls.loginForm__input}
+              personalClassNames={cls.loginForm__label}
               onChange={onChangePassword}
               value={password}
+              placeholder={t("Введите пароль")}
             />
             <Button
               onClick={togglePasswordVisibility}

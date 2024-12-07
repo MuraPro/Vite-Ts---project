@@ -1,7 +1,6 @@
-import { action } from "@storybook/addon-actions";
 import { Theme } from "app/providers/ThemeProvider";
 import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator/ThemeDecorator";
-import { Button, ButtonTheme, ButtonSize } from "./Button";
+import { Button, ButtonTheme } from "./Button";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Button> = {
@@ -13,15 +12,8 @@ const meta: Meta<typeof Button> = {
   tags: ["autodocs"],
   argTypes: {
     backgroundColor: { control: "color" },
-    size: {
-      control: {
-        type: "inline-radio",
-      },
-      options: [ButtonSize.D, ButtonSize.S, ButtonSize.M, ButtonSize.L],
-    },
   },
   args: {
-    onClick: action("onClick"),
     theme: ButtonTheme.CLEAR,
   },
 };

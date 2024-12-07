@@ -9,7 +9,7 @@ interface HeaderProps {
 export const Header = ({ className }: HeaderProps) => {
   return (
     <>
-      <header className={classNames(cls.header, {}, [className || ""])}>
+      <header className={classNames(cls.header, {}, [className])}>
         <div className={cls.header__container}>
           <BurgerButton />
           <Navbar />

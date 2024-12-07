@@ -1,0 +1,8 @@
+{
+  "presets": [
+    "@babel/preset-env", // Для поддержания синтаксиса ES6 и выше
+    "@babel/preset-react", // Для работы с JSX
+    "@babel/preset-typescript" // Для работы с TypeScript
+  ],
+  "plugins": ["babel-plugin-transform-import-meta"]
+}
