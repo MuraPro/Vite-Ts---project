@@ -32,8 +32,8 @@ export const Navbar = ({ className }: NavbarProps) => {
 
   const itemsList = useMemo(
     () =>
-      SidebarItemsList.map((item) => (
-        <li className={cls["header__navbar-li"]}>
+      SidebarItemsList.map((item, index) => (
+        <li className={cls["header__navbar-li"]} key={index}>
           <SidebarItem
             item={item}
             key={item.path}

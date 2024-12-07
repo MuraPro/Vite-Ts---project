@@ -1,6 +1,12 @@
 const fs = require("fs");
 const jsonServer = require("json-server");
 const path = require("path");
+const cors = require("cors");
+app.use(
+  cors({
+    origin: "vite-ts-project-ncxkdqf0d-murapros-projects.vercel.app", // или используйте '*' для разрешения всех доменов
+  }),
+);
 
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" }); // Директория для хранения файлов
