@@ -1,19 +1,18 @@
 import { useModal } from "app/providers/ModalProvider";
 import { getUserAuthData, userActions } from "entities/User";
 import { LoginModal } from "features/AuthByUsername";
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { FaSignInAlt } from "react-icons/fa";
 import { FaSignOutAlt } from "react-icons/fa";
 import { useSelector } from "react-redux";
-import { RoutePath } from "shared/config/routeConfig/routeConfig";
 import { classNames } from "shared/lib/classNames/classNames";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { AppLink, AppLinkTheme } from "shared/ui/AppLink/AppLink";
 import { Button, ButtonSize, ButtonTheme } from "shared/ui/Button/Button";
 import { LangSwitcher } from "shared/ui/LangSwitcher/LangSwitcher";
 import { ThemeSwitcher } from "shared/ui/ThemeSwitcher";
-
+import { SidebarItemsList } from "widgets/Sidebar/model/items";
+import { SidebarItem } from "widgets/Sidebar/ui/SidebarItem/SidebarItem";
 import cls from "./Navbar.module.scss";
 
 interface NavbarProps {
@@ -30,6 +29,20 @@ export const Navbar = ({ className }: NavbarProps) => {
   const onLogout = useCallback(() => {
     dispatch(userActions.logout());
   }, [dispatch]);
+
+  const itemsList = useMemo(
+    () =>
+      SidebarItemsList.map((item) => (
+        <li className={cls["header__navbar-li"]}>
+          <SidebarItem
+            item={item}
+            key={item.path}
+            prsonalClassName={cls["header__navbar-link"]}
+          />
+        </li>
+      )),
+    [],
+  );
 
   const authButtons = authData ? (
     <Button
@@ -56,35 +69,9 @@ export const Navbar = ({ className }: NavbarProps) => {
   return (
     <nav className={classNames(cls.header__navbar, {}, [className, "navbar"])}>
       <ul className={cls["header__navbar-list"]}>
+        {itemsList}
         <li className={cls["header__navbar-li"]}>
-          <AppLink
-            theme={AppLinkTheme.PRIMARY}
-            to={RoutePath.main}
-            className={cls["header__navbar-link"]}
-          >
-            {t("Главная")}
-          </AppLink>
-        </li>
-        <li className={cls["header__navbar-li"]}>
-          <AppLink
-            theme={AppLinkTheme.PRIMARY}
-            to={RoutePath.about}
-            className={cls["header__navbar-link"]}
-          >
-            {t("О нас")}
-          </AppLink>
-        </li>
-        <li className={cls["header__navbar-li"]}>
-          <AppLink
-            theme={AppLinkTheme.PRIMARY}
-            to={RoutePath.profile}
-            className={cls["header__navbar-link"]}
-          >
-            {t("Профиль")}
-          </AppLink>
-        </li>
-        <li className={cls["header__navbar-li"]}>
-          <LangSwitcher />
+          <LangSwitcher personalClassName={cls["header__navbar-lang"]} />
         </li>
         <li className={cls["header__navbar-li"]}>
           {authButtons}

@@ -18,6 +18,19 @@
     top: 27px;
   }
 
+  &__li {
+    &:nth-child(3) {
+      margin-left: 3px;
+    }
+  }
+
+  &__link {
+    font: var(--font-s);
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+  }
+
   &__burger {
     position: absolute;
     top: 43px;

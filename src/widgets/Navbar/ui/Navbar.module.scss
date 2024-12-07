@@ -24,20 +24,29 @@
         border: 1px solid var(--primary-color);
       }
     }
-    /* stylelint-disable */
-    @media (max-width: 576px) {
-      &:nth-child(1),
-      &:nth-child(2),
-      &:nth-child(3) {
-        display: none;
-      }
-    }
-    /* stylelint-enable */
+  }
+
+  &-lang {
+    transition:
+      border 0.4s ease,
+      color 0.4s ease;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
   }
 
   &-link {
     transition: color 0.4s ease;
     color: var(--primary-color);
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    /* stylelint-disable */
+    @media (max-width: 767.9px) {
+      & {
+        display: none;
+      }
+    }
+    /* stylelint-enable */
   }
 
   &-btn {

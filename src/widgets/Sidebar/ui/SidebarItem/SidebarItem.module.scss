@@ -24,19 +24,6 @@
     flex-direction: column;
   }
 
-  &__li {
-    &:nth-child(3) {
-      margin-left: 3px;
-    }
-  }
-
-  &__link {
-    font: var(--font-s);
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-  }
-
   &__text {
     transition: color 0.4s ease;
     margin-left: 10px;

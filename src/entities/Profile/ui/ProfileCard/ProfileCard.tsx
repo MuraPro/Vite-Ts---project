@@ -76,7 +76,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
     <div className={classNames(cls.card, {}, [className])}>
       {data?.avatar ? (
         <div className={cls.card__avatar}>
-          <Avatar src={data?.avatar} />
+          <Avatar src={data?.avatar} alt={"avatar"} />
         </div>
       ) : (
         <div className={cls.card__avatar}>
