@@ -14,6 +14,10 @@ interface SidebarProps {
 export const Sidebar = ({ className }: SidebarProps) => {
   const { collapsed, setCollapsed } = useCollapse();
 
+  const handleLinkHandler = () => {
+    setCollapsed(false);
+  };
+
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -42,6 +46,7 @@ export const Sidebar = ({ className }: SidebarProps) => {
             collapsed={collapsed}
             key={item.path}
             prsonalClassName={cls.sidebar__link}
+            onClick={handleLinkHandler}
           />
         </li>
       )),

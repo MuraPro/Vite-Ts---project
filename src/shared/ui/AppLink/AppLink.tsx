@@ -13,6 +13,7 @@ interface AppLinkProps extends LinkProps {
   className?: string;
   personalClassNames?: string;
   theme?: AppLinkTheme;
+  onClick?: () => void;
 }
 
 export const AppLink = memo((props: AppLinkProps) => {
@@ -22,11 +23,13 @@ export const AppLink = memo((props: AppLinkProps) => {
     personalClassNames,
     children,
     theme = AppLinkTheme.PRIMARY,
+    onClick,
     ...otherProps
   } = props;
 
   return (
     <Link
+      onClick={onClick}
       to={to}
       className={classNames(cls.AppLink, {}, [
         className,

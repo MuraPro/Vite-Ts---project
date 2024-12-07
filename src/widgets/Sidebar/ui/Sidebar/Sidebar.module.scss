@@ -12,6 +12,13 @@
     left 0.5s ease 0s,
     background-color 0.5s ease;
 
+  /* stylelint-disable */
+  @media (max-width: 479.9px) {
+    width: 325px;
+    left: -150%;
+  }
+  /* stylelint-enable */
+
   &__logo {
     position: absolute;
     right: 55px;

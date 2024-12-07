@@ -16,6 +16,8 @@ const corsOptions = {
     const allowedOrigins = [
       "https://vite-ts-project.vercel.app",
       "https://vite-ts-project.vercel.app/", // вариант с косой чертой
+      "http://localhost:4173",
+      "http://localhost:4173/", // вариант с косой чертой
     ];
 
     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {

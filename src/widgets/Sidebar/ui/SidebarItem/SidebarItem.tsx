@@ -11,10 +11,11 @@ interface SidebarItemProps {
   item: SidebarItemType;
   collapsed?: boolean;
   prsonalClassName?: string;
+  onClick?: () => void;
 }
 
 export const SidebarItem = memo(
-  ({ item, collapsed, prsonalClassName }: SidebarItemProps) => {
+  ({ item, collapsed, prsonalClassName, onClick }: SidebarItemProps) => {
     const { t } = useTranslation();
     const isAuth = useSelector(getUserAuthData);
 
@@ -30,6 +31,7 @@ export const SidebarItem = memo(
           className={classNames(`${cls.sidebar__litem} ${prsonalClassName}`, {
             [cls.collapsed]: collapsed,
           })}
+          onClick={onClick}
         >
           <item.Icon className={cls.sidebar__icon} />
           <span className={cls.sidebar__text}>{t(item.text)}</span>
