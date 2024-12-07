@@ -4,7 +4,7 @@ const path = require("path");
 const cors = require("cors");
 app.use(
   cors({
-    origin: "vite-ts-project-ncxkdqf0d-murapros-projects.vercel.app", // или используйте '*' для разрешения всех доменов
+    origin: "https://vite-ts-project.vercel.app/", // или используйте '*' для разрешения всех доменов
   }),
 );
 
