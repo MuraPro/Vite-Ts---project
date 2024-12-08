@@ -32,8 +32,8 @@
   }
 
   &__icon {
-    transition: fill 0.4s ease;
-    fill: var(--primary-color);
+    transition: color 0.4s ease;
+    color: var(--primary-color);
   }
 
   .collapsed {

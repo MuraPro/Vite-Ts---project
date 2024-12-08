@@ -61,3 +61,24 @@ export const Dark: Story = {
   },
   decorators: [StoreDecorator({}), ThemeDecorator(Theme.DARK)],
 };
+
+export const WithError: Story = {
+  args: {
+    data: {
+      first: "Иван",
+      lastname: "Иванов",
+      email: "ivan@example.com",
+      age: "30",
+      city: "Москва",
+      username: "ivanivanov",
+      avatar:
+        "https://avatars.mds.yandex.net/i?id=b155d366f61dc21400882f1c260c19283d5cabe6-9211751-images-thumbs&n=13",
+      currency: Currency.KRW,
+      country: Country.Korea,
+    },
+    isLoading: false,
+    error: "true",
+    readonly: false,
+  },
+  decorators: [StoreDecorator({}), ThemeDecorator(Theme.DARK)],
+};

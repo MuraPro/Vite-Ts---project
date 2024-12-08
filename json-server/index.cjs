@@ -135,18 +135,10 @@ server.listen(8000, () => {
   console.log("Server is running on port 8000");
 });
 
+//==============================================================================
 // const fs = require("fs");
 // const jsonServer = require("json-server");
 // const path = require("path");
-// const cors = require("cors");
-// app.use(
-//   cors({
-//     origin: "https://vite-ts-project.vercel.app/", // или используйте '*' для разрешения всех доменов
-//   }),
-// );
-
-// const multer = require("multer");
-// const upload = multer({ dest: "uploads/" }); // Директория для хранения файлов
 
 // const server = jsonServer.create();
 // const router = jsonServer.router(path.resolve(__dirname, "db.json"));
@@ -185,14 +177,75 @@ server.listen(8000, () => {
 //   }
 // });
 
-// // Проверка авторизации
-// server.use((req, res, next) => {
-//   if (!req.headers.authorization) {
-//     return res.status(403).json({ message: "AUTH ERROR" });
+// // Эндпоинт для получения профиля (GET /profile)
+// server.get("/profile", (req, res) => {
+//   const db = JSON.parse(
+//     fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
+//   );
+//   const { profile } = db;
+
+//   if (profile) {
+//     return res.json(profile);
 //   }
 
-//   next();
+//   return res.status(404).json({ message: "Profile not found" });
 // });
+
+// // Эндпоинт для обновления профиля (PUT /profile)
+// server.put("/profile", (req, res) => {
+//   const {
+//     first,
+//     lastname,
+//     age,
+//     currency,
+//     country,
+//     city,
+//     username,
+//     avatar,
+//     email,
+//   } = req.body;
+
+//   const db = JSON.parse(
+//     fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
+//   );
+//   const { profile } = db;
+
+//   if (!profile) {
+//     return res.status(404).json({ message: "Profile not found" });
+//   }
+
+//   // Обновляем профиль
+//   const updatedProfile = {
+//     ...profile,
+//     first,
+//     lastname,
+//     age,
+//     currency,
+//     country,
+//     city,
+//     username,
+//     avatar,
+//     email,
+//   };
+
+//   // Сохраняем обновленный профиль в db.json
+//   db.profile = updatedProfile;
+//   fs.writeFileSync(
+//     path.resolve(__dirname, "db.json"),
+//     JSON.stringify(db, null, 2),
+//   );
+
+//   return res.json(updatedProfile);
+// });
+
+// // Проверка авторизации
+// // server.use((req, res, next) => {
+// //   if (!req.headers.authorization) {
+// //     return res.status(403).json({ message: "AUTH ERROR" });
+// //   }
+
+// //   next();
+// // });
 
 // server.use(router);
 

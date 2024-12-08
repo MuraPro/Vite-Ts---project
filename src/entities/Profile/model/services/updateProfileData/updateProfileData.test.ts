@@ -46,7 +46,7 @@ describe("updateProfileData", () => {
 
     expect(thunk.api.put).toHaveBeenCalledWith("/profile", mockProfile);
     expect(result.meta.requestStatus).toBe("rejected");
-    expect(result.payload).toBe("error");
+    expect(result.payload).toStrictEqual(["SERVER_ERROR"]); // Используйте toStrictEqual
   });
 
   it("не должен отправлять запрос, если форма пустая", async () => {
@@ -58,6 +58,6 @@ describe("updateProfileData", () => {
 
     expect(thunk.api.put).not.toHaveBeenCalled();
     expect(result.meta.requestStatus).toBe("rejected");
-    expect(result.payload).toBe("error");
+    expect(result.payload).toStrictEqual(["NO_DATA"]); // Используйте toStrictEqual
   });
 });

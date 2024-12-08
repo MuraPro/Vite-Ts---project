@@ -14,8 +14,8 @@
 
   /* stylelint-disable */
   @media (max-width: 479.9px) {
-    width: 325px;
-    left: -150%;
+    width: 150px;
+    left: -100%;
   }
   /* stylelint-enable */
 
@@ -26,9 +26,6 @@
   }
 
   &__li {
-    &:nth-child(3) {
-      margin-left: 3px;
-    }
   }
 
   &__link {

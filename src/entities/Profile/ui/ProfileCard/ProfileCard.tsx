@@ -1,7 +1,12 @@
 import { CountrySelect } from "entities/Country";
 import { CurrencySelect } from "entities/Currency";
-import { Profile } from "entities/Profile/model/types/profile";
+import {
+  getProfileValidateErrors,
+  Profile,
+  ValidateProfileError,
+} from "entities/Profile";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 import { Country, Currency } from "shared/const/common";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Avatar } from "shared/ui/Avatar/Avatar";
@@ -47,7 +52,12 @@ export const ProfileCard = (props: ProfileCardProps) => {
     onChangeCountry,
     onChangeCurrency,
   } = props;
-  const { t } = useTranslation();
+  const { t } = useTranslation("profile");
+  const validateErrors = useSelector(getProfileValidateErrors);
+
+  const validateErrorTranslates = {
+    [ValidateProfileError.SERVER_ERROR]: t("Серверная ошибка при сохранении"),
+  };
 
   if (isLoading) {
     return (
@@ -55,6 +65,18 @@ export const ProfileCard = (props: ProfileCardProps) => {
         className={classNames(cls.card, { [cls.loading]: true }, [className])}
       >
         <Loader />
+      </div>
+    );
+  }
+
+  if (validateErrors?.length) {
+    return (
+      <div className={classNames(cls.card, {}, [className, cls.error])}>
+        <Text
+          theme={TextTheme.ERROR}
+          text={validateErrorTranslates.SERVER_ERROR}
+          align={TextAlign.CENTER}
+        />
       </div>
     );
   }
@@ -158,12 +180,14 @@ export const ProfileCard = (props: ProfileCardProps) => {
             name={"avatar"}
           />
           <CurrencySelect
+            label={t("Укажите валюту")}
             className={cls.card__select}
             value={data?.currency}
             onChange={onChangeCurrency}
             readonly={readonly}
           />
           <CountrySelect
+            label={t("Укажите страну")}
             className={cls.card__select}
             value={data?.country}
             onChange={onChangeCountry}

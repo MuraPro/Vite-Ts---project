@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import { FaSignInAlt } from "react-icons/fa";
 import { FaSignOutAlt } from "react-icons/fa";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom"; // импортируем хук useNavigate
 import { classNames } from "shared/lib/classNames/classNames";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { Button, ButtonSize, ButtonTheme } from "shared/ui/Button/Button";
@@ -22,13 +23,16 @@ interface NavbarProps {
 
 export const Navbar = ({ className }: NavbarProps) => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+
   const { isModalOpen, toggleModal, closeModal } = useModal();
   const authData = useSelector(getUserAuthData);
   const dispatch = useAppDispatch();
 
   const onLogout = useCallback(() => {
     dispatch(userActions.logout());
-  }, [dispatch]);
+    navigate("/");
+  }, [dispatch, navigate]);
 
   const itemsList = useMemo(
     () =>
@@ -51,7 +55,7 @@ export const Navbar = ({ className }: NavbarProps) => {
       size={ButtonSize.S}
       onClick={onLogout}
     >
-      <FaSignInAlt size={20} className={cls["header__navbar-icon"]} />
+      <FaSignInAlt size={15} className={cls["header__navbar-icon"]} />
       {t("Выйти")}
     </Button>
   ) : (
@@ -61,7 +65,7 @@ export const Navbar = ({ className }: NavbarProps) => {
       theme={ButtonTheme.CLEAR_INVERTED}
       size={ButtonSize.S}
     >
-      <FaSignOutAlt size={20} className={cls["header__navbar-icon"]} />
+      <FaSignOutAlt size={18} className={cls["header__navbar-icon"]} />
       {t("Войти")}
     </Button>
   );

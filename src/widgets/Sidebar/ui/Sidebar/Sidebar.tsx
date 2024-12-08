@@ -1,5 +1,5 @@
 import { useCollapse } from "app/providers/CollapseProvider";
-import { useEffect, useMemo, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 import { BurgerButton } from "shared/ui/BurgerButton/BurgerButton";
 import { SidebarItemsList } from "../../model/items";
@@ -14,9 +14,9 @@ interface SidebarProps {
 export const Sidebar = ({ className }: SidebarProps) => {
   const { collapsed, setCollapsed } = useCollapse();
 
-  const handleLinkHandler = () => {
+  const handleLinkHandler = useCallback(() => {
     setCollapsed(false);
-  };
+  }, [setCollapsed]);
 
   const containerRef = useRef<HTMLDivElement>(null);
 

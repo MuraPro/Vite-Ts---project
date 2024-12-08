@@ -22,6 +22,7 @@ export const SidebarItem = memo(
     if (item.authOnly && !isAuth) {
       return null;
     }
+    console.log(item.authOnly && !isAuth);
 
     return (
       <>

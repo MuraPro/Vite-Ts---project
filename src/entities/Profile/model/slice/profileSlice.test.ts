@@ -136,11 +136,13 @@ describe("profileSlice", () => {
     it("должен обработать updateProfileData.rejected", () => {
       const action = {
         type: updateProfileData.rejected.type,
-        payload: "Ошибка",
+        payload: undefined,
       };
+
       const state = profileSlice.reducer(initialState, action);
+
       expect(state.isLoading).toBe(false);
-      expect(state.error).toBe("Ошибка");
+      expect(state.error).toBeUndefined();
     });
   });
 });
