@@ -1,0 +1,15 @@
+.img {
+  max-width: 100%;
+  object-fit: cover;
+  margin: 20px 0;
+}
+
+.ArticleImageBlockComponent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.articleimage__title {
+  margin-bottom: 20px;
+}

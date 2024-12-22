@@ -12,7 +12,7 @@ import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { Button, ButtonSize, ButtonTheme } from "shared/ui/Button/Button";
 import { LangSwitcher } from "shared/ui/LangSwitcher/LangSwitcher";
 import { ThemeSwitcher } from "shared/ui/ThemeSwitcher";
-import { SidebarItemsList } from "widgets/Sidebar/model/items";
+import { getSidebarItems } from "widgets/Sidebar/model/selectors/getSidebarItems";
 import { SidebarItem } from "widgets/Sidebar/ui/SidebarItem/SidebarItem";
 import cls from "./Navbar.module.scss";
 
@@ -24,6 +24,7 @@ interface NavbarProps {
 export const Navbar = ({ className }: NavbarProps) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const sidebarItemsList = useSelector(getSidebarItems);
 
   const { isModalOpen, toggleModal, closeModal } = useModal();
   const authData = useSelector(getUserAuthData);
@@ -36,7 +37,7 @@ export const Navbar = ({ className }: NavbarProps) => {
 
   const itemsList = useMemo(
     () =>
-      SidebarItemsList.map((item, index) => (
+      sidebarItemsList.map((item, index) => (
         <li className={cls["header__navbar-li"]} key={index}>
           <SidebarItem
             item={item}
@@ -45,7 +46,7 @@ export const Navbar = ({ className }: NavbarProps) => {
           />
         </li>
       )),
-    [],
+    [sidebarItemsList],
   );
 
   const authButtons = authData ? (

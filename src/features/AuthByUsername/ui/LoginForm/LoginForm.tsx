@@ -31,7 +31,7 @@ const initialReducers: ReducersList = {
 };
 
 const LoginForm = memo(({ className }: LoginFormProps) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("authform");
   const [showPassword, setShowPassword] = useState(false);
   const [errorVisible, setErrorVisible] = useState(false);
   const authData = useSelector(getUserAuthData);

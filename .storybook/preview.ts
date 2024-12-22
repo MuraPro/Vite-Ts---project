@@ -1,3 +1,4 @@
+import { MockedParamsDecorator } from "./../src/shared/config/storybook/MockDecorators/MockDecorators";
 import { ThemeDecorator } from "./../src/shared/config/storybook/ThemeDecorator/ThemeDecorator";
 import { StoreDecorator } from "./../src/shared/config/storybook/StoreDecorator/StoreDecorator";
 import { StyleDecorator } from "../src/shared/config/storybook/StyleDecorator/StyleDecorator";
@@ -19,6 +20,7 @@ export const parameters = {
 };
 
 export const decorators = [
+  MockedParamsDecorator,
   StoreDecorator({}),
   RouterDecorator,
   CollapseDecorator,

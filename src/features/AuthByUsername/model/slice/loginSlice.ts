@@ -6,7 +6,7 @@ const initialState: LoginSchema = {
   isLoading: false,
   username: "",
   password: "",
-  error: "",
+  error: undefined,
 };
 
 export const loginSlice = createSlice({
@@ -16,13 +16,13 @@ export const loginSlice = createSlice({
     setUsername: (state, action: PayloadAction<string>) => {
       state.username = action.payload;
       if (action.payload === "") {
-        state.error = null;
+        state.error = undefined;
       }
     },
     setPassword(state, action: PayloadAction<string>) {
       state.password = action.payload;
       if (action.payload === "") {
-        state.error = null;
+        state.error = undefined;
       }
     },
     clearValue(state) {
@@ -33,7 +33,7 @@ export const loginSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(loginByUsername.pending, (state) => {
-        state.error = null;
+        state.error = undefined;
         state.isLoading = true;
       })
       .addCase(loginByUsername.fulfilled, (state) => {

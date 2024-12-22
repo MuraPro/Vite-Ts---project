@@ -29,6 +29,14 @@ const config: Config = {
         tsconfig: "tsconfig.app.json",
       },
     ],
+    // "^.+\\.tsx?$": "babel-jest",
+    // "^.+\\.tsx?$": [
+    //   "ts-jest",
+    //   {
+    //     tsconfig: "tsconfig.json",
+    //     isolatedModules: true,
+    //   },
+    // ],
   },
   forceExit: true,
   globals: {
@@ -36,7 +44,7 @@ const config: Config = {
     VITE_IS_DEV: JSON.stringify(process.env.NODE_ENV === "development"),
     __PROJECT__: "jest",
   },
-  //   setupFiles: ["<rootDir>/jest.setup.env.js"], // Добавляем файл setup
+  setupFiles: ["<rootDir>/jest.setup.ts"], // Добавляем файл setup
 
   // All imported modules in your tests should be mocked automatically
   // automock: false,

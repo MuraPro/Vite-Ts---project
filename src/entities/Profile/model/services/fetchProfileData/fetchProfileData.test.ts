@@ -22,9 +22,9 @@ describe("fetchProfileData", () => {
 
     thunk.api.get.mockResolvedValue({ data: mockProfile });
 
-    const result = await thunk.callThunk();
+    const result = await thunk.callThunk("1");
 
-    expect(thunk.api.get).toHaveBeenCalledWith("/profile");
+    expect(thunk.api.get).toHaveBeenCalledWith("/profile/1");
     expect(result.meta.requestStatus).toBe("fulfilled");
     expect(result.payload).toEqual(mockProfile);
   });
@@ -34,9 +34,9 @@ describe("fetchProfileData", () => {
 
     thunk.api.get.mockRejectedValue(new Error("Network Error"));
 
-    const result = await thunk.callThunk();
+    const result = await thunk.callThunk("1");
 
-    expect(thunk.api.get).toHaveBeenCalledWith("/profile");
+    expect(thunk.api.get).toHaveBeenCalledWith("/profile/1");
     expect(result.meta.requestStatus).toBe("rejected");
     expect(result.payload).toBe("error");
   });

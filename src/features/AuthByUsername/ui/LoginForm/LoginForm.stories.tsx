@@ -27,7 +27,7 @@ export const Primary: Story = {
       loginForm: {
         username: "123",
         password: "asd",
-        error: null,
+        error: undefined,
         isLoading: false,
       },
     }),
@@ -56,7 +56,7 @@ export const Loading: Story = {
       loginForm: {
         username: "123",
         password: "asd",
-        error: null,
+        error: undefined,
         isLoading: true,
       },
     }),

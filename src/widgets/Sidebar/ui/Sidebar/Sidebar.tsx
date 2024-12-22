@@ -1,8 +1,9 @@
 import { useCollapse } from "app/providers/CollapseProvider";
 import { useCallback, useEffect, useMemo, useRef } from "react";
+import { useSelector } from "react-redux";
 import { classNames } from "shared/lib/classNames/classNames";
 import { BurgerButton } from "shared/ui/BurgerButton/BurgerButton";
-import { SidebarItemsList } from "../../model/items";
+import { getSidebarItems } from "../../model/selectors/getSidebarItems";
 import { SidebarItem } from "../SidebarItem/SidebarItem";
 import cls from "./Sidebar.module.scss";
 
@@ -13,6 +14,7 @@ interface SidebarProps {
 
 export const Sidebar = ({ className }: SidebarProps) => {
   const { collapsed, setCollapsed } = useCollapse();
+  const sidebarItemsList = useSelector(getSidebarItems);
 
   const handleLinkHandler = useCallback(() => {
     setCollapsed(false);
@@ -39,7 +41,7 @@ export const Sidebar = ({ className }: SidebarProps) => {
 
   const itemsList = useMemo(
     () =>
-      SidebarItemsList.map((item, index) => (
+      sidebarItemsList.map((item, index) => (
         <li className={cls.sidebar__li} key={index}>
           <SidebarItem
             item={item}
@@ -50,7 +52,7 @@ export const Sidebar = ({ className }: SidebarProps) => {
           />
         </li>
       )),
-    [collapsed, handleLinkHandler],
+    [collapsed, handleLinkHandler, sidebarItemsList],
   );
 
   return (

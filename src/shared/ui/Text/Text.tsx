@@ -13,13 +13,20 @@ export enum TextAlign {
   CENTER = "center",
 }
 
+export enum TextSize {
+  M = "size_m",
+  L = "size_l",
+}
+
 interface TextProps {
   className?: string;
-  personalClassName?: string;
+  personalClassTitle?: string;
+  personalClassText?: string;
   title?: string;
   text?: string;
   theme?: TextTheme;
   align?: TextAlign;
+  size?: TextSize;
   icon?: ComponentType<{ className?: string }>; // Типизируем пропс для иконки
 }
 
@@ -30,25 +37,29 @@ export const Text = memo((props: TextProps) => {
     title,
     theme = TextTheme.PRIMARY,
     align = TextAlign.LEFT,
-    personalClassName,
+    size = TextSize.M,
+    personalClassTitle,
+    personalClassText,
     icon: Icon, // Деструктуризация иконки
   } = props;
 
   const mods: Mods = {
     [cls[theme]]: true,
     [cls[align]]: true,
+    [cls[size]]: true,
   };
+  console.log(title);
 
   return (
     <div className={classNames(cls.Text, mods, [className])}>
       {title && (
-        <p className={`${cls.title} ${personalClassName}`}>
+        <p className={`${cls.title} ${personalClassTitle}`}>
           {Icon && <Icon className={cls.icon} />}
           {title}
         </p>
       )}
       {text && (
-        <p className={cls.text} data-testid="error">
+        <p className={`${cls.text} ${personalClassText}`} data-testid="error">
           {Icon && <Icon className={cls.icon} />}
           {text}
         </p>

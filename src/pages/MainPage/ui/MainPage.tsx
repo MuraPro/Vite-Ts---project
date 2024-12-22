@@ -5,9 +5,9 @@ import classes from "./MainPage.module.scss";
 const MainPage = memo(() => {
   const { t } = useTranslation("main");
   return (
-    <div>
+    <section className="_container">
       <p className={classes.text}>{t("Главная страница")}</p>
-    </div>
+    </section>
   );
 });
 

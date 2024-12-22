@@ -1,8 +1,6 @@
 .title {
   font: var(--font-m);
   color: inherit;
-  display: flex;
-  align-items: center;
 }
 
 .text {
@@ -35,4 +33,24 @@
 
 .icon {
   margin-right: 3px;
+}
+
+.size_m {
+  .title {
+    font: var(--font-m);
+  }
+
+  .text {
+    font: var(--font-s);
+  }
+}
+
+.size_l {
+  .title {
+    font: var(--font-l);
+  }
+
+  .text {
+    font: var(--font-m);
+  }
 }

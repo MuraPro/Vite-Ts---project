@@ -1,4 +1,5 @@
 import { Theme } from "app/providers/ThemeProvider";
+import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDecorator";
 import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator/ThemeDecorator";
 import { Navbar } from "./Navbar";
 import type { Meta, StoryObj } from "@storybook/react";
@@ -28,4 +29,22 @@ export const Light: Story = {
 export const Dark: Story = {
   args: {},
   decorators: [ThemeDecorator(Theme.DARK)],
+};
+export const WithAuth: Story = {
+  args: {},
+  decorators: [
+    StoreDecorator({
+      user: { authData: { id: "1", username: "admin" } },
+    }),
+    ThemeDecorator(Theme.DARK),
+  ],
+};
+export const NoAuth: Story = {
+  args: {},
+  decorators: [
+    StoreDecorator({
+      user: {},
+    }),
+    ThemeDecorator(Theme.DARK),
+  ],
 };

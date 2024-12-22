@@ -1,6 +1,7 @@
 import react from "@vitejs/plugin-react";
 import { defineConfig, loadEnv } from "vite";
 // import { analyzer } from "vite-bundle-analyzer";
+import envCompatible from "vite-plugin-env-compatible";
 import EnvironmentPlugin from "vite-plugin-environment";
 import eslint from "vite-plugin-eslint";
 import { viteStaticCopy } from "vite-plugin-static-copy";
@@ -28,6 +29,7 @@ export default defineConfig(({ mode }) => {
       // }),
       react(),
       tsconfigPaths(),
+      envCompatible(),
       svgr({
         svgrOptions: {
           exportType: "default",

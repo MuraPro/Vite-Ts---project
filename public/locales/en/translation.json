@@ -1,11 +1,7 @@
 {
-  "Тестовый пример": "Test example",
   "Перевод": "Translate",
-  "Главная страница": "Main page",
-  "Профиль": "Profile",
-  "Информационная страница": "About page",
-  "Главная": "Main",
   "О нас": "About us",
+  "Главная": "Main",
   "Язык": "EN",
   "Страница не найдена": "Page not found",
   "Сбой": "throw error",
@@ -16,9 +12,8 @@
   "Выйти": "Sign Out",
   "Инкремент": "increment",
   "Дикремент": "dicrement",
-  "Введите пароль": "Enter password",
-  "Скрыть пароль": "Hide password",
-  "Показать пароль": "Show password",
-  "Форма авторизации": "Authorization form",
-  "Некорректный логин или пароль": "Incorrect login or password"
+  "Профиль": "Profile",
+  "Комментарии отсутствуют": "No comments",
+  "Статьи": "Articles",
+  "Оставить коментарий": "Leave a comment"
 }

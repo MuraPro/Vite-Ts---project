@@ -1,5 +1,6 @@
 import { Theme } from "app/providers/ThemeProvider";
 import { CollapseDecorator } from "shared/config/storybook/CollapseDecorator/CollapseDecorator";
+import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDecorator";
 import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator/ThemeDecorator";
 import { Sidebar } from "./Sidebar";
 import type { Meta, StoryObj } from "@storybook/react";
@@ -23,11 +24,29 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Light: Story = {
-  args: { className: "_collapsed_1phq0_44" },
+  args: { className: "cls.collapsed" },
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const Dark: Story = {
-  args: { className: "_collapsed_1phq0_44" },
+  args: { className: "cls.collapsed" },
   decorators: [ThemeDecorator(Theme.DARK)],
+};
+export const WithAuth: Story = {
+  args: { className: "cls.collapsed" },
+  decorators: [
+    ThemeDecorator(Theme.DARK),
+    StoreDecorator({
+      user: { authData: { id: "1", username: "admin" } },
+    }),
+  ],
+};
+export const NoAuth: Story = {
+  args: { className: "cls.collapsed" },
+  decorators: [
+    ThemeDecorator(Theme.DARK),
+    StoreDecorator({
+      user: {},
+    }),
+  ],
 };

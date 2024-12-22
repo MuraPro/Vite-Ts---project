@@ -4,7 +4,7 @@ import AboutPage from "./AboutPage";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof AboutPage> = {
-  title: "page/AboutPage",
+  title: "pages/AboutPage",
   component: AboutPage,
   parameters: {
     layout: "fullscreen",

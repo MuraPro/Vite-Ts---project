@@ -10,8 +10,10 @@ interface NotFoundPageProps {
 export const NotFoundPage = memo(({ className }: NotFoundPageProps) => {
   const { t } = useTranslation();
   return (
-    <div className={classNames(cls.notFoundPage, {}, [className])}>
+    <section
+      className={classNames(`${cls.notFoundPage} _container`, {}, [className])}
+    >
       {t("Страница не найдена")}
-    </div>
+    </section>
   );
 });

@@ -18,6 +18,13 @@
       margin: 20px auto;
     }
     /* stylelint-enable */
+
+    display: flex;
+    align-items: center;
+  }
+  &-box {
+    display: flex;
+    align-items: center;
   }
 
   &-btn {

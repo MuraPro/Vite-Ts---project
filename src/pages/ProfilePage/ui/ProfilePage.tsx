@@ -11,6 +11,7 @@ import {
 import { memo, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { Country, Currency } from "shared/const/common";
 import { classNames } from "shared/lib/classNames/classNames";
 import {
@@ -18,6 +19,7 @@ import {
   ReducersList,
 } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
 import cls from "./ProfilePage.module.scss";
 import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader";
 
@@ -37,6 +39,13 @@ const ProfilePage = memo(({ className }: ProfilePageProps) => {
   const error = useSelector(getProfileError);
   const readonly = useSelector(getProfileReadonly);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const { id } = useParams<{ id: string }>();
+
+  useInitialEffect(() => {
+    if (id) {
+      dispatch(fetchProfileData(id));
+    }
+  });
 
   const validateFields = useCallback(() => {
     const newErrors: Record<string, string> = {};
@@ -78,12 +87,6 @@ const ProfilePage = memo(({ className }: ProfilePageProps) => {
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   }, [formData, t]);
-
-  useEffect(() => {
-    if (__PROJECT__ !== "storybook") {
-      dispatch(fetchProfileData());
-    }
-  }, [dispatch]);
 
   // Обновление состояния errors только когда изменяется formData
   useEffect(() => {
@@ -159,7 +162,7 @@ const ProfilePage = memo(({ className }: ProfilePageProps) => {
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       <section className={classNames(cls.profile__section, {}, [className])}>
-        <div className={cls["profile__section-container"]}>
+        <div className="_container">
           <ProfilePageHeader isLoading={isLoading} isValid={isValid} />
           <ProfileCard
             data={formData}

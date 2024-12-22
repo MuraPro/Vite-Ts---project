@@ -30,8 +30,6 @@ export const Light: Story = {
       age: "30",
       city: "Москва",
       username: "ivanivanov",
-      avatar:
-        "https://avatars.mds.yandex.net/i?id=b155d366f61dc21400882f1c260c19283d5cabe6-9211751-images-thumbs&n=13",
       currency: Currency.KRW,
       country: Country.Korea,
     },
@@ -50,8 +48,6 @@ export const Dark: Story = {
       age: "30",
       city: "Москва",
       username: "ivanivanov",
-      avatar:
-        "https://avatars.mds.yandex.net/i?id=b155d366f61dc21400882f1c260c19283d5cabe6-9211751-images-thumbs&n=13",
       currency: Currency.KRW,
       country: Country.Korea,
     },
@@ -71,13 +67,11 @@ export const WithError: Story = {
       age: "30",
       city: "Москва",
       username: "ivanivanov",
-      avatar:
-        "https://avatars.mds.yandex.net/i?id=b155d366f61dc21400882f1c260c19283d5cabe6-9211751-images-thumbs&n=13",
       currency: Currency.KRW,
       country: Country.Korea,
     },
     isLoading: false,
-    error: "true",
+    error: "error",
     readonly: false,
   },
   decorators: [StoreDecorator({}), ThemeDecorator(Theme.DARK)],

@@ -4,7 +4,7 @@ import MainPage from "./MainPage";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof MainPage> = {
-  title: "page/MainPage",
+  title: "pages/MainPage",
   component: MainPage,
   parameters: {
     layout: "fullscreen",

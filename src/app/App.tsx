@@ -1,6 +1,8 @@
 import { AppRouter } from "app/providers/router";
 import { userActions } from "entities/User";
+import { getUserInited } from "entities/User/model/selectors/getUserInited/getUserInited";
 import { Suspense, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { classNames } from "shared/lib/classNames/classNames";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { Header } from "widgets/Header";
@@ -13,6 +15,7 @@ interface mainProps {
 
 const App = ({ className }: mainProps) => {
   const dispatch = useAppDispatch();
+  const inited = useSelector(getUserInited);
 
   useEffect(() => {
     dispatch(userActions.initAuthData());
@@ -22,11 +25,7 @@ const App = ({ className }: mainProps) => {
     <div className={classNames(`${cls.wrapper} app`, {}, [className])}>
       <Suspense fallback="">
         <Header />
-        <main className={cls.main}>
-          <div className="_container">
-            <AppRouter />
-          </div>
-        </main>
+        <main className={cls.main}>{inited && <AppRouter />}</main>
       </Suspense>
     </div>
   );

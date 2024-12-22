@@ -19,6 +19,7 @@ describe("updateProfileData", () => {
     email: "john.doe@example.com",
     username: "johndoe",
     avatar: "https://example.com/avatar.jpg",
+    id: "1",
   };
 
   it("должен успешно обновить профиль", async () => {
@@ -30,7 +31,7 @@ describe("updateProfileData", () => {
 
     const result = await thunk.callThunk();
 
-    expect(thunk.api.put).toHaveBeenCalledWith("/profile", mockProfile);
+    expect(thunk.api.put).toHaveBeenCalledWith("/profile/1", mockProfile);
     expect(result.meta.requestStatus).toBe("fulfilled");
     expect(result.payload).toEqual(mockProfile);
   });
@@ -44,7 +45,7 @@ describe("updateProfileData", () => {
 
     const result = await thunk.callThunk();
 
-    expect(thunk.api.put).toHaveBeenCalledWith("/profile", mockProfile);
+    expect(thunk.api.put).toHaveBeenCalledWith("/profile/1", mockProfile);
     expect(result.meta.requestStatus).toBe("rejected");
     expect(result.payload).toStrictEqual(["SERVER_ERROR"]); // Используйте toStrictEqual
   });

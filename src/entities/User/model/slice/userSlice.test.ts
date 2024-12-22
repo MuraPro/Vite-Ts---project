@@ -4,7 +4,9 @@ import { UserSchema, User } from "../types/user";
 import { userActions, userReducer } from "./userSlice";
 
 describe("userSlice", () => {
-  const initialState: UserSchema = {};
+  const initialState: UserSchema = {
+    _inited: false, // Установлено значение для обязательного поля
+  };
 
   describe("setAuthData", () => {
     it("должен установить authData в состояние", () => {
@@ -26,11 +28,13 @@ describe("userSlice", () => {
 
       const newState = userReducer(initialState, userActions.initAuthData());
       expect(newState.authData).toEqual(user);
+      expect(newState._inited).toBe(true); // Проверка, что _inited изменен
     });
 
     it("не должен изменять authData, если localStorage пуст", () => {
       const newState = userReducer(initialState, userActions.initAuthData());
       expect(newState.authData).toBeUndefined();
+      expect(newState._inited).toBe(true); // _inited устанавливается в true
     });
   });
 
@@ -38,6 +42,7 @@ describe("userSlice", () => {
     it("должен удалить authData из состояния", () => {
       const initialStateWithUser: UserSchema = {
         authData: { id: "1", username: "test_user" },
+        _inited: true, // Обязательное поле
       };
       const newState = userReducer(initialStateWithUser, userActions.logout());
 

@@ -1,8 +1,10 @@
 import {
+  getProfileData,
   getProfileReadonly,
   profileActions,
   updateProfileData,
 } from "entities/Profile";
+import { getUserAuthData } from "entities/User";
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { CgProfile } from "react-icons/cg";
@@ -24,6 +26,9 @@ interface ProfilePageHeaderProps {
 
 export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
   const { className, isLoading, isValid } = props;
+  const authData = useSelector(getUserAuthData);
+  const profileData = useSelector(getProfileData);
+  const canEdit = authData?.id === profileData?.id;
 
   const { t } = useTranslation("profile");
 
@@ -52,37 +57,42 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
         title={t("Профиль")}
         className={cls["profile__header-title"]}
         icon={CgProfile}
+        personalClassTitle={cls["profile__header-box"]}
       />
-      {readonly ? (
-        <div className={cls["profile__header-panel"]}>
-          <Button
-            className={cls["profile__header-btn"]}
-            theme={ButtonTheme.PRIMARY}
-            onClick={onEdit}
-          >
-            <GrEdit className={cls.edit__icon} size={20} />
-            {t("Редактировать")}
-          </Button>
-        </div>
-      ) : (
-        <div className={cls["profile__header-panel"]}>
-          <Button
-            className={cls["profile__header-btn"]}
-            theme={ButtonTheme.PRIMARY}
-            onClick={onCancelEdit}
-          >
-            <TbPencilCancel className={cls.edit__icon} size={25} />
-            {t("Отменить")}
-          </Button>
-          <Button
-            className={cls["profile__header-btn"]}
-            theme={ButtonTheme.PRIMARY}
-            onClick={onSave}
-            disabled={!isValid}
-          >
-            <VscSaveAs className={cls.edit__icon} size={25} />
-            {t("Сохранить")}
-          </Button>
+      {canEdit && (
+        <div className={cls.btnsWrapper}>
+          {readonly ? (
+            <div className={cls["profile__header-panel"]}>
+              <Button
+                className={cls["profile__header-btn"]}
+                theme={ButtonTheme.PRIMARY}
+                onClick={onEdit}
+              >
+                <GrEdit className={cls.edit__icon} size={20} />
+                {t("Редактировать")}
+              </Button>
+            </div>
+          ) : (
+            <div className={cls["profile__header-panel"]}>
+              <Button
+                className={cls["profile__header-btn"]}
+                theme={ButtonTheme.PRIMARY}
+                onClick={onCancelEdit}
+              >
+                <TbPencilCancel className={cls.edit__icon} size={25} />
+                {t("Отменить")}
+              </Button>
+              <Button
+                className={cls["profile__header-btn"]}
+                theme={ButtonTheme.PRIMARY}
+                onClick={onSave}
+                disabled={!isValid}
+              >
+                <VscSaveAs className={cls.edit__icon} size={25} />
+                {t("Сохранить")}
+              </Button>
+            </div>
+          )}
         </div>
       )}
     </div>

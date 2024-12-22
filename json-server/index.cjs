@@ -57,22 +57,48 @@ server.post("/login", (req, res) => {
   }
 });
 
-// Эндпоинт для получения профиля (GET /profile)
-server.get("/profile", (req, res) => {
-  const db = JSON.parse(
-    fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
-  );
-  const { profile } = db;
+// Эндпоинт для получения профиля по id (GET /profile/:id)
 
-  if (profile) {
-    return res.json(profile);
+server.get("/profile/:id", (req, res) => {
+  const profileId = req.params.id; // Получаем id профиля из параметров URL
+  console.log("Received profileId:", profileId); // Логируем полученный id
+
+  let db;
+  try {
+    // Пробуем прочитать файл db.json
+    db = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
+    );
+  } catch (error) {
+    console.error("Error reading db.json:", error);
+    return res.status(500).json({ message: "Internal server error" });
   }
 
-  return res.status(404).json({ message: "Profile not found" });
+  console.log("Database content:", db); // Логируем содержимое базы данных
+
+  const { profile } = db;
+
+  if (!profile) {
+    return res
+      .status(500)
+      .json({ message: "Profile data is missing in db.json" });
+  }
+
+  // Находим профиль в массиве по id
+  const foundProfile = profile.find((p) => p.id === profileId);
+
+  console.log("Found profile:", foundProfile); // Логируем найденный профиль
+
+  if (foundProfile) {
+    return res.json(foundProfile); // Возвращаем профиль
+  }
+
+  return res.status(404).json({ message: "Profile not found" }); // Профиль не найден
 });
 
-// Эндпоинт для обновления профиля (PUT /profile)
-server.put("/profile", (req, res) => {
+// Эндпоинт для обновления профиля по id (PUT /profile/:id)
+server.put("/profile/:id", (req, res) => {
+  const profileId = req.params.id; // Получаем id профиля из параметров URL
   const {
     first,
     lastname,
@@ -90,13 +116,16 @@ server.put("/profile", (req, res) => {
   );
   const { profile } = db;
 
-  if (!profile) {
-    return res.status(404).json({ message: "Profile not found" });
+  // Находим индекс профиля по id
+  const profileIndex = profile.findIndex((p) => p.id === profileId);
+
+  if (profileIndex === -1) {
+    return res.status(404).json({ message: "Profile not found" }); // Профиль не найден
   }
 
   // Обновляем профиль
   const updatedProfile = {
-    ...profile,
+    ...profile[profileIndex],
     first,
     lastname,
     age,
@@ -108,14 +137,16 @@ server.put("/profile", (req, res) => {
     email,
   };
 
-  // Сохраняем обновленный профиль в db.json
-  db.profile = updatedProfile;
+  // Заменяем старый профиль на новый
+  profile[profileIndex] = updatedProfile;
+
+  // Сохраняем обновленный массив профилей в db.json
   fs.writeFileSync(
     path.resolve(__dirname, "db.json"),
     JSON.stringify(db, null, 2),
   );
 
-  return res.json(updatedProfile);
+  return res.json(updatedProfile); // Возвращаем обновленный профиль
 });
 
 // Проверка авторизации
@@ -177,22 +208,47 @@ server.listen(8000, () => {
 //   }
 // });
 
-// // Эндпоинт для получения профиля (GET /profile)
-// server.get("/profile", (req, res) => {
-//   const db = JSON.parse(
-//     fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
-//   );
-//   const { profile } = db;
+// // Эндпоинт для получения профиля по id (GET /profile/:id)
+// server.get("/profile/:id", (req, res) => {
+//   const profileId = req.params.id; // Получаем id профиля из параметров URL
+//   console.log("Received profileId:", profileId); // Логируем полученный id
 
-//   if (profile) {
-//     return res.json(profile);
+//   let db;
+//   try {
+//     // Пробуем прочитать файл db.json
+//     db = JSON.parse(
+//       fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
+//     );
+//   } catch (error) {
+//     console.error("Error reading db.json:", error);
+//     return res.status(500).json({ message: "Internal server error" });
 //   }
 
-//   return res.status(404).json({ message: "Profile not found" });
+//   console.log("Database content:", db); // Логируем содержимое базы данных
+
+//   const { profile } = db;
+
+//   if (!profile) {
+//     return res
+//       .status(500)
+//       .json({ message: "Profile data is missing in db.json" });
+//   }
+
+//   // Находим профиль в массиве по id
+//   const foundProfile = profile.find((p) => p.id === profileId);
+
+//   console.log("Found profile:", foundProfile); // Логируем найденный профиль
+
+//   if (foundProfile) {
+//     return res.json(foundProfile); // Возвращаем профиль
+//   }
+
+//   return res.status(404).json({ message: "Profile not found" }); // Профиль не найден
 // });
 
-// // Эндпоинт для обновления профиля (PUT /profile)
-// server.put("/profile", (req, res) => {
+// // Эндпоинт для обновления профиля по id (PUT /profile/:id)
+// server.put("/profile/:id", (req, res) => {
+//   const profileId = req.params.id; // Получаем id профиля из параметров URL
 //   const {
 //     first,
 //     lastname,
@@ -210,13 +266,16 @@ server.listen(8000, () => {
 //   );
 //   const { profile } = db;
 
-//   if (!profile) {
-//     return res.status(404).json({ message: "Profile not found" });
+//   // Находим индекс профиля по id
+//   const profileIndex = profile.findIndex((p) => p.id === profileId);
+
+//   if (profileIndex === -1) {
+//     return res.status(404).json({ message: "Profile not found" }); // Профиль не найден
 //   }
 
 //   // Обновляем профиль
 //   const updatedProfile = {
-//     ...profile,
+//     ...profile[profileIndex],
 //     first,
 //     lastname,
 //     age,
@@ -228,24 +287,26 @@ server.listen(8000, () => {
 //     email,
 //   };
 
-//   // Сохраняем обновленный профиль в db.json
-//   db.profile = updatedProfile;
+//   // Заменяем старый профиль на новый
+//   profile[profileIndex] = updatedProfile;
+
+//   // Сохраняем обновленный массив профилей в db.json
 //   fs.writeFileSync(
 //     path.resolve(__dirname, "db.json"),
 //     JSON.stringify(db, null, 2),
 //   );
 
-//   return res.json(updatedProfile);
+//   return res.json(updatedProfile); // Возвращаем обновленный профиль
 // });
 
 // // Проверка авторизации
-// // server.use((req, res, next) => {
-// //   if (!req.headers.authorization) {
-// //     return res.status(403).json({ message: "AUTH ERROR" });
-// //   }
+// server.use((req, res, next) => {
+//   if (!req.headers.authorization) {
+//     return res.status(403).json({ message: "AUTH ERROR" });
+//   }
 
-// //   next();
-// // });
+//   next();
+// });
 
 // server.use(router);
 

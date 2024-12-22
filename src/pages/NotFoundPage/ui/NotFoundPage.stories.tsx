@@ -4,7 +4,7 @@ import { NotFoundPage } from "./NotFoundPage";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof NotFoundPage> = {
-  title: "page/NotFoundPage",
+  title: "pages/NotFoundPage",
   component: NotFoundPage,
   parameters: {
     layout: "fullscreen",
