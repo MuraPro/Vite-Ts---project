@@ -149,6 +149,165 @@ server.put("/profile/:id", (req, res) => {
   return res.json(updatedProfile); // Возвращаем обновленный профиль
 });
 
+// Эндпоинт для получения всех статей (GET /articles)
+server.get("/articles", (req, res) => {
+  try {
+    const db = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
+    );
+    const { articles } = db;
+
+    if (!articles) {
+      return res
+        .status(500)
+        .json({ message: "Articles data is missing in db.json" });
+    }
+
+    return res.json(articles); // Возвращаем массив статей
+  } catch (e) {
+    console.error("Error fetching articles:", e);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+// Эндпоинт для получения статьи по ID (GET /articles/:id)
+server.get("/articles/:id", (req, res) => {
+  const articleId = req.params.id;
+
+  try {
+    const db = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
+    );
+    const { articles } = db;
+
+    if (!articles) {
+      return res
+        .status(500)
+        .json({ message: "Articles data is missing in db.json" });
+    }
+
+    const article = articles.find((a) => a.id === articleId);
+
+    if (!article) {
+      return res.status(404).json({ message: "Article not found" });
+    }
+
+    return res.json(article); // Возвращаем найденную статью
+  } catch (e) {
+    console.error("Error fetching article by ID:", e);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+// Эндпоинт для создания новой статьи (POST /articles)
+server.post("/articles", (req, res) => {
+  const newArticle = req.body;
+
+  try {
+    const db = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
+    );
+    const { articles } = db;
+
+    if (!articles) {
+      return res
+        .status(500)
+        .json({ message: "Articles data is missing in db.json" });
+    }
+
+    // Добавляем новую статью
+    articles.push(newArticle);
+
+    // Сохраняем изменения
+    fs.writeFileSync(
+      path.resolve(__dirname, "db.json"),
+      JSON.stringify(db, null, 2),
+    );
+
+    return res.status(201).json(newArticle); // Возвращаем созданную статью
+  } catch (e) {
+    console.error("Error creating article:", e);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+// Эндпоинт для обновления статьи по ID (PUT /articles/:id)
+server.put("/articles/:id", (req, res) => {
+  const articleId = req.params.id;
+  const updatedArticle = req.body;
+
+  try {
+    const db = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
+    );
+    const { articles } = db;
+
+    if (!articles) {
+      return res
+        .status(500)
+        .json({ message: "Articles data is missing in db.json" });
+    }
+
+    const articleIndex = articles.findIndex((a) => a.id === articleId);
+
+    if (articleIndex === -1) {
+      return res.status(404).json({ message: "Article not found" });
+    }
+
+    // Обновляем статью
+    articles[articleIndex] = { ...articles[articleIndex], ...updatedArticle };
+
+    // Сохраняем изменения
+    fs.writeFileSync(
+      path.resolve(__dirname, "db.json"),
+      JSON.stringify(db, null, 2),
+    );
+
+    return res.json(articles[articleIndex]); // Возвращаем обновленную статью
+  } catch (e) {
+    console.error("Error updating article:", e);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+// Эндпоинт для удаления статьи по ID (DELETE /articles/:id)
+server.delete("/articles/:id", (req, res) => {
+  const articleId = req.params.id;
+
+  try {
+    const db = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
+    );
+    const { articles } = db;
+
+    if (!articles) {
+      return res
+        .status(500)
+        .json({ message: "Articles data is missing in db.json" });
+    }
+
+    const articleIndex = articles.findIndex((a) => a.id === articleId);
+
+    if (articleIndex === -1) {
+      return res.status(404).json({ message: "Article not found" });
+    }
+
+    // Удаляем статью
+    articles.splice(articleIndex, 1);
+
+    // Сохраняем изменения
+    fs.writeFileSync(
+      path.resolve(__dirname, "db.json"),
+      JSON.stringify(db, null, 2),
+    );
+
+    return res.status(204).send(); // Возвращаем пустой ответ с кодом 204
+  } catch (e) {
+    console.error("Error deleting article:", e);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+});
+
 // Проверка авторизации
 server.use((req, res, next) => {
   if (!req.headers.authorization) {
@@ -297,6 +456,165 @@ server.listen(8000, () => {
 //   );
 
 //   return res.json(updatedProfile); // Возвращаем обновленный профиль
+// });
+
+// // Эндпоинт для получения всех статей (GET /articles)
+// server.get("/articles", (req, res) => {
+//   try {
+//     const db = JSON.parse(
+//       fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
+//     );
+//     const { articles } = db;
+
+//     if (!articles) {
+//       return res
+//         .status(500)
+//         .json({ message: "Articles data is missing in db.json" });
+//     }
+
+//     return res.json(articles); // Возвращаем массив статей
+//   } catch (e) {
+//     console.error("Error fetching articles:", e);
+//     return res.status(500).json({ message: "Internal server error" });
+//   }
+// });
+
+// // Эндпоинт для получения статьи по ID (GET /articles/:id)
+// server.get("/articles/:id", (req, res) => {
+//   const articleId = req.params.id;
+
+//   try {
+//     const db = JSON.parse(
+//       fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
+//     );
+//     const { articles } = db;
+
+//     if (!articles) {
+//       return res
+//         .status(500)
+//         .json({ message: "Articles data is missing in db.json" });
+//     }
+
+//     const article = articles.find((a) => a.id === articleId);
+
+//     if (!article) {
+//       return res.status(404).json({ message: "Article not found" });
+//     }
+
+//     return res.json(article); // Возвращаем найденную статью
+//   } catch (e) {
+//     console.error("Error fetching article by ID:", e);
+//     return res.status(500).json({ message: "Internal server error" });
+//   }
+// });
+
+// // Эндпоинт для создания новой статьи (POST /articles)
+// server.post("/articles", (req, res) => {
+//   const newArticle = req.body;
+
+//   try {
+//     const db = JSON.parse(
+//       fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
+//     );
+//     const { articles } = db;
+
+//     if (!articles) {
+//       return res
+//         .status(500)
+//         .json({ message: "Articles data is missing in db.json" });
+//     }
+
+//     // Добавляем новую статью
+//     articles.push(newArticle);
+
+//     // Сохраняем изменения
+//     fs.writeFileSync(
+//       path.resolve(__dirname, "db.json"),
+//       JSON.stringify(db, null, 2),
+//     );
+
+//     return res.status(201).json(newArticle); // Возвращаем созданную статью
+//   } catch (e) {
+//     console.error("Error creating article:", e);
+//     return res.status(500).json({ message: "Internal server error" });
+//   }
+// });
+
+// // Эндпоинт для обновления статьи по ID (PUT /articles/:id)
+// server.put("/articles/:id", (req, res) => {
+//   const articleId = req.params.id;
+//   const updatedArticle = req.body;
+
+//   try {
+//     const db = JSON.parse(
+//       fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
+//     );
+//     const { articles } = db;
+
+//     if (!articles) {
+//       return res
+//         .status(500)
+//         .json({ message: "Articles data is missing in db.json" });
+//     }
+
+//     const articleIndex = articles.findIndex((a) => a.id === articleId);
+
+//     if (articleIndex === -1) {
+//       return res.status(404).json({ message: "Article not found" });
+//     }
+
+//     // Обновляем статью
+//     articles[articleIndex] = { ...articles[articleIndex], ...updatedArticle };
+
+//     // Сохраняем изменения
+//     fs.writeFileSync(
+//       path.resolve(__dirname, "db.json"),
+//       JSON.stringify(db, null, 2),
+//     );
+
+//     return res.json(articles[articleIndex]); // Возвращаем обновленную статью
+//   } catch (e) {
+//     console.error("Error updating article:", e);
+//     return res.status(500).json({ message: "Internal server error" });
+//   }
+// });
+
+// // Эндпоинт для удаления статьи по ID (DELETE /articles/:id)
+// server.delete("/articles/:id", (req, res) => {
+//   const articleId = req.params.id;
+
+//   try {
+//     const db = JSON.parse(
+//       fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
+//     );
+//     const { articles } = db;
+
+//     if (!articles) {
+//       return res
+//         .status(500)
+//         .json({ message: "Articles data is missing in db.json" });
+//     }
+
+//     const articleIndex = articles.findIndex((a) => a.id === articleId);
+
+//     if (articleIndex === -1) {
+//       return res.status(404).json({ message: "Article not found" });
+//     }
+
+//     // Удаляем статью
+//     articles.splice(articleIndex, 1);
+
+//     // Сохраняем изменения
+//     fs.writeFileSync(
+//       path.resolve(__dirname, "db.json"),
+//       JSON.stringify(db, null, 2),
+//     );
+
+//     return res.status(204).send(); // Возвращаем пустой ответ с кодом 204
+//   } catch (e) {
+//     console.error("Error deleting article:", e);
+//     return res.status(500).json({ message: "Internal server error" });
+//   }
 // });
 
 // // Проверка авторизации
