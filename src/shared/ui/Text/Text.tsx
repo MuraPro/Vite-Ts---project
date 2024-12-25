@@ -1,4 +1,5 @@
 import { memo, ComponentType } from "react";
+import { useTranslation } from "react-i18next";
 import { classNames, Mods } from "shared/lib/classNames/classNames";
 import cls from "./Text.module.scss";
 
@@ -43,6 +44,8 @@ export const Text = memo((props: TextProps) => {
     icon: Icon, // Деструктуризация иконки
   } = props;
 
+  const { t } = useTranslation();
+
   const mods: Mods = {
     [cls[theme]]: true,
     [cls[align]]: true,
@@ -55,13 +58,13 @@ export const Text = memo((props: TextProps) => {
       {title && (
         <p className={`${cls.title} ${personalClassTitle}`}>
           {Icon && <Icon className={cls.icon} />}
-          {title}
+          {t(`${title}`)}
         </p>
       )}
       {text && (
         <p className={`${cls.text} ${personalClassText}`} data-testid="error">
           {Icon && <Icon className={cls.icon} />}
-          {text}
+          {t(`${text}`)}
         </p>
       )}
     </div>

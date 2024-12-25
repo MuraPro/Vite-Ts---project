@@ -52,7 +52,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
     onChangeCountry,
     onChangeCurrency,
   } = props;
-  const { t } = useTranslation("profile");
+  const { t } = useTranslation();
   const validateErrors = useSelector(getProfileValidateErrors);
 
   const validateErrorTranslates = {

@@ -33,7 +33,7 @@ interface ProfilePageProps {
 
 const ProfilePage = memo(({ className }: ProfilePageProps) => {
   const dispatch = useAppDispatch();
-  const { t } = useTranslation("profile");
+  const { t } = useTranslation();
   const formData = useSelector(getProfileForm);
   const isLoading = useSelector(getProfileIsLoading);
   const error = useSelector(getProfileError);
@@ -88,7 +88,6 @@ const ProfilePage = memo(({ className }: ProfilePageProps) => {
     return Object.keys(newErrors).length === 0;
   }, [formData, t]);
 
-  // Обновление состояния errors только когда изменяется formData
   useEffect(() => {
     if (formData) {
       validateFields();

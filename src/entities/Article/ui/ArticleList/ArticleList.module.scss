@@ -1,0 +1,27 @@
+.BIG {
+  /* stylelint-disable */
+  @media (max-width: 480px) {
+    padding: 5px;
+  }
+  /* stylelint-enable */
+  .card {
+    margin-bottom: 30px;
+  }
+}
+
+.SMALL {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .card {
+    margin-right: 30px;
+    margin-bottom: 30px;
+
+    /* stylelint-disable */
+    @media (max-width: 480px) {
+      margin-right: 0px;
+    }
+    /* stylelint-enable */
+  }
+}

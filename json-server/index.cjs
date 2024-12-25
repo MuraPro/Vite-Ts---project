@@ -464,15 +464,21 @@ server.listen(8000, () => {
 //     const db = JSON.parse(
 //       fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
 //     );
-//     const { articles } = db;
+//     const { articles, users } = db;
 
-//     if (!articles) {
-//       return res
-//         .status(500)
-//         .json({ message: "Articles data is missing in db.json" });
+//     if (!articles || !users) {
+//       return res.status(500).json({
+//         message: "Articles or users data is missing in db.json",
+//       });
 //     }
 
-//     return res.json(articles); // Возвращаем массив статей
+//     // Расширяем статьи данными пользователей
+//     const articlesWithUsers = articles.map((article) => {
+//       const user = users.find((u) => u.id === article.userId);
+//       return { ...article, user };
+//     });
+
+//     return res.json(articlesWithUsers);
 //   } catch (e) {
 //     console.error("Error fetching articles:", e);
 //     return res.status(500).json({ message: "Internal server error" });

@@ -6,7 +6,6 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import CalendarIcon from "shared/assets/icons/calendar-20-20.svg";
 import EyeIcon from "shared/assets/icons/eye-20-20.svg";
-import AvatarImg from "shared/assets/kr/1A.webp";
 import { classNames } from "shared/lib/classNames/classNames";
 import {
   DynamicModuleLoader,
@@ -38,7 +37,7 @@ const reducers: ReducersList = {
 
 export const ArticleDetails = memo((props: ArticleDetailsProps) => {
   const { className, id } = props;
-  const { t } = useTranslation("articles");
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const article = useSelector(getArticleDetailsData);
   const isLoading = useSelector(getArticleDetailsIsLoading);
@@ -68,6 +67,8 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
             key={block.id}
             className={cls.block}
             block={block}
+            personalClassTitle={cls.article__heading}
+            personalClassText={cls.article__paragraph}
           />
         );
       default:
@@ -111,11 +112,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     content = (
       <>
         <div className={cls.avatarWrapper}>
-          {article?.img ? (
-            <Avatar size={200} src={article?.img} className={cls.avatar} />
-          ) : (
-            <Avatar size={200} src={AvatarImg} className={cls.avatar} />
-          )}
+          <Avatar size={200} src={article?.img} className={cls.avatar} />
         </div>
         <Text
           className={cls.title}

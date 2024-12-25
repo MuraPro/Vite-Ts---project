@@ -7,7 +7,8 @@ import { fetchCommentsByArticleId } from "pages/ArticleDetailsPage/model/service
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { RoutePath } from "shared/config/routeConfig/routeConfig";
 import { classNames } from "shared/lib/classNames/classNames";
 import {
   DynamicModuleLoader,
@@ -15,6 +16,7 @@ import {
 } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
+import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import { Text, TextAlign } from "shared/ui/Text/Text";
 import { getArticleCommentsIsLoading } from "../../model/selectors/comments";
 import {
@@ -33,12 +35,17 @@ const reducers: ReducersList = {
 
 const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
   const { className } = props;
-  const { t } = useTranslation("articles");
+  const { t } = useTranslation();
   const { id } = useParams<{ id: string }>();
   const dispatch = useAppDispatch();
   const comments = useSelector(getArticleComments);
   const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
   const isLoading = useSelector(getArticleDetailsIsLoading);
+  const navigate = useNavigate();
+
+  const onBackToList = useCallback(() => {
+    navigate(RoutePath.articles);
+  }, [navigate]);
 
   useInitialEffect(() => {
     if (id) {
@@ -65,6 +72,9 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       <section className={classNames(cls.ArticleDetailsPage, {}, [className])}>
         <div className="_container">
+          <Button theme={ButtonTheme.PRIMARY} onClick={onBackToList}>
+            {t("Назад к списку")}
+          </Button>
           <ArticleDetails id={id} />
           {!isLoading && (
             <Text

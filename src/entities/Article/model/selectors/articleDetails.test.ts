@@ -15,6 +15,10 @@ describe("articleDetails.test", () => {
       img: "test.jpg",
       views: 100,
       createdAt: "2024-01-01",
+      user: {
+        id: "1",
+        username: "Name",
+      },
       type: [ArticleType.LANGUAGE],
       blocks: [
         {

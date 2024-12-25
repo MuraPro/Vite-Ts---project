@@ -29,9 +29,15 @@ const article: Article = {
   title: "Уровни владения корейским языком",
   subtitle:
     "Всегда полезно определить точку, в которой находишься, чтобы построить дальнейший путь. При изучении иностранного языка это тоже важно.",
-  img: "",
+  img: "https://media.istockphoto.com/id/1311751436/ru/%D1%84%D0%BE%D1%82%D0%BE/%D1%85%D0%B0%D0%BD%D0%B3%D1%83%D0%BB.jpg?s=1024x1024&w=is&k=20&c=odbt2OxG7w3bEfMtWPm71kbcXo5LzeERcxVfjNwyfcw=",
   views: 1022,
   createdAt: "15.12.2024",
+  user: {
+    id: "1",
+    username: "Ulbi tv",
+    avatar:
+      "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg",
+  },
   type: [ArticleType.LANGUAGE],
   blocks: [
     {
@@ -43,9 +49,9 @@ const article: Article = {
       ],
     },
     {
-      id: "1",
+      id: "2",
       type: ArticleBlockType.IMAGE,
-      src: "https://dpo.novsu.ru/upload/iblock/845/gg386lpnemo9ib6f6r64otjpx42tttxi.jpg",
+      src: "../../../../shared/assets/kr/1A.webp",
       title:
         "На сегодняшний день существует два уровня теста: TOPIK I и TOPIK II.",
       text1:

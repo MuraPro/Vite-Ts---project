@@ -17,11 +17,12 @@ const config: Config = {
   moduleNameMapper: {
     "^src/(.*)$": "<rootDir>/src/$1",
     "\\.(css|less|scss|sass)$": "identity-obj-proxy",
-    "\\.(svg|jpg|jpeg|png)$": "<rootDir>/__mocks__/SvgMock.js",
+    "\\.(svg|jpg|jpeg|gif|webp|png)$": "<rootDir>/__mocks__/SvgMock.js",
     "^entities/(.*)$": "<rootDir>/src/entities/$1",
     "^shared/(.*)$": "<rootDir>/src/shared/$1",
     "^app/(.*)$": "<rootDir>/src/app/$1",
   },
+  transformIgnorePatterns: ["<rootDir>/node_modules/"],
   transform: {
     "^.+\\.tsx?$": [
       "ts-jest",

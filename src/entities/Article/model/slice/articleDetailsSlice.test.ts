@@ -9,6 +9,10 @@ const article: Article = {
   img: "",
   views: 1,
   createdAt: "00.00.0000",
+  user: {
+    id: "1",
+    username: "Name",
+  },
   type: [ArticleType.LANGUAGE],
   blocks: [
     {

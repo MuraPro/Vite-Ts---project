@@ -30,7 +30,7 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
   const profileData = useSelector(getProfileData);
   const canEdit = authData?.id === profileData?.id;
 
-  const { t } = useTranslation("profile");
+  const { t } = useTranslation();
 
   const readonly = useSelector(getProfileReadonly);
   const dispatch = useAppDispatch();
