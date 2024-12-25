@@ -9,6 +9,14 @@ const server = jsonServer.create();
 const router = jsonServer.router(path.resolve(__dirname, "db.json"));
 const upload = multer({ dest: "uploads/" }); // Директория для хранения файлов
 
+const express = require("express");
+
+// Путь к папке с файлами
+const staticFilesPath = path.resolve(__dirname, "../src/shared/assets/kr");
+
+// Добавьте это перед подключением маршрутов
+server.use("/static", express.static(staticFilesPath));
+
 const allowedOrigins = new Set([
   "https://vite-ts-project.vercel.app",
   "http://localhost:4173",
@@ -340,6 +348,15 @@ server.listen(8000, () => {
 // const router = jsonServer.router(path.resolve(__dirname, "db.json"));
 // server.use(jsonServer.defaults({}));
 // server.use(jsonServer.bodyParser);
+// const express = require("express");
+
+// // Путь к папке с файлами
+// const staticFilesPath = path.resolve(__dirname, "../src/shared/assets/kr");
+
+// // Добавьте это перед подключением маршрутов
+// server.use("/static", express.static(staticFilesPath));
+
+// // Теперь файлы из `src/shared/assets/kr` доступны по пути `/static/<имя_файла>`
 
 // // Нужно для небольшой задержки, чтобы запрос проходил не мгновенно, имитация реального апи
 // server.use(async (req, res, next) => {
