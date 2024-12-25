@@ -13,7 +13,6 @@ import {
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
 import {
-  getArticlesPageError,
   getArticlesPageIsLoading,
   getArticlesPageView,
 } from "../../model/selectors/articlesPageSelectors";
@@ -39,7 +38,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
   const articles = useSelector(getArticles);
   const isLoading = useSelector(getArticlesPageIsLoading);
   const view = useSelector(getArticlesPageView);
-  const error = useSelector(getArticlesPageError);
+  //   const error = useSelector(getArticlesPageError);
 
   const onChangeView = useCallback(
     (view: ArticleView) => {
