@@ -1,42 +1,82 @@
-import { MutableRefObject, useEffect, useRef } from "react";
+import { MutableRefObject, useEffect } from "react";
 
 export interface UseInfiniteScrollOptions {
   callback?: () => void;
-  triggerRef: MutableRefObject<HTMLElement>;
-  wrapperRef: MutableRefObject<HTMLElement>;
+  wrapperRef?: MutableRefObject<HTMLElement | null>;
 }
 
-export function useInfiniteScroll({
+export function useInfiniteScrollWithScroll({
   callback,
   wrapperRef,
-  triggerRef,
 }: UseInfiniteScrollOptions) {
-  const observer = useRef<IntersectionObserver | null>(null);
+  //   useEffect(() => {
+  //     const wrapperElement = wrapperRef?.current || window;
+
+  //     const handleScroll = () => {
+  //       let scrollTop: number;
+  //       let scrollHeight: number;
+  //       let clientHeight: number;
+
+  //       if (wrapperElement instanceof HTMLElement) {
+  //         scrollTop = wrapperElement.scrollTop;
+  //         scrollHeight = wrapperElement.scrollHeight;
+  //         clientHeight = wrapperElement.clientHeight;
+  //       } else {
+  //         scrollTop = window.scrollY;
+  //         scrollHeight = document.documentElement.scrollHeight;
+  //         clientHeight = window.innerHeight;
+  //       }
+
+  //       if (scrollTop + clientHeight >= scrollHeight - 10) {
+  //         console.log("Triggering callback");
+  //         callback?.();
+  //       }
+  //     };
+
+  //     // Принудительное срабатывание обработчика после добавления
+  //     handleScroll();
+
+  //     wrapperElement.addEventListener("scroll", handleScroll);
+
+  //     return () => {
+  //       wrapperElement.removeEventListener("scroll", handleScroll);
+  //     };
+  //   }, [callback, wrapperRef]);
 
   useEffect(() => {
-    const wrapperElement = wrapperRef.current;
-    const triggerElement = triggerRef.current;
+    const wrapperElement = wrapperRef?.current || window;
 
-    if (callback) {
-      const options = {
-        root: wrapperElement,
-        rootMargin: "0px",
-        threshold: 1.0,
-      };
+    const handleScroll = () => {
+      let scrollTop: number;
+      let scrollHeight: number;
+      let clientHeight: number;
 
-      observer.current = new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting) {
-          callback();
-        }
-      }, options);
+      if (wrapperElement instanceof HTMLElement) {
+        scrollTop = wrapperElement.scrollTop;
+        scrollHeight = wrapperElement.scrollHeight;
+        clientHeight = wrapperElement.clientHeight;
+      } else {
+        scrollTop = window.scrollY;
+        scrollHeight = document.documentElement.scrollHeight;
+        clientHeight = window.innerHeight;
+      }
 
-      observer.current.observe(triggerElement);
-    }
-
-    return () => {
-      if (observer.current && triggerElement) {
-        observer.current.unobserve(triggerElement);
+      if (scrollTop + clientHeight >= scrollHeight - 10) {
+        console.log("Triggering callback");
+        callback?.();
       }
     };
-  }, [callback, triggerRef, wrapperRef]);
+
+    const handleResizeOrScroll = () => {
+      handleScroll();
+    };
+
+    wrapperElement.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResizeOrScroll);
+
+    return () => {
+      wrapperElement.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResizeOrScroll);
+    };
+  }, [callback, wrapperRef]);
 }

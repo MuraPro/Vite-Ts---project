@@ -49,7 +49,7 @@ describe("articlesPageSlice", () => {
 
     const result = articlesPageReducer(
       state as ArticlesPageSchema,
-      fetchArticlesList.pending("", undefined),
+      fetchArticlesList.pending("", { page: 1 }),
     );
 
     expect(result.isLoading).toBe(true);
@@ -65,7 +65,7 @@ describe("articlesPageSlice", () => {
 
     const result = articlesPageReducer(
       state as ArticlesPageSchema,
-      fetchArticlesList.fulfilled([article], "", undefined),
+      fetchArticlesList.fulfilled([article], "", { page: 1 }),
     );
 
     expect(result.isLoading).toBe(false);
@@ -81,7 +81,12 @@ describe("articlesPageSlice", () => {
 
     const result = articlesPageReducer(
       state as ArticlesPageSchema,
-      fetchArticlesList.rejected(new Error(), "", undefined, "Ошибка загрузки"),
+      fetchArticlesList.rejected(
+        new Error(),
+        "",
+        { page: 1 },
+        "Ошибка загрузки",
+      ),
     );
 
     expect(result.isLoading).toBe(false);

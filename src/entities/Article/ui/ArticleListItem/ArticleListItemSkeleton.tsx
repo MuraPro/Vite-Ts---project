@@ -49,7 +49,7 @@ export const ArticleListItemSkeleton = memo(
           <div className={cls.infoWrapper}>
             <Skeleton width={130} height={16} />
           </div>
-          <Skeleton width={150} height={16} className={cls.title} />
+          <Skeleton width={150} height={32} className={cls.title} />
         </Card>
       </div>
     );

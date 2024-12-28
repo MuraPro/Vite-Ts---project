@@ -1,7 +1,16 @@
 .Page {
-    flex-grow: 1;
-    padding: 20px 20px 20px 45px;
-    height: calc(100vh - var(--navbar-height));
-    overflow-y: auto;
-    flex-shrink: 100;
+  flex-grow: 1;
+  width: 100%;
+  padding: 2px;
+  overflow-y: auto;
+  height: 100vh;
+  flex-shrink: 100;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.trigger {
+  min-height: 1px;
+  border: 1px solid red;
+  min-width: 100%;
 }

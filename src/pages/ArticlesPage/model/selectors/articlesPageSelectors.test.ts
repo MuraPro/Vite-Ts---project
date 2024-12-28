@@ -16,6 +16,8 @@ describe("articlesPageSelectors", () => {
           ids: [],
           entities: {},
           view: ArticleView.SMALL,
+          page: 1,
+          hasMore: true,
         },
       };
       expect(getArticlesPageIsLoading(state as StateSchema)).toBe(true);
@@ -29,6 +31,8 @@ describe("articlesPageSelectors", () => {
           ids: [],
           entities: {},
           view: ArticleView.SMALL,
+          page: 1,
+          hasMore: true,
         },
       };
       expect(getArticlesPageIsLoading(state as StateSchema)).toBe(false);
@@ -49,6 +53,8 @@ describe("articlesPageSelectors", () => {
           ids: [],
           entities: {},
           view: ArticleView.SMALL,
+          page: 1,
+          hasMore: true,
         },
       };
       expect(getArticlesPageError(state as StateSchema)).toBe("Error message");
@@ -62,6 +68,8 @@ describe("articlesPageSelectors", () => {
           ids: [],
           entities: {},
           view: ArticleView.SMALL,
+          page: 1,
+          hasMore: true,
         },
       };
       expect(getArticlesPageError(state as StateSchema)).toBeUndefined();
@@ -82,6 +90,8 @@ describe("articlesPageSelectors", () => {
           ids: [],
           entities: {},
           view: ArticleView.BIG,
+          page: 1,
+          hasMore: true,
         },
       };
       expect(getArticlesPageView(state as StateSchema)).toBe(ArticleView.BIG);
@@ -95,6 +105,8 @@ describe("articlesPageSelectors", () => {
           ids: [],
           entities: {},
           view: undefined,
+          page: 1,
+          hasMore: true,
         },
       };
       expect(getArticlesPageView(state as StateSchema)).toBe(ArticleView.SMALL);

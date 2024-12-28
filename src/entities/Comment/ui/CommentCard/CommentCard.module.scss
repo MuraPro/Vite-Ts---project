@@ -11,6 +11,9 @@
 
 .text {
   margin-top: 10px;
+  word-wrap: break-word; /* Перенос длинных слов */
+  overflow-wrap: break-word; /* Поддержка для современных браузеров */
+  white-space: normal; /* Разрешить перенос текста */
 }
 
 .username {

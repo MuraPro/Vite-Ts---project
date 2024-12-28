@@ -5,6 +5,7 @@ import { Suspense, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { classNames } from "shared/lib/classNames/classNames";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { PageLoader } from "shared/ui/PageLoader/PageLoader";
 import { Header } from "widgets/Header";
 import cls from "./App.module.scss";
 import "./styles/index.scss";
@@ -22,8 +23,8 @@ const App = ({ className }: mainProps) => {
   }, [dispatch]);
 
   return (
-    <div className={classNames(`${cls.wrapper} app`, {}, [className])}>
-      <Suspense fallback="">
+    <div className={classNames("app", {}, [className])}>
+      <Suspense fallback={<PageLoader />}>
         <Header />
         <main className={cls.main}>{inited && <AppRouter />}</main>
       </Suspense>

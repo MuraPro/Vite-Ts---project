@@ -43,7 +43,7 @@
     }
 
     &__textBlock {
-      max-height: 200px;
+      max-height: 190px;
       overflow-y: hidden;
     }
 
@@ -55,7 +55,6 @@
 }
 
 .SMALL {
-  width: 230px;
   transition: transform 0.2s;
   cursor: pointer;
 
@@ -69,6 +68,15 @@
   }
 
   .article {
+    &__card {
+      width: 230px;
+      /* stylelint-disable */
+      @media (max-width: 575.9px) {
+        width: 250px;
+      }
+      /* stylelint-enable */
+    }
+
     &__date {
       position: absolute;
       right: 0;
@@ -78,14 +86,13 @@
     }
 
     &__imageWrapper {
-      width: 200px;
       height: 200px;
       position: relative;
     }
 
     &__img {
-      width: 200px;
-      height: 200px;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
     }
 

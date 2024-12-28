@@ -20,6 +20,7 @@ import {
 } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
+import { Page } from "shared/ui/Page/Page";
 import cls from "./ProfilePage.module.scss";
 import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader";
 
@@ -160,7 +161,7 @@ const ProfilePage = memo(({ className }: ProfilePageProps) => {
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <section className={classNames(cls.profile__section, {}, [className])}>
+      <Page className={classNames(cls.profile__section, {}, [className])}>
         <div className="_container">
           <ProfilePageHeader isLoading={isLoading} isValid={isValid} />
           <ProfileCard
@@ -180,7 +181,7 @@ const ProfilePage = memo(({ className }: ProfilePageProps) => {
             onChangeEmail={onChangeEmail}
           />
         </div>
-      </section>
+      </Page>
     </DynamicModuleLoader>
   );
 });

@@ -6,6 +6,7 @@ import { addCommentForArticle } from "pages/ArticleDetailsPage/model/services/ad
 import { fetchCommentsByArticleId } from "pages/ArticleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId";
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
+import { IoMdSkipBackward } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { RoutePath } from "shared/config/routeConfig/routeConfig";
@@ -17,6 +18,7 @@ import {
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
+import { Page } from "shared/ui/Page/Page";
 import { Text, TextAlign } from "shared/ui/Text/Text";
 import { getArticleCommentsIsLoading } from "../../model/selectors/comments";
 import {
@@ -62,18 +64,22 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
 
   if (!id) {
     return (
-      <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+      <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
         {t("Статья не найдена")}
-      </div>
+      </Page>
     );
   }
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <section className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+      <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
         <div className="_container">
-          <Button theme={ButtonTheme.PRIMARY} onClick={onBackToList}>
-            {t("Назад к списку")}
+          <Button
+            theme={ButtonTheme.PRIMARY}
+            onClick={onBackToList}
+            className={cls.ArticleDetailsPage__btn}
+          >
+            <IoMdSkipBackward />
           </Button>
           <ArticleDetails id={id} />
           {!isLoading && (
@@ -86,7 +92,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
           {!isLoading && <AddCommentForm onSendComment={onSendComment} />}
           <CommentList isLoading={commentsIsLoading} comments={comments} />
         </div>
-      </section>
+      </Page>
     </DynamicModuleLoader>
   );
 };

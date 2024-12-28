@@ -483,25 +483,39 @@ server.listen(8000, () => {
 
 // // Эндпоинт для получения всех статей (GET /articles)
 // server.get("/articles", (req, res) => {
+//   const { _expand, _limit, _page } = req.query;
+//   const page = Number(_page) || 1;
+//   const limit = Number(_limit) || 4;
+
 //   try {
 //     const db = JSON.parse(
 //       fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
 //     );
 //     const { articles, users } = db;
 
-//     if (!articles || !users) {
-//       return res.status(500).json({
-//         message: "Articles or users data is missing in db.json",
-//       });
+//     if (!articles) {
+//       return res
+//         .status(500)
+//         .json({ message: "Articles data is missing in db.json" });
 //     }
 
-//     // Расширяем статьи данными пользователей
-//     const articlesWithUsers = articles.map((article) => {
-//       const user = users.find((u) => u.id === article.userId);
-//       return { ...article, user };
+//     // Фильтрация и расширение статей
+//     const expandedArticles = articles.map((article) => {
+//       if (_expand === "user") {
+//         const user = users.find((u) => u.id === article.userId);
+//         return { ...article, user };
+//       }
+//       return article;
 //     });
 
-//     return res.json(articlesWithUsers);
+//     // Пагинация
+//     const startIndex = (page - 1) * limit;
+//     const paginatedArticles = expandedArticles.slice(
+//       startIndex,
+//       startIndex + limit,
+//     );
+
+//     return res.json(paginatedArticles);
 //   } catch (e) {
 //     console.error("Error fetching articles:", e);
 //     return res.status(500).json({ message: "Internal server error" });
