@@ -23,3 +23,7 @@ type DeepPartial<T> = {
 type CombinedStateEquivalent<T> = {
   [K in keyof T]: T[K] extends object ? CombinedStateEquivalent<T[K]> : T[K];
 };
+
+type OptionalRecord<K extends keyof any, T> = {
+  [P in K]?: T;
+};

@@ -22,6 +22,7 @@ const initialState = articlesAdapter.getInitialState<ArticlesPageSchema>({
   view: ArticleView.SMALL,
   page: 1,
   hasMore: true,
+  _inited: false,
 });
 
 export const getArticles = createSelector(
@@ -46,6 +47,7 @@ const articlesPageSlice = createSlice({
       ) as ArticleView;
       state.view = view;
       state.limit = view === ArticleView.BIG ? 5 : 10;
+      state._inited = true;
     },
   },
   extraReducers: (builder) => {

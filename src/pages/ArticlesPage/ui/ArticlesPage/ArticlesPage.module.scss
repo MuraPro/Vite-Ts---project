@@ -1,4 +1,11 @@
 .ArticlesPage {
   color: var(--inverted-primary-color);
   min-height: 100%;
+
+  &.error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
 }

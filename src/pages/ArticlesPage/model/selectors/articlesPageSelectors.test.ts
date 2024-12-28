@@ -4,7 +4,8 @@ import {
   getArticlesPageIsLoading,
   getArticlesPageError,
   getArticlesPageView,
-} from "./articlesPageSelectors"; // Импортируйте селекторы
+  getArticlesPageInited,
+} from "./articlesPageSelectors";
 
 describe("articlesPageSelectors", () => {
   describe("getArticlesPageIsLoading", () => {
@@ -18,6 +19,7 @@ describe("articlesPageSelectors", () => {
           view: ArticleView.SMALL,
           page: 1,
           hasMore: true,
+          _inited: false,
         },
       };
       expect(getArticlesPageIsLoading(state as StateSchema)).toBe(true);
@@ -33,6 +35,7 @@ describe("articlesPageSelectors", () => {
           view: ArticleView.SMALL,
           page: 1,
           hasMore: true,
+          _inited: false,
         },
       };
       expect(getArticlesPageIsLoading(state as StateSchema)).toBe(false);
@@ -55,6 +58,7 @@ describe("articlesPageSelectors", () => {
           view: ArticleView.SMALL,
           page: 1,
           hasMore: true,
+          _inited: false,
         },
       };
       expect(getArticlesPageError(state as StateSchema)).toBe("Error message");
@@ -70,6 +74,7 @@ describe("articlesPageSelectors", () => {
           view: ArticleView.SMALL,
           page: 1,
           hasMore: true,
+          _inited: false,
         },
       };
       expect(getArticlesPageError(state as StateSchema)).toBeUndefined();
@@ -92,6 +97,7 @@ describe("articlesPageSelectors", () => {
           view: ArticleView.BIG,
           page: 1,
           hasMore: true,
+          _inited: false,
         },
       };
       expect(getArticlesPageView(state as StateSchema)).toBe(ArticleView.BIG);
@@ -107,6 +113,7 @@ describe("articlesPageSelectors", () => {
           view: undefined,
           page: 1,
           hasMore: true,
+          _inited: false,
         },
       };
       expect(getArticlesPageView(state as StateSchema)).toBe(ArticleView.SMALL);
@@ -116,5 +123,44 @@ describe("articlesPageSelectors", () => {
       const state: DeepPartial<StateSchema> = {};
       expect(getArticlesPageView(state as StateSchema)).toBe(ArticleView.SMALL);
     });
+  });
+});
+
+describe("getArticlesPageInited", () => {
+  test("должен возвращать true, если _inited равно true", () => {
+    const state: DeepPartial<StateSchema> = {
+      articlesPage: {
+        isLoading: false,
+        error: undefined,
+        ids: [],
+        entities: {},
+        view: undefined,
+        page: 1,
+        hasMore: true,
+        _inited: true,
+      },
+    };
+    expect(getArticlesPageInited(state as StateSchema)).toBe(true);
+  });
+
+  test("должен возвращать false, если _inited равно false", () => {
+    const state: DeepPartial<StateSchema> = {
+      articlesPage: {
+        isLoading: false,
+        error: undefined,
+        ids: [],
+        entities: {},
+        view: undefined,
+        page: 1,
+        hasMore: true,
+        _inited: false,
+      },
+    };
+    expect(getArticlesPageInited(state as StateSchema)).toBe(false);
+  });
+
+  test("должен возвращать undefined, если articlesPage отсутствует", () => {
+    const state: DeepPartial<StateSchema> = {};
+    expect(getArticlesPageInited(state as StateSchema)).toBeUndefined();
   });
 });

@@ -51,7 +51,6 @@ export const Text = memo((props: TextProps) => {
     [cls[align]]: true,
     [cls[size]]: true,
   };
-  console.log(title);
 
   return (
     <div className={classNames(cls.Text, mods, [className])}>

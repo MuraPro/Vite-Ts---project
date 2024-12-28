@@ -8,27 +8,39 @@ jest.mock("../fetchArticlesList/fetchArticlesList");
 describe("fetchNextArticlesPage.test", () => {
   test("success", async () => {
     const thunk = new TestAsyncThunk(fetchNextArticlesPage);
-    // Мокаем состояние, где hasMore = false, чтобы блокировать запрос
     thunk.getState = () => ({
       articlesPage: {
-        hasMore: false, // Не загружаем больше страниц
+        hasMore: true,
         page: 1,
-        isLoading: false, // Нет загрузки
+        isLoading: false,
         view: ArticleView.BIG,
         ids: [],
         entities: {},
+        _inited: false,
       },
-      counter: { value: 0 }, // Мокаем дополнительные части состояния
+      counter: { value: 0 },
       user: { authData: { id: "1", username: "test_user" }, _inited: true },
     });
 
     await thunk.callThunk();
 
-    // Проверяем, что dispatch был вызван дважды (один раз для установки страницы, второй раз для запроса)
-    expect(thunk.dispatch).toHaveBeenCalledTimes(2);
+    expect(thunk.dispatch).toHaveBeenCalledTimes(4);
   });
   test("fetchAritcleList not called", async () => {
     const thunk = new TestAsyncThunk(fetchNextArticlesPage);
+    thunk.getState = () => ({
+      articlesPage: {
+        hasMore: false,
+        page: 1,
+        isLoading: false,
+        view: ArticleView.BIG,
+        ids: [],
+        entities: {},
+        _inited: false,
+      },
+      counter: { value: 0 },
+      user: { authData: { id: "1", username: "test_user" }, _inited: true },
+    });
 
     await thunk.callThunk();
 
