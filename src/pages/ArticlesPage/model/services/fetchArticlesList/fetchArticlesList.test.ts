@@ -1,10 +1,14 @@
-import {
-  Article,
-  ArticleBlockType,
-  ArticleType,
-} from "entities/Article/model/types/article";
+import { Article, ArticleType } from "entities/Article";
+import { ArticleBlockType } from "entities/Article/model/types/article";
 import { TestAsyncThunk } from "shared/lib/tests/TestAsyncThunk/TestAsyncThunk";
-import { getArticlesPageLimit } from "../../selectors/articlesPageSelectors";
+import {
+  getArticlesPageLimit,
+  getArticlesPageNum,
+  getArticlesPageOrder,
+  getArticlesPageSearch,
+  getArticlesPageSort,
+  getArticlesPageType,
+} from "../../selectors/articlesPageSelectors";
 import { fetchArticlesList } from "./fetchArticlesList";
 
 jest.mock("../../selectors/articlesPageSelectors");
@@ -36,22 +40,30 @@ const articleData: Article[] = [
 describe("fetchArticlesList", () => {
   test("Успешное получение списка статей", async () => {
     const thunk = new TestAsyncThunk(fetchArticlesList);
-    // Мокируем селектор
+
+    // Мокируем селекторы
     (getArticlesPageLimit as jest.Mock).mockReturnValue(10);
+    (getArticlesPageSort as jest.Mock).mockReturnValue("createdAt");
+    (getArticlesPageOrder as jest.Mock).mockReturnValue("asc");
+    (getArticlesPageSearch as jest.Mock).mockReturnValue("test");
+    (getArticlesPageNum as jest.Mock).mockReturnValue(1);
+    (getArticlesPageType as jest.Mock).mockReturnValue(ArticleType.LANGUAGE);
 
     // Мокируем успешный ответ API
     thunk.api.get.mockResolvedValue({ data: articleData });
 
-    const result = await thunk.callThunk({
-      page: 1,
-    });
+    const result = await thunk.callThunk({ page: 1 });
 
     // Проверяем, что запрос был выполнен с правильными параметрами
     expect(thunk.api.get).toHaveBeenCalledWith("/articles", {
       params: {
         _expand: "user",
-        _page: 1,
         _limit: 10,
+        _page: 1,
+        _sort: "createdAt",
+        _order: "asc",
+        q: "test",
+        type: ArticleType.LANGUAGE,
       },
     });
 
@@ -62,22 +74,30 @@ describe("fetchArticlesList", () => {
 
   test("Ошибка при запросе данных", async () => {
     const thunk = new TestAsyncThunk(fetchArticlesList);
-    // Мокируем селектор
+
+    // Мокируем селекторы
     (getArticlesPageLimit as jest.Mock).mockReturnValue(10);
+    (getArticlesPageSort as jest.Mock).mockReturnValue("createdAt");
+    (getArticlesPageOrder as jest.Mock).mockReturnValue("asc");
+    (getArticlesPageSearch as jest.Mock).mockReturnValue("test");
+    (getArticlesPageNum as jest.Mock).mockReturnValue(1);
+    (getArticlesPageType as jest.Mock).mockReturnValue(ArticleType.LANGUAGE);
 
     // Мокируем неудачный ответ API
     thunk.api.get.mockRejectedValue(new Error("Network Error"));
 
-    const result = await thunk.callThunk({
-      page: 1,
-    });
+    const result = await thunk.callThunk({ page: 1 });
 
     // Проверяем, что запрос был выполнен
     expect(thunk.api.get).toHaveBeenCalledWith("/articles", {
       params: {
         _expand: "user",
-        _page: 1,
         _limit: 10,
+        _page: 1,
+        _sort: "createdAt",
+        _order: "asc",
+        q: "test",
+        type: ArticleType.LANGUAGE,
       },
     });
 
@@ -88,22 +108,30 @@ describe("fetchArticlesList", () => {
 
   test("Ошибка при отсутствии данных в ответе", async () => {
     const thunk = new TestAsyncThunk(fetchArticlesList);
-    // Мокируем селектор
+
+    // Мокируем селекторы
     (getArticlesPageLimit as jest.Mock).mockReturnValue(10);
+    (getArticlesPageSort as jest.Mock).mockReturnValue("createdAt");
+    (getArticlesPageOrder as jest.Mock).mockReturnValue("asc");
+    (getArticlesPageSearch as jest.Mock).mockReturnValue("test");
+    (getArticlesPageNum as jest.Mock).mockReturnValue(1);
+    (getArticlesPageType as jest.Mock).mockReturnValue(ArticleType.LANGUAGE);
 
     // Мокируем ответ API с пустыми данными
     thunk.api.get.mockResolvedValue({ data: null });
 
-    const result = await thunk.callThunk({
-      page: 1,
-    });
+    const result = await thunk.callThunk({ page: 1 });
 
     // Проверяем, что запрос был выполнен
     expect(thunk.api.get).toHaveBeenCalledWith("/articles", {
       params: {
         _expand: "user",
-        _page: 1,
         _limit: 10,
+        _page: 1,
+        _sort: "createdAt",
+        _order: "asc",
+        q: "test",
+        type: ArticleType.LANGUAGE,
       },
     });
 

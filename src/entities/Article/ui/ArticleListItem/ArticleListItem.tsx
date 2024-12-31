@@ -6,7 +6,7 @@ import { RoutePath } from "shared/config/routeConfig/routeConfig";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Avatar } from "shared/ui/Avatar/Avatar";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
-import { Card } from "shared/ui/Card/Card";
+import { Card, CardTheme } from "shared/ui/Card/Card";
 import { Icon } from "shared/ui/Icon/Icon";
 import { Text } from "shared/ui/Text/Text";
 import AvatarImg from "../../../../shared/assets/avatar.jpg";
@@ -65,7 +65,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
 
     return (
       <div className={classNames(cls.article, {}, [className, cls[view]])}>
-        <Card className={cls.article__card}>
+        <Card className={cls.article__card} theme={CardTheme.OUTLINED}>
           <div className={cls.article__header}>
             {article.user?.avatar ? (
               <div className={cls.card__avatar}>
@@ -120,7 +120,11 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
     <div
       className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}
     >
-      <Card className={cls.article__card} onClick={onOpenArticle}>
+      <Card
+        className={cls.article__card}
+        onClick={onOpenArticle}
+        theme={CardTheme.OUTLINED}
+      >
         <div className={cls.article__imageWrapper}>
           {article.img && (
             <img

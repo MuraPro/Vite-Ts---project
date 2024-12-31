@@ -16,20 +16,25 @@
   min-height: 101vh;
 
   & .ArticleList__container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    // display: grid;
+    // grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    // gap: 16px;
+    // padding: 16px;
+    // justify-content: start;
+    // justify-items: center;
+    display: flex;
+    flex-wrap: wrap;
     gap: 16px;
-    padding: 16px;
-    justify-content: start;
-    justify-items: center;
-    min-height: 700px;
+    min-height: 600px;
+    margin-left: 100px;
     /* stylelint-disable */
     @media (max-width: 480px) {
+      margin-left: 0px;
+      justify-content: center;
     }
     /* stylelint-enable */
 
     .card {
-      margin-bottom: 30px;
       /* stylelint-disable */
       @media (max-width: 575.9px) {
         margin-bottom: 0px;

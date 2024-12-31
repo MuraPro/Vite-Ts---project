@@ -37,6 +37,7 @@ describe("addCommentForArticle", () => {
       articleDetails: { data: articleData, isLoading: false }, // Статья существует
       user: { authData: { id: "1", username: "user" }, _inited: true }, // Пользователь авторизован
       counter: { value: 1 }, // Счетчик
+      ui: { scroll: { test: 1 } },
     });
 
     const result = await thunk.callThunk("This is a comment");
@@ -64,6 +65,7 @@ describe("addCommentForArticle", () => {
       articleDetails: { data: undefined, isLoading: false }, // Нет данных о статье
       user: { authData: { id: "", username: "" }, _inited: true }, // Нет данных о пользователе
       counter: { value: 1 }, // Счетчик
+      ui: { scroll: { test: 1 } },
     });
 
     const result = await thunk.callThunk("This is a comment");
@@ -93,6 +95,7 @@ describe("addCommentForArticle", () => {
       articleDetails: { data: articleData, isLoading: false },
       user: { authData: { id: "1", username: "user" }, _inited: true }, // Пользователь авторизован
       counter: { value: 1 }, // Счетчик
+      ui: { scroll: { test: 1 } },
     });
 
     // Мокируем неудачный ответ от API

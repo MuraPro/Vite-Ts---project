@@ -1,28 +1,30 @@
-import { ChangeEvent, memo, useMemo } from "react";
+import { ChangeEvent, useMemo } from "react";
 import { classNames, Mods } from "shared/lib/classNames/classNames";
 import cls from "./Select.module.scss";
 
-export interface SelectOption {
-  value: string;
+export interface SelectOption<T extends string> {
+  value: T;
   content: string;
 }
 
-interface SelectProps {
+interface SelectProps<T extends string> {
   name?: string;
   className?: string;
   personalClassNames?: string;
+  labelClassName?: string;
   label?: string;
-  options?: SelectOption[];
-  value?: string;
-  onChange?: (value: string) => void;
+  options?: SelectOption<T>[];
+  value?: T;
+  onChange?: (value: T) => void;
   readonly?: boolean;
 }
 
-export const Select = memo((props: SelectProps) => {
+export const Select = <T extends string>(props: SelectProps<T>) => {
   const {
     name,
     className,
     personalClassNames,
+    labelClassName,
     label,
     options,
     onChange,
@@ -32,7 +34,7 @@ export const Select = memo((props: SelectProps) => {
 
   const onChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
     if (onChange) {
-      onChange(e.target.value);
+      onChange(e.target.value as T);
     }
   };
 
@@ -54,7 +56,7 @@ export const Select = memo((props: SelectProps) => {
     >
       {/* {label && <span className={cls.label}>{label}</span>} */}
       {label && (
-        <label htmlFor={name} className={cls.label}>
+        <label htmlFor={name} className={`${cls.label} ${labelClassName}`}>
           {label}
         </label>
       )}
@@ -70,4 +72,4 @@ export const Select = memo((props: SelectProps) => {
       </select>
     </div>
   );
-});
+};

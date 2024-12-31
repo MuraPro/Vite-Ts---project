@@ -1,5 +1,20 @@
+// .Card {
+//   padding: 15px;
+//   border-radius: 12px;
+//   background: var(--card-bg);
+//   color: var(--primary-color);
+// }
+
 .Card {
   padding: 15px;
   border-radius: 12px;
-  background: var(--card-bg);
+  border: 1px solid var(--inverted-primary-color);
+}
+
+.normal {
+  border: 1px solid var(--inverted-primary-color);
+}
+
+.outlined {
+  border: none;
 }

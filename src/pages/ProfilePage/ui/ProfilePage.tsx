@@ -20,7 +20,7 @@ import {
 } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
-import { Page } from "shared/ui/Page/Page";
+import { Page } from "widgets/Page";
 import cls from "./ProfilePage.module.scss";
 import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader";
 

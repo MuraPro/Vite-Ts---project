@@ -70,5 +70,17 @@
   "Город должен содержать не менее трех символов": "The city must contain at least three characters",
   "Имя должно содержать не менее трех символов": "The name must contain at least three characters",
   "Ссылка должна быть корректным URL-адресом": "The link must be a valid URL",
-  "Серверная ошибка при сохранении": "Server error on saving"
+  "Серверная ошибка при сохранении": "Server error on saving",
+  "Все статьи": "All articles",
+  "Айти": "IT",
+  "Экономика": "Economy",
+  "Наука": "Science",
+  "по": "by",
+  "возрастанию": "ascending",
+  "убыванию": "descending",
+  "дате создания": "date of creation",
+  "названию": "title",
+  "просмотрам": "views",
+  "Сортировать по": "Sort by",
+  "Поиск": "Search"
 }

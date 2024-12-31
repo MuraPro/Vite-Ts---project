@@ -1,5 +1,9 @@
 .BIG {
   .article {
+    &__card {
+      background: var(--card-bg);
+    }
+
     &__views {
       margin-left: auto;
       color: var(--primary-color);
@@ -70,9 +74,10 @@
   .article {
     &__card {
       width: 230px;
+      background: var(--card-bg);
       /* stylelint-disable */
       @media (max-width: 575.9px) {
-        width: 250px;
+        width: 270px;
       }
       /* stylelint-enable */
     }
@@ -88,9 +93,20 @@
     &__imageWrapper {
       height: 200px;
       position: relative;
+      /* stylelint-disable */
+      @media (max-width: 575.9px) {
+        height: 240px;
+      }
+      /* stylelint-enable */
     }
 
     &__img {
+      //   width: 100%;
+      //     height: 100%;
+      //   object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -131,4 +147,8 @@
       text-overflow: ellipsis;
     }
   }
+}
+
+.card {
+  background: var(--card-bg);
 }

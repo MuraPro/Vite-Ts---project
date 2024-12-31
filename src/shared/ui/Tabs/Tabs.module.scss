@@ -1,0 +1,15 @@
+.Tabs {
+  display: flex;
+  gap: 8px;
+  cursor: pointer;
+  font: var(--font-m);
+  /* stylelint-disable */
+  @media (max-width: 575.9px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font: var(--font-s);
+  }
+  /* stylelint-enable */
+}

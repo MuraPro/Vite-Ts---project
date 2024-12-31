@@ -1,0 +1,30 @@
+.ArticleSortSelector {
+  display: flex;
+  align-items: center;
+  /* stylelint-disable */
+  @media (max-width: 479.9px) {
+    align-self: center;
+    flex-direction: column;
+  }
+  /* stylelint-enable */
+
+  &__sortLabel {
+    margin-bottom: 0;
+
+    /* stylelint-disable */
+    @media (max-width: 575.9px) {
+      font: var(--font-s);
+    }
+    /* stylelint-enable */
+  }
+}
+
+.order {
+  margin-left: 8px;
+  /* stylelint-disable */
+  @media (max-width: 479.9px) {
+    margin-left: 100px;
+    margin-top: 5px;
+  }
+  /* stylelint-enable */
+}

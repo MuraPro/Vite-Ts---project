@@ -5,6 +5,7 @@ import {
 } from "@reduxjs/toolkit";
 import { counterReducer } from "entities/Counter";
 import { userReducer } from "entities/User";
+import { uiReducer } from "features/UI";
 import { Reducer } from "redux";
 import { $api } from "shared/api/api";
 import { configEnv } from "shared/config/config";
@@ -23,6 +24,7 @@ export function createReduxStore(
     ...asyncReducers,
     counter: counterReducer,
     user: userReducer,
+    ui: uiReducer,
   };
 
   const reducerManager = createReducerManager(rootReducers);

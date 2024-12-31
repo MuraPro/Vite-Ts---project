@@ -39,6 +39,8 @@ describe("articlesPageSlice", () => {
     );
 
     expect(result.view).toBe(ArticleView.BIG);
+    expect(result.limit).toBe(5); // Проверка изменения лимита в зависимости от view
+    expect(result._inited).toBe(true); // Проверка флага инициализации
   });
 
   test("должен обработать fetchArticlesList.pending", () => {
@@ -49,11 +51,13 @@ describe("articlesPageSlice", () => {
 
     const result = articlesPageReducer(
       state as ArticlesPageSchema,
-      fetchArticlesList.pending("", { page: 1 }),
+      fetchArticlesList.pending("", { replace: false }),
     );
 
     expect(result.isLoading).toBe(true);
     expect(result.error).toBeUndefined();
+    expect(result.ids).toBeUndefined();
+    expect(result.entities).toBeUndefined();
   });
 
   test("должен обработать fetchArticlesList.fulfilled", () => {
@@ -65,7 +69,7 @@ describe("articlesPageSlice", () => {
 
     const result = articlesPageReducer(
       state as ArticlesPageSchema,
-      fetchArticlesList.fulfilled([article], "", { page: 1 }),
+      fetchArticlesList.fulfilled([article], "", { replace: false }),
     );
 
     expect(result.isLoading).toBe(false);
@@ -84,7 +88,7 @@ describe("articlesPageSlice", () => {
       fetchArticlesList.rejected(
         new Error(),
         "",
-        { page: 1 },
+        { replace: false },
         "Ошибка загрузки",
       ),
     );

@@ -10,7 +10,7 @@ import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator/ThemeDeco
 import { ArticleList } from "./ArticleList";
 
 const meta: Meta<typeof ArticleList> = {
-  title: "entities/ArticleList",
+  title: "entities/Article/ArticleList",
   component: ArticleList,
   parameters: {
     layout: "fullscreen",

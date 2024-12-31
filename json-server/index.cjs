@@ -41,6 +41,10 @@ server.use(cors(corsOptions));
 server.use(jsonServer.defaults({}));
 server.use(jsonServer.bodyParser);
 
+// Дополнительные зависимости
+const fs = require("fs");
+const path = require("path");
+
 // Эндпоинт для логина
 server.post("/login", (req, res) => {
   try {
@@ -159,14 +163,22 @@ server.put("/profile/:id", (req, res) => {
 
 // Эндпоинт для получения всех статей (GET /articles)
 server.get("/articles", (req, res) => {
-  const { _expand, _limit, _page } = req.query;
+  const { _expand, _limit, _page, _sort, _order, q, type } = req.query;
+
+  // Преобразование параметров запроса в нужные для работы с данными
   const page = Number(_page) || 1;
   const limit = Number(_limit) || 4;
+  const sort = _sort || "createdAt"; // Default сортировка по дате создания
+  const order = _order || "desc"; // Default сортировка по убыванию
+  const search = q || "";
+  const articleType = type || "ALL"; // Если тип не указан, выбираются все статьи
 
   try {
+    // Чтение данных из db.json
     const db = JSON.parse(
       fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
     );
+
     const { articles, users } = db;
 
     if (!articles) {
@@ -175,22 +187,83 @@ server.get("/articles", (req, res) => {
         .json({ message: "Articles data is missing in db.json" });
     }
 
-    // Фильтрация и расширение статей
-    const expandedArticles = articles.map((article) => {
-      if (_expand === "user") {
-        const user = users.find((u) => u.id === article.userId);
-        return { ...article, user };
+    // Фильтрация по типу статьи
+    let filteredArticles = articles;
+    if (articleType !== "ALL") {
+      filteredArticles = filteredArticles.filter(
+        (article) => article.type.includes(articleType), // Проверяем, содержится ли articleType в массиве article.type
+      );
+    }
+
+    // Фильтрация по поисковому запросу
+    // Фильтрация по поисковому запросу
+    if (search) {
+      filteredArticles = filteredArticles.filter((article) => {
+        // Преобразуем текст в нижний регистр для нечувствительной к регистру фильтрации
+        const searchLower = search.toLowerCase();
+
+        // Функция для поиска в разных полях
+        const matchesInText = (text) =>
+          typeof text === "string" && text.toLowerCase().includes(searchLower);
+
+        // Проверяем, есть ли совпадения в title, subtitle или paragraphs
+        return (
+          matchesInText(article.text1) ||
+          matchesInText(article.text2) ||
+          matchesInText(article.title) ||
+          matchesInText(article.subtitle) ||
+          article.blocks.some((block) =>
+            block.paragraphs?.some((paragraph) => matchesInText(paragraph)),
+          )
+        );
+      });
+    }
+
+    // Сортировка
+    filteredArticles.sort((a, b) => {
+      if (sort === "createdAt") {
+        const dateA = new Date(a.createdAt);
+        const dateB = new Date(b.createdAt);
+        return order === "asc" ? dateA - dateB : dateB - dateA;
       }
-      return article;
+      return 0; // Если сортировка не по дате
     });
 
     // Пагинация
     const startIndex = (page - 1) * limit;
-    const paginatedArticles = expandedArticles.slice(
+    const paginatedArticles = filteredArticles.slice(
       startIndex,
       startIndex + limit,
     );
 
+    // Если нужно, расширяем информацию о пользователе
+    if (_expand === "user") {
+      paginatedArticles.forEach((article) => {
+        const user = users.find((user) => user.id === article.userId);
+        article.user = user;
+      });
+    }
+
+    // Для каждого блока в статье формируем структуру ответа
+    paginatedArticles.forEach((article) => {
+      article.blocks = article.blocks.map((block) => {
+        if (block.type === "TEXT") {
+          return {
+            ...block,
+            content: block.paragraphs.join(" "), // Объединяем все параграфы в один текст
+          };
+        }
+        if (block.type === "IMAGE") {
+          return {
+            ...block,
+            src: block.src, // Добавляем путь к изображению
+          };
+        }
+        return block;
+      });
+    });
+
+    // Возвращаем результаты
     return res.json(paginatedArticles);
   } catch (e) {
     console.error("Error fetching articles:", e);
@@ -496,45 +569,122 @@ server.listen(8000, () => {
 // });
 
 // // Эндпоинт для получения всех статей (GET /articles)
-// server.get("/articles", (req, res) => {
-//   const { _expand, _limit, _page } = req.query;
-//   const page = Number(_page) || 1;
-//   const limit = Number(_limit) || 4;
+// // server.get("/articles", (req, res) => {
+// //   const { _expand, _limit, _page } = req.query;
+// //   const page = Number(_page) || 1;
+// //   const limit = Number(_limit) || 4;
 
-//   try {
-//     const db = JSON.parse(
-//       fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
-//     );
-//     const { articles, users } = db;
+// //   try {
+// //     const db = JSON.parse(
+// //       fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
+// //     );
+// //     const { articles, users } = db;
 
-//     if (!articles) {
-//       return res
-//         .status(500)
-//         .json({ message: "Articles data is missing in db.json" });
-//     }
+// //     if (!articles) {
+// //       return res
+// //         .status(500)
+// //         .json({ message: "Articles data is missing in db.json" });
+// //     }
 
-//     // Фильтрация и расширение статей
-//     const expandedArticles = articles.map((article) => {
-//       if (_expand === "user") {
-//         const user = users.find((u) => u.id === article.userId);
-//         return { ...article, user };
-//       }
-//       return article;
-//     });
+// //     // Фильтрация и расширение статей
+// //     const expandedArticles = articles.map((article) => {
+// //       if (_expand === "user") {
+// //         const user = users.find((u) => u.id === article.userId);
+// //         return { ...article, user };
+// //       }
+// //       return article;
+// //     });
 
-//     // Пагинация
-//     const startIndex = (page - 1) * limit;
-//     const paginatedArticles = expandedArticles.slice(
-//       startIndex,
-//       startIndex + limit,
-//     );
+// //     // Пагинация
+// //     const startIndex = (page - 1) * limit;
+// //     const paginatedArticles = expandedArticles.slice(
+// //       startIndex,
+// //       startIndex + limit,
+// //     );
 
-//     return res.json(paginatedArticles);
-//   } catch (e) {
-//     console.error("Error fetching articles:", e);
-//     return res.status(500).json({ message: "Internal server error" });
-//   }
-// });
+// //     return res.json(paginatedArticles);
+// //   } catch (e) {
+// //     console.error("Error fetching articles:", e);
+// //     return res.status(500).json({ message: "Internal server error" });
+// //   }
+// // });
+// // server.get("/articles", (req, res) => {
+// //   const { _expand, _limit, _page, _sort, _order, q, type } = req.query;
+
+// //   // Параметры с дефолтными значениями
+// //   const page = Math.max(Number(_page) || 1, 1);
+// //   const limit = Math.max(Number(_limit) || 4, 1);
+// //   const sort = ["title", "date", "views", "id"].includes(_sort) ? _sort : "id"; // Безопасное значение
+// //   const order = _order === "desc" ? -1 : 1; // По умолчанию "asc"
+// //   const searchQuery = q ? q.toLowerCase() : null;
+// //   const articleType = type && type !== "ALL" ? type : null;
+
+// //   try {
+// //     // Загрузка базы данных
+// //     const db = JSON.parse(
+// //       fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
+// //     );
+
+// //     const { articles = [], users = [] } = db;
+
+// //     if (!articles.length) {
+// //       return res
+// //         .status(404)
+// //         .json({ message: "Articles data is missing in db.json" });
+// //     }
+
+// //     // Фильтрация статей
+// //     let filteredArticles = articles;
+
+// //     if (articleType) {
+// //       filteredArticles = filteredArticles.filter(
+// //         (article) => article.type === articleType,
+// //       );
+// //     }
+
+// //     if (searchQuery) {
+// //       filteredArticles = filteredArticles.filter(
+// //         (article) =>
+// //           article.title.toLowerCase().includes(searchQuery) ||
+// //           article.content.toLowerCase().includes(searchQuery),
+// //       );
+// //     }
+
+// //     // Сортировка
+// //     filteredArticles = filteredArticles.sort((a, b) => {
+// //       if (a[sort] < b[sort]) return -order;
+// //       if (a[sort] > b[sort]) return order;
+// //       return 0;
+// //     });
+
+// //     // Расширение статей
+// //     const expandedArticles = filteredArticles.map((article) => {
+// //       if (_expand === "user") {
+// //         const user = users.find((u) => u.id === article.userId);
+// //         return { ...article, user };
+// //       }
+// //       return article;
+// //     });
+
+// //     // Пагинация
+// //     const startIndex = (page - 1) * limit;
+// //     const paginatedArticles = expandedArticles.slice(
+// //       startIndex,
+// //       startIndex + limit,
+// //     );
+
+// //     // Ответ
+// //     return res.json({
+// //       total: filteredArticles.length,
+// //       page,
+// //       limit,
+// //       data: paginatedArticles,
+// //     });
+// //   } catch (e) {
+// //     console.error("Error fetching articles:", e.message);
+// //     return res.status(500).json({ message: "Internal server error" });
+// //   }
+// // });
 
 // // Эндпоинт для получения статьи по ID (GET /articles/:id)
 // server.get("/articles/:id", (req, res) => {
@@ -565,15 +715,24 @@ server.listen(8000, () => {
 //   }
 // });
 
-// // Эндпоинт для создания новой статьи (POST /articles)
-// server.post("/articles", (req, res) => {
-//   const newArticle = req.body;
+// server.get("/articles", (req, res) => {
+//   const { _expand, _limit, _page, _sort, _order, q, type } = req.query;
+
+//   // Преобразование параметров запроса в нужные для работы с данными
+//   const page = Number(_page) || 1;
+//   const limit = Number(_limit) || 4;
+//   const sort = _sort || "createdAt"; // Default сортировка по дате создания
+//   const order = _order || "desc"; // Default сортировка по убыванию
+//   const search = q || "";
+//   const articleType = type || "ALL"; // Если тип не указан, выбираются все статьи
 
 //   try {
+//     // Чтение данных из db.json
 //     const db = JSON.parse(
 //       fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
 //     );
-//     const { articles } = db;
+
+//     const { articles, users } = db;
 
 //     if (!articles) {
 //       return res
@@ -581,18 +740,86 @@ server.listen(8000, () => {
 //         .json({ message: "Articles data is missing in db.json" });
 //     }
 
-//     // Добавляем новую статью
-//     articles.push(newArticle);
+//     // Фильтрация по типу статьи
+//     let filteredArticles = articles;
+//     if (articleType !== "ALL") {
+//       filteredArticles = filteredArticles.filter(
+//         (article) => article.type.includes(articleType), // Проверяем, содержится ли articleType в массиве article.type
+//       );
+//     }
 
-//     // Сохраняем изменения
-//     fs.writeFileSync(
-//       path.resolve(__dirname, "db.json"),
-//       JSON.stringify(db, null, 2),
+//     // Фильтрация по поисковому запросу
+//     // Фильтрация по поисковому запросу
+//     if (search) {
+//       filteredArticles = filteredArticles.filter((article) => {
+//         // Преобразуем текст в нижний регистр для нечувствительной к регистру фильтрации
+//         const searchLower = search.toLowerCase();
+
+//         // Функция для поиска в разных полях
+//         const matchesInText = (text) =>
+//           typeof text === "string" && text.toLowerCase().includes(searchLower);
+
+//         // Проверяем, есть ли совпадения в title, subtitle или paragraphs
+//         return (
+//           matchesInText(article.text1) ||
+//           matchesInText(article.text2) ||
+//           matchesInText(article.title) ||
+//           matchesInText(article.subtitle) ||
+//           article.blocks.some((block) =>
+//             block.paragraphs?.some((paragraph) => matchesInText(paragraph)),
+//           )
+//         );
+//       });
+//     }
+
+//     // Сортировка
+//     filteredArticles.sort((a, b) => {
+//       if (sort === "createdAt") {
+//         const dateA = new Date(a.createdAt);
+//         const dateB = new Date(b.createdAt);
+//         return order === "asc" ? dateA - dateB : dateB - dateA;
+//       }
+//       return 0; // Если сортировка не по дате
+//     });
+
+//     // Пагинация
+//     const startIndex = (page - 1) * limit;
+//     const paginatedArticles = filteredArticles.slice(
+//       startIndex,
+//       startIndex + limit,
 //     );
 
-//     return res.status(201).json(newArticle); // Возвращаем созданную статью
+//     // Если нужно, расширяем информацию о пользователе
+//     if (_expand === "user") {
+//       paginatedArticles.forEach((article) => {
+//         const user = users.find((user) => user.id === article.userId);
+//         article.user = user;
+//       });
+//     }
+
+//     // Для каждого блока в статье формируем структуру ответа
+//     paginatedArticles.forEach((article) => {
+//       article.blocks = article.blocks.map((block) => {
+//         if (block.type === "TEXT") {
+//           return {
+//             ...block,
+//             content: block.paragraphs.join(" "), // Объединяем все параграфы в один текст
+//           };
+//         }
+//         if (block.type === "IMAGE") {
+//           return {
+//             ...block,
+//             src: block.src, // Добавляем путь к изображению
+//           };
+//         }
+//         return block;
+//       });
+//     });
+
+//     // Возвращаем результаты
+//     return res.json(paginatedArticles);
 //   } catch (e) {
-//     console.error("Error creating article:", e);
+//     console.error("Error fetching articles:", e);
 //     return res.status(500).json({ message: "Internal server error" });
 //   }
 // });
@@ -684,6 +911,8 @@ server.listen(8000, () => {
 // });
 
 // server.use(router);
+
+// server.use(jsonServer.defaults({ noCors: true }));
 
 // // Запуск сервера
 // server.listen(8000, () => {

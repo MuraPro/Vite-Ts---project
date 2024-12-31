@@ -1,5 +1,5 @@
 import { StateSchema } from "app/providers/StoreProvider";
-import { ArticleView } from "entities/Article";
+import { ArticleSortField, ArticleType, ArticleView } from "entities/Article";
 import {
   getArticlesPageIsLoading,
   getArticlesPageError,
@@ -12,14 +12,19 @@ describe("articlesPageSelectors", () => {
     test("должен возвращать true, если isLoading равно true", () => {
       const state: DeepPartial<StateSchema> = {
         articlesPage: {
-          isLoading: true,
+          hasMore: false,
           error: undefined,
+          page: 1,
+          isLoading: true,
+          view: ArticleView.BIG,
           ids: [],
           entities: {},
-          view: ArticleView.SMALL,
-          page: 1,
-          hasMore: true,
           _inited: false,
+          type: ArticleType.ALL,
+          order: "asc",
+          sort: ArticleSortField.CREATED,
+          limit: 9,
+          search: "",
         },
       };
       expect(getArticlesPageIsLoading(state as StateSchema)).toBe(true);
@@ -28,14 +33,19 @@ describe("articlesPageSelectors", () => {
     test("должен возвращать false, если isLoading равно false", () => {
       const state: DeepPartial<StateSchema> = {
         articlesPage: {
-          isLoading: false,
+          hasMore: false,
           error: undefined,
+          page: 1,
+          isLoading: false,
+          view: ArticleView.BIG,
           ids: [],
           entities: {},
-          view: ArticleView.SMALL,
-          page: 1,
-          hasMore: true,
           _inited: false,
+          type: ArticleType.ALL,
+          order: "asc",
+          sort: ArticleSortField.CREATED,
+          limit: 9,
+          search: "",
         },
       };
       expect(getArticlesPageIsLoading(state as StateSchema)).toBe(false);
@@ -51,14 +61,19 @@ describe("articlesPageSelectors", () => {
     test("должен возвращать ошибку, если она существует", () => {
       const state: DeepPartial<StateSchema> = {
         articlesPage: {
-          isLoading: false,
+          hasMore: false,
           error: "Error message",
+          page: 1,
+          isLoading: false,
+          view: ArticleView.BIG,
           ids: [],
           entities: {},
-          view: ArticleView.SMALL,
-          page: 1,
-          hasMore: true,
           _inited: false,
+          type: ArticleType.ALL,
+          order: "asc",
+          sort: ArticleSortField.CREATED,
+          limit: 9,
+          search: "",
         },
       };
       expect(getArticlesPageError(state as StateSchema)).toBe("Error message");
@@ -67,14 +82,19 @@ describe("articlesPageSelectors", () => {
     test("должен возвращать undefined, если ошибки нет", () => {
       const state: DeepPartial<StateSchema> = {
         articlesPage: {
-          isLoading: false,
+          hasMore: false,
           error: undefined,
+          page: 1,
+          isLoading: false,
+          view: ArticleView.BIG,
           ids: [],
           entities: {},
-          view: ArticleView.SMALL,
-          page: 1,
-          hasMore: true,
           _inited: false,
+          type: ArticleType.ALL,
+          order: "asc",
+          sort: ArticleSortField.CREATED,
+          limit: 9,
+          search: "",
         },
       };
       expect(getArticlesPageError(state as StateSchema)).toBeUndefined();
@@ -90,14 +110,19 @@ describe("articlesPageSelectors", () => {
     test("должен возвращать значение view, если оно существует", () => {
       const state: DeepPartial<StateSchema> = {
         articlesPage: {
-          isLoading: false,
+          hasMore: false,
           error: undefined,
+          page: 1,
+          isLoading: false,
+          view: ArticleView.BIG,
           ids: [],
           entities: {},
-          view: ArticleView.BIG,
-          page: 1,
-          hasMore: true,
           _inited: false,
+          type: ArticleType.ALL,
+          order: "asc",
+          sort: ArticleSortField.CREATED,
+          limit: 9,
+          search: "",
         },
       };
       expect(getArticlesPageView(state as StateSchema)).toBe(ArticleView.BIG);
@@ -106,14 +131,19 @@ describe("articlesPageSelectors", () => {
     test("должен возвращать SMALL по умолчанию, если view равно undefined", () => {
       const state: DeepPartial<StateSchema> = {
         articlesPage: {
-          isLoading: false,
+          hasMore: false,
           error: undefined,
+          page: 1,
+          isLoading: false,
+          view: ArticleView.SMALL,
           ids: [],
           entities: {},
-          view: undefined,
-          page: 1,
-          hasMore: true,
           _inited: false,
+          type: ArticleType.ALL,
+          order: "asc",
+          sort: ArticleSortField.CREATED,
+          limit: 9,
+          search: "",
         },
       };
       expect(getArticlesPageView(state as StateSchema)).toBe(ArticleView.SMALL);
@@ -130,14 +160,19 @@ describe("getArticlesPageInited", () => {
   test("должен возвращать true, если _inited равно true", () => {
     const state: DeepPartial<StateSchema> = {
       articlesPage: {
-        isLoading: false,
+        hasMore: false,
         error: undefined,
+        page: 1,
+        isLoading: false,
+        view: ArticleView.SMALL,
         ids: [],
         entities: {},
-        view: undefined,
-        page: 1,
-        hasMore: true,
         _inited: true,
+        type: ArticleType.ALL,
+        order: "asc",
+        sort: ArticleSortField.CREATED,
+        limit: 9,
+        search: "",
       },
     };
     expect(getArticlesPageInited(state as StateSchema)).toBe(true);
@@ -146,14 +181,19 @@ describe("getArticlesPageInited", () => {
   test("должен возвращать false, если _inited равно false", () => {
     const state: DeepPartial<StateSchema> = {
       articlesPage: {
-        isLoading: false,
+        hasMore: false,
         error: undefined,
+        page: 1,
+        isLoading: false,
+        view: ArticleView.SMALL,
         ids: [],
         entities: {},
-        view: undefined,
-        page: 1,
-        hasMore: true,
         _inited: false,
+        type: ArticleType.ALL,
+        order: "asc",
+        sort: ArticleSortField.CREATED,
+        limit: 9,
+        search: "",
       },
     };
     expect(getArticlesPageInited(state as StateSchema)).toBe(false);
