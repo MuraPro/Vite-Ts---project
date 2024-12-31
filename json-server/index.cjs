@@ -41,10 +41,6 @@ server.use(cors(corsOptions));
 server.use(jsonServer.defaults({}));
 server.use(jsonServer.bodyParser);
 
-// Дополнительные зависимости
-const fs = require("fs");
-const path = require("path");
-
 // Эндпоинт для логина
 server.post("/login", (req, res) => {
   try {
