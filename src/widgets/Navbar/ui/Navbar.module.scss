@@ -32,13 +32,17 @@
 
     /* stylelint-disable */
     @media (max-width: 767.9px) {
-      &:nth-child(1),
-      &:nth-child(2),
       &:nth-child(3),
       &:nth-child(4) {
         display: none;
       }
       margin-right: 10px;
+    }
+    @media (max-width: 520px) {
+      &:nth-child(1),
+      &:nth-child(2) {
+        display: none;
+      }
     }
     /* stylelint-enable */
   }

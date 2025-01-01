@@ -30,6 +30,11 @@
   border: 1px solid var(--inverted-primary-color);
   color: var(--inverted-primary-color);
   background: none;
+  /* stylelint-disable */
+  @media (max-width: 479.9px) {
+    padding: 5px 10px;
+  }
+  /* stylelint-enable */
 }
 
 .secondary {

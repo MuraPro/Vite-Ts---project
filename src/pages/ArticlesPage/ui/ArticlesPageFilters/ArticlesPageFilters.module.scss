@@ -27,6 +27,13 @@
     color: var(--inverted-primary-color);
     font: var(--font-m);
     border-bottom: 1px solid var(--inverted-primary-color);
-    border-radius: none;
+    border-radius: 0;
+
+    /* stylelint-disable */
+    @media (max-width: 479.9px) {
+      margin-bottom: 10px;
+      font: var(--font-s);
+    }
+    /* stylelint-enable */
   }
 }
