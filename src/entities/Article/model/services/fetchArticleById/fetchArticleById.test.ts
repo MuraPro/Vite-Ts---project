@@ -1,5 +1,5 @@
-import { Article, ArticleType } from "../../types/article";
 import { TestAsyncThunk } from "shared/lib/tests/TestAsyncThunk/TestAsyncThunk";
+import { Article, ArticleType } from "../../types/article";
 import { fetchArticleById } from "./fetchArticleById";
 
 jest.mock("axios"); // Мокируем axios или аналогичный API

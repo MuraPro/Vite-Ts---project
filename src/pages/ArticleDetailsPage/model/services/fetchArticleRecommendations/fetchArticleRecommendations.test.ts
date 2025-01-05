@@ -1,6 +1,6 @@
+import { Article } from "entities/Article";
 import { TestAsyncThunk } from "shared/lib/tests/TestAsyncThunk/TestAsyncThunk";
 import { fetchArticleRecommendations } from "./fetchArticleRecommendations";
-import { Article } from "entities/Article";
 
 describe("fetchArticleRecommendations", () => {
   test("должен успешно загрузить рекомендации", async () => {

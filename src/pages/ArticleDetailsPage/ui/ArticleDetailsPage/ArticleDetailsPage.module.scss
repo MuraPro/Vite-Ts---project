@@ -13,8 +13,7 @@
   margin-top: 20px;
   display: flex; /* Убедитесь, что блок с дочерними элементами использует flex */
   flex-wrap: nowrap; /* Запрещаем перенос элементов на новую строку */
-  overflow-y: hidden; /* Отключаем вертикальную прокрутку */
-  overflow-x: auto; /* Включаем горизонтальную прокрутку */
+  overflow: auto hidden; /* Отключаем вертикальную прокрутку */ /* Включаем горизонтальную прокрутку */
   min-height: 350px;
   padding: 5px;
   white-space: nowrap;

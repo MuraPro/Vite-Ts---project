@@ -1,10 +1,10 @@
+import { StateSchema } from "app/providers/StoreProvider";
+import { Article, ArticleType } from "entities/Article";
 import { fetchArticleRecommendations } from "../services/fetchArticleRecommendations/fetchArticleRecommendations";
 import {
   articleDetailsPageRecommendationsReducer,
   getArticleRecommendations,
 } from "./articleDetailsPageRecommendationsSlice";
-import { StateSchema } from "app/providers/StoreProvider";
-import { Article, ArticleType } from "entities/Article";
 
 describe("articleDetailsPageRecommendationsSlice", () => {
   const initialState = {
