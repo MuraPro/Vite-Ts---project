@@ -1,6 +1,7 @@
 import { useModal } from "app/providers/ModalProvider";
 import { getUserAuthData, userActions } from "entities/User";
 import { LoginModal } from "features/AuthByUsername";
+import { LangSwitcher } from "features/LangSwitcher";
 import { useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { FaSignInAlt } from "react-icons/fa";
@@ -10,7 +11,6 @@ import { useNavigate } from "react-router-dom"; // импортируем хук
 import { classNames } from "shared/lib/classNames/classNames";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { Button, ButtonSize, ButtonTheme } from "shared/ui/Button/Button";
-import { LangSwitcher } from "shared/ui/LangSwitcher/LangSwitcher";
 import { ThemeSwitcher } from "shared/ui/ThemeSwitcher";
 import { getSidebarItems } from "widgets/Sidebar/model/selectors/getSidebarItems";
 import { SidebarItem } from "widgets/Sidebar/ui/SidebarItem/SidebarItem";

@@ -1,10 +1,5 @@
 import { CountrySelect } from "entities/Country";
 import { CurrencySelect } from "entities/Currency";
-import {
-  getProfileValidateErrors,
-  Profile,
-  ValidateProfileError,
-} from "entities/Profile";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Country, Currency } from "shared/const/common";
@@ -14,6 +9,8 @@ import { Input } from "shared/ui/Input/Input";
 import { Loader } from "shared/ui/Loader/Loader";
 import { Text, TextAlign, TextTheme } from "shared/ui/Text/Text";
 import AvatarImg from "../../../../shared/assets/avatar.jpg";
+import { getProfileValidateErrors } from "../../model/selectors/getProfileValidateErrors/getProfileValidateErrors";
+import { Profile, ValidateProfileError } from "../../model/types/profile";
 import cls from "./ProfileCard.module.scss";
 
 interface ProfileCardProps {

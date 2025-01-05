@@ -11,10 +11,10 @@ import {
   ArticleType,
   ArticleView,
 } from "entities/Article";
-import { ArticlesPageSchema } from "pages/ArticlesPage";
 import { ARTICLES_VIEW_LOCALSTORAGE_KEY } from "shared/const/localstorage";
 import { SortOrder } from "shared/types";
 import { fetchArticlesList } from "../../model/services/fetchArticlesList/fetchArticlesList";
+import { ArticlesPageSchema } from "../types/articlesPageSchema";
 
 const articlesAdapter = createEntityAdapter<Article, string>({
   selectId: (article) => article.id,

@@ -1,5 +1,5 @@
 .BIG {
-  & .ArticleList__container {
+  & .ArticleList {
     width: 100%;
     /* stylelint-disable */
     @media (max-width: 480px) {
@@ -13,27 +13,17 @@
 }
 
 .SMALL {
-  min-height: 101vh;
+  min-height: 105vh;
 
-  & .ArticleList__container {
-    // display: grid;
-    // grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    // gap: 16px;
-    // padding: 16px;
-    // justify-content: start;
-    // justify-items: center;
+  &.ArticleList {
     display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    min-height: 600px;
-    margin-left: 100px;
+    align-content: flex-start;
     /* stylelint-disable */
     @media (max-width: 480px) {
       margin-left: 0px;
-      justify-content: center;
+      //   justify-content: center;
     }
     /* stylelint-enable */
-
     .card {
       /* stylelint-disable */
       @media (max-width: 575.9px) {

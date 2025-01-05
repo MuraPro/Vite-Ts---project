@@ -1,5 +1,5 @@
 import { Comment } from "entities/Comment";
-import { fetchCommentsByArticleId } from "pages/ArticleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId";
+import { fetchCommentsByArticleId } from "../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId";
 import { articleDetailsCommentsReducer } from "./articleDetailsCommentsSlice";
 
 describe("articleDetailsCommentsSlice", () => {

@@ -106,12 +106,12 @@
     },
     {
       "id": "2",
-      "title": "Топ обучающих программ",
+      "title": "тестовый программ",
       "subtitle": "Всегда полезно определить точку, в которой находишься, чтобы построить дальнейший путь. При изучении иностранного языка это тоже важно.",
       "img": "https://vite-ts-project.onrender.com/static/1B.jpg",
       "views": 976,
       "createdAt": "10.08.2023",
-      "userId": "1",
+      "userId": "2",
       "type": ["IT"],
       "blocks": [
         {
@@ -2269,6 +2269,36 @@
       "userId": "1",
       "text": "рпарпарпа",
       "id": "4U06lOn"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "привет",
+      "id": "6RRu3Nb"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "апапав",
+      "id": "zJhsgRr"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "ононон",
+      "id": "2ovX8BY"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "мавмчвасм",
+      "id": "-Etd6Yv"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "ура",
+      "id": "ubxZMJx"
     }
   ],
   "users": [

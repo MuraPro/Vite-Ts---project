@@ -5,10 +5,18 @@
   height: 100%;
 }
 
-.ArticleDetailsPage__btn {
-  margin-bottom: 20px;
-}
-
 .commentTitle {
   margin: 20px 0;
+}
+
+.recommendations {
+  margin-top: 20px;
+  display: flex; /* Убедитесь, что блок с дочерними элементами использует flex */
+  flex-wrap: nowrap; /* Запрещаем перенос элементов на новую строку */
+  overflow-y: hidden; /* Отключаем вертикальную прокрутку */
+  overflow-x: auto; /* Включаем горизонтальную прокрутку */
+  min-height: 350px;
+  padding: 5px;
+  white-space: nowrap;
+  gap: 20px;
 }

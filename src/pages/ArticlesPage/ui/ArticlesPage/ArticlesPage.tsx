@@ -85,7 +85,12 @@ const ArticlesPage = (props: ArticlesPageProps) => {
       >
         <div className="_container">
           <ArticlesPageFilters />
-          <ArticleList isLoading={isLoading} view={view} articles={articles} />
+          <ArticleList
+            isLoading={isLoading}
+            view={view}
+            articles={articles}
+            className={cls.ArticleList}
+          />
         </div>
       </Page>
     </DynamicModuleLoader>

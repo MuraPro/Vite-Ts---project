@@ -5,6 +5,7 @@ import eslintConfigPrettier from "eslint-config-prettier";
 import i18next from "eslint-plugin-i18next";
 import importPlugin from "eslint-plugin-import";
 import jestPlugin from "eslint-plugin-jest";
+import muraProPlugin from "eslint-plugin-mura-pro-plugin";
 import prettier from "eslint-plugin-prettier";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
@@ -71,6 +72,7 @@ export default [
     },
     plugins: {
       "@typescript-eslint": tsPlugin,
+      "mura-pro-plugin": muraProPlugin,
       import: importPlugin,
       prettier,
       "react-hooks": reactHooks,
@@ -105,6 +107,7 @@ export default [
       "jest/prefer-to-have-length": "warn",
       "jest/valid-expect": "error",
       "no-undef": "off",
+      "mura-pro-plugin/import-checker": "error",
     },
   },
   {
@@ -117,6 +120,7 @@ export default [
     plugins: {
       react,
       import: importPlugin,
+      "mura-pro-plugin": muraProPlugin,
       prettier,
       "react-hooks": reactHooks,
       i18next,
@@ -164,6 +168,7 @@ export default [
       "jest/prefer-to-have-length": "warn",
       "jest/valid-expect": "error",
       "no-undef": "off",
+      "mura-pro-plugin/import-checker": "error",
     },
   },
   {

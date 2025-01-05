@@ -54,3 +54,13 @@
     font: var(--font-m);
   }
 }
+
+.inverted {
+  .title {
+    color: var(--primary-color);
+  }
+
+  .text {
+    color: var(--secondary-color);
+  }
+}

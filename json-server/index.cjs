@@ -476,7 +476,6 @@ server.listen(8000, () => {
 // // Эндпоинт для получения профиля по id (GET /profile/:id)
 // server.get("/profile/:id", (req, res) => {
 //   const profileId = req.params.id; // Получаем id профиля из параметров URL
-//   console.log("Received profileId:", profileId); // Логируем полученный id
 
 //   let db;
 //   try {
@@ -489,8 +488,6 @@ server.listen(8000, () => {
 //     return res.status(500).json({ message: "Internal server error" });
 //   }
 
-//   console.log("Database content:", db); // Логируем содержимое базы данных
-
 //   const { profile } = db;
 
 //   if (!profile) {
@@ -501,8 +498,6 @@ server.listen(8000, () => {
 
 //   // Находим профиль в массиве по id
 //   const foundProfile = profile.find((p) => p.id === profileId);
-
-//   console.log("Found profile:", foundProfile); // Логируем найденный профиль
 
 //   if (foundProfile) {
 //     return res.json(foundProfile); // Возвращаем профиль
@@ -564,147 +559,50 @@ server.listen(8000, () => {
 //   return res.json(updatedProfile); // Возвращаем обновленный профиль
 // });
 
-// // Эндпоинт для получения всех статей (GET /articles)
-// // server.get("/articles", (req, res) => {
-// //   const { _expand, _limit, _page } = req.query;
-// //   const page = Number(_page) || 1;
-// //   const limit = Number(_limit) || 4;
-
-// //   try {
-// //     const db = JSON.parse(
-// //       fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
-// //     );
-// //     const { articles, users } = db;
-
-// //     if (!articles) {
-// //       return res
-// //         .status(500)
-// //         .json({ message: "Articles data is missing in db.json" });
-// //     }
-
-// //     // Фильтрация и расширение статей
-// //     const expandedArticles = articles.map((article) => {
-// //       if (_expand === "user") {
-// //         const user = users.find((u) => u.id === article.userId);
-// //         return { ...article, user };
-// //       }
-// //       return article;
-// //     });
-
-// //     // Пагинация
-// //     const startIndex = (page - 1) * limit;
-// //     const paginatedArticles = expandedArticles.slice(
-// //       startIndex,
-// //       startIndex + limit,
-// //     );
-
-// //     return res.json(paginatedArticles);
-// //   } catch (e) {
-// //     console.error("Error fetching articles:", e);
-// //     return res.status(500).json({ message: "Internal server error" });
-// //   }
-// // });
-// // server.get("/articles", (req, res) => {
-// //   const { _expand, _limit, _page, _sort, _order, q, type } = req.query;
-
-// //   // Параметры с дефолтными значениями
-// //   const page = Math.max(Number(_page) || 1, 1);
-// //   const limit = Math.max(Number(_limit) || 4, 1);
-// //   const sort = ["title", "date", "views", "id"].includes(_sort) ? _sort : "id"; // Безопасное значение
-// //   const order = _order === "desc" ? -1 : 1; // По умолчанию "asc"
-// //   const searchQuery = q ? q.toLowerCase() : null;
-// //   const articleType = type && type !== "ALL" ? type : null;
-
-// //   try {
-// //     // Загрузка базы данных
-// //     const db = JSON.parse(
-// //       fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
-// //     );
-
-// //     const { articles = [], users = [] } = db;
-
-// //     if (!articles.length) {
-// //       return res
-// //         .status(404)
-// //         .json({ message: "Articles data is missing in db.json" });
-// //     }
-
-// //     // Фильтрация статей
-// //     let filteredArticles = articles;
-
-// //     if (articleType) {
-// //       filteredArticles = filteredArticles.filter(
-// //         (article) => article.type === articleType,
-// //       );
-// //     }
-
-// //     if (searchQuery) {
-// //       filteredArticles = filteredArticles.filter(
-// //         (article) =>
-// //           article.title.toLowerCase().includes(searchQuery) ||
-// //           article.content.toLowerCase().includes(searchQuery),
-// //       );
-// //     }
-
-// //     // Сортировка
-// //     filteredArticles = filteredArticles.sort((a, b) => {
-// //       if (a[sort] < b[sort]) return -order;
-// //       if (a[sort] > b[sort]) return order;
-// //       return 0;
-// //     });
-
-// //     // Расширение статей
-// //     const expandedArticles = filteredArticles.map((article) => {
-// //       if (_expand === "user") {
-// //         const user = users.find((u) => u.id === article.userId);
-// //         return { ...article, user };
-// //       }
-// //       return article;
-// //     });
-
-// //     // Пагинация
-// //     const startIndex = (page - 1) * limit;
-// //     const paginatedArticles = expandedArticles.slice(
-// //       startIndex,
-// //       startIndex + limit,
-// //     );
-
-// //     // Ответ
-// //     return res.json({
-// //       total: filteredArticles.length,
-// //       page,
-// //       limit,
-// //       data: paginatedArticles,
-// //     });
-// //   } catch (e) {
-// //     console.error("Error fetching articles:", e.message);
-// //     return res.status(500).json({ message: "Internal server error" });
-// //   }
-// // });
-
-// // Эндпоинт для получения статьи по ID (GET /articles/:id)
 // server.get("/articles/:id", (req, res) => {
-//   const articleId = req.params.id;
+//   const { id } = req.params;
+//   const { _expand } = req.query;
 
 //   try {
+//     // Читаем данные из db.json
 //     const db = JSON.parse(
 //       fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
 //     );
-//     const { articles } = db;
 
-//     if (!articles) {
-//       return res
-//         .status(500)
-//         .json({ message: "Articles data is missing in db.json" });
-//     }
+//     const { articles, users } = db;
 
-//     const article = articles.find((a) => a.id === articleId);
+//     // Находим статью по ID
+//     const article = articles.find((article) => article.id === id);
 
 //     if (!article) {
 //       return res.status(404).json({ message: "Article not found" });
 //     }
 
-//     return res.json(article); // Возвращаем найденную статью
+//     // Если нужно, добавляем информацию о пользователе
+//     if (_expand === "user") {
+//       const user = users.find((user) => user.id === article.userId);
+//       article.user = user || null;
+//     }
+
+//     // Обрабатываем блоки статьи
+//     article.blocks = article.blocks.map((block) => {
+//       if (block.type === "TEXT") {
+//         return {
+//           ...block,
+//           content: block.paragraphs.join(" "), // Объединяем параграфы в строку
+//         };
+//       }
+//       if (block.type === "IMAGE") {
+//         return {
+//           ...block,
+//           src: block.src, // Добавляем путь к изображению
+//         };
+//       }
+//       return block;
+//     });
+
+//     // Возвращаем статью
+//     return res.json(article);
 //   } catch (e) {
 //     console.error("Error fetching article by ID:", e);
 //     return res.status(500).json({ message: "Internal server error" });
@@ -818,6 +716,39 @@ server.listen(8000, () => {
 //     console.error("Error fetching articles:", e);
 //     return res.status(500).json({ message: "Internal server error" });
 //   }
+// });
+
+// server.get("/comments", (req, res) => {
+//   const { articleId, _expand } = req.query;
+
+//   // Чтение данных из db.json
+//   const db = JSON.parse(
+//     fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
+//   );
+
+//   const { comments, users } = db;
+
+//   if (!articleId) {
+//     return res.status(400).json({ error: "articleId is required" });
+//   }
+
+//   // Фильтрация комментариев по articleId
+//   let commentsById = comments.filter(
+//     (comment) => comment.articleId === articleId,
+//   );
+
+//   if (_expand === "user") {
+//     // Для каждого комментария добавляем информацию о пользователе
+//     commentsById = commentsById.map((comment) => {
+//       const user = users.find((user) => user.id === comment.userId);
+//       return {
+//         ...comment,
+//         user: user || {}, // Если пользователь не найден, оставляем пустой объект
+//       };
+//     });
+//   }
+
+//   return res.json(commentsById);
 // });
 
 // // Эндпоинт для обновления статьи по ID (PUT /articles/:id)

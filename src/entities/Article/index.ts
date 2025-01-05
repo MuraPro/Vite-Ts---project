@@ -12,3 +12,4 @@ export {
   ArticleSortField,
   ArticleType,
 } from "./model/types/article";
+export { getArticleDetailsData } from "./model/selectors/articleDetails";

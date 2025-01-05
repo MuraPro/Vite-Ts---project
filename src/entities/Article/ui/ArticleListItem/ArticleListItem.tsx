@@ -1,9 +1,10 @@
-import { memo, useCallback } from "react";
+import { memo, useCallback, HTMLAttributeAnchorTarget } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import EyeIcon from "shared/assets/icons/eye-20-20.svg";
 import { RoutePath } from "shared/config/routeConfig/routeConfig";
 import { classNames } from "shared/lib/classNames/classNames";
+import { AppLink } from "shared/ui/AppLink/AppLink";
 import { Avatar } from "shared/ui/Avatar/Avatar";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import { Card, CardTheme } from "shared/ui/Card/Card";
@@ -23,10 +24,11 @@ interface ArticleListItemProps {
   className?: string;
   article: Article;
   view: ArticleView;
+  target?: HTMLAttributeAnchorTarget;
 }
 
 export const ArticleListItem = memo((props: ArticleListItemProps) => {
-  const { className, article, view } = props;
+  const { className, article, view, target } = props;
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -102,13 +104,18 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
             />
           )}
           <div className={cls.article__footer}>
-            <Button
-              onClick={onOpenArticle}
-              theme={ButtonTheme.PRIMARY}
-              className={cls.article__btn}
+            <AppLink
+              target={target}
+              to={RoutePath.article_details + article.id}
             >
-              {t("Читать далее...")}
-            </Button>
+              <Button
+                onClick={onOpenArticle}
+                theme={ButtonTheme.PRIMARY}
+                className={cls.article__btn}
+              >
+                {t("Читать далее...")}
+              </Button>
+            </AppLink>
             {views}
           </div>
         </Card>
@@ -117,7 +124,9 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
   }
 
   return (
-    <div
+    <AppLink
+      target={target}
+      to={RoutePath.article_details + article.id}
       className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}
     >
       <Card
@@ -144,6 +153,6 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
           className={cls.article__title}
         />
       </Card>
-    </div>
+    </AppLink>
   );
 });

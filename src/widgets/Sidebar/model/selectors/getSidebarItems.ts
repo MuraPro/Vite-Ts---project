@@ -3,6 +3,7 @@ import { getUserAuthData } from "entities/User";
 import { FaHome } from "react-icons/fa";
 import { HiInformationCircle } from "react-icons/hi";
 import { ImProfile } from "react-icons/im";
+import { IoIosCreate } from "react-icons/io";
 import { RiArticleFill } from "react-icons/ri";
 // import AboutIcon from "shared/assets/icons/about-20-20.svg";
 // import ArticleIcon from "shared/assets/icons/article-20-20.svg";
@@ -41,6 +42,13 @@ export const getSidebarItems = createSelector(getUserAuthData, (userData) => {
         // Icon: ArticleIcon,
         Icon: RiArticleFill,
         text: "Статьи",
+        authOnly: true,
+      },
+      {
+        path: RoutePath.article_create,
+        // Icon: ArticleIcon,
+        Icon: IoIosCreate,
+        text: "Создать статью",
         authOnly: true,
       },
     );

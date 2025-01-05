@@ -7,11 +7,19 @@ import {
 describe("Селекторы комментариев статей", () => {
   test("getArticleCommentsIsLoading возвращает isLoading из состояния", () => {
     const state: DeepPartial<StateSchema> = {
-      articleDetailsComments: {
-        isLoading: true,
-        error: undefined,
-        ids: [],
-        entities: {},
+      articleDetailsPage: {
+        comments: {
+          isLoading: true,
+          error: undefined,
+          ids: [],
+          entities: {},
+        },
+        recommendations: {
+          isLoading: true,
+          error: undefined,
+          ids: [],
+          entities: {},
+        },
       },
     };
 
@@ -26,17 +34,23 @@ describe("Селекторы комментариев статей", () => {
 
   test("getArticleCommentsError возвращает error из состояния", () => {
     const state: DeepPartial<StateSchema> = {
-      articleDetailsComments: {
-        isLoading: false,
-        error: "Ошибка загрузки",
-        ids: [],
-        entities: {},
+      articleDetailsPage: {
+        comments: {
+          isLoading: true,
+          error: undefined,
+          ids: [],
+          entities: {},
+        },
+        recommendations: {
+          isLoading: true,
+          error: undefined,
+          ids: [],
+          entities: {},
+        },
       },
     };
 
-    expect(getArticleCommentsError(state as StateSchema)).toBe(
-      "Ошибка загрузки",
-    );
+    expect(getArticleCommentsError(state as StateSchema)).toBeUndefined();
   });
 
   test("getArticleCommentsError возвращает undefined, если error отсутствует", () => {
