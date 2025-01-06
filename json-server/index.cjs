@@ -157,7 +157,6 @@ server.put("/profile/:id", (req, res) => {
   return res.json(updatedProfile); // Возвращаем обновленный профиль
 });
 
-// Эндпоинт для получения всех статей (GET /articles)
 server.get("/articles", (req, res) => {
   const { _expand, _limit, _page, _sort, _order, q, type } = req.query;
 
