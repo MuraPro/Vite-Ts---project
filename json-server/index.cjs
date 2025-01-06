@@ -8,7 +8,9 @@ const multer = require("multer");
 const server = jsonServer.create();
 const router = jsonServer.router(path.resolve(__dirname, "db.json"));
 const upload = multer({ dest: "uploads/" }); // Директория для хранения файлов
-
+// Использование дефолтных middleware от json-server
+server.use(jsonServer.defaults({}));
+server.use(jsonServer.bodyParser);
 const express = require("express");
 
 // Путь к папке с файлами
@@ -33,13 +35,8 @@ const corsOptions = {
   methods: ["GET", "POST", "PUT", "DELETE"], // Разрешенные HTTP методы
   allowedHeaders: ["Content-Type", "Authorization"], // Разрешенные заголовки
 };
-
 // Настройка CORS с указанными опциями
 server.use(cors(corsOptions));
-
-// Использование дефолтных middleware от json-server
-server.use(jsonServer.defaults({}));
-server.use(jsonServer.bodyParser);
 
 // Эндпоинт для логина
 server.post("/login", (req, res) => {
@@ -66,7 +63,6 @@ server.post("/login", (req, res) => {
 });
 
 // Эндпоинт для получения профиля по id (GET /profile/:id)
-
 server.get("/profile/:id", (req, res) => {
   const profileId = req.params.id; // Получаем id профиля из параметров URL
   console.log("Received profileId:", profileId); // Логируем полученный id
@@ -266,29 +262,50 @@ server.get("/articles", (req, res) => {
   }
 });
 
-// Эндпоинт для получения статьи по ID (GET /articles/:id)
 server.get("/articles/:id", (req, res) => {
-  const articleId = req.params.id;
+  const { id } = req.params;
+  const { _expand } = req.query;
 
   try {
+    // Читаем данные из db.json
     const db = JSON.parse(
       fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
     );
-    const { articles } = db;
 
-    if (!articles) {
-      return res
-        .status(500)
-        .json({ message: "Articles data is missing in db.json" });
-    }
+    const { articles, users } = db;
 
-    const article = articles.find((a) => a.id === articleId);
+    // Находим статью по ID
+    const article = articles.find((article) => article.id === id);
 
     if (!article) {
       return res.status(404).json({ message: "Article not found" });
     }
 
-    return res.json(article); // Возвращаем найденную статью
+    // Если нужно, добавляем информацию о пользователе
+    if (_expand === "user") {
+      const user = users.find((user) => user.id === article.userId);
+      article.user = user || null;
+    }
+
+    // Обрабатываем блоки статьи
+    article.blocks = article.blocks.map((block) => {
+      if (block.type === "TEXT") {
+        return {
+          ...block,
+          content: block.paragraphs.join(" "), // Объединяем параграфы в строку
+        };
+      }
+      if (block.type === "IMAGE") {
+        return {
+          ...block,
+          src: block.src, // Добавляем путь к изображению
+        };
+      }
+      return block;
+    });
+
+    // Возвращаем статью
+    return res.json(article);
   } catch (e) {
     console.error("Error fetching article by ID:", e);
     return res.status(500).json({ message: "Internal server error" });
@@ -402,6 +419,39 @@ server.delete("/articles/:id", (req, res) => {
     console.error("Error deleting article:", e);
     return res.status(500).json({ message: "Internal server error" });
   }
+});
+
+server.get("/comments", (req, res) => {
+  const { articleId, _expand } = req.query;
+
+  // Чтение данных из db.json
+  const db = JSON.parse(
+    fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
+  );
+
+  const { comments, users } = db;
+
+  if (!articleId) {
+    return res.status(400).json({ error: "articleId is required" });
+  }
+
+  // Фильтрация комментариев по articleId
+  let commentsById = comments.filter(
+    (comment) => comment.articleId === articleId,
+  );
+
+  if (_expand === "user") {
+    // Для каждого комментария добавляем информацию о пользователе
+    commentsById = commentsById.map((comment) => {
+      const user = users.find((user) => user.id === comment.userId);
+      return {
+        ...comment,
+        user: user || {}, // Если пользователь не найден, оставляем пустой объект
+      };
+    });
+  }
+
+  return res.json(commentsById);
 });
 
 // Проверка авторизации
