@@ -1,11 +1,13 @@
 import { getArticleDetailsData } from "entities/Article/model/selectors/articleDetails";
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
+import { IoMdSkipBackward } from "react-icons/io";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { RoutePath } from "shared/config/routeConfig/routeConfig";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
+import { HStack } from "shared/ui/Stack";
 import { getCanEditArticle } from "../../model/selectors/article";
 import cls from "./ArticleDetailsPageHeader.module.scss";
 
@@ -30,7 +32,9 @@ export const ArticleDetailsPageHeader = memo(
     }, [article?.id, navigate]);
 
     return (
-      <div
+      <HStack
+        justify={"between"}
+        max
         className={classNames(cls.ArticleDetailsPageHeader, {}, [className])}
       >
         <Button
@@ -38,7 +42,7 @@ export const ArticleDetailsPageHeader = memo(
           onClick={onBackToList}
           className={cls.ArticleDetailsPage__btn}
         >
-          {t("Назад к списку")}
+          <IoMdSkipBackward />
         </Button>
         {canEdit && (
           <Button
@@ -49,7 +53,7 @@ export const ArticleDetailsPageHeader = memo(
             {t("Редактировать")}
           </Button>
         )}
-      </div>
+      </HStack>
     );
   },
 );

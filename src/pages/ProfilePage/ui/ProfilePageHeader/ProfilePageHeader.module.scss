@@ -1,10 +1,6 @@
 .profile__header {
-  display: flex;
   min-height: 80px;
-  justify-content: space-between;
-  align-items: center;
   padding: 0 10px;
-  margin-bottom: 20px;
   /* stylelint-disable */
   @media (max-width: 480px) {
     flex-direction: column;
@@ -58,23 +54,6 @@
         transform: translateY(0);
       }
     }
-  }
-
-  &-panel {
-    display: flex;
-    align-items: center;
-
-    &:last-child {
-      margin-left: 10px;
-    }
-
-    /* stylelint-disable */
-    @media (max-width: 480px) {
-      &:last-child {
-        margin-left: 0px;
-      }
-    }
-    /* stylelint-enable */
   }
 }
 

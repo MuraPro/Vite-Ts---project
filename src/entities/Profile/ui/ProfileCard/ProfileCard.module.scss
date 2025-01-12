@@ -1,18 +1,10 @@
 .card {
-  width: 70%;
-  margin: 0 auto;
-  padding: 25px;
-  border-radius: 12px;
+  min-height: 100vh;
   /* stylelint-disable */
-  @media (max-width: 767.9px) {
-    width: 80%;
-  }
   @media (max-width: 480px) {
-    width: 100%;
     padding: 15px;
   }
   /* stylelint-enable */
-
   &__header {
     font-size: 24px;
     font-weight: bold;
@@ -95,17 +87,7 @@
   }
 
   &__avatar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     margin-bottom: 40px;
-  }
-
-  &.loading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
   }
 
   &.error {

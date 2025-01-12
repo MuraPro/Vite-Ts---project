@@ -20,6 +20,7 @@ import {
 } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
+import { VStack } from "shared/ui/Stack";
 import { Page } from "widgets/Page";
 import cls from "./ProfilePage.module.scss";
 import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader";
@@ -103,7 +104,6 @@ const ProfilePage = memo(({ className }: ProfilePageProps) => {
     },
     [dispatch],
   );
-
   const onChangeLastname = useCallback(
     (value?: string) => {
       dispatch(profileActions.updateProfile({ lastname: value || "" }));
@@ -116,35 +116,30 @@ const ProfilePage = memo(({ className }: ProfilePageProps) => {
     },
     [dispatch],
   );
-
   const onChangeCity = useCallback(
     (value?: string) => {
       dispatch(profileActions.updateProfile({ city: value || "" }));
     },
     [dispatch],
   );
-
   const onChangeAge = useCallback(
     (value?: string) => {
       dispatch(profileActions.updateProfile({ age: value || "" }));
     },
     [dispatch],
   );
-
   const onChangeUsername = useCallback(
     (value?: string) => {
       dispatch(profileActions.updateProfile({ username: value || "" }));
     },
     [dispatch],
   );
-
   const onChangeAvatar = useCallback(
     (value?: string) => {
       dispatch(profileActions.updateProfile({ avatar: value || "" }));
     },
     [dispatch],
   );
-
   const onChangeCurrency = useCallback(
     (currency: Currency) => {
       dispatch(profileActions.updateProfile({ currency }));
@@ -163,23 +158,25 @@ const ProfilePage = memo(({ className }: ProfilePageProps) => {
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       <Page className={classNames(cls.profile__section, {}, [className])}>
         <div className="_container">
-          <ProfilePageHeader isLoading={isLoading} isValid={isValid} />
-          <ProfileCard
-            data={formData}
-            isLoading={isLoading}
-            error={error}
-            readonly={readonly}
-            validData={errors}
-            onChangeFirstname={onChangeFirstname}
-            onChangeLastname={onChangeLastname}
-            onChangeAge={onChangeAge}
-            onChangeCity={onChangeCity}
-            onChangeUsername={onChangeUsername}
-            onChangeAvatar={onChangeAvatar}
-            onChangeCurrency={onChangeCurrency}
-            onChangeCountry={onChangeCountry}
-            onChangeEmail={onChangeEmail}
-          />
+          <VStack gap={"16"} max>
+            <ProfilePageHeader isLoading={isLoading} isValid={isValid} />
+            <ProfileCard
+              data={formData}
+              isLoading={isLoading}
+              error={error}
+              readonly={readonly}
+              validData={errors}
+              onChangeFirstname={onChangeFirstname}
+              onChangeLastname={onChangeLastname}
+              onChangeAge={onChangeAge}
+              onChangeCity={onChangeCity}
+              onChangeUsername={onChangeUsername}
+              onChangeAvatar={onChangeAvatar}
+              onChangeCurrency={onChangeCurrency}
+              onChangeCountry={onChangeCountry}
+              onChangeEmail={onChangeEmail}
+            />
+          </VStack>
         </div>
       </Page>
     </DynamicModuleLoader>

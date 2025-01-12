@@ -40,8 +40,6 @@
 
   &__list {
     margin-top: var(--header-height);
-    display: flex;
-    flex-direction: column;
   }
 
   &.collapsed {

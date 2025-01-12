@@ -23,9 +23,11 @@
     "test": "jest",
     "sb": "storybook dev -p 6006",
     "sb:build": "storybook build",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "generate:slice": "node ./scripts/createSlice/index.js"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.0",
     "@loki/runner": "^0.35.0",
     "@reduxjs/toolkit": "^2.3.0",
     "@storybook/testing-library": "^0.2.2",

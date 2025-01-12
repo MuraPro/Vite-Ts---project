@@ -48,7 +48,7 @@ const article: Article = {
     {
       id: "2",
       type: ArticleBlockType.IMAGE,
-      src: "../../../../shared/assets/kr/1A.webp",
+      src: "../../../../../src/shared/assets/kr/1A.webp",
       title:
         "На сегодняшний день существует два уровня теста: TOPIK I и TOPIK II.",
       text1:

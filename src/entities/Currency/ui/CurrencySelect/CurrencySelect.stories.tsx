@@ -1,43 +1,65 @@
+import { Meta, StoryObj } from "@storybook/react";
 import { Theme } from "app/providers/ThemeProvider";
+import { useState } from "react";
 import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator/ThemeDecorator";
+import { Currency } from "../../model/types/currency";
 import { CurrencySelect } from "./CurrencySelect";
-import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof CurrencySelect> = {
   title: "entities/CurrencySelect",
   component: CurrencySelect,
   parameters: {
-    docs: {
-      description: {
-        component: "Компонент CurrencySelect",
+    layout: "centered",
+  },
+  argTypes: {
+    value: {
+      control: {
+        type: "radio",
+        options: [Currency.RUB, Currency.EUR, Currency.USD, Currency.KRW],
       },
     },
-    layout: "fullscreen",
   },
-  tags: ["autodocs"],
-  argTypes: {},
-  args: {},
-  decorators: [
-    (Story) => (
-      <div
-        style={{
-          padding: "20px",
-        }}
-      >
-        <Story />
-      </div>
-    ),
-  ],
 };
 
 export default meta;
-type Story = StoryObj<typeof CurrencySelect>;
 
-export const Light: Story = {
-  args: {},
+type Story = StoryObj<typeof meta>;
+
+// Компонент для управления состоянием выбора валюты
+const CurrencySelectStory = (args: any) => {
+  const [selectedValue, setSelectedValue] = useState(args.value);
+
+  return (
+    <CurrencySelect
+      {...args}
+      value={selectedValue}
+      onChange={(newValue) => setSelectedValue(newValue)}
+    />
+  );
+};
+
+export const Default: Story = {
+  render: (args) => <CurrencySelectStory {...args} />,
+  args: {
+    label: "Укажите валюту",
+    value: Currency.USD,
+  },
+};
+
+export const LightTheme: Story = {
+  ...Default,
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
-export const Dark: Story = {
-  args: {},
+
+export const DarkTheme: Story = {
+  ...Default,
   decorators: [ThemeDecorator(Theme.DARK)],
+};
+
+export const ReadOnly: Story = {
+  render: (args) => <CurrencySelectStory {...args} />,
+  args: {
+    ...Default.args,
+    readonly: true,
+  },
 };

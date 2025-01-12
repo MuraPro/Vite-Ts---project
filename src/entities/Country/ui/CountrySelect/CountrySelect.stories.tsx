@@ -1,43 +1,72 @@
+import { Meta, StoryObj } from "@storybook/react";
 import { Theme } from "app/providers/ThemeProvider";
+import { useState } from "react";
 import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator/ThemeDecorator";
+import { Country } from "../../model/types/country";
 import { CountrySelect } from "./CountrySelect";
-import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof CountrySelect> = {
   title: "entities/CountrySelect",
   component: CountrySelect,
   parameters: {
-    docs: {
-      description: {
-        component: "Компонент CountrySelect",
+    layout: "centered",
+  },
+  argTypes: {
+    value: {
+      control: {
+        type: "radio",
+        options: [
+          Country.Russia,
+          Country.USA,
+          Country.Korea,
+          Country.Uzbekistan,
+          Country.Thailand,
+          Country.Kazakhstan,
+        ],
       },
     },
-    layout: "fullscreen",
   },
-  tags: ["autodocs"],
-  argTypes: {},
-  args: {},
-  decorators: [
-    (Story) => (
-      <div
-        style={{
-          padding: "20px",
-        }}
-      >
-        <Story />
-      </div>
-    ),
-  ],
 };
 
 export default meta;
-type Story = StoryObj<typeof CountrySelect>;
 
-export const Light: Story = {
-  args: {},
+type Story = StoryObj<typeof meta>;
+
+// Component for managing selected country state
+const CountrySelectStory = (args: any) => {
+  const [selectedValue, setSelectedValue] = useState(args.value);
+
+  return (
+    <CountrySelect
+      {...args}
+      value={selectedValue}
+      onChange={(newValue) => setSelectedValue(newValue)}
+    />
+  );
+};
+
+export const Default: Story = {
+  render: (args) => <CountrySelectStory {...args} />,
+  args: {
+    label: "Укажите страну",
+    value: Country.Russia,
+  },
+};
+
+export const LightTheme: Story = {
+  ...Default,
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
-export const Dark: Story = {
-  args: {},
+
+export const DarkTheme: Story = {
+  ...Default,
   decorators: [ThemeDecorator(Theme.DARK)],
+};
+
+export const ReadOnly: Story = {
+  render: (args) => <CountrySelectStory {...args} />,
+  args: {
+    ...Default.args,
+    readonly: true,
+  },
 };

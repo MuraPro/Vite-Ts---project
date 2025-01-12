@@ -15,6 +15,7 @@ import { useSelector } from "react-redux";
 import { classNames } from "shared/lib/classNames/classNames";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
+import { HStack } from "shared/ui/Stack";
 import { Text } from "shared/ui/Text/Text";
 import cls from "./ProfilePageHeader.module.scss";
 
@@ -52,7 +53,11 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
   }
 
   return (
-    <div className={classNames(cls.profile__header, {}, [className])}>
+    <HStack
+      justify={"between"}
+      max
+      className={classNames(cls.profile__header, {}, [className])}
+    >
       <Text
         title={t("Профиль")}
         className={cls["profile__header-title"]}
@@ -60,20 +65,23 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
         personalClassTitle={cls["profile__header-box"]}
       />
       {canEdit && (
-        <div className={cls.btnsWrapper}>
+        <>
           {readonly ? (
-            <div className={cls["profile__header-panel"]}>
-              <Button
-                className={cls["profile__header-btn"]}
-                theme={ButtonTheme.PRIMARY}
-                onClick={onEdit}
-              >
-                <GrEdit className={cls.edit__icon} size={20} />
-                {t("Редактировать")}
-              </Button>
-            </div>
+            <Button
+              className={cls["profile__header-btn"]}
+              theme={ButtonTheme.PRIMARY}
+              onClick={onEdit}
+            >
+              <GrEdit className={cls.edit__icon} size={20} />
+              {t("Редактировать")}
+            </Button>
           ) : (
-            <div className={cls["profile__header-panel"]}>
+            <HStack
+              gap={"8"}
+              justify={"between"}
+              align={"center"}
+              className={cls["profile__header-panel"]}
+            >
               <Button
                 className={cls["profile__header-btn"]}
                 theme={ButtonTheme.PRIMARY}
@@ -91,10 +99,10 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
                 <VscSaveAs className={cls.edit__icon} size={25} />
                 {t("Сохранить")}
               </Button>
-            </div>
+            </HStack>
           )}
-        </div>
+        </>
       )}
-    </div>
+    </HStack>
   );
 };

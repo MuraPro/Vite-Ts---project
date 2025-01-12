@@ -100,7 +100,23 @@ export default [
       "prettier/prettier": ["error"],
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
-      "i18next/no-literal-string": ["error", { markupOnly: true }],
+      "i18next/no-literal-string": [
+        "error",
+        {
+          markupOnly: true,
+          ignoreAttribute: [
+            "as",
+            "role",
+            "data-testid",
+            "to",
+            "target",
+            "justify",
+            "align",
+            "direction",
+            "gap",
+          ],
+        },
+      ],
       "jest/no-disabled-tests": "warn",
       "jest/no-focused-tests": "error",
       "jest/no-identical-title": "error",
@@ -161,7 +177,23 @@ export default [
       "prettier/prettier": ["error"],
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "error",
-      "i18next/no-literal-string": ["error", { markupOnly: true }],
+      "i18next/no-literal-string": [
+        "error",
+        {
+          markupOnly: true,
+          ignoreAttribute: [
+            "as",
+            "role",
+            "data-testid",
+            "to",
+            "target",
+            "justify",
+            "align",
+            "direction",
+            "gap",
+          ],
+        },
+      ],
       "jest/no-disabled-tests": "warn",
       "jest/no-focused-tests": "error",
       "jest/no-identical-title": "error",
@@ -180,7 +212,6 @@ export default [
     ],
     rules: {
       "no-undef": "off",
-      "i18next/no-literal-string": "off",
     },
   },
   {

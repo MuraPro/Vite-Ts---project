@@ -7,6 +7,7 @@ import { classNames } from "shared/lib/classNames/classNames";
 import { Avatar } from "shared/ui/Avatar/Avatar";
 import { Input } from "shared/ui/Input/Input";
 import { Loader } from "shared/ui/Loader/Loader";
+import { HStack, VStack } from "shared/ui/Stack";
 import { Text, TextAlign, TextTheme } from "shared/ui/Text/Text";
 import AvatarImg from "../../../../shared/assets/avatar.jpg";
 import { getProfileValidateErrors } from "../../model/selectors/getProfileValidateErrors/getProfileValidateErrors";
@@ -58,49 +59,64 @@ export const ProfileCard = (props: ProfileCardProps) => {
 
   if (isLoading) {
     return (
-      <div
-        className={classNames(cls.card, { [cls.loading]: true }, [className])}
+      <HStack
+        justify={"center"}
+        max
+        className={classNames(cls.card, {}, [className])}
       >
         <Loader />
-      </div>
+      </HStack>
     );
   }
 
   if (validateErrors?.length) {
     return (
-      <div className={classNames(cls.card, {}, [className, cls.error])}>
+      <HStack
+        justify={"center"}
+        max
+        className={classNames(cls.card, {}, [className, cls.error])}
+      >
         <Text
           theme={TextTheme.ERROR}
           text={validateErrorTranslates.SERVER_ERROR}
           align={TextAlign.CENTER}
         />
-      </div>
+      </HStack>
     );
   }
 
   if (error) {
     return (
-      <div className={classNames(cls.card, {}, [className, cls.error])}>
+      <HStack
+        justify={"center"}
+        max
+        className={classNames(cls.card, {}, [className, cls.error])}
+      >
         <Text
           theme={TextTheme.ERROR}
           title={t("Произошла ошибка при загрузке профиля")}
           text={t("Попробуйте обновить страницу")}
           align={TextAlign.CENTER}
         />
-      </div>
+      </HStack>
     );
   }
 
   return (
-    <div className={classNames(cls.card, {}, [className])}>
+    <VStack
+      gap={"8"}
+      align={"center"}
+      max
+      className={classNames(cls.card, {}, [className])}
+    >
       {data?.avatar ? (
-        <div className={cls.card__avatar}>
+        <HStack justify={"center"} className={cls.card__avatar}>
           <Avatar src={data?.avatar} alt={"avatar"} />
-        </div>
+        </HStack>
       ) : (
-        <div className={cls.card__avatar}>
+        <HStack justify={"center"} className={cls.card__avatar}>
           <Avatar src={AvatarImg} />
-        </div>
+        </HStack>
       )}
       <form className={cls.card__form}>
         <div className={cls.card__data}>
@@ -192,6 +208,6 @@ export const ProfileCard = (props: ProfileCardProps) => {
           />
         </div>
       </form>
-    </div>
+    </VStack>
   );
 };

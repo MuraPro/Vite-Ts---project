@@ -18,6 +18,7 @@
   &.ArticleList {
     display: flex;
     align-content: flex-start;
+    gap: 16px;
     /* stylelint-disable */
     @media (max-width: 480px) {
       margin-left: 0px;

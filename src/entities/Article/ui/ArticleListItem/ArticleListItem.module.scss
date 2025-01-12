@@ -2,6 +2,7 @@
   .article {
     &__card {
       background: var(--card-bg);
+      margin-bottom: 30px; //заглушка
     }
 
     &__views {

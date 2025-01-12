@@ -34,7 +34,14 @@ export const WithAuth: Story = {
   args: {},
   decorators: [
     StoreDecorator({
-      user: { authData: { id: "1", username: "admin" } },
+      user: {
+        authData: {
+          id: "1",
+          username: "admin",
+          avatar:
+            "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg",
+        },
+      },
     }),
     ThemeDecorator(Theme.DARK),
   ],

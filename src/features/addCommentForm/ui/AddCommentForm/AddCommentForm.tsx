@@ -9,6 +9,7 @@ import {
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import { Input } from "shared/ui/Input/Input";
+import { HStack } from "shared/ui/Stack";
 import { getAddCommentFormText } from "../../model/selectors/addCommentFormSelectors";
 import {
   addCommentFormActions,
@@ -46,7 +47,11 @@ const AddCommentForm = memo((props: AddCommentFormProps) => {
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <div className={classNames(cls.AddCommentForm, {}, [className])}>
+      <HStack
+        justify={"between"}
+        max
+        className={classNames(cls.AddCommentForm, {}, [className])}
+      >
         <Input
           className={cls.comment_input}
           placeholder={t("Введите комментарий")}
@@ -61,7 +66,7 @@ const AddCommentForm = memo((props: AddCommentFormProps) => {
         >
           {t("Оставить")}
         </Button>
-      </div>
+      </HStack>
     </DynamicModuleLoader>
   );
 });

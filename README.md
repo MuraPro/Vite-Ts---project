@@ -2923,3 +2923,30 @@ import.meta.env.VITE_API_URL || "http://localhost:8000",
 }
 ]
 }
+
+"i18next/no-literal-string": [
+"error",
+{
+markupOnly: true,
+},
+],
+
+bundlephobia.com - сайт проверки веса библиотек
+react area
+
+<CountrySelect
+label={t("Укажите страну")}
+className={cls.card\_\_select}
+value={data?.country}
+onChange={onChangeCountry}
+readonly={readonly}
+/>
+<Select
+className={classNames(cls.select, {}, [className])}
+label={label}
+options={options}
+value={value}
+onChange={onChangeHandler}
+readonly={readonly}
+name={"country"}
+/>

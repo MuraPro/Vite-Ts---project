@@ -2,16 +2,18 @@ import { useModal } from "app/providers/ModalProvider";
 import { getUserAuthData, userActions } from "entities/User";
 import { LoginModal } from "features/AuthByUsername";
 import { LangSwitcher } from "features/LangSwitcher";
+import { ThemeSwitcher } from "features/ThemeSwitcher";
 import { useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { FaSignInAlt } from "react-icons/fa";
 import { FaSignOutAlt } from "react-icons/fa";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom"; // импортируем хук useNavigate
+import { useNavigate } from "react-router-dom";
+import { RoutePath } from "shared/config/routeConfig/routeConfig";
 import { classNames } from "shared/lib/classNames/classNames";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { Avatar } from "shared/ui/Avatar/Avatar";
 import { Button, ButtonSize, ButtonTheme } from "shared/ui/Button/Button";
-import { ThemeSwitcher } from "shared/ui/ThemeSwitcher";
+import { Dropdown } from "shared/ui/Dropdown/Dropdown";
 import { getSidebarItems } from "widgets/Sidebar/model/selectors/getSidebarItems";
 import { SidebarItem } from "widgets/Sidebar/ui/SidebarItem/SidebarItem";
 import cls from "./Navbar.module.scss";
@@ -50,15 +52,22 @@ export const Navbar = ({ className }: NavbarProps) => {
   );
 
   const authButtons = authData ? (
-    <Button
-      className={cls["header__navbar-btn"]}
-      theme={ButtonTheme.CLEAR_INVERTED}
-      size={ButtonSize.S}
-      onClick={onLogout}
-    >
-      <FaSignInAlt size={15} className={cls["header__navbar-icon"]} />
-      {t("Выйти")}
-    </Button>
+    <Dropdown
+      direction="bottom left"
+      className={cls.dropdown}
+      menuPersonalClassname={cls.dropdown__title}
+      items={[
+        {
+          content: t("Профиль"),
+          href: RoutePath.profile + authData.id,
+        },
+        {
+          content: t("Выйти"),
+          onClick: onLogout,
+        },
+      ]}
+      trigger={<Avatar size={30} src={authData.avatar} />}
+    />
   ) : (
     <Button
       className={cls["header__navbar-btn"]}

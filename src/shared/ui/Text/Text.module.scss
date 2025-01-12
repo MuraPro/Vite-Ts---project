@@ -35,6 +35,16 @@
   margin-right: 3px;
 }
 
+.size_s {
+  .title {
+    font: var(--font-s);
+  }
+
+  .text {
+    font: var(--font-sm);
+  }
+}
+
 .size_m {
   .title {
     font: var(--font-m);

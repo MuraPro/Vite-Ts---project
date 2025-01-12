@@ -3,6 +3,7 @@ import { useCallback, useEffect, useMemo, useRef } from "react";
 import { useSelector } from "react-redux";
 import { classNames } from "shared/lib/classNames/classNames";
 import { BurgerButton } from "shared/ui/BurgerButton/BurgerButton";
+import { VStack } from "shared/ui/Stack";
 import { getSidebarItems } from "../../model/selectors/getSidebarItems";
 import { SidebarItem } from "../SidebarItem/SidebarItem";
 import cls from "./Sidebar.module.scss";
@@ -69,7 +70,9 @@ export const Sidebar = ({ className }: SidebarProps) => {
           toggle={"sidebar-toggle"}
         />
       </div>
-      <ul className={cls.sidebar__list}>{itemsList}</ul>
+      <VStack gap="8" className={cls.sidebar__list} list>
+        {itemsList}
+      </VStack>
     </aside>
   );
 };
