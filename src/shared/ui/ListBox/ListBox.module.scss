@@ -20,12 +20,6 @@
   width: 223px;
 }
 
-.option__icon {
-  position: absolute;
-  right: 20px;
-  top: 12px;
-}
-
 .active {
   border-radius: 10px;
 }
@@ -55,6 +49,9 @@
 }
 
 .option__icon {
+  position: absolute;
+  right: 20px;
+  top: 12px;
   opacity: 0;
   visibility: hidden;
   transition:
@@ -66,7 +63,9 @@
   opacity: 1;
   visibility: visible;
 }
+/* stylelint-enable */
 
+/* stylelint-disable */
 .item.active .option__icon {
   opacity: 1;
   visibility: visible;
