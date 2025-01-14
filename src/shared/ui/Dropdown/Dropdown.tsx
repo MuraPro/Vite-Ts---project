@@ -1,4 +1,4 @@
-import { Menu, MenuItem, MenuButton, MenuItems } from "@headlessui/react"; // Импортируем MenuItem
+import { Menu, MenuItem, MenuButton, MenuItems } from "@headlessui/react";
 import { Fragment, ReactNode } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 import { DropdownDirection } from "shared/types/ui";
@@ -52,7 +52,7 @@ export function Dropdown(props: DropdownProps) {
               type="button"
               disabled={item.disabled}
               onClick={item.onClick}
-              className={classNames(cls.item, { [cls.active]: active }, [])}
+              className={classNames(cls.item, { [cls.active]: active })}
             >
               {item.content}
             </button>
@@ -60,14 +60,23 @@ export function Dropdown(props: DropdownProps) {
 
           if (item.href) {
             return (
-              <MenuItem as={AppLink} to={item.href} disabled={item.disabled}>
+              <MenuItem
+                key={item.href}
+                as={AppLink}
+                to={item.href}
+                disabled={item.disabled}
+              >
                 {content}
               </MenuItem>
             );
           }
 
           return (
-            <MenuItem as={Fragment} disabled={item.disabled}>
+            <MenuItem
+              key={item.content?.toString() || Math.random()}
+              as={Fragment}
+              disabled={item.disabled}
+            >
               {content}
             </MenuItem>
           );

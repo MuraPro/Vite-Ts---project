@@ -1,4 +1,4 @@
-import createTemplate from "./templates/createTemplate";
+import createTemplate from "./templates/createTemplate.js";
 
 const layer = process.argv[2];
 const sliceName = process.argv[3];

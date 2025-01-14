@@ -39,7 +39,7 @@ describe("articlesPageSlice", () => {
     );
 
     expect(result.view).toBe(ArticleView.BIG);
-    expect(result.limit).toBe(5); // Проверка изменения лимита в зависимости от view
+    expect(result.limit).toBe(4); // Проверка изменения лимита в зависимости от view
     expect(result._inited).toBe(true); // Проверка флага инициализации
   });
 

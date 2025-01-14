@@ -66,7 +66,13 @@ export const Navbar = ({ className }: NavbarProps) => {
           onClick: onLogout,
         },
       ]}
-      trigger={<Avatar size={30} src={authData.avatar} />}
+      trigger={
+        <Avatar
+          size={30}
+          src={authData.avatar}
+          className={cls.dropdown__avatar}
+        />
+      }
     />
   ) : (
     <Button

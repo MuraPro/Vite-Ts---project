@@ -1,6 +1,7 @@
 import { Article } from "entities/Article"; // Подключаем типы для состояния и комментариев
 import { ArticleType } from "entities/Article/model/types/article";
 import { Comment } from "entities/Comment";
+import { rtkApi } from "shared/api/rtkApi";
 import { TestAsyncThunk } from "shared/lib/tests/TestAsyncThunk/TestAsyncThunk"; // Допустим, у вас есть этот тестовый утилитный класс для асинхронных функций.
 import { fetchCommentsByArticleId } from "../../services/fetchCommentsByArticleId/fetchCommentsByArticleId";
 import { addCommentForArticle } from "./addCommentForArticle";
@@ -34,6 +35,7 @@ describe("addCommentForArticle", () => {
 
     // Мокируем состояние
     thunk.getState = () => ({
+      [rtkApi.reducerPath]: rtkApi.reducer(undefined, { type: "" }),
       articleDetails: { data: articleData, isLoading: false }, // Статья существует
       user: { authData: { id: "1", username: "user" }, _inited: true }, // Пользователь авторизован
       counter: { value: 1 }, // Счетчик
@@ -62,6 +64,7 @@ describe("addCommentForArticle", () => {
 
     // Мокируем состояние без данных
     thunk.getState = () => ({
+      [rtkApi.reducerPath]: rtkApi.reducer(undefined, { type: "" }),
       articleDetails: { data: undefined, isLoading: false }, // Нет данных о статье
       user: { authData: { id: "", username: "" }, _inited: true }, // Нет данных о пользователе
       counter: { value: 1 }, // Счетчик
@@ -92,6 +95,7 @@ describe("addCommentForArticle", () => {
     };
 
     thunk.getState = () => ({
+      [rtkApi.reducerPath]: rtkApi.reducer(undefined, { type: "" }),
       articleDetails: { data: articleData, isLoading: false },
       user: { authData: { id: "1", username: "user" }, _inited: true }, // Пользователь авторизован
       counter: { value: 1 }, // Счетчик

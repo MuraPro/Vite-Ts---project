@@ -1,7 +1,6 @@
 import { CountrySelect } from "entities/Country";
 import { CurrencySelect } from "entities/Currency";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
 import { Country, Currency } from "shared/const/common";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Avatar } from "shared/ui/Avatar/Avatar";
@@ -10,8 +9,7 @@ import { Loader } from "shared/ui/Loader/Loader";
 import { HStack, VStack } from "shared/ui/Stack";
 import { Text, TextAlign, TextTheme } from "shared/ui/Text/Text";
 import AvatarImg from "../../../../shared/assets/avatar.jpg";
-import { getProfileValidateErrors } from "../../model/selectors/getProfileValidateErrors/getProfileValidateErrors";
-import { Profile, ValidateProfileError } from "../../model/types/profile";
+import { Profile } from "../../model/types/profile";
 import cls from "./ProfileCard.module.scss";
 
 interface ProfileCardProps {
@@ -51,11 +49,6 @@ export const ProfileCard = (props: ProfileCardProps) => {
     onChangeCurrency,
   } = props;
   const { t } = useTranslation();
-  const validateErrors = useSelector(getProfileValidateErrors);
-
-  const validateErrorTranslates = {
-    [ValidateProfileError.SERVER_ERROR]: t("Серверная ошибка при сохранении"),
-  };
 
   if (isLoading) {
     return (
@@ -65,22 +58,6 @@ export const ProfileCard = (props: ProfileCardProps) => {
         className={classNames(cls.card, {}, [className])}
       >
         <Loader />
-      </HStack>
-    );
-  }
-
-  if (validateErrors?.length) {
-    return (
-      <HStack
-        justify={"center"}
-        max
-        className={classNames(cls.card, {}, [className, cls.error])}
-      >
-        <Text
-          theme={TextTheme.ERROR}
-          text={validateErrorTranslates.SERVER_ERROR}
-          align={TextAlign.CENTER}
-        />
       </HStack>
     );
   }

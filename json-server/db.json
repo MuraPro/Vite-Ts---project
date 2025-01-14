@@ -2242,87 +2242,15 @@
     },
     {
       "articleId": "1",
-      "userId": "1",
-      "text": "fdfslfdslf;'ds;lkdsfldskfkdsfds;fsd;fksdfsdf;fkdsfsdfdsfsdfdsfdsf",
-      "id": "9dOfWRV"
-    },
-    {
-      "articleId": "1",
-      "userId": "1",
-      "text": "gfgfdgfdgfdgfdgfdgfdgfdgfdgfdgfdgfdgfdgfd",
-      "id": "yblAAQG"
-    },
-    {
-      "articleId": "1",
       "userId": "2",
-      "text": "gfgfd",
-      "id": "V1t29_u"
+      "text": "Hello world",
+      "id": "_Q1MTqW"
     },
     {
       "articleId": "1",
       "userId": "1",
-      "text": "ррипарапр",
-      "id": "C2cfrkP"
-    },
-    {
-      "articleId": "1",
-      "userId": "1",
-      "text": "рпарпарпа",
-      "id": "4U06lOn"
-    },
-    {
-      "articleId": "1",
-      "userId": "1",
-      "text": "привет",
-      "id": "6RRu3Nb"
-    },
-    {
-      "articleId": "1",
-      "userId": "1",
-      "text": "апапав",
-      "id": "zJhsgRr"
-    },
-    {
-      "articleId": "1",
-      "userId": "1",
-      "text": "ононон",
-      "id": "2ovX8BY"
-    },
-    {
-      "articleId": "1",
-      "userId": "1",
-      "text": "мавмчвасм",
-      "id": "-Etd6Yv"
-    },
-    {
-      "articleId": "1",
-      "userId": "1",
-      "text": "ура",
-      "id": "ubxZMJx"
-    },
-    {
-      "articleId": "1",
-      "userId": "1",
-      "text": "cdsdsc",
-      "id": "sVRzB9B"
-    },
-    {
-      "articleId": "1",
-      "userId": "1",
-      "text": "vfdvfd",
-      "id": "OOa_deX"
-    },
-    {
-      "articleId": "1",
-      "userId": "1",
-      "text": "vccxzvcx",
-      "id": "cgJxy8H"
-    },
-    {
-      "articleId": "1",
-      "userId": "1",
-      "text": "hmjhmjhm",
-      "id": "GIPi8Km"
+      "text": "Javascript",
+      "id": "mb_JKHN"
     }
   ],
   "users": [
@@ -2338,7 +2266,7 @@
       "username": "user",
       "password": "123",
       "role": "USER",
-      "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
+      "avatar": "https://i-enlisted.cdn.gaijin.net/original/3X/1/d/1d5c49bacaf307e34cab73cf4ae69f122130425b.jpeg"
     }
   ],
   "profile": [
@@ -2346,9 +2274,9 @@
       "id": "1",
       "first": "Dilmuradd",
       "lastname": "Masharipov",
-      "age": "37",
-      "currency": "RUB",
-      "country": "Uzbekistan",
+      "age": "36",
+      "currency": "USD",
+      "country": "Thailand",
       "city": "Gwandju",
       "username": "admin",
       "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg",

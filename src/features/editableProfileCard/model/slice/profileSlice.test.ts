@@ -1,7 +1,8 @@
+import { Profile } from "entities/Profile";
 import { Country, Currency } from "shared/const/common";
 import { fetchProfileData } from "../services/fetchProfileData/fetchProfileData";
 import { updateProfileData } from "../services/updateProfileData/updateProfileData";
-import { ProfileSchema, Profile } from "../types/profile";
+import { ProfileSchema } from "../types/editableProfileCardSchema";
 import { profileSlice, profileActions } from "./profileSlice";
 
 describe("profileSlice", () => {

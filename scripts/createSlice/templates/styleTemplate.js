@@ -1,3 +1,5 @@
-module.exports = (componentName) => `.${componentName} {
-
-}`;
+export default function styleTemplate(componentName) {
+  return `.${componentName} {
+  
+  }`;
+}

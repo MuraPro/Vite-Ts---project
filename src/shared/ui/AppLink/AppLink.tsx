@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, forwardRef } from "react";
 import { Link, LinkProps } from "react-router-dom";
 import { classNames } from "shared/lib/classNames/classNames";
 import cls from "./AppLink.module.scss";
@@ -16,29 +16,33 @@ interface AppLinkProps extends LinkProps {
   onClick?: () => void;
 }
 
-export const AppLink = memo((props: AppLinkProps) => {
-  const {
-    to,
-    className,
-    personalClassNames,
-    children,
-    theme = AppLinkTheme.PRIMARY,
-    onClick,
-    ...otherProps
-  } = props;
+// Используем forwardRef для передачи ref в компонент
+export const AppLink = memo(
+  forwardRef<HTMLAnchorElement, AppLinkProps>((props, ref) => {
+    const {
+      to,
+      className,
+      personalClassNames,
+      children,
+      theme = AppLinkTheme.PRIMARY,
+      onClick,
+      ...otherProps
+    } = props;
 
-  return (
-    <Link
-      onClick={onClick}
-      to={to}
-      className={classNames(cls.AppLink, {}, [
-        className,
-        cls[theme],
-        personalClassNames,
-      ])}
-      {...otherProps}
-    >
-      {children}
-    </Link>
-  );
-});
+    return (
+      <Link
+        ref={ref} // Передаем ref
+        onClick={onClick}
+        to={to}
+        className={classNames(cls.AppLink, {}, [
+          className,
+          cls[theme],
+          personalClassNames,
+        ])}
+        {...otherProps}
+      >
+        {children}
+      </Link>
+    );
+  }),
+);

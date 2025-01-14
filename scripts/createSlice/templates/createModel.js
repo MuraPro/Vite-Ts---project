@@ -1,46 +1,74 @@
-const fs = require('fs/promises');
-const resolveRoot = require('../resolveRoot');
-const reduxSliceTemplate = require('./reduxSliceTemplate');
-const schemaTypeTemplate = require('./schemaTypeTemplate');
+import fs from "fs/promises";
+import resolveRoot from "../resolveRoot.js";
+import reduxSliceTemplate from "./reduxSliceTemplate.js";
+import schemaTypeTemplate from "./schemaTypeTemplate.js";
 
-module.exports = async (layer, sliceName) => {
-    const resolveModelPath = (...segments) => resolveRoot('src', layer, sliceName, 'model', ...segments);
+export default async function createModel(layer, sliceName) {
+  const resolveModelPath = (...segments) =>
+    resolveRoot("src", layer, sliceName, "model", ...segments);
 
-    const createModelStructure = async () => {
+  const createModelStructure = async () => {
+    try {
+      // Список директорий, которые нужно создать
+      const dirs = ["", "types", "slices", "selectors", "services"];
+      for (const dir of dirs) {
+        const dirPath = resolveModelPath(dir);
+        // Асинхронная проверка существования директории
         try {
-            await fs.mkdir(resolveModelPath());
-            await fs.mkdir(resolveModelPath('types'));
-            await fs.mkdir(resolveModelPath('slices'));
-            await fs.mkdir(resolveModelPath('selectors'));
-            await fs.mkdir(resolveModelPath('services'));
-        } catch (e) {
-            console.log(`Не удалось создать model сегмент для слайса ${sliceName}`, e);
+          await fs.stat(dirPath);
+        } catch (err) {
+          if (err.code === "ENOENT") {
+            await fs.mkdir(dirPath);
+          } else {
+            throw err;
+          }
         }
-    };
+      }
+    } catch (e) {
+      console.log(
+        `Не удалось создать model сегмент для слайса ${sliceName}`,
+        e,
+      );
+    }
+  };
 
-    const createReduxSlice = async () => {
-        try {
-            await fs.writeFile(
-                resolveModelPath('slices', `${sliceName}Slice.ts`),
-                reduxSliceTemplate(sliceName),
-            );
-        } catch (e) {
-            console.log('Не удалось создать редакс слайс', e);
+  const createReduxSlice = async () => {
+    try {
+      const filePath = resolveModelPath("slices", `${sliceName}Slice.ts`);
+      // Асинхронная проверка существования файла
+      try {
+        await fs.stat(filePath);
+      } catch (err) {
+        if (err.code === "ENOENT") {
+          await fs.writeFile(filePath, reduxSliceTemplate(sliceName));
+        } else {
+          throw err;
         }
-    };
+      }
+    } catch (e) {
+      console.log("Не удалось создать редакс слайс", e);
+    }
+  };
 
-    const createSchemaType = async () => {
-        try {
-            await fs.writeFile(
-                resolveModelPath('types', `${sliceName}Schema.ts`),
-                schemaTypeTemplate(sliceName),
-            );
-        } catch (e) {
-            console.log('Не удалось создать тип схемы стейта', e);
+  const createSchemaType = async () => {
+    try {
+      const filePath = resolveModelPath("types", `${sliceName}Schema.ts`);
+      // Асинхронная проверка существования файла
+      try {
+        await fs.stat(filePath);
+      } catch (err) {
+        if (err.code === "ENOENT") {
+          await fs.writeFile(filePath, schemaTypeTemplate(sliceName));
+        } else {
+          throw err;
         }
-    };
+      }
+    } catch (e) {
+      console.log("Не удалось создать тип схемы стейта", e);
+    }
+  };
 
-    await createModelStructure();
-    await createReduxSlice();
-    await createSchemaType();
-};
+  await createModelStructure();
+  await createReduxSlice();
+  await createSchemaType();
+}

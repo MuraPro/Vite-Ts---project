@@ -15,6 +15,36 @@ const express = require("express");
 
 // Путь к папке с файлами
 const staticFilesPath = path.resolve(__dirname, "../src/shared/assets/kr");
+// Путь к папке с изображениями
+
+// Мидлвар для кэширования изображений
+const imageCacheMiddleware = (req, res, next) => {
+  const filePath = path.join(staticFilesPath, req.path); // Путь к файлу
+  const fileStats = fs.statSync(filePath); // Получаем информацию о файле
+
+  // Заголовок Cache-Control для кэширования на 1 год
+  res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+
+  // Заголовок Last-Modified
+  const lastModified = fileStats.mtime.toUTCString();
+  res.setHeader("Last-Modified", lastModified);
+
+  // Заголовок ETag для проверки изменений файла
+  const etag = fileStats.size; // Используем размер файла как ETag
+  res.setHeader("ETag", etag);
+
+  // Проверка, если файл не изменился с момента последнего запроса
+  const ifNoneMatch = req.headers["if-none-match"];
+  const ifModifiedSince = req.headers["if-modified-since"];
+  if (ifNoneMatch === etag || ifModifiedSince === lastModified) {
+    return res.status(304).send(); // Отправляем статус 304 (Not Modified)
+  }
+
+  next(); // Если файлы изменены или это не файл изображения, продолжим обработку
+};
+
+// Применяем middleware для статичных файлов
+server.use("/static", imageCacheMiddleware, express.static(staticFilesPath));
 
 // Добавьте это перед подключением маршрутов
 server.use("/static", express.static(staticFilesPath));
@@ -484,6 +514,36 @@ server.listen(8000, () => {
 
 // // Путь к папке с файлами
 // const staticFilesPath = path.resolve(__dirname, "../src/shared/assets/kr");
+// // Путь к папке с изображениями
+
+// // Мидлвар для кэширования изображений
+// const imageCacheMiddleware = (req, res, next) => {
+//   const filePath = path.join(staticFilesPath, req.path); // Путь к файлу
+//   const fileStats = fs.statSync(filePath); // Получаем информацию о файле
+
+//   // Заголовок Cache-Control для кэширования на 1 год
+//   res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+
+//   // Заголовок Last-Modified
+//   const lastModified = fileStats.mtime.toUTCString();
+//   res.setHeader("Last-Modified", lastModified);
+
+//   // Заголовок ETag для проверки изменений файла
+//   const etag = fileStats.size; // Используем размер файла как ETag
+//   res.setHeader("ETag", etag);
+
+//   // Проверка, если файл не изменился с момента последнего запроса
+//   const ifNoneMatch = req.headers["if-none-match"];
+//   const ifModifiedSince = req.headers["if-modified-since"];
+//   if (ifNoneMatch === etag || ifModifiedSince === lastModified) {
+//     return res.status(304).send(); // Отправляем статус 304 (Not Modified)
+//   }
+
+//   next(); // Если файлы изменены или это не файл изображения, продолжим обработку
+// };
+
+// // Применяем middleware для статичных файлов
+// server.use("/static", imageCacheMiddleware, express.static(staticFilesPath));
 
 // // Добавьте это перед подключением маршрутов
 // server.use("/static", express.static(staticFilesPath));

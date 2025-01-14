@@ -1,13 +1,13 @@
-const firstCharUpperCase = require('../firstCharUpperCase');
+import firstCharUpperCase from "../firstCharUpperCase.js";
 
-module.exports = (sliceName) => {
-    const typeName = `${firstCharUpperCase(sliceName)}Schema`;
+export default function reduxSliceTemplate(sliceName) {
+  const typeName = `${firstCharUpperCase(sliceName)}Schema`;
 
-    return `import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+  return `import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ${typeName} } from '../types/${sliceName}Schema';
 
 const initialState: ${typeName} = {
-    
+    // Определите начальное состояние
 };
 
 export const ${sliceName}Slice = createSlice({
@@ -15,7 +15,7 @@ export const ${sliceName}Slice = createSlice({
     initialState,
     reducers: {
         template: (state, action: PayloadAction<string>) => {
-           
+            // Введите логику редьюсера
         },
     },
     // extraReducers: (builder) => {
@@ -35,5 +35,6 @@ export const ${sliceName}Slice = createSlice({
 });
 
 export const { actions: ${sliceName}Actions } = ${sliceName}Slice;
-export const { reducer: ${sliceName}Reducer } = ${sliceName}Slice;`;
-};
+export const { reducer: ${sliceName}Reducer } = ${sliceName}Slice;
+`;
+}

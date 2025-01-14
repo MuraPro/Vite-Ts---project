@@ -1,3 +1,8 @@
 .comments_errors {
   color: var(--inverted-primary-color);
 }
+
+.CommentList {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,7 +1,7 @@
+import { Profile } from "entities/Profile";
 import { Country, Currency } from "shared/const/common";
 import { TestAsyncThunk } from "shared/lib/tests/TestAsyncThunk/TestAsyncThunk";
 import { getProfileForm } from "../../selectors/getProfileForm/getProfileForm";
-import { Profile } from "../../types/profile";
 import { updateProfileData } from "./updateProfileData";
 
 jest.mock("../../selectors/getProfileForm/getProfileForm", () => ({
