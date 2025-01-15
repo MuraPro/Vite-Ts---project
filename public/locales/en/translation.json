@@ -83,5 +83,8 @@
   "просмотрам": "views",
   "Сортировать по": "Sort by",
   "Поиск": "Search",
-  "Создать статью": "Create article"
+  "Создать статью": "Create article",
+  "Админка": "Admin",
+  "Админ панель": "Admin panel",
+  "У вас нет доступа к этой странице": "You do not have access to this page"
 }

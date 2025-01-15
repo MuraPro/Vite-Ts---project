@@ -36,7 +36,7 @@ export const ArticleRecommendationsList = memo(
           title={t("Рекомендуем")}
           className={cls.ArticleRecommendationsList__title}
         />
-        <ArticleList articles={articles} target="_blank" />
+        <ArticleList articles={articles ?? []} target="_blank" />
       </VStack>
     );
   },

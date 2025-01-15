@@ -1,6 +1,7 @@
 import react from "@vitejs/plugin-react";
 import { defineConfig, loadEnv } from "vite";
 // import { analyzer } from "vite-bundle-analyzer";
+import circleDependency from "vite-plugin-circular-dependency";
 import envCompatible from "vite-plugin-env-compatible";
 import EnvironmentPlugin from "vite-plugin-environment";
 import eslint from "vite-plugin-eslint";
@@ -45,6 +46,14 @@ export default defineConfig(({ mode }) => {
       eslint(),
       EnvironmentPlugin({
         NODE_ENV: "development", // по умолчанию
+      }),
+      circleDependency({
+        // Включаем проверку для файлов JavaScript, TypeScript и Vue
+        include: [/\.[jt]sx?$/, /\.vue\??/],
+        // Исключаем из сканирования node_modules и файлы Git
+        exclude: [/node_modules/, /\.git/],
+        // Вызывать ошибку при обнаружении циклических импортов
+        circleImportThrowErr: false,
       }),
     ],
 

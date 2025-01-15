@@ -1,6 +1,6 @@
 import { AppRouter } from "app/providers/router";
 import { userActions } from "entities/User";
-import { getUserInited } from "entities/User/model/selectors/getUserInited/getUserInited";
+import { getUserInited } from "entities/User";
 import { Suspense, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { classNames } from "shared/lib/classNames/classNames";

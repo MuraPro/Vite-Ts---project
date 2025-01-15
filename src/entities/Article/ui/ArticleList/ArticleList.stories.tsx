@@ -2,11 +2,11 @@ import { Meta, StoryObj } from "@storybook/react/*";
 import { Theme } from "app/providers/ThemeProvider";
 import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator/ThemeDecorator";
 import {
-  Article,
   ArticleBlockType,
   ArticleType,
   ArticleView,
-} from "../../model/types/article";
+} from "../../model/consts/articleConsts";
+import { Article } from "../../model/types/article";
 import { ArticleList } from "./ArticleList";
 
 const meta: Meta<typeof ArticleList> = {
@@ -29,7 +29,7 @@ const article: Article = {
   title: "Уровни владения корейским языком",
   subtitle:
     "Всегда полезно определить точку, в которой находишься, чтобы построить дальнейший путь. При изучении иностранного языка это тоже важно.",
-  img: "https://media.istockphoto.com/id/1311751436/ru/%D1%84%D0%BE%D1%82%D0%BE/%D1%85%D0%B0%D0%BD%D0%B3%D1%83%D0%BB.jpg?s=1024x1024&w=is&k=20&c=odbt2OxG7w3bEfMtWPm71kbcXo5LzeERcxVfjNwyfcw=",
+  img: "../../../../../src/shared/assets/kr/1A.webp",
   views: 1022,
   createdAt: "15.12.2024",
   user: {

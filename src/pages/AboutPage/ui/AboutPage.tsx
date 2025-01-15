@@ -10,7 +10,7 @@ const AboutPage = memo(() => {
     <Page className="_container">
       <Text
         title={t("Информационная страница")}
-        size={TextSize.L}
+        size={TextSize.M}
         className={classes.text}
       />
     </Page>

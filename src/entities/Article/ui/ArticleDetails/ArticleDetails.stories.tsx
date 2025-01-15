@@ -2,8 +2,11 @@ import { Meta, StoryObj } from "@storybook/react/*";
 import { Theme } from "app/providers/ThemeProvider";
 import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDecorator";
 import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator/ThemeDecorator";
+import {
+  ArticleBlockType,
+  ArticleType,
+} from "../../model/consts/articleConsts";
 import { Article } from "../../model/types/article";
-import { ArticleBlockType, ArticleType } from "../../model/types/article";
 import { ArticleDetails } from "./ArticleDetails";
 
 const meta: Meta<typeof ArticleDetails> = {
@@ -26,7 +29,7 @@ const article: Article = {
   title: "Уровни владения корейским языком",
   subtitle:
     "Всегда полезно определить точку, в которой находишься, чтобы построить дальнейший путь. При изучении иностранного языка это тоже важно.",
-  img: "https://media.istockphoto.com/id/1311751436/ru/%D1%84%D0%BE%D1%82%D0%BE/%D1%85%D0%B0%D0%BD%D0%B3%D1%83%D0%BB.jpg?s=1024x1024&w=is&k=20&c=odbt2OxG7w3bEfMtWPm71kbcXo5LzeERcxVfjNwyfcw=",
+  img: "../../../../../src/shared/assets/kr/1A.webp",
   views: 1022,
   createdAt: "15.12.2024",
   user: {
@@ -40,7 +43,7 @@ const article: Article = {
     {
       id: "1",
       type: ArticleBlockType.TEXT,
-      title: "Заголовок этого блока",
+      title: "Уровни знания корейского языка",
       paragraphs: [
         "Если вы осваиваете корейский язык, то компасом на вашем образовательном маршруте станет TOPIK (Test of Proficiency in Korean) – специальный тест на знание корейского языка. Он предназначен для неносителей языка.Данная аттестационная система была разработана еще в 1997 году правительством Южной Кореи. По сей день она является основной. Чаще всего тест проходят те, кто планирует обучение в ВУЗах Южной Кореи, трудоустройство в компании этой страны или иностранцы, претендующие на постоянное место жительства здесь.",
       ],

@@ -511,6 +511,8 @@ server.listen(8000, () => {
 // server.use(jsonServer.defaults({}));
 // server.use(jsonServer.bodyParser);
 // const express = require("express");
+// const cors = require("cors");
+// server.use(cors());
 
 // // Путь к папке с файлами
 // const staticFilesPath = path.resolve(__dirname, "../src/shared/assets/kr");

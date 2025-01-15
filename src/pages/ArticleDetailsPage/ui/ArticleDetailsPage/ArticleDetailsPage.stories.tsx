@@ -1,9 +1,5 @@
 import { Theme } from "app/providers/ThemeProvider";
-import {
-  Article,
-  ArticleBlockType,
-  ArticleType,
-} from "entities/Article/model/types/article";
+import { Article, ArticleBlockType, ArticleType } from "entities/Article";
 import { StoreDecorator } from "shared/config/storybook/StoreDecorator/StoreDecorator";
 import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator/ThemeDecorator";
 import ArticleDetailsPage from "../ArticleDetailsPage/ArticleDetailsPage";
@@ -28,7 +24,7 @@ const article: Article = {
   id: "1",
   title: "Javascript news",
   subtitle: "Что нового в JS за 2022 год?",
-  img: "https://teknotower.com/wp-content/uploads/2020/11/js.png",
+  img: "../../../../../src/shared/assets/kr/1A.webp",
   views: 1022,
   createdAt: "26.02.2022",
   user: {

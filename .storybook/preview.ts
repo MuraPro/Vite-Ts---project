@@ -1,3 +1,4 @@
+import { SuspenseDecorator } from "./../src/shared/config/storybook/SuspenseDecorator/SuspenseDecorator";
 import { MockedParamsDecorator } from "./../src/shared/config/storybook/MockDecorators/MockDecorators";
 import { ThemeDecorator } from "./../src/shared/config/storybook/ThemeDecorator/ThemeDecorator";
 import { StoreDecorator } from "./../src/shared/config/storybook/StoreDecorator/StoreDecorator";
@@ -27,4 +28,5 @@ export const decorators = [
   ThemeDecorator({}),
   StyleDecorator,
   ModalDecorator,
+  SuspenseDecorator,
 ];

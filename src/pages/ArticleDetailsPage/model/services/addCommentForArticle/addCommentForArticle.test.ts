@@ -1,12 +1,11 @@
-import { Article } from "entities/Article"; // Подключаем типы для состояния и комментариев
-import { ArticleType } from "entities/Article/model/types/article";
+import { Article, ArticleType } from "entities/Article";
 import { Comment } from "entities/Comment";
 import { rtkApi } from "shared/api/rtkApi";
-import { TestAsyncThunk } from "shared/lib/tests/TestAsyncThunk/TestAsyncThunk"; // Допустим, у вас есть этот тестовый утилитный класс для асинхронных функций.
+import { TestAsyncThunk } from "shared/lib/tests/TestAsyncThunk/TestAsyncThunk";
 import { fetchCommentsByArticleId } from "../../services/fetchCommentsByArticleId/fetchCommentsByArticleId";
 import { addCommentForArticle } from "./addCommentForArticle";
 
-jest.mock("../../services/fetchCommentsByArticleId/fetchCommentsByArticleId"); // Мокируем fetchCommentsByArticleId
+jest.mock("../../services/fetchCommentsByArticleId/fetchCommentsByArticleId");
 
 describe("addCommentForArticle", () => {
   test("должен успешно добавить комментарий", async () => {

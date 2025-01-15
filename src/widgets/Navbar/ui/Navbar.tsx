@@ -1,5 +1,10 @@
 import { useModal } from "app/providers/ModalProvider";
-import { getUserAuthData, userActions } from "entities/User";
+import {
+  getUserAuthData,
+  isUserAdmin,
+  isUserManager,
+  userActions,
+} from "entities/User";
 import { LoginModal } from "features/AuthByUsername";
 import { LangSwitcher } from "features/LangSwitcher";
 import { ThemeSwitcher } from "features/ThemeSwitcher";
@@ -30,6 +35,8 @@ export const Navbar = ({ className }: NavbarProps) => {
 
   const { isModalOpen, toggleModal, closeModal } = useModal();
   const authData = useSelector(getUserAuthData);
+  const isAdmin = useSelector(isUserAdmin);
+  const isManager = useSelector(isUserManager);
   const dispatch = useAppDispatch();
 
   const onLogout = useCallback(() => {
@@ -51,12 +58,22 @@ export const Navbar = ({ className }: NavbarProps) => {
     [sidebarItemsList],
   );
 
+  const isAdminPanelAvailable = isAdmin || isManager;
+
   const authButtons = authData ? (
     <Dropdown
       direction="bottom left"
       className={cls.dropdown}
       menuPersonalClassname={cls.dropdown__title}
       items={[
+        ...(isAdminPanelAvailable
+          ? [
+              {
+                content: t("Админка"),
+                href: RoutePath.admin_panel,
+              },
+            ]
+          : []),
         {
           content: t("Профиль"),
           href: RoutePath.profile + authData.id,

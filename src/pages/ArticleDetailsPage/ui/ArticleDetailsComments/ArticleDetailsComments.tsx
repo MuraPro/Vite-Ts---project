@@ -16,7 +16,7 @@ import cls from "./ArticleDetailsComments.module.scss";
 
 interface ArticleDetailsCommentsProps {
   className?: string;
-  id: string;
+  id?: string;
 }
 
 export const ArticleDetailsComments = memo(

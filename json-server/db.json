@@ -2251,6 +2251,18 @@
       "userId": "1",
       "text": "Javascript",
       "id": "mb_JKHN"
+    },
+    {
+      "articleId": "2",
+      "userId": "3",
+      "text": "liliuliu",
+      "id": "1P3F69r"
+    },
+    {
+      "articleId": "1",
+      "userId": "3",
+      "text": "luuiliul",
+      "id": "l8kPms8"
     }
   ],
   "users": [
@@ -2258,15 +2270,22 @@
       "id": "1",
       "username": "admin",
       "password": "123",
-      "role": "ADMIN",
+      "roles": ["ADMIN"],
       "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
     },
     {
       "id": "2",
       "username": "user",
       "password": "123",
-      "role": "USER",
+      "roles": ["USER"],
       "avatar": "https://i-enlisted.cdn.gaijin.net/original/3X/1/d/1d5c49bacaf307e34cab73cf4ae69f122130425b.jpeg"
+    },
+    {
+      "id": "3",
+      "username": "manager",
+      "password": "123",
+      "roles": ["MANAGER"],
+      "avatar": "https://avatars.mds.yandex.net/get-kinopoisk-image/1773646/91186644-9d11-4d8f-8646-525775f25b17/960x960"
     }
   ],
   "profile": [
@@ -2290,8 +2309,20 @@
       "currency": "RUB",
       "country": "Russia",
       "city": "Moscow",
-      "username": "ulbi tv",
+      "username": "Raptor",
       "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg",
+      "email": "Chalanamdo@gmail.com"
+    },
+    {
+      "id": "3",
+      "first": "Jhon",
+      "lastname": "Rambo",
+      "age": "44",
+      "currency": "USA",
+      "country": "USA",
+      "city": "Los Andgeles",
+      "username": "Scala",
+      "avatar": "https://avatars.mds.yandex.net/get-kinopoisk-image/1773646/91186644-9d11-4d8f-8646-525775f25b17/960x960",
       "email": "Chalanamdo@gmail.com"
     }
   ]
