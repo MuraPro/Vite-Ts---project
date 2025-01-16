@@ -15,6 +15,17 @@ const meta: Meta<typeof Navbar> = {
     backgroundColor: { control: "color" },
   },
   args: {},
+  decorators: [
+    (Story) => (
+      <div
+        style={{
+          padding: "40px",
+        }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;

@@ -1,4 +1,38 @@
 {
+  "notifications": [
+    {
+      "id": "1",
+      "title": "Уведомление 1",
+      "description": "Произошло какое-то событие",
+      "userId": "1"
+    },
+    {
+      "id": "2",
+      "title": "Уведомление 2",
+      "description": "Произошло какое-то событие",
+      "userId": "1",
+      "href": "http://localhost:3000/admin"
+    },
+    {
+      "id": "3",
+      "title": "Уведомление 3",
+      "description": "Произошло какое-то событие",
+      "userId": "1",
+      "href": "http://localhost:3000/admin"
+    },
+    {
+      "id": "4",
+      "title": "Уведомление 4",
+      "description": "Произошло какое-то событие",
+      "userId": "1"
+    },
+    {
+      "id": "5",
+      "title": "Уведомление 1",
+      "description": "Произошло какое-то событие",
+      "userId": "2"
+    }
+  ],
   "posts": [
     {
       "id": "1",
@@ -20,7 +54,9 @@
       "views": 1022,
       "createdAt": "15.12.2024",
       "userId": "1",
-      "type": ["LANGUAGE"],
+      "type": [
+        "LANGUAGE"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -112,7 +148,9 @@
       "views": 976,
       "createdAt": "10.08.2023",
       "userId": "2",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -204,7 +242,9 @@
       "views": 434,
       "createdAt": "06.04.2023",
       "userId": "1",
-      "type": ["ECONOMICS"],
+      "type": [
+        "ECONOMICS"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -296,7 +336,9 @@
       "views": 345,
       "createdAt": "22.02.2023",
       "userId": "1",
-      "type": ["SCIENCE"],
+      "type": [
+        "SCIENCE"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -388,7 +430,9 @@
       "views": 86,
       "createdAt": "20.10.2022",
       "userId": "1",
-      "type": ["LANGUAGE"],
+      "type": [
+        "LANGUAGE"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -480,7 +524,9 @@
       "views": 654,
       "createdAt": "15.08.2022",
       "userId": "1",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -572,7 +618,9 @@
       "views": 123,
       "createdAt": "06.07.2022",
       "userId": "1",
-      "type": ["SCIENCE"],
+      "type": [
+        "SCIENCE"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -664,7 +712,9 @@
       "views": 786,
       "createdAt": "15.12.2024",
       "userId": "1",
-      "type": ["ECONOMICS"],
+      "type": [
+        "ECONOMICS"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -756,7 +806,9 @@
       "views": 897,
       "createdAt": "03.05.2022",
       "userId": "1",
-      "type": ["LANGUAGE"],
+      "type": [
+        "LANGUAGE"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -848,7 +900,9 @@
       "views": 64564,
       "createdAt": "02.03.2022",
       "userId": "1",
-      "type": ["SCIENCE"],
+      "type": [
+        "SCIENCE"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -940,7 +994,9 @@
       "views": 1022,
       "createdAt": "15.12.2024",
       "userId": "1",
-      "type": ["LANGUAGE"],
+      "type": [
+        "LANGUAGE"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -1032,7 +1088,9 @@
       "views": 1022,
       "createdAt": "15.12.2024",
       "userId": "1",
-      "type": ["LANGUAGE"],
+      "type": [
+        "LANGUAGE"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -1124,7 +1182,9 @@
       "views": 1022,
       "createdAt": "15.12.2024",
       "userId": "1",
-      "type": ["LANGUAGE"],
+      "type": [
+        "LANGUAGE"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -1216,7 +1276,9 @@
       "views": 1022,
       "createdAt": "15.12.2024",
       "userId": "1",
-      "type": ["LANGUAGE"],
+      "type": [
+        "LANGUAGE"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -1308,7 +1370,9 @@
       "views": 1022,
       "createdAt": "15.12.2024",
       "userId": "1",
-      "type": ["LANGUAGE"],
+      "type": [
+        "LANGUAGE"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -1400,7 +1464,9 @@
       "views": 1022,
       "createdAt": "15.12.2024",
       "userId": "1",
-      "type": ["LANGUAGE"],
+      "type": [
+        "LANGUAGE"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -1492,7 +1558,9 @@
       "views": 1022,
       "createdAt": "15.12.2024",
       "userId": "1",
-      "type": ["LANGUAGE"],
+      "type": [
+        "LANGUAGE"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -1584,7 +1652,9 @@
       "views": 1022,
       "createdAt": "15.12.2024",
       "userId": "1",
-      "type": ["LANGUAGE"],
+      "type": [
+        "LANGUAGE"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -1676,7 +1746,9 @@
       "views": 1022,
       "createdAt": "15.12.2024",
       "userId": "1",
-      "type": ["LANGUAGE"],
+      "type": [
+        "LANGUAGE"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -1768,7 +1840,9 @@
       "views": 1022,
       "createdAt": "15.12.2024",
       "userId": "1",
-      "type": ["LANGUAGE"],
+      "type": [
+        "LANGUAGE"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -1860,7 +1934,9 @@
       "views": 1022,
       "createdAt": "15.12.2024",
       "userId": "1",
-      "type": ["LANGUAGE"],
+      "type": [
+        "LANGUAGE"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -1952,7 +2028,9 @@
       "views": 1022,
       "createdAt": "15.12.2024",
       "userId": "1",
-      "type": ["LANGUAGE"],
+      "type": [
+        "LANGUAGE"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -2044,7 +2122,9 @@
       "views": 1022,
       "createdAt": "15.12.2024",
       "userId": "1",
-      "type": ["LANGUAGE"],
+      "type": [
+        "LANGUAGE"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -2136,7 +2216,9 @@
       "views": 1022,
       "createdAt": "15.12.2024",
       "userId": "1",
-      "type": ["LANGUAGE"],
+      "type": [
+        "LANGUAGE"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -2270,21 +2352,27 @@
       "id": "1",
       "username": "admin",
       "password": "123",
-      "roles": ["ADMIN"],
+      "roles": [
+        "ADMIN"
+      ],
       "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
     },
     {
       "id": "2",
       "username": "user",
       "password": "123",
-      "roles": ["USER"],
+      "roles": [
+        "USER"
+      ],
       "avatar": "https://i-enlisted.cdn.gaijin.net/original/3X/1/d/1d5c49bacaf307e34cab73cf4ae69f122130425b.jpeg"
     },
     {
       "id": "3",
       "username": "manager",
       "password": "123",
-      "roles": ["MANAGER"],
+      "roles": [
+        "MANAGER"
+      ],
       "avatar": "https://avatars.mds.yandex.net/get-kinopoisk-image/1773646/91186644-9d11-4d8f-8646-525775f25b17/960x960"
     }
   ],
@@ -2294,8 +2382,8 @@
       "first": "Dilmuradd",
       "lastname": "Masharipov",
       "age": "36",
-      "currency": "USD",
-      "country": "Thailand",
+      "currency": "KRW",
+      "country": "Uzbekistan",
       "city": "Gwandju",
       "username": "admin",
       "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg",
@@ -2318,8 +2406,8 @@
       "first": "Jhon",
       "lastname": "Rambo",
       "age": "44",
-      "currency": "USA",
-      "country": "USA",
+      "currency": "KRW",
+      "country": "South Korea",
       "city": "Los Andgeles",
       "username": "Scala",
       "avatar": "https://avatars.mds.yandex.net/get-kinopoisk-image/1773646/91186644-9d11-4d8f-8646-525775f25b17/960x960",

@@ -1,0 +1,14 @@
+.notifications {
+  min-height: 150px;
+  max-height: 320px;
+  width: 500px;
+  overflow-y: auto;
+}
+
+.cls.Notification__btn {
+  padding: 0;
+  margin: 0;
+  background: none;
+  outline: none;
+  color: var(--inverted-secondary-color);
+}

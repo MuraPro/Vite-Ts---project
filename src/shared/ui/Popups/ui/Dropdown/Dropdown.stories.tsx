@@ -1,6 +1,6 @@
 import { Theme } from "app/providers/ThemeProvider";
 import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator/ThemeDecorator";
-import { Button } from "../Button/Button";
+import { Button } from "../../../Button/Button";
 import { Dropdown } from "./Dropdown";
 import type { Meta, StoryObj } from "@storybook/react";
 
@@ -31,8 +31,8 @@ export default meta;
 type Story = StoryObj<typeof Dropdown>;
 
 export const Light: Story = {
-  /* eslint-disable i18next/no-literal-string */
   args: {
+    /* eslint-disable i18next/no-literal-string */
     trigger: <Button>Open</Button>,
     items: [
       {
@@ -50,8 +50,8 @@ export const Light: Story = {
 };
 
 export const Dark: Story = {
-  /* eslint-disable i18next/no-literal-string */
   args: {
+    /* eslint-disable i18next/no-literal-string */
     trigger: <Button>Open</Button>,
     items: [
       {

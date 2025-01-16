@@ -22,7 +22,7 @@ const meta: Meta<typeof ListBox> = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof ListBox>;
 
 // Пример данных для списка
 const items: ListBoxItem[] = [
@@ -50,7 +50,7 @@ export const DynamicButtonLabel: Story = {
     label: "Select an option",
     items,
     defaultValue: "Select",
-    direction: "bottom",
+    direction: "bottom right",
   },
 };
 

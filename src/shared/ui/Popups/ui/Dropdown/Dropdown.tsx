@@ -2,7 +2,8 @@ import { Menu, MenuItem, MenuButton, MenuItems } from "@headlessui/react";
 import { Fragment, ReactNode } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 import { DropdownDirection } from "shared/types/ui";
-import { AppLink } from "../AppLink/AppLink";
+import { AppLink } from "../../../AppLink/AppLink";
+import popupCls from "../../styles/popup.module.scss";
 import cls from "./Dropdown.module.scss";
 
 export interface DropdownItem {
@@ -41,7 +42,10 @@ export function Dropdown(props: DropdownProps) {
   const menuClasses = [mapDirectionClass[direction], menuPersonalClassname];
 
   return (
-    <Menu as="div" className={classNames(cls.Dropdown, {}, [className])}>
+    <Menu
+      as="div"
+      className={classNames(cls.Dropdown, {}, [className, popupCls.popup])}
+    >
       <MenuButton className={`${cls.btn} ${titlePersonalClassname}`}>
         {trigger}
       </MenuButton>
@@ -52,7 +56,7 @@ export function Dropdown(props: DropdownProps) {
               type="button"
               disabled={item.disabled}
               onClick={item.onClick}
-              className={classNames(cls.item, { [cls.active]: active })}
+              className={classNames(cls.item, { [popupCls.active]: active })}
             >
               {item.content}
             </button>

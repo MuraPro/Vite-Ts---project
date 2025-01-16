@@ -7,8 +7,11 @@ import {
 import { ComponentType, Fragment, ReactNode } from "react";
 import { MdDone } from "react-icons/md";
 import { classNames } from "shared/lib/classNames/classNames";
-import { Button } from "../Button/Button";
-import { VStack } from "../Stack";
+import { DropdownDirection } from "shared/types/ui";
+import { Button } from "../../../Button/Button";
+import { VStack } from "../../../Stack";
+import { mapDirectionClass } from "../../styles/consts";
+import popupCls from "../../styles/popup.module.scss";
 import cls from "./ListBox.module.scss";
 
 export interface ListBoxItem {
@@ -16,8 +19,6 @@ export interface ListBoxItem {
   content: ReactNode;
   disabled?: boolean;
 }
-
-type DropdownDirection = "top" | "bottom";
 
 interface ListBoxProps {
   items?: ListBoxItem[];
@@ -34,11 +35,6 @@ interface ListBoxProps {
   icon?: ComponentType<{ className?: string }>;
 }
 
-const mapDirectionClass: Record<DropdownDirection, string> = {
-  bottom: cls.optionsBottom,
-  top: cls.optionsTop,
-};
-
 export function ListBox(props: ListBoxProps) {
   const {
     className,
@@ -50,7 +46,7 @@ export function ListBox(props: ListBoxProps) {
     defaultValue,
     onChange,
     readonly,
-    direction = "bottom",
+    direction = "bottom right",
     label,
     icon: Icon, // Проп иконки
   } = props;
@@ -63,11 +59,15 @@ export function ListBox(props: ListBoxProps) {
       <Listbox
         disabled={readonly}
         as="div"
-        className={classNames(cls.ListBox, {}, [className])}
+        className={classNames(cls.ListBox, {}, [className, popupCls.popup])}
         value={value}
         onChange={onChange}
       >
-        <ListboxButton disabled={readonly} className={cls.trigger}>
+        <ListboxButton
+          as="div"
+          disabled={readonly}
+          className={popupCls.trigger}
+        >
           <Button className={titlePersonalClassname} disabled={readonly}>
             {Icon && <Icon className={iconPersonalClassname} />}
             {value ?? defaultValue}

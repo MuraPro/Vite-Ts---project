@@ -1,6 +1,6 @@
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { ListBox } from "shared/ui/ListBox/ListBox";
+import { ListBox } from "shared/ui/Popups";
 import { Currency } from "../../model/types/currency";
 import cls from "./CurrencySelect.module.scss";
 
@@ -40,7 +40,7 @@ export const CurrencySelect = memo(
         items={options}
         onChange={onChangeHandler}
         readonly={readonly}
-        direction="top"
+        direction="top left"
       />
     );
   },

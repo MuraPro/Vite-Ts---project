@@ -1,5 +1,5 @@
 import { getUserAuthData } from "entities/User";
-import React, { memo, useCallback, useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"; // Импорты иконок
 import { useSelector } from "react-redux";
@@ -30,7 +30,7 @@ const initialReducers: ReducersList = {
   loginForm: loginReducer,
 };
 
-const LoginForm = memo(({ className }: LoginFormProps) => {
+const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
   const { t } = useTranslation("authform");
   const [showPassword, setShowPassword] = useState(false);
   const [errorVisible, setErrorVisible] = useState(false);
@@ -73,13 +73,12 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
     [dispatch],
   );
 
-  const onLoginClick = useCallback(
-    (e: React.FormEvent) => {
-      e.preventDefault();
-      dispatch(loginByUsername({ username, password }));
-    },
-    [dispatch, password, username],
-  );
+  const onLoginClick = useCallback(async () => {
+    const result = await dispatch(loginByUsername({ username, password }));
+    if (result.meta.requestStatus === "fulfilled") {
+      onSuccess?.();
+    }
+  }, [onSuccess, dispatch, password, username]);
 
   const mods = {
     [cls["fade-in"]]: errorVisible,
@@ -145,11 +144,11 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
           </div>
         </div>
         <Button
-          type="submit"
           className={cls.loginForm__btn}
           theme={ButtonTheme.CLEAR}
           size={ButtonSize.S}
           disabled={isLoading}
+          onClick={onLoginClick}
         >
           {t("Войти")}
         </Button>

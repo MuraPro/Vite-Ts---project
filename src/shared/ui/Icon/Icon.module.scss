@@ -1,3 +1,9 @@
 .Icon {
-    fill: var(--primary-color);
+  transition: fill 0.4s ease;
+  fill: var(--primary-color);
+}
+
+.inverted {
+  transition: fill 0.4s ease;
+  fill: var(--inverted-primary-color);
 }

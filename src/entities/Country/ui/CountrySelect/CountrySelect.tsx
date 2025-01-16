@@ -1,6 +1,6 @@
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { ListBox } from "shared/ui/ListBox/ListBox";
+import { ListBox } from "shared/ui/Popups";
 import { Country } from "../../model/types/country";
 import cls from "./CountrySelect.module.scss";
 
@@ -41,7 +41,7 @@ export const CountrySelect = memo(
         items={options}
         onChange={onChangeHandler}
         readonly={readonly}
-        direction="top"
+        direction="top left"
       />
     );
   },
