@@ -19,7 +19,7 @@ export const DrawerContent = memo((props: DrawerProps) => {
   const { Spring, Gesture } = useAnimationLibs();
   const [{ y }, api] = Spring.useSpring(() => ({ y: height }));
 
-  const { className, children, onClose, isOpen, lazy } = props;
+  const { className, children, onClose, isOpen } = props;
 
   const openDrawer = useCallback(() => {
     api.start({ y: 0, immediate: false });
