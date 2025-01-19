@@ -1,0 +1,222 @@
+{
+  "notifications": [
+    {
+      "id": "1",
+      "title": "Уведомление 1",
+      "description": "Произошло какое-то событие",
+      "userId": "1"
+    },
+    {
+      "id": "2",
+      "title": "Уведомление 2",
+      "description": "Произошло какое-то событие",
+      "userId": "1",
+      "href": "http://localhost:3000/admin"
+    },
+    {
+      "id": "3",
+      "title": "Уведомление 3",
+      "description": "Произошло какое-то событие",
+      "userId": "1",
+      "href": "http://localhost:3000/admin"
+    },
+    {
+      "id": "4",
+      "title": "Уведомление 4",
+      "description": "Произошло какое-то событие",
+      "userId": "1"
+    },
+    {
+      "id": "5",
+      "title": "Уведомление 1",
+      "description": "Произошло какое-то событие",
+      "userId": "2"
+    }
+  ],
+  "posts": [
+    {
+      "id": "1",
+      "title": "json-server",
+      "userId": "1"
+    },
+    {
+      "id": "2",
+      "title": "json-server",
+      "userId": "2"
+    }
+  ],
+  "articles": [
+    {
+      "id": "1",
+      "title": "Уровни владения корейским языком",
+      "subtitle": "Всегда полезно определить точку, в которой находишься, чтобы построить дальнейший путь. При изучении иностранного языка это тоже важно.",
+      "img": "https://vite-ts-project.onrender.com/static/1A.webp",
+      "views": 1022,
+      "createdAt": "15.12.2024",
+      "userId": "1",
+      "type": ["LANGUAGE"],
+      "blocks": [
+        {
+          "id": "1",
+          "type": "TEXT",
+          "title": "Уровни знания корейского языка",
+          "paragraphs": [
+            "Если вы осваиваете корейский язык, то компасом на вашем образовательном маршруте станет TOPIK (Test of Proficiency in Korean) – специальный тест на знание корейского языка. Он предназначен для неносителей языка.Данная аттестационная система была разработана еще в 1997 году правительством Южной Кореи. По сей день она является основной. Чаще всего тест проходят те, кто планирует обучение в ВУЗах Южной Кореи, трудоустройство в компании этой страны или иностранцы, претендующие на постоянное место жительства здесь."
+          ]
+        },
+        {
+          "id": "2",
+          "type": "IMAGE",
+          "src": "https://vite-ts-project.onrender.com/static/2A.png",
+          "title": "На сегодняшний день существует два уровня теста: TOPIK I и TOPIK II.",
+          "text1": "В TOPIK I включены подуровни 1 и 2. Уровень по-корейски называется “гып” (급). Это начальный уровень знания корейского языка. При сдаче теста TOPIK I экзаменуемые тестируются по двум основным разделам: аудирование и чтение. С заданиями нужно справиться за 100 минут. Это будут вопросы с несколькими вариантами ответов для прослушивания и чтения.",
+          "text2": "TOPIK II состоит из четырех подуровней (с 3 по 6). Это средний и продвинутый уровни. На экзамене TOPIK II аттестуемым предстоит ответить на вопросы трех блоков: аудирование (50 вопросов), чтение (50 вопросов) и письмо (2 задания — с короткими ответами, 1 — описание графика, 1 — сочинение). На выполнение заданий дается 180 минут."
+        },
+        {
+          "id": "3",
+          "type": "TEXT",
+          "title": "1 гып (1 급) — начальный уровень",
+          "paragraphs": [
+            "На данном уровне оцениваемый должен уметь составить простые предложения, используя лексический запас размером до 800 слов. Он должен составить несложные монологи и диалоги по темам “Я и семья”, “Покупка продуктов”, “Моя работа”, “Мои увлечения”, “Погода”, “Транспорт”, “Как найти дорогу”, в общих словах выразить чувства и мнение. В своей речи на данном уровне необходимо использовать: падежи, частицы, вопросительные слова, отрицания, наклонения, послелоги, числа (даты, время, счетные слова), вежливые формы, причастия, времена (будущее, прошедшее, продолженное настоящее), наречия, союзы, частицы, выражение причины, сравнительные и уточняющие конструкции, восклицания и пр."
+          ]
+        }
+      ]
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "text": "some comment",
+      "articleId": "1",
+      "userId": "1"
+    },
+    {
+      "id": "2",
+      "text": "some comment 2",
+      "articleId": "1",
+      "userId": "1"
+    },
+    {
+      "id": "3",
+      "text": "some comment 3",
+      "articleId": "1",
+      "userId": "2"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "Hello world",
+      "id": "_Q1MTqW"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "Javascript",
+      "id": "mb_JKHN"
+    },
+    {
+      "articleId": "2",
+      "userId": "3",
+      "text": "liliuliu",
+      "id": "1P3F69r"
+    },
+    {
+      "articleId": "1",
+      "userId": "3",
+      "text": "luuiliul",
+      "id": "l8kPms8"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "123",
+      "roles": ["ADMIN"],
+      "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
+    },
+    {
+      "id": "2",
+      "username": "user",
+      "password": "123",
+      "roles": ["USER"],
+      "avatar": "https://i-enlisted.cdn.gaijin.net/original/3X/1/d/1d5c49bacaf307e34cab73cf4ae69f122130425b.jpeg"
+    },
+    {
+      "id": "3",
+      "username": "manager",
+      "password": "123",
+      "roles": ["MANAGER"],
+      "avatar": "https://avatars.mds.yandex.net/get-kinopoisk-image/1773646/91186644-9d11-4d8f-8646-525775f25b17/960x960"
+    }
+  ],
+  "profile": [
+    {
+      "id": "1",
+      "first": "Dilmuradd",
+      "lastname": "Masharipov",
+      "age": "36",
+      "currency": "KRW",
+      "country": "Uzbekistan",
+      "city": "Gwandju",
+      "username": "admin",
+      "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg",
+      "email": "Chalanamdo@gmail.com"
+    },
+    {
+      "id": "2",
+      "first": "Max",
+      "lastname": "Gul",
+      "age": "38",
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Moscow",
+      "username": "Raptor",
+      "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg",
+      "email": "Chalanamdo@gmail.com"
+    },
+    {
+      "id": "3",
+      "first": "Jhon",
+      "lastname": "Rambo",
+      "age": "44",
+      "currency": "KRW",
+      "country": "South Korea",
+      "city": "Los Andgeles",
+      "username": "Scala",
+      "avatar": "https://avatars.mds.yandex.net/get-kinopoisk-image/1773646/91186644-9d11-4d8f-8646-525775f25b17/960x960",
+      "email": "Chalanamdo@gmail.com"
+    }
+  ],
+  "article-ratings": [
+    {
+      "userId": "1",
+      "articleId": "1",
+      "rate": 5,
+      "feedback": "Отличная статья",
+      "id": 1
+    },
+    {
+      "userId": "1",
+      "articleId": "3",
+      "rate": 3,
+      "id": 2
+    }
+  ],
+  "profile-ratings": [
+    {
+      "id": "1",
+      "rate": 4,
+      "feedback": "Хорошая статья",
+      "userId": "1",
+      "profileId": "1"
+    },
+    {
+      "id": "2",
+      "rate": 4,
+      "feedback": "Хорошая статья",
+      "userId": "1",
+      "profileId": "2"
+    }
+  ]
+}

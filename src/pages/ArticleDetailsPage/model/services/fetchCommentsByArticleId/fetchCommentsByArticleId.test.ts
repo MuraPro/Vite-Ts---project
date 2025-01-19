@@ -1,5 +1,5 @@
-import { Comment } from "entities/Comment";
-import { TestAsyncThunk } from "shared/lib/tests/TestAsyncThunk/TestAsyncThunk"; // Тестовая утилита для асинхронных действий
+import { Comment } from "@/entities/Comment";
+import { TestAsyncThunk } from "@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk"; // Тестовая утилита для асинхронных действий
 import { fetchCommentsByArticleId } from "./fetchCommentsByArticleId";
 
 jest.mock("axios"); // Мокируем axios или аналогичный API

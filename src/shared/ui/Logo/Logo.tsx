@@ -1,6 +1,6 @@
 import { memo } from "react";
-import LogoIcon from "shared/assets/icons/vite-icon.svg";
-import { classNames } from "shared/lib/classNames/classNames";
+import LogoIcon from "@/shared/assets/icons/vite-icon.svg";
+import { classNames } from "@/shared/lib/classNames/classNames";
 import { AppLink } from "../AppLink/AppLink";
 import cls from "./Logo.module.scss";
 interface LogoProps {

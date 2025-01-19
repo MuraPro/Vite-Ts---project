@@ -451,6 +451,104 @@ server.delete("/articles/:id", (req, res) => {
   }
 });
 
+//Серверное добавление рейтингов
+server.get("/article-ratings", (req, res) => {
+  const { articleId, userId } = req.query;
+
+  // Логируем запрос
+  console.log("Received query:", req.query);
+
+  try {
+    const db = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
+    );
+    const { "article-ratings": articleRatings } = db;
+
+    if (!articleRatings) {
+      return res
+        .status(500)
+        .json({ message: "Ratings data is missing in db.json" });
+    }
+
+    // Логируем количество рейтингов перед фильтрацией
+    console.log("Total ratings:", articleRatings.length);
+
+    // Фильтрация по articleId и userId
+    const filteredRatings = articleRatings.filter(
+      (rating) => rating.articleId === articleId && rating.userId === userId,
+    );
+
+    // Логируем результат фильтрации
+    console.log("Filtered ratings:", filteredRatings);
+
+    return res.json(filteredRatings);
+  } catch (error) {
+    console.error("Error fetching ratings:", error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+// Серверное добавление рейтинга
+server.post("/article-ratings", (req, res) => {
+  const { articleId, userId, rate, feedback } = req.body; // Проверьте имена полей
+  if (!articleId || !userId || !rate) {
+    return res.status(400).json({ message: "Missing required fields" });
+  }
+
+  const db = JSON.parse(
+    fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
+  );
+  const { "article-ratings": articleRatings } = db;
+
+  // Инициализация массива "article-ratings", если его нет
+  if (!articleRatings) {
+    db["article-ratings"] = [];
+  }
+
+  // Проверяем, не был ли уже поставлен рейтинг этим пользователем для этой статьи
+  const existingRating = articleRatings.find(
+    (rating) => rating.articleId === articleId && rating.userId === userId,
+  );
+
+  if (existingRating) {
+    return res.status(400).json({
+      message: "User has already rated this article",
+    });
+  }
+
+  // Находим максимальный ID среди существующих рейтингов и увеличиваем его на 1
+  const maxId = articleRatings.reduce((max, rating) => {
+    return Math.max(max, parseInt(rating.id, 10)); // Парсим ID как число и находим максимальное
+  }, 0);
+
+  // Создаем новый объект рейтинга
+  const newRating = {
+    id: (maxId + 1).toString(), // Уникальный ID, увеличиваем на 1
+    articleId,
+    userId,
+    rate, // Используем 'rate'
+    feedback, // Отзывы (не обязательный)
+  };
+
+  // Добавляем новый рейтинг в массив
+  db["article-ratings"].push(newRating);
+
+  // Сохраняем изменения в файл
+  try {
+    fs.writeFileSync(
+      path.resolve(__dirname, "db.json"),
+      JSON.stringify(db, null, 2),
+    );
+  } catch (err) {
+    return res.status(500).json({
+      message: "Error writing to database file",
+    });
+  }
+
+  // Отправляем добавленный рейтинг как ответ
+  res.status(201).json(newRating);
+});
+
 server.get("/comments", (req, res) => {
   const { articleId, _expand } = req.query;
 
@@ -829,39 +927,6 @@ server.listen(8000, () => {
 //   }
 // });
 
-// server.get("/comments", (req, res) => {
-//   const { articleId, _expand } = req.query;
-
-//   // Чтение данных из db.json
-//   const db = JSON.parse(
-//     fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
-//   );
-
-//   const { comments, users } = db;
-
-//   if (!articleId) {
-//     return res.status(400).json({ error: "articleId is required" });
-//   }
-
-//   // Фильтрация комментариев по articleId
-//   let commentsById = comments.filter(
-//     (comment) => comment.articleId === articleId,
-//   );
-
-//   if (_expand === "user") {
-//     // Для каждого комментария добавляем информацию о пользователе
-//     commentsById = commentsById.map((comment) => {
-//       const user = users.find((user) => user.id === comment.userId);
-//       return {
-//         ...comment,
-//         user: user || {}, // Если пользователь не найден, оставляем пустой объект
-//       };
-//     });
-//   }
-
-//   return res.json(commentsById);
-// });
-
 // // Эндпоинт для обновления статьи по ID (PUT /articles/:id)
 // server.put("/articles/:id", (req, res) => {
 //   const articleId = req.params.id;
@@ -937,6 +1002,137 @@ server.listen(8000, () => {
 //     console.error("Error deleting article:", e);
 //     return res.status(500).json({ message: "Internal server error" });
 //   }
+// });
+
+// // Серверное добавление рейтингов
+// server.get("/article-ratings", (req, res) => {
+//   const { articleId, userId } = req.query;
+
+//   // Логируем запрос
+//   console.log("Received query:", req.query);
+
+//   try {
+//     const db = JSON.parse(
+//       fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
+//     );
+//     const { "article-ratings": articleRatings } = db;
+
+//     if (!articleRatings) {
+//       return res
+//         .status(500)
+//         .json({ message: "Ratings data is missing in db.json" });
+//     }
+
+//     // Логируем количество рейтингов перед фильтрацией
+//     console.log("Total ratings:", articleRatings.length);
+
+//     // Фильтрация по articleId и userId
+//     const filteredRatings = articleRatings.filter(
+//       (rating) => rating.articleId === articleId && rating.userId === userId,
+//     );
+
+//     // Логируем результат фильтрации
+//     console.log("Filtered ratings:", filteredRatings);
+
+//     return res.json(filteredRatings);
+//   } catch (error) {
+//     console.error("Error fetching ratings:", error);
+//     return res.status(500).json({ message: "Internal server error" });
+//   }
+// });
+
+// // Серверное добавление рейтинга
+// server.post("/article-ratings", (req, res) => {
+//   const { articleId, userId, rate, feedback } = req.body; // Проверьте имена полей
+//   if (!articleId || !userId || !rate) {
+//     return res.status(400).json({ message: "Missing required fields" });
+//   }
+
+//   const db = JSON.parse(
+//     fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
+//   );
+//   const { "article-ratings": articleRatings } = db;
+
+//   // Инициализация массива "article-ratings", если его нет
+//   if (!articleRatings) {
+//     db["article-ratings"] = [];
+//   }
+
+//   // Проверяем, не был ли уже поставлен рейтинг этим пользователем для этой статьи
+//   const existingRating = articleRatings.find(
+//     (rating) => rating.articleId === articleId && rating.userId === userId,
+//   );
+
+//   if (existingRating) {
+//     return res.status(400).json({
+//       message: "User has already rated this article",
+//     });
+//   }
+
+//   // Находим максимальный ID среди существующих рейтингов и увеличиваем его на 1
+//   const maxId = articleRatings.reduce((max, rating) => {
+//     return Math.max(max, parseInt(rating.id, 10)); // Парсим ID как число и находим максимальное
+//   }, 0);
+
+//   // Создаем новый объект рейтинга
+//   const newRating = {
+//     id: (maxId + 1).toString(), // Уникальный ID, увеличиваем на 1
+//     articleId,
+//     userId,
+//     rate, // Используем 'rate'
+//     feedback, // Отзывы (не обязательный)
+//   };
+
+//   // Добавляем новый рейтинг в массив
+//   db["article-ratings"].push(newRating);
+
+//   // Сохраняем изменения в файл
+//   try {
+//     fs.writeFileSync(
+//       path.resolve(__dirname, "db.json"),
+//       JSON.stringify(db, null, 2),
+//     );
+//   } catch (err) {
+//     return res.status(500).json({
+//       message: "Error writing to database file",
+//     });
+//   }
+
+//   // Отправляем добавленный рейтинг как ответ
+//   res.status(201).json(newRating);
+// });
+
+// server.get("/comments", (req, res) => {
+//   const { articleId, _expand } = req.query;
+
+//   // Чтение данных из db.json
+//   const db = JSON.parse(
+//     fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
+//   );
+
+//   const { comments, users } = db;
+
+//   if (!articleId) {
+//     return res.status(400).json({ error: "articleId is required" });
+//   }
+
+//   // Фильтрация комментариев по articleId
+//   let commentsById = comments.filter(
+//     (comment) => comment.articleId === articleId,
+//   );
+
+//   if (_expand === "user") {
+//     // Для каждого комментария добавляем информацию о пользователе
+//     commentsById = commentsById.map((comment) => {
+//       const user = users.find((user) => user.id === comment.userId);
+//       return {
+//         ...comment,
+//         user: user || {}, // Если пользователь не найден, оставляем пустой объект
+//       };
+//     });
+//   }
+
+//   return res.json(commentsById);
 // });
 
 // // Проверка авторизации

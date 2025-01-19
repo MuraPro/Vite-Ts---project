@@ -1,12 +1,12 @@
-import { AppRouter } from "app/providers/router";
-import { userActions } from "entities/User";
-import { getUserInited } from "entities/User";
 import { Suspense, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { classNames } from "shared/lib/classNames/classNames";
-import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { PageLoader } from "shared/ui/PageLoader/PageLoader";
-import { Header } from "widgets/Header";
+import { AppRouter } from "@/app/providers/router";
+import { userActions } from "@/entities/User";
+import { getUserInited } from "@/entities/User";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { PageLoader } from "@/shared/ui/PageLoader/PageLoader";
+import { Header } from "@/widgets/Header";
 import cls from "./App.module.scss";
 import "./styles/index.scss";
 

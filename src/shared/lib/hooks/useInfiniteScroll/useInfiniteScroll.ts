@@ -62,7 +62,6 @@ export function useInfiniteScrollWithScroll({
       }
 
       if (scrollTop + clientHeight >= scrollHeight - 10) {
-        console.log("Triggering callback");
         callback?.();
       }
     };

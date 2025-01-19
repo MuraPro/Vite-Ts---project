@@ -1,6 +1,6 @@
-import { Theme } from "app/providers/ThemeProvider";
-import { CollapseDecorator } from "shared/config/storybook/CollapseDecorator/CollapseDecorator";
-import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator/ThemeDecorator";
+import { Theme } from "@/app/providers/ThemeProvider";
+import { CollapseDecorator } from "@/shared/config/storybook/CollapseDecorator/CollapseDecorator";
+import { ThemeDecorator } from "@/shared/config/storybook/ThemeDecorator/ThemeDecorator";
 import { BurgerButton } from "./BurgerButton";
 import type { Meta, StoryObj } from "@storybook/react";
 

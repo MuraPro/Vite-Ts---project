@@ -1,15 +1,15 @@
 import { StoryFn } from "@storybook/react";
-import { StateSchema } from "app/providers/StoreProvider";
-import { StoreProvider } from "app/providers/StoreProvider";
-import { articleDetailsReducer } from "entities/Article/model/slice/articleDetailsSlice";
-import { userReducer } from "entities/User";
-import { addCommentFormReducer } from "features/addCommentForm/model/slices/addCommentFormSlice";
-import { loginReducer } from "features/AuthByUsername";
-import { profileReducer } from "features/editableProfileCard/model/slice/profileSlice";
-import { uiReducer } from "features/UI";
-import { articleDetailsPageReducer } from "pages/ArticleDetailsPage/model/slices";
-import { articlesPageReducer } from "pages/ArticlesPage/model/slices/articlesPageSlice";
-import { ReducersList } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
+import { StateSchema } from "@/app/providers/StoreProvider";
+import { StoreProvider } from "@/app/providers/StoreProvider";
+import { articleDetailsReducer } from "@/entities/Article/model/slice/articleDetailsSlice";
+import { userReducer } from "@/entities/User";
+import { addCommentFormReducer } from "@/features/addCommentForm/model/slices/addCommentFormSlice";
+import { loginReducer } from "@/features/AuthByUsername";
+import { profileReducer } from "@/features/editableProfileCard/model/slice/profileSlice";
+import { uiReducer } from "@/features/UI";
+import { articleDetailsPageReducer } from "@/pages/ArticleDetailsPage/model/slices";
+import { articlesPageReducer } from "@/pages/ArticlesPage/model/slices/articlesPageSlice";
+import { ReducersList } from "@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 
 // const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
 //   counter: counterReducer as Reducer<CounterSchema | undefined>,

@@ -1,7 +1,7 @@
-import { classNames } from "shared/lib/classNames/classNames";
-import { BurgerButton } from "shared/ui/BurgerButton/BurgerButton";
-import { Navbar } from "widgets/Navbar";
-import { Sidebar } from "widgets/Sidebar";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { BurgerButton } from "@/shared/ui/BurgerButton/BurgerButton";
+import { Navbar } from "@/widgets/Navbar";
+import { Sidebar } from "@/widgets/Sidebar";
 import cls from "./Header.module.scss";
 interface HeaderProps {
   className?: string;

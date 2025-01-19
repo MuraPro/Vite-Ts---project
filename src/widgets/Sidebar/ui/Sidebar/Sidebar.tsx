@@ -1,9 +1,9 @@
-import { useCollapse } from "app/providers/CollapseProvider";
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import { useSelector } from "react-redux";
-import { classNames } from "shared/lib/classNames/classNames";
-import { BurgerButton } from "shared/ui/BurgerButton/BurgerButton";
-import { VStack } from "shared/ui/Stack";
+import { useCollapse } from "@/app/providers/CollapseProvider";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { BurgerButton } from "@/shared/ui/BurgerButton/BurgerButton";
+import { VStack } from "@/shared/ui/Stack";
 import { getSidebarItems } from "../../model/selectors/getSidebarItems";
 import { SidebarItem } from "../SidebarItem/SidebarItem";
 import cls from "./Sidebar.module.scss";

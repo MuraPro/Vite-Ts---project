@@ -1,3 +1,4 @@
+import path from "path";
 import react from "@vitejs/plugin-react";
 import { defineConfig, loadEnv } from "vite";
 // import { analyzer } from "vite-bundle-analyzer";
@@ -25,9 +26,9 @@ export default defineConfig(({ mode }) => {
       },
     },
     plugins: [
-      // analyzer({
-      //   openAnalyzer: false,
-      // }),
+      //   analyzer({
+      //     openAnalyzer: false,
+      //   }),
       react(),
       tsconfigPaths(),
       envCompatible(),
@@ -48,11 +49,8 @@ export default defineConfig(({ mode }) => {
         NODE_ENV: "development", // по умолчанию
       }),
       circleDependency({
-        // Включаем проверку для файлов JavaScript, TypeScript и Vue
         include: [/\.[jt]sx?$/, /\.vue\??/],
-        // Исключаем из сканирования node_modules и файлы Git
         exclude: [/node_modules/, /\.git/],
-        // Вызывать ошибку при обнаружении циклических импортов
         circleImportThrowErr: false,
       }),
     ],
@@ -68,6 +66,11 @@ export default defineConfig(({ mode }) => {
     optimizeDeps: {
       exclude: ["chunk-XPR23Y44"],
       include: ["react-router-dom"],
+    },
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "src"), // Указывает, что @ соответствует папке src
+      },
     },
     publicDir: "public",
   };

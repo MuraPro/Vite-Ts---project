@@ -1,6 +1,6 @@
-import { Country } from "entities/Country";
-import { Currency } from "entities/Currency";
-import { Profile } from "entities/Profile";
+import { Country } from "@/entities/Country";
+import { Currency } from "@/entities/Currency";
+import { Profile } from "@/entities/Profile";
 import { fetchProfileData } from "../services/fetchProfileData/fetchProfileData";
 import { updateProfileData } from "../services/updateProfileData/updateProfileData";
 import { ProfileSchema } from "../types/editableProfileCardSchema";

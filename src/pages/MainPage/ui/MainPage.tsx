@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
-import { Text, TextSize } from "shared/ui/Text/Text";
-import { Page } from "widgets/Page";
+import { Text, TextSize } from "@/shared/ui/Text/Text";
+import { Page } from "@/widgets/Page";
 import classes from "./MainPage.module.scss";
 
 const MainPage = memo(() => {

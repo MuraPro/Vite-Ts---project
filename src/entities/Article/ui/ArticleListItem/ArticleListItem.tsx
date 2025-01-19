@@ -1,15 +1,15 @@
 import { memo, useCallback, HTMLAttributeAnchorTarget } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import EyeIcon from "shared/assets/icons/eye-20-20.svg";
-import { RoutePath } from "shared/config/routeConfig/routeConfig";
-import { classNames } from "shared/lib/classNames/classNames";
-import { AppLink } from "shared/ui/AppLink/AppLink";
-import { Avatar } from "shared/ui/Avatar/Avatar";
-import { Button, ButtonTheme } from "shared/ui/Button/Button";
-import { Card, CardTheme } from "shared/ui/Card/Card";
-import { Icon } from "shared/ui/Icon/Icon";
-import { Text } from "shared/ui/Text/Text";
+import EyeIcon from "@/shared/assets/icons/eye-20-20.svg";
+import { RoutePath } from "@/shared/config/routeConfig/routeConfig";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { AppLink } from "@/shared/ui/AppLink/AppLink";
+import { Avatar } from "@/shared/ui/Avatar/Avatar";
+import { Button, ButtonTheme } from "@/shared/ui/Button/Button";
+import { Card, CardTheme } from "@/shared/ui/Card/Card";
+import { Icon } from "@/shared/ui/Icon/Icon";
+import { Text } from "@/shared/ui/Text/Text";
 import AvatarImg from "../../../../shared/assets/avatar.jpg";
 import {
   ArticleBlockType,

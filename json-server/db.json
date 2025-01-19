@@ -2413,5 +2413,63 @@
       "avatar": "https://avatars.mds.yandex.net/get-kinopoisk-image/1773646/91186644-9d11-4d8f-8646-525775f25b17/960x960",
       "email": "Chalanamdo@gmail.com"
     }
+  ],
+  "article-ratings": [
+    {
+      "id": "1",
+      "articleId": "1",
+      "userId": "1",
+      "rate": 5,
+      "feedback": "Отличная статья"
+    },
+    {
+      "id": "2",
+      "articleId": "3",
+      "userId": "1",
+      "rate": 4,
+      "feedback": "классс"
+    },
+    {
+      "id": "3",
+      "articleId": "4",
+      "userId": "1",
+      "rate": 3,
+      "feedback": ""
+    },
+    {
+      "id": "4",
+      "articleId": "1",
+      "userId": "2",
+      "rate": 4,
+      "feedback": "Невероятно"
+    },
+    {
+      "id": "5",
+      "articleId": "6",
+      "userId": "2",
+      "rate": 3
+    },
+    {
+      "id": "6",
+      "articleId": "9",
+      "userId": "2",
+      "rate": 3
+    }
+  ],
+  "profile-ratings": [
+    {
+      "id": "1",
+      "rate": 4,
+      "feedback": "Хорошая статья",
+      "userId": "1",
+      "profileId": "1"
+    },
+    {
+      "id": "2",
+      "rate": 4,
+      "feedback": "Хорошая статья",
+      "userId": "1",
+      "profileId": "2"
+    }
   ]
 }

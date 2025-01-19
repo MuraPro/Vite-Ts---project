@@ -36,6 +36,7 @@
 
   // z - Индексы
   --modal-z-index: 1000;
+  --overlay-z-index: 100;
 
   //Модальное окно
   --modal-bg-dark: #e8e8ea;
@@ -46,4 +47,7 @@
   --red-dark: #ce0505;
   --switcher-bg: #000;
   --overlay-color: rgba(0 0 0 / 60%);
+
+  // карточка статьи
+  --date-color: #0232c2;
 }

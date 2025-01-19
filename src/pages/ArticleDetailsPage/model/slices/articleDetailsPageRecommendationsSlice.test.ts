@@ -1,5 +1,5 @@
-import { StateSchema } from "app/providers/StoreProvider";
-import { Article, ArticleType } from "entities/Article";
+import { StateSchema } from "@/app/providers/StoreProvider";
+import { Article, ArticleType } from "@/entities/Article";
 import { fetchArticleRecommendations } from "../services/fetchArticleRecommendations/fetchArticleRecommendations";
 import {
   articleDetailsPageRecommendationsReducer,

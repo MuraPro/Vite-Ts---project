@@ -1,10 +1,10 @@
-import { ArticleList } from "entities/Article";
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { classNames } from "shared/lib/classNames/classNames";
-import { Text, TextAlign, TextTheme } from "shared/ui/Text/Text";
-import { Page } from "widgets/Page";
+import { ArticleList } from "@/entities/Article";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { Text, TextAlign, TextTheme } from "@/shared/ui/Text/Text";
+import { Page } from "@/widgets/Page";
 import {
   getArticlesPageError,
   getArticlesPageIsLoading,

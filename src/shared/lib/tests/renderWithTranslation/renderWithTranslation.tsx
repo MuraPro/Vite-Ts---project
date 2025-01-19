@@ -1,9 +1,9 @@
 import { render } from "@testing-library/react";
-import { CollapseProvider } from "app/providers/CollapseProvider";
 import { ReactNode } from "react";
 import { I18nextProvider } from "react-i18next";
 import { BrowserRouter } from "react-router-dom";
-import i18nForTests from "shared/config/i18n/i18nForTests";
+import { CollapseProvider } from "@/app/providers/CollapseProvider";
+import i18nForTests from "@/shared/config/i18n/i18nForTests";
 
 export function renderWithTranslation(component: ReactNode) {
   return render(

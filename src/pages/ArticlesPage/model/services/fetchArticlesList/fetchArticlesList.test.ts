@@ -1,6 +1,6 @@
-import { Article, ArticleType } from "entities/Article";
-import { ArticleBlockType } from "entities/Article";
-import { TestAsyncThunk } from "shared/lib/tests/TestAsyncThunk/TestAsyncThunk";
+import { Article, ArticleType } from "@/entities/Article";
+import { ArticleBlockType } from "@/entities/Article";
+import { TestAsyncThunk } from "@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk";
 import {
   getArticlesPageLimit,
   getArticlesPageNum,

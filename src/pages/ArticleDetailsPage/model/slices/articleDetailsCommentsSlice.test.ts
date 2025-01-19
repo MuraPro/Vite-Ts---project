@@ -1,4 +1,4 @@
-import { Comment } from "entities/Comment";
+import { Comment } from "@/entities/Comment";
 import { fetchCommentsByArticleId } from "../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId";
 import { articleDetailsCommentsReducer } from "./articleDetailsCommentsSlice";
 

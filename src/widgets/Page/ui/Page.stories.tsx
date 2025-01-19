@@ -1,10 +1,10 @@
-import { Theme } from "app/providers/ThemeProvider";
-import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator/ThemeDecorator";
+import { Theme } from "@/app/providers/ThemeProvider";
+import { ThemeDecorator } from "@/shared/config/storybook/ThemeDecorator/ThemeDecorator";
 import { Page } from "./Page";
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta: Meta<typeof Page> = {
-  title: "widgets/Page",
+  title: "widget/Page",
   component: Page,
   parameters: {
     layout: "fullscreen",

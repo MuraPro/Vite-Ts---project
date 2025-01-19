@@ -1,7 +1,7 @@
-import { Article, ArticleType } from "entities/Article";
-import { Comment } from "entities/Comment";
-import { rtkApi } from "shared/api/rtkApi";
-import { TestAsyncThunk } from "shared/lib/tests/TestAsyncThunk/TestAsyncThunk";
+import { Article, ArticleType } from "@/entities/Article";
+import { Comment } from "@/entities/Comment";
+import { rtkApi } from "@/shared/api/rtkApi";
+import { TestAsyncThunk } from "@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk";
 import { fetchCommentsByArticleId } from "../../services/fetchCommentsByArticleId/fetchCommentsByArticleId";
 import { addCommentForArticle } from "./addCommentForArticle";
 

@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
-import { Text, TextSize } from "shared/ui/Text/Text";
-import { Page } from "widgets/Page";
+import { Text, TextSize } from "@/shared/ui/Text/Text";
+import { Page } from "@/widgets/Page";
 import cls from "./AdminPanelPage.module.scss";
 
 const AdminPanelPage = () => {

@@ -6,8 +6,8 @@ import {
 } from "@headlessui/react";
 import { ComponentType, Fragment, ReactNode } from "react";
 import { MdDone } from "react-icons/md";
-import { classNames } from "shared/lib/classNames/classNames";
-import { DropdownDirection } from "shared/types/ui";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { DropdownDirection } from "@/shared/types/ui";
 import { Button } from "../../../Button/Button";
 import { VStack } from "../../../Stack";
 import { mapDirectionClass } from "../../styles/consts";

@@ -33,7 +33,7 @@
     // "baseUrl": "./src",
     "baseUrl": ".",
     "paths": {
-      "*": ["./src/*"],
+      "@/*": ["./src/*"],
       "@storybook/*": ["./.storybook/*"]
     }
   },
