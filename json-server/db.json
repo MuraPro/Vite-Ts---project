@@ -2345,6 +2345,12 @@
       "userId": "3",
       "text": "luuiliul",
       "id": "l8kPms8"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "vfdsvcdcx",
+      "id": "28G0e6c"
     }
   ],
   "users": [
@@ -2419,41 +2425,15 @@
       "id": "1",
       "articleId": "1",
       "userId": "1",
-      "rate": 5,
-      "feedback": "Отличная статья"
+      "rate": 3,
+      "feedback": "Отличная статья!"
     },
     {
       "id": "2",
       "articleId": "3",
       "userId": "1",
-      "rate": 4,
-      "feedback": "классс"
-    },
-    {
-      "id": "3",
-      "articleId": "4",
-      "userId": "1",
-      "rate": 3,
+      "rate": 5,
       "feedback": ""
-    },
-    {
-      "id": "4",
-      "articleId": "1",
-      "userId": "2",
-      "rate": 4,
-      "feedback": "Невероятно"
-    },
-    {
-      "id": "5",
-      "articleId": "6",
-      "userId": "2",
-      "rate": 3
-    },
-    {
-      "id": "6",
-      "articleId": "9",
-      "userId": "2",
-      "rate": 3
     }
   ],
   "profile-ratings": [

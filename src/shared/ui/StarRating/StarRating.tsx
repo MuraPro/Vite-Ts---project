@@ -1,7 +1,7 @@
 import { memo, useState } from "react";
-import StarIcon from "@/shared/assets/icons/star.svg";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { Icon } from "@/shared/ui/Icon/Icon";
+import StarIcon from "../../assets/icons/star.svg";
+import { Icon } from "../Icon/Icon";
 import cls from "./StarRating.module.scss";
 
 interface StarRatingProps {

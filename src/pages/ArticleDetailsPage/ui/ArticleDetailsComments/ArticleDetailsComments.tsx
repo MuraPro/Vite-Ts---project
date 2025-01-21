@@ -1,7 +1,7 @@
 import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { getArticleDetailsIsLoading } from "@/entities/Article/model/selectors/articleDetails";
+import { getArticleDetailsIsLoading } from "@/entities/Article";
 import { CommentList } from "@/entities/Comment";
 import { AddCommentForm } from "@/features/addCommentForm";
 import { classNames } from "@/shared/lib/classNames/classNames";

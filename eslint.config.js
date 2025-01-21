@@ -123,7 +123,8 @@ export default [
       "jest/prefer-to-have-length": "warn",
       "jest/valid-expect": "error",
       "no-undef": "off",
-      "mura-pro-plugin/import-checker": "error",
+      "mura-pro-plugin/path-checker": ["error", { alias: "@" }],
+      "mura-pro-plugin/public-api-imports": ["error", { alias: "@" }],
     },
   },
   {
@@ -200,7 +201,8 @@ export default [
       "jest/prefer-to-have-length": "warn",
       "jest/valid-expect": "error",
       "no-undef": "off",
-      "mura-pro-plugin/import-checker": "error",
+      "mura-pro-plugin/path-checker": ["error", { alias: "@" }],
+      "mura-pro-plugin/public-api-imports": ["error", { alias: "@" }],
     },
   },
   {

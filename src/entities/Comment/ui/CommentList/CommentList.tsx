@@ -1,10 +1,10 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
-import { getArticleDetailsIsLoading } from "@/entities/Article/model/selectors/articleDetails";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { VStack } from "@/shared/ui/Stack";
 import { Text, TextAlign } from "@/shared/ui/Text/Text";
+import { getArticleDetailsIsLoading } from "../../../Article/model/selectors/articleDetails";
 import { Comment } from "../../model/types/comment";
 import { CommentCard } from "../CommentCard/CommentCard";
 import cls from "./CommentList.module.scss";

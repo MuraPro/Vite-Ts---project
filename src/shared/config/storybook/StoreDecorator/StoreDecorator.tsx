@@ -1,15 +1,15 @@
 import { StoryFn } from "@storybook/react";
 import { StateSchema } from "@/app/providers/StoreProvider";
 import { StoreProvider } from "@/app/providers/StoreProvider";
-import { articleDetailsReducer } from "@/entities/Article/model/slice/articleDetailsSlice";
+import { articleDetailsReducer } from "@/entities/Article";
 import { userReducer } from "@/entities/User";
-import { addCommentFormReducer } from "@/features/addCommentForm/model/slices/addCommentFormSlice";
+import { addCommentFormReducer } from "@/features/addCommentForm";
 import { loginReducer } from "@/features/AuthByUsername";
-import { profileReducer } from "@/features/editableProfileCard/model/slice/profileSlice";
+import { profileReducer } from "@/features/editableProfileCard";
 import { uiReducer } from "@/features/UI";
-import { articleDetailsPageReducer } from "@/pages/ArticleDetailsPage/model/slices";
-import { articlesPageReducer } from "@/pages/ArticlesPage/model/slices/articlesPageSlice";
-import { ReducersList } from "@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
+import { articleDetailsPageReducer } from "@/pages/ArticleDetailsPage";
+import { articlesPageReducer } from "@/pages/ArticlesPage";
+import { ReducersList } from "../../../lib/components/DynamicModuleLoader/DynamicModuleLoader";
 
 // const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
 //   counter: counterReducer as Reducer<CounterSchema | undefined>,

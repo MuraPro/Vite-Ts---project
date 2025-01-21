@@ -12,7 +12,7 @@ import { AddCommentFormSchema } from "@/features/addCommentForm";
 import { LoginSchema } from "@/features/AuthByUsername";
 import { ProfileSchema } from "@/features/editableProfileCard";
 import { UISchema } from "@/features/UI";
-import { ArticleDetailsPageSchema } from "@/pages/ArticleDetailsPage/model/types";
+import { ArticleDetailsPageSchema } from "@/pages/ArticleDetailsPage";
 import { ArticlesPageSchema } from "@/pages/ArticlesPage";
 import { rtkApi } from "@/shared/api/rtkApi";
 

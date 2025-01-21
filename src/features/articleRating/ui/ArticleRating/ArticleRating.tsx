@@ -12,10 +12,11 @@ import {
 export interface ArticleRatingProps {
   className?: string;
   articleId: string;
+  mockrating?: number;
 }
 
 const ArticleRating = memo((props: ArticleRatingProps) => {
-  const { className, articleId } = props;
+  const { className, articleId, mockrating } = props; // Используем rating из пропсов
   const { t } = useTranslation();
   const userData = useSelector(getUserAuthData);
 
@@ -42,7 +43,6 @@ const ArticleRating = memo((props: ArticleRatingProps) => {
           feedback,
         });
       } catch (e) {
-        // handle error
         console.log(e);
       }
     },
@@ -67,13 +67,13 @@ const ArticleRating = memo((props: ArticleRatingProps) => {
     return <Skeleton width="100%" height={120} />;
   }
 
-  const rating = data?.[0];
+  const rating = mockrating || data?.[0]?.rate;
 
   return (
     <Rating
       onCancel={onCancel}
       onAccept={onAccept}
-      rate={rating?.rate}
+      rate={rating}
       className={className}
       title={t("Оцените статью")}
       feedbackTitle={t(

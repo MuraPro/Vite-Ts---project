@@ -19,10 +19,33 @@ export default meta;
 type Story = StoryObj<typeof NotificationItem>;
 
 export const Light: Story = {
-  args: {},
+  args: {
+    item: {
+      id: "3",
+      title: "Уведомление 3",
+      description: "Поставь лайк и оставь комментарий!",
+    },
+  },
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 export const Dark: Story = {
-  args: {},
+  args: {
+    item: {
+      id: "3",
+      title: "Уведомление 3",
+      description: "Поставь лайк и оставь комментарий!",
+    },
+  },
+  decorators: [ThemeDecorator(Theme.DARK)],
+};
+export const WithLinkDark: Story = {
+  args: {
+    item: {
+      id: "3",
+      title: "Уведомление 3",
+      description: "Ссылка на сторонний ресурс",
+      href: "http://localhost:3000/admin",
+    },
+  },
   decorators: [ThemeDecorator(Theme.DARK)],
 };
