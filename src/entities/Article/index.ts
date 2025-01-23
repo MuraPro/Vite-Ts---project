@@ -17,5 +17,3 @@ export {
   getArticleDetailsData,
   getArticleDetailsIsLoading,
 } from "./model/selectors/articleDetails";
-
-export { articleDetailsReducer } from "./model/slice/articleDetailsSlice";

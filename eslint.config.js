@@ -124,7 +124,17 @@ export default [
       "jest/valid-expect": "error",
       "no-undef": "off",
       "mura-pro-plugin/path-checker": ["error", { alias: "@" }],
-      "mura-pro-plugin/public-api-imports": ["error", { alias: "@" }],
+      "mura-pro-plugin/public-api-imports": [
+        "error",
+        {
+          alias: "@",
+          testFilesPatterns: [
+            "**/*.test.*",
+            "**/*.story.*",
+            "**/StoreDecorator.tsx",
+          ],
+        },
+      ],
     },
   },
   {
@@ -154,7 +164,6 @@ export default [
       "import/prefer-default-export": "off",
       "no-unused-vars": "off",
       "react/require-default-props": "off",
-      "react/react-in-jsx-scope": "off",
       "react/jsx-props-no-spreading": "warn",
       "react/function-component-definition": "off",
       "no-shadow": "off",
@@ -202,7 +211,17 @@ export default [
       "jest/valid-expect": "error",
       "no-undef": "off",
       "mura-pro-plugin/path-checker": ["error", { alias: "@" }],
-      "mura-pro-plugin/public-api-imports": ["error", { alias: "@" }],
+      "mura-pro-plugin/public-api-imports": [
+        "error",
+        {
+          alias: "@",
+          testFilesPatterns: [
+            "**/*.test.*",
+            "**/*.story.*",
+            "**/StoreDecorator.tsx",
+          ],
+        },
+      ],
     },
   },
   {

@@ -72,6 +72,11 @@ export default defineConfig(({ mode }) => {
         "@": path.resolve(__dirname, "src"), // Указывает, что @ соответствует папке src
       },
     },
+    test: {
+      globals: true,
+      environment: "jsdom",
+      setupFiles: "./jest.setup.ts",
+    },
     publicDir: "public",
   };
 });

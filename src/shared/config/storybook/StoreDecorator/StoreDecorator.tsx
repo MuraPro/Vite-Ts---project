@@ -1,14 +1,14 @@
 import { StoryFn } from "@storybook/react";
 import { StateSchema } from "@/app/providers/StoreProvider";
 import { StoreProvider } from "@/app/providers/StoreProvider";
-import { articleDetailsReducer } from "@/entities/Article";
+import { articleDetailsReducer } from "@/entities/Article/testing";
 import { userReducer } from "@/entities/User";
-import { addCommentFormReducer } from "@/features/addCommentForm";
-import { loginReducer } from "@/features/AuthByUsername";
-import { profileReducer } from "@/features/editableProfileCard";
+import { addCommentFormReducer } from "@/features/addCommentForm/testing";
+import { loginReducer } from "@/features/AuthByUsername/testing";
+import { profileReducer } from "@/features/editableProfileCard/testing";
 import { uiReducer } from "@/features/UI";
-import { articleDetailsPageReducer } from "@/pages/ArticleDetailsPage";
-import { articlesPageReducer } from "@/pages/ArticlesPage";
+import { articleDetailsPageReducer } from "@/pages/ArticleDetailsPage/testing";
+import { articlesPageReducer } from "@/pages/ArticlesPage/testing";
 import { ReducersList } from "../../../lib/components/DynamicModuleLoader/DynamicModuleLoader";
 
 // const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {

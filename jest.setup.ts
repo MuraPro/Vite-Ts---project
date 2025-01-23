@@ -1,3 +1,6 @@
+// Подключение полифила для fetch
+import "whatwg-fetch";
+
 Object.defineProperty(global, "import.meta", {
   value: {
     env: {

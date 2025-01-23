@@ -32,7 +32,7 @@ describe("fetchProfileData", () => {
   test("должен вернуть ошибку при неудачном запросе", async () => {
     const thunk = new TestAsyncThunk(fetchProfileData);
 
-    thunk.api.get.mockRejectedValue(new Error("Network Error"));
+    thunk.api.get.mockRejectedValue("error");
 
     const result = await thunk.callThunk("1");
 
