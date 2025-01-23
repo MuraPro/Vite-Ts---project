@@ -1,5 +1,6 @@
+import { Country } from "@/entities/Country";
+import { Currency } from "@/entities/Currency";
 import { Profile } from "@/entities/Profile";
-import { Country, Currency } from "@/shared/const/common";
 import { TestAsyncThunk } from "@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk";
 import { getProfileForm } from "../../selectors/getProfileForm/getProfileForm";
 import { updateProfileData } from "./updateProfileData";
