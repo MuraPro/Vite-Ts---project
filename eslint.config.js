@@ -9,6 +9,7 @@ import muraProPlugin from "eslint-plugin-mura-pro-plugin";
 import prettier from "eslint-plugin-prettier";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
+import unusedImports from "eslint-plugin-unused-imports";
 
 const commonGlobals = {
   localStorage: "readonly",
@@ -78,11 +79,13 @@ export default [
       "react-hooks": reactHooks,
       i18next,
       jest: jestPlugin,
+      "unused-imports": unusedImports,
     },
     rules: {
       "@typescript-eslint/explicit-module-boundary-types": "off",
       "@typescript-eslint/no-explicit-any": "off",
       "no-unused-vars": "off",
+      "unused-imports/no-unused-imports": "error",
       "import/order": [
         "error",
         {
@@ -159,9 +162,11 @@ export default [
       "react-hooks": reactHooks,
       i18next,
       jest: jestPlugin,
+      "unused-imports": unusedImports,
     },
     rules: {
       "constructor-super": "off",
+      "unused-imports/no-unused-imports": "error",
       "no-console": "warn",
       "react/jsx-filename-extension": [
         2,
