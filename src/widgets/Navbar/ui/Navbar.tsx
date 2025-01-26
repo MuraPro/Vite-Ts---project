@@ -9,7 +9,7 @@ import { LangSwitcher } from "@/features/LangSwitcher";
 import { NotificationButton } from "@/features/notificationButton";
 import { ThemeSwitcher } from "@/features/ThemeSwitcher";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button/Button";
+import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button";
 import { HStack } from "@/shared/ui/Stack";
 // import { getSidebarItems } from "widgets/Sidebar/model/selectors/getSidebarItems";
 // import { SidebarItem } from "widgets/Sidebar/ui/SidebarItem/SidebarItem";

@@ -1,4 +1,4 @@
-import { StateSchema } from "@/app/providers/StoreProvider";
+import { StateSchema } from "@/app/providers/StoreProvider/testing";
 import { Article, ArticleType } from "@/entities/Article";
 import { fetchArticleRecommendations } from "../services/fetchArticleRecommendations/fetchArticleRecommendations";
 import {

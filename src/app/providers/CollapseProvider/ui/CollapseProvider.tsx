@@ -1,5 +1,5 @@
 import { FC, useMemo, useState, ReactNode } from "react";
-import { CollapseContext } from "../lib/CollapseContext";
+import { CollapseContext } from "@/shared/lib/context/CollapseContext";
 
 interface CollapseProviderProps {
   children: ReactNode;

@@ -1,6 +1,5 @@
 import { useContext, Dispatch, SetStateAction } from "react";
-
-import { CollapseContext } from "./CollapseContext";
+import { CollapseContext } from "../../context/CollapseContext";
 
 interface CollapseResult {
   collapsed: boolean;

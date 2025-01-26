@@ -3,8 +3,8 @@ import { useMediaQuery } from "react-responsive";
 import { NotificationList } from "@/entities/Notification";
 import NotificationIcon from "@/shared/assets/icons/notification-20-20.svg";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { Drawer } from "@/shared/ui/Drawer/Drawer";
-import { Icon } from "@/shared/ui/Icon/Icon";
+import { Drawer } from "@/shared/ui/Drawer";
+import { Icon } from "@/shared/ui/Icon";
 import { Popover } from "@/shared/ui/Popups";
 import cls from "./NotificationButton.module.scss";
 

@@ -2351,6 +2351,12 @@
       "userId": "1",
       "text": "vfdsvcdcx",
       "id": "28G0e6c"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "hghgg",
+      "id": "LswpnXm"
     }
   ],
   "users": [
@@ -2389,7 +2395,7 @@
       "lastname": "Masharipov",
       "age": "36",
       "currency": "KRW",
-      "country": "Uzbekistan",
+      "country": "Thailand",
       "city": "Gwandju",
       "username": "admin",
       "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg",
@@ -2433,6 +2439,13 @@
       "articleId": "3",
       "userId": "1",
       "rate": 5,
+      "feedback": ""
+    },
+    {
+      "id": "3",
+      "articleId": "5",
+      "userId": "1",
+      "rate": 4,
       "feedback": ""
     }
   ],

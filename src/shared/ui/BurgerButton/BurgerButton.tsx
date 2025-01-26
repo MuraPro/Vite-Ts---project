@@ -1,6 +1,6 @@
 import { memo } from "react";
-import { useCollapse } from "@/app/providers/CollapseProvider";
 import { classNames } from "@/shared/lib/classNames/classNames";
+import { useCollapse } from "../../lib/hooks/useCollapse/useCollapse";
 import cls from "./BurgerButton.module.scss";
 interface BurgerButtonProps {
   className?: string;

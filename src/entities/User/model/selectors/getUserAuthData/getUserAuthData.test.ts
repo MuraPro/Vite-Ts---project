@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom";
-import { StateSchema } from "@/app/providers/StoreProvider";
+import { StateSchema } from "@/app/providers/StoreProvider/testing";
 import { getUserAuthData } from "./getUserAuthData";
 
 // Описание тестов

@@ -1,5 +1,7 @@
 import { StoryFn, StoryContext } from "@storybook/react";
-import { ThemeProvider, Theme } from "@/app/providers/ThemeProvider";
+// eslint-disable-next-line mura-pro-plugin/layer-imports
+import { ThemeProvider } from "@/app/providers/ThemeProvider";
+import { Theme } from "@/shared/const/theme";
 
 export const ThemeDecorator =
   (theme: Theme) => (StoryComponent: StoryFn, context: StoryContext) => {

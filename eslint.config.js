@@ -124,6 +124,13 @@ export default [
       "jest/valid-expect": "error",
       "no-undef": "off",
       "mura-pro-plugin/path-checker": ["error", { alias: "@" }],
+      "mura-pro-plugin/layer-imports": [
+        "error",
+        {
+          alias: "@",
+          ignoreImportPatterns: ["**/StoreProvider", "**/testing"],
+        },
+      ],
       "mura-pro-plugin/public-api-imports": [
         "error",
         {
@@ -211,6 +218,13 @@ export default [
       "jest/valid-expect": "error",
       "no-undef": "off",
       "mura-pro-plugin/path-checker": ["error", { alias: "@" }],
+      "mura-pro-plugin/layer-imports": [
+        "error",
+        {
+          alias: "@",
+          ignoreImportPatterns: ["**/StoreProvider", "**/testing"],
+        },
+      ],
       "mura-pro-plugin/public-api-imports": [
         "error",
         {

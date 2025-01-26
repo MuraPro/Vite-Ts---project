@@ -1,4 +1,4 @@
-import { userActions } from "@/entities/User";
+import { userActions } from "@/entities/User/testing";
 import { TestAsyncThunk } from "@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk";
 import { loginByUsername } from "./loginByUsername";
 

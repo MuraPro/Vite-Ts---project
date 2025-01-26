@@ -2,10 +2,13 @@ import { StoryFn } from "@storybook/react";
 import { StateSchema } from "@/app/providers/StoreProvider";
 import { StoreProvider } from "@/app/providers/StoreProvider";
 import { articleDetailsReducer } from "@/entities/Article/testing";
+// eslint-disable-next-line mura-pro-plugin/layer-imports
 import { userReducer } from "@/entities/User";
 import { addCommentFormReducer } from "@/features/addCommentForm/testing";
 import { loginReducer } from "@/features/AuthByUsername/testing";
+
 import { profileReducer } from "@/features/editableProfileCard/testing";
+// eslint-disable-next-line mura-pro-plugin/layer-imports
 import { uiReducer } from "@/features/UI";
 import { articleDetailsPageReducer } from "@/pages/ArticleDetailsPage/testing";
 import { articlesPageReducer } from "@/pages/ArticlesPage/testing";

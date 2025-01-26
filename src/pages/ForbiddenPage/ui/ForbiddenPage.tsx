@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Text, TextSize } from "@/shared/ui/Text/Text";
+import { Text, TextSize } from "@/shared/ui/Text";
 import { Page } from "@/widgets/Page";
 import cls from "./ForbiddenPage.module.scss";
 
