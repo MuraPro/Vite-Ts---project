@@ -186,6 +186,9 @@ Cборщик адаптированы под основные фичи прил
 
 - [addCommentForm](/src/features/addCommentForm)
 - [articleEditForm](/src/features/articleEditForm)
+- [ArticleSortSelector](/src/features/ArticleSortSelector)
+- [ArticleTypeTabs](/src/features/ArticleTypeTabs)
+- [ArticleViewSelector](/src/features/ArticleViewSelector)
 - [articleRating](/src/features/articleRating)
 - [articleRecommendationsList](/src/features/articleRecommendationsList)
 - [AuthByUsername](/src/features/AuthByUsername)
