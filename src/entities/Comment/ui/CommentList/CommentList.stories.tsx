@@ -24,34 +24,30 @@ const exampleComments = [
     id: "1",
     text: "Первый комментарий",
     user: {
-      id: "u1",
+      id: "1",
       username: "User1",
-      avatar:
-        "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg",
+      avatar: "../../../../../src/shared/assets/avatar.jpg",
     },
   },
   {
     id: "2",
     text: "Второй комментарий",
     user: {
-      id: "u2",
+      id: "2",
       username: "User2",
-      avatar:
-        "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg",
+      avatar: "../../../../../src/shared/assets/avatar.jpg",
     },
   },
 ];
 
-// Список комментариев в светлой теме
 export const Normal: Story = {
   args: {
-    comments: exampleComments, // Передаем список комментариев
-    isLoading: false, // Отключаем состояние загрузки
+    comments: exampleComments,
+    isLoading: false,
   },
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
-// Список комментариев в темной теме
 export const Dark: Story = {
   args: {
     comments: exampleComments,
@@ -60,11 +56,10 @@ export const Dark: Story = {
   decorators: [ThemeDecorator(Theme.DARK)],
 };
 
-// Состояние без комментариев
 export const NoComments: Story = {
   args: {
-    comments: [], // Пустой список
-    isLoading: false, // Не загружается
+    comments: [],
+    isLoading: false,
   },
   decorators: [ThemeDecorator(Theme.LIGHT)],
 };

@@ -1,8 +1,10 @@
 .BIG {
   .article {
+    display: flex;
+    gap: 30px;
     &__card {
       background: var(--card-bg);
-      margin-bottom: 30px; //заглушка
+      margin-bottom: 30px;
     }
 
     &__views {
