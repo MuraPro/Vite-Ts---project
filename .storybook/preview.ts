@@ -1,3 +1,4 @@
+import { Theme } from "../src/shared/const/theme";
 import { SuspenseDecorator } from "./../src/shared/config/storybook/SuspenseDecorator/SuspenseDecorator";
 import { MockedParamsDecorator } from "./../src/shared/config/storybook/MockDecorators/MockDecorators";
 import { ThemeDecorator } from "./../src/shared/config/storybook/ThemeDecorator/ThemeDecorator";
@@ -18,6 +19,7 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  layout: "fullscreen",
 };
 
 export const decorators = [

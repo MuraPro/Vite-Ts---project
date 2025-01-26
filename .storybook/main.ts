@@ -4,7 +4,12 @@ import { defineConfig, loadEnv } from "vite";
 const config: StorybookConfig = {
   stories: ["../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [
-    "@storybook/addon-essentials",
+    {
+      name: "@storybook/addon-essentials",
+      options: {
+        backgrounds: false,
+      },
+    },
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
   ],
