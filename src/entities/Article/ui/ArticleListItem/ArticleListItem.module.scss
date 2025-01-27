@@ -25,7 +25,7 @@
 
     &__date {
       margin-left: auto;
-      color: var(--inverted-primary-color);
+      color: var(--primary-color);
     }
 
     &__title {
@@ -86,6 +86,17 @@
       /* stylelint-enable */
     }
 
+    &__skeleton {
+      width: 200px;
+      height: 200px;
+    }
+    /* stylelint-disable */
+    @media (max-width: 578px) {
+      &__skeleton {
+        width: 250px;
+      }
+    }
+    /* stylelint-enable */
     &__date {
       position: absolute;
       right: 0;

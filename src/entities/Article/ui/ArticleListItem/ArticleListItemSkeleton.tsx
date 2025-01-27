@@ -41,14 +41,14 @@ export const ArticleListItemSkeleton = memo(
             cls[view],
           ])}
         >
-          <Card className={cls.card} theme={CardTheme.OUTLINED}>
+          <Card className={cls.article__card} theme={CardTheme.OUTLINED}>
             <div className={cls.header}>
               <Skeleton border="50%" height={30} width={30} />
               <Skeleton width={150} height={16} className={cls.username} />
               <Skeleton width={150} height={16} className={cls.date} />
             </div>
             <Skeleton width={250} height={24} className={cls.title} />
-            <Skeleton height={200} className={cls.img} />
+            <Skeleton height={300} className={cls.img} />
             <div className={cls.footer}>
               <Skeleton height={36} width={200} />
             </div>

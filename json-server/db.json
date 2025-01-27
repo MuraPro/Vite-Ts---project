@@ -2313,25 +2313,25 @@
   ],
   "users": [
     {
-      "id": "1",
       "username": "admin",
       "password": "123",
       "roles": ["ADMIN"],
-      "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg"
+      "avatar": "https://img.freepik.com/free-photo/funny-monkey-with-glasses-studio_23-2150844104.jpg",
+      "id": "1"
     },
     {
       "id": "2",
       "username": "user",
       "password": "123",
       "roles": ["USER"],
-      "avatar": "https://i-enlisted.cdn.gaijin.net/original/3X/1/d/1d5c49bacaf307e34cab73cf4ae69f122130425b.jpeg"
+      "avatar": "https://sotni.ru/wp-content/uploads/2023/08/prikolnye-avatarki-10.webp"
     },
     {
       "id": "3",
       "username": "manager",
       "password": "123",
       "roles": ["MANAGER"],
-      "avatar": "https://avatars.mds.yandex.net/get-kinopoisk-image/1773646/91186644-9d11-4d8f-8646-525775f25b17/960x960"
+      "avatar": "https://sotni.ru/wp-content/uploads/2023/08/prikolnye-avatarki-10.webp"
     }
   ],
   "profile": [
@@ -2344,7 +2344,7 @@
       "country": "Thailand",
       "city": "Gwandju",
       "username": "admin",
-      "avatar": "https://dota2.ru/img/heroes/centaur_warrunner/centaur_warrunner.png",
+      "avatar": "https://img.freepik.com/free-photo/funny-monkey-with-glasses-studio_23-2150844104.jpg",
       "email": "Chalanamdo@gmail.com"
     },
     {
@@ -2356,7 +2356,7 @@
       "country": "Russia",
       "city": "Moscow",
       "username": "Raptor",
-      "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg",
+      "avatar": "https://sotni.ru/wp-content/uploads/2023/08/prikolnye-avatarki-10.webp",
       "email": "Chalanamdo@gmail.com"
     },
     {
@@ -2368,7 +2368,7 @@
       "country": "South Korea",
       "city": "Los Andgeles",
       "username": "Scala",
-      "avatar": "https://avatars.mds.yandex.net/get-kinopoisk-image/1773646/91186644-9d11-4d8f-8646-525775f25b17/960x960",
+      "avatar": "https://sotni.ru/wp-content/uploads/2023/08/prikolnye-avatarki-10.webp",
       "email": "Chalanamdo@gmail.com"
     }
   ],
