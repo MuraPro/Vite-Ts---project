@@ -4,11 +4,13 @@ import { useNavigate } from "react-router-dom";
 import EyeIcon from "@/shared/assets/icons/eye-20-20.svg";
 import { getRouteArticleDetails } from "@/shared/const/router";
 import { classNames } from "@/shared/lib/classNames/classNames";
+import { AppImage } from "@/shared/ui/AppImage";
 import { AppLink } from "@/shared/ui/AppLink";
 import { Avatar } from "@/shared/ui/Avatar";
 import { Button, ButtonTheme } from "@/shared/ui/Button";
 import { Card, CardTheme } from "@/shared/ui/Card";
 import { Icon } from "@/shared/ui/Icon";
+import { Skeleton } from "@/shared/ui/Skeleton";
 import { Text } from "@/shared/ui/Text";
 import AvatarImg from "../../../../shared/assets/avatar.jpg";
 import {
@@ -70,7 +72,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
           <div className={cls.article__header}>
             {article.user?.avatar ? (
               <div className={cls.card__avatar}>
-                <Avatar size={30} src={article.user.avatar} alt={"avatar"} />
+                <Avatar size={30} src={article.user.avatar} />
               </div>
             ) : (
               <div className={cls.article__avatar}>
@@ -89,13 +91,12 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
             className={cls.article__title}
           />
           {types}
-          {article.img && (
-            <img
-              src={article.img}
-              className={cls.article__img}
-              alt={article.title}
-            />
-          )}
+          <AppImage
+            fallback={<Skeleton width="100%" height={250} />}
+            src={article.img}
+            className={cls.article__img}
+            alt={article.title}
+          />
           {textBlock && (
             <ArticleTextBlockComponent
               block={textBlock}
@@ -131,13 +132,12 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
         theme={CardTheme.OUTLINED}
       >
         <div className={cls.article__imageWrapper}>
-          {article.img && (
-            <img
-              alt={article.title || t("Без названия")}
-              src={article.img}
-              className={cls.article__img}
-            />
-          )}
+          <AppImage
+            fallback={<Skeleton width={200} height={200} />}
+            alt={article.title}
+            src={article.img}
+            className={cls.article__img}
+          />
           <Text text={article.createdAt} className={cls.article__date} />
         </div>
         <div className={cls.article__infoWrapper}>
