@@ -28,6 +28,9 @@
     "generate:slice": "node ./scripts/createSlice/index.js",
     "postinstall": "node ./scripts/clear-cache.js"
   },
+  "lint-staged": {
+    "**/*.{ts,tsx}": "eslint"
+  },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
     "@loki/runner": "^0.35.0",
@@ -109,7 +112,7 @@
     "jest-html-reporters": "^3.1.7",
     "jest-transform-stub": "^2.0.0",
     "json-server": "^0.17.4",
-    "lint-staged": "^15.2.10",
+    "lint-staged": "^15.4.3",
     "loki": "^0.35.1",
     "npm": "^11.0.0",
     "prettier": "^3.3.3",
@@ -163,14 +166,5 @@
       "pre-commit": "lint-staged",
       "pre-push": "lint-staged"
     }
-  },
-  "lint-staged": {
-    "*.{ts,tsx,js,jsx}": [
-      "npm run lint",
-      "npm run test:unit"
-    ],
-    "*.{css, scss}": [
-      "npm run lint:css"
-    ]
   }
 }
