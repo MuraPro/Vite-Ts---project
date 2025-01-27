@@ -26,7 +26,8 @@ const exampleComments = [
     user: {
       id: "1",
       username: "User1",
-      avatar: "../../../../../src/shared/assets/avatar.jpg",
+      avatar:
+        "https://img.freepik.com/free-photo/funny-monkey-with-glasses-studio_23-2150844104.jpg",
     },
   },
   {
@@ -35,7 +36,8 @@ const exampleComments = [
     user: {
       id: "2",
       username: "User2",
-      avatar: "../../../../../src/shared/assets/avatar.jpg",
+      avatar:
+        "https://sotni.ru/wp-content/uploads/2023/08/prikolnye-avatarki-10.webp",
     },
   },
 ];

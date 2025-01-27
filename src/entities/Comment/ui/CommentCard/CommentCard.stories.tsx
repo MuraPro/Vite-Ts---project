@@ -25,7 +25,7 @@ const exampleComment = {
     id: "1",
     username: "John Doe",
     avatar:
-      "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg",
+      "https://img.freepik.com/free-photo/funny-monkey-with-glasses-studio_23-2150844104.jpg",
   },
 };
 

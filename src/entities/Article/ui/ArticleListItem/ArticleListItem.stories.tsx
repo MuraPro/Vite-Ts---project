@@ -36,7 +36,7 @@ const article: Article = {
     id: "1",
     username: "Ulbi tv",
     avatar:
-      "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg",
+      "https://img.freepik.com/free-photo/funny-monkey-with-glasses-studio_23-2150844104.jpg",
   },
   type: [ArticleType.LANGUAGE],
   blocks: [
