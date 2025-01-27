@@ -41,8 +41,8 @@ describe("updateProfileData", () => {
     (getProfileForm as jest.Mock).mockReturnValue(mockProfile);
 
     const thunk = new TestAsyncThunk(updateProfileData);
-
-    thunk.api.put.mockRejectedValue(new Error("Network Error"));
+    // const error = new Error("SERVER_ERROR");
+    thunk.api.put.mockRejectedValue("error");
 
     const result = await thunk.callThunk();
 

@@ -7,7 +7,7 @@ const ForbiddenPage = () => {
   const { t } = useTranslation("");
 
   return (
-    <Page className="_container">
+    <Page className="_container" data-testid="ForbiddenPage">
       <Text
         title={t("У вас нет доступа к этой странице")}
         size={TextSize.M}

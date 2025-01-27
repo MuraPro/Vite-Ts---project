@@ -13,6 +13,7 @@ export const NotFoundPage = memo(({ className }: NotFoundPageProps) => {
   return (
     <Page
       className={classNames(`${cls.notFoundPage} _container`, {}, [className])}
+      data-testid="NotFoundPage"
     >
       {t("Страница не найдена")}
     </Page>

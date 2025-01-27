@@ -11,6 +11,7 @@ const config: Config = {
   clearMocks: true,
   moduleDirectories: ["node_modules"],
   rootDir: "./",
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
   modulePaths: ["<rootDir>src"],
   testMatch: ["<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)"],
   moduleFileExtensions: ["js", "jsx", "ts", "tsx", "json", "node"],
@@ -46,8 +47,6 @@ const config: Config = {
     VITE_IS_DEV: JSON.stringify(process.env.NODE_ENV === "development"),
     __PROJECT__: "jest",
   },
-  setupFiles: ["<rootDir>/jest.setup.ts"], // Добавляем файл setup
-
   reporters: [
     "default",
     [

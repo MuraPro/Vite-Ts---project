@@ -64,13 +64,13 @@ export const ArticleListItemSkeleton = memo(
         <Card className={cls.card} theme={CardTheme.OUTLINED}>
           <div className={cls.imageWrapper}>
             <Skeleton
-              width={windowSize.width < 576 ? 240 : 200}
-              height={windowSize.width < 576 ? 240 : 200}
+              width={windowSize.width < 576 ? 230 : 200}
+              height={windowSize.width < 576 ? 230 : 200}
               className={cls.img}
             />
           </div>
           <div className={cls.infoWrapper}>
-            <Skeleton width={130} height={24} />
+            <Skeleton width={130} height={32} />
           </div>
           <Skeleton width={150} height={40} className={cls.title} />
         </Card>

@@ -81,19 +81,19 @@
       background: var(--card-bg);
       /* stylelint-disable */
       @media (max-width: 575.9px) {
-        width: 270px;
+        width: 250px;
       }
       /* stylelint-enable */
     }
 
     &__skeleton {
-      width: 200px;
+      width: 230px;
       height: 200px;
     }
     /* stylelint-disable */
     @media (max-width: 578px) {
       &__skeleton {
-        width: 250px;
+        width: 230px;
       }
     }
     /* stylelint-enable */
@@ -110,7 +110,7 @@
       position: relative;
       /* stylelint-disable */
       @media (max-width: 575.9px) {
-        height: 240px;
+        height: 250px;
       }
       /* stylelint-enable */
     }

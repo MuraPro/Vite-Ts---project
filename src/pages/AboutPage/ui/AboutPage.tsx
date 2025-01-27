@@ -8,7 +8,7 @@ import classes from "./AboutPage.module.scss";
 const AboutPage = memo(() => {
   const { t } = useTranslation("about");
   return (
-    <Page className="_container">
+    <Page className="_container" data-testid="AboutPage">
       <Text
         title={t("Информационная страница")}
         size={TextSize.M}
