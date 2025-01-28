@@ -1,18 +1,18 @@
-import { ThemeDecorator } from "@/shared/config/storybook/ThemeDecorator/ThemeDecorator";
-import { Theme } from "@/shared/const/theme";
-import { Logo } from "./Logo";
-import type { Meta, StoryObj } from "@storybook/react";
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { Theme } from '@/shared/const/theme';
+import { Logo } from './Logo';
+import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Logo> = {
-  title: "shared/Logo",
-  component: Logo,
-  parameters: {
-    layout: "fullscreen",
-  },
-  tags: ["autodocs"],
-  argTypes: {},
-  args: {},
-  decorators: [ThemeDecorator(Theme.LIGHT)],
+    title: 'shared/Logo',
+    component: Logo,
+    parameters: {
+        layout: 'fullscreen',
+    },
+    tags: ['autodocs'],
+    argTypes: {},
+    args: {},
+    decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export default meta;
@@ -20,9 +20,9 @@ export default meta;
 type Story = StoryObj<typeof Logo>;
 
 export const Light: Story = {
-  decorators: [ThemeDecorator(Theme.LIGHT)],
+    decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const Dark: Story = {
-  decorators: [ThemeDecorator(Theme.DARK)],
+    decorators: [ThemeDecorator(Theme.DARK)],
 };

@@ -1,23 +1,25 @@
-import { memo } from "react";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import { useCollapse } from "../../lib/hooks/useCollapse/useCollapse";
-import cls from "./BurgerButton.module.scss";
+import { memo } from 'react';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useCollapse } from '../../lib/hooks/useCollapse/useCollapse';
+import cls from './BurgerButton.module.scss';
 interface BurgerButtonProps {
-  className?: string;
-  toggle?: string;
-  backgroundColor?: string;
+    className?: string;
+    toggle?: string;
+    backgroundColor?: string;
 }
 export const BurgerButton = memo(({ className, toggle }: BurgerButtonProps) => {
-  const { collapsed, toggleCollapse } = useCollapse();
+    const { collapsed, toggleCollapse } = useCollapse();
 
-  const classes = collapsed ? `${cls.burger} ${cls._active}` : `${cls.burger}`;
-  return (
-    <div
-      className={classNames(classes, {}, [className])}
-      onClick={toggleCollapse}
-      data-testid={toggle}
-    >
-      <span></span>
-    </div>
-  );
+    const classes = collapsed
+        ? `${cls.burger} ${cls._active}`
+        : `${cls.burger}`;
+    return (
+        <div
+            className={classNames(classes, {}, [className])}
+            onClick={toggleCollapse}
+            data-testid={toggle}
+        >
+            <span></span>
+        </div>
+    );
 });

@@ -1,45 +1,45 @@
-import React, { ErrorInfo, ReactNode, Suspense } from "react";
-import { ErrorPage } from "@/widgets/ErrorPage";
+import React, { ErrorInfo, ReactNode, Suspense } from 'react';
+import { ErrorPage } from '@/widgets/ErrorPage';
 
 interface ErrorBoundaryProps {
-  children: ReactNode;
+    children: ReactNode;
 }
 
 interface ErrorBoundaryState {
-  hasError: boolean;
+    hasError: boolean;
 }
 
 class ErrorBoundary extends React.Component<
-  ErrorBoundaryProps,
-  ErrorBoundaryState
+    ErrorBoundaryProps,
+    ErrorBoundaryState
 > {
-  constructor(props: ErrorBoundaryProps) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError() {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.log(error, errorInfo);
-  }
-
-  render() {
-    const { hasError } = this.state;
-    const { children } = this.props;
-
-    if (hasError) {
-      return (
-        <Suspense fallback="">
-          <ErrorPage />
-        </Suspense>
-      );
+    constructor(props: ErrorBoundaryProps) {
+        super(props);
+        this.state = { hasError: false };
     }
 
-    return children;
-  }
+    static getDerivedStateFromError() {
+        return { hasError: true };
+    }
+
+    componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+        console.log(error, errorInfo);
+    }
+
+    render() {
+        const { hasError } = this.state;
+        const { children } = this.props;
+
+        if (hasError) {
+            return (
+                <Suspense fallback="">
+                    <ErrorPage />
+                </Suspense>
+            );
+        }
+
+        return children;
+    }
 }
 
 export default ErrorBoundary;

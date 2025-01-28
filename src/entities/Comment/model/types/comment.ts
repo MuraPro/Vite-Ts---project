@@ -1,7 +1,7 @@
-import { User } from "../../../User";
+import { User } from '../../../User';
 
 export interface Comment {
-  id: string;
-  user: User;
-  text: string;
+    id: string;
+    user: User;
+    text: string;
 }

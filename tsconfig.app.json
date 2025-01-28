@@ -1,46 +1,45 @@
 {
-  "compilerOptions": {
-    "types": [
-      "node",
-      "vite/client",
-      "jest",
-      "istanbul-lib-coverage",
-      "@testing-library/jest-dom"
-    ],
-    "outDir": "./dist/",
-    "noImplicitAny": true,
-    "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "esnext",
-    "skipLibCheck": true,
-    "target": "ES2020",
-
-    /* Bundler mode */
-    "allowJs": true,
-    "moduleResolution": "node",
-    "isolatedModules": true,
-    "moduleDetection": "force",
-    "noEmit": true,
-    "jsx": "react-jsx",
-
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    // "baseUrl": "./src",
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"],
-      "@storybook/*": ["./.storybook/*"]
-    }
-  },
-  "include": ["src/**/*", "jest.setup.ts"],
-  "ts-node": {
     "compilerOptions": {
-      "module": "CommonJS"
+        "types": [
+            "node",
+            "vite/client",
+            "jest",
+            "istanbul-lib-coverage",
+            "@testing-library/jest-dom"
+        ],
+        "outDir": "./dist/",
+        "noImplicitAny": true,
+        "useDefineForClassFields": true,
+        "lib": ["ES2020", "DOM", "DOM.Iterable"],
+        "skipLibCheck": true,
+        "module": "ESNext",
+        "target": "ESNext",
+
+        /* Bundler mode */
+        "allowJs": true,
+        "moduleResolution": "node",
+        "isolatedModules": true,
+        "moduleDetection": "force",
+        "noEmit": true,
+        "jsx": "react-jsx",
+
+        /* Linting */
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["./src/*"],
+            "@storybook/*": ["./.storybook/*"]
+        }
+    },
+    "include": ["src/**/*", "jest.setup.ts"],
+    "ts-node": {
+        "compilerOptions": {
+            "module": "CommonJS"
+        }
     }
-  }
 }

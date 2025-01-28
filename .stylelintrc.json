@@ -1,9 +1,9 @@
 {
-  "extends": ["stylelint-config-standard-scss"],
-  "rules": {
-    "block-no-empty": null,
-    "selector-class-pattern": null,
-    "no-descending-specificity": null,
-    "scss/double-slash-comment-whitespace-inside": null
-  }
+    "extends": ["stylelint-config-standard-scss"],
+    "rules": {
+        "block-no-empty": null,
+        "selector-class-pattern": null,
+        "no-descending-specificity": null,
+        "scss/double-slash-comment-whitespace-inside": null
+    }
 }

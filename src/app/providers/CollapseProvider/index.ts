@@ -1,3 +1,3 @@
-import CollapseProvider from "./ui/CollapseProvider";
+import CollapseProvider from './ui/CollapseProvider';
 
 export { CollapseProvider };

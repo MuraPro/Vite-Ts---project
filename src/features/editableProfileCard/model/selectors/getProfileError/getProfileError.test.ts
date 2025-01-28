@@ -1,30 +1,30 @@
-import { StateSchema } from "@/app/providers/StoreProvider/testing";
-import { getProfileError } from "./getProfileError";
+import { StateSchema } from '@/app/providers/StoreProvider/testing';
+import { getProfileError } from './getProfileError';
 
-describe("getProfileError", () => {
-  it("должен вернуть ошибку, если она есть в состоянии", () => {
-    const state: DeepPartial<StateSchema> = {
-      profile: {
-        error: "error",
-      },
-    };
+describe('getProfileError', () => {
+    it('должен вернуть ошибку, если она есть в состоянии', () => {
+        const state: DeepPartial<StateSchema> = {
+            profile: {
+                error: 'error',
+            },
+        };
 
-    expect(getProfileError(state as StateSchema)).toBe("error");
-  });
+        expect(getProfileError(state as StateSchema)).toBe('error');
+    });
 
-  it("должен вернуть undefined, если ошибки нет в состоянии", () => {
-    const state: DeepPartial<StateSchema> = {
-      profile: {
-        error: undefined,
-      },
-    };
+    it('должен вернуть undefined, если ошибки нет в состоянии', () => {
+        const state: DeepPartial<StateSchema> = {
+            profile: {
+                error: undefined,
+            },
+        };
 
-    expect(getProfileError(state as StateSchema)).toBeUndefined();
-  });
+        expect(getProfileError(state as StateSchema)).toBeUndefined();
+    });
 
-  it("должен вернуть undefined, если профиль отсутствует в состоянии", () => {
-    const state: DeepPartial<StateSchema> = {};
+    it('должен вернуть undefined, если профиль отсутствует в состоянии', () => {
+        const state: DeepPartial<StateSchema> = {};
 
-    expect(getProfileError(state as StateSchema)).toBeUndefined();
-  });
+        expect(getProfileError(state as StateSchema)).toBeUndefined();
+    });
 });
