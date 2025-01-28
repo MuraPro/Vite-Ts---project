@@ -1,9 +1,8 @@
 import { useContext } from 'react';
-import { LOCAL_STORAGE_THEME_KEY } from '../../../const/localstorage';
 import { Theme } from '../../../const/theme';
 import { ThemeContext } from '../../context/ThemeContext';
 interface UseThemeResult {
-    toggleTheme: () => void;
+    toggleTheme: (saveAction?: (theme: Theme) => void) => void;
     theme: Theme;
 }
 
@@ -17,7 +16,7 @@ export function useTheme(): UseThemeResult {
     const { theme = Theme.LIGHT, setTheme } = context;
     document.body.className = theme;
 
-    const toggleTheme = () => {
+    const toggleTheme = (saveAction?: (theme: Theme) => void) => {
         if (setTheme) {
             const newTheme = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK;
             setTheme?.(newTheme);
@@ -25,7 +24,9 @@ export function useTheme(): UseThemeResult {
             document.body.classList.remove(newTheme);
             document.body.classList.add(newTheme);
 
-            localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
+            setTheme?.(newTheme);
+
+            saveAction?.(newTheme);
         } else {
             console.warn(
                 'setTheme function is undefined. Theme will not be toggled.',

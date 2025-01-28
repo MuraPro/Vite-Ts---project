@@ -1,7 +1,6 @@
 import { Suspense, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { userActions } from '@/entities/User';
-import { getUserInited } from '@/entities/User';
+import { getUserInited, initAuthData } from '@/entities/User';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { PageLoader } from '@/shared/ui/PageLoader';
@@ -19,8 +18,12 @@ const App = ({ className }: mainProps) => {
     const inited = useSelector(getUserInited);
 
     useEffect(() => {
-        dispatch(userActions.initAuthData());
+        dispatch(initAuthData());
     }, [dispatch]);
+
+    if (!inited) {
+        return <PageLoader />;
+    }
 
     return (
         <div className={classNames('app', {}, [className])}>
