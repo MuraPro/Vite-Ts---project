@@ -9,6 +9,12 @@ export function setFeatureFlags(newFeatureFlags?: FeatureFlags) {
     }
 }
 
-export function getFeatureFlag(flag: keyof FeatureFlags) {
-    return featureFlags[flag];
+export function getFeatureFlag(flag: keyof FeatureFlags): boolean {
+    // Проверяем, что featureFlags инициализирован
+    if (!featureFlags) {
+        console.warn('Feature flags not initialized');
+        return false; // Возвращаем false или другое значение по умолчанию
+    }
+
+    return featureFlags[flag] ?? false; // Если флаг не найден, возвращаем false
 }
