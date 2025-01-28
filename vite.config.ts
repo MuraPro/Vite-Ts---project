@@ -25,6 +25,7 @@ export default defineConfig(({ mode }) => {
                 transformMixedEsModules: true,
             },
         },
+        base: '/',
         plugins: [
             //   analyzer({
             //     openAnalyzer: false,
