@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import { ArticleDetails } from '@/entities/Article';
 import { ArticleRating } from '@/features/articleRating';
@@ -8,6 +9,8 @@ import {
     DynamicModuleLoader,
     ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { toggleFeatures } from '@/shared/lib/features';
+import { Card } from '@/shared/ui/Card';
 import { VStack } from '@/shared/ui/Stack';
 import { Page } from '@/widgets/Page';
 import { articleDetailsPageReducer } from '../../model/slices';
@@ -26,10 +29,17 @@ const reducers: ReducersList = {
 const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     const { className } = props;
     const { id } = useParams<{ id: string }>();
+    const { t } = useTranslation();
 
     if (!id) {
         return null;
     }
+
+    const articleRatingCard = toggleFeatures({
+        name: 'isArticleRatingEnabled',
+        on: () => <ArticleRating articleId={id} />,
+        off: () => <Card>{t('Оценка статей скоро появится!')}</Card>,
+    });
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
@@ -40,7 +50,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
                     <VStack gap="16" max>
                         <ArticleDetailsPageHeader />
                         <ArticleDetails id={id} />
-                        <ArticleRating articleId={id} />
+                        {articleRatingCard}
                         <ArticleRecommendationsList />
                         <ArticleDetailsComments id={id} />
                     </VStack>

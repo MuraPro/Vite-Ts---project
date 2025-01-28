@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/shared/ui/Button';
+import { VStack } from '@/shared/ui/Stack';
 import { useCounterValue } from '../model/selectors/getCounterValue/getCounterValue';
 import { useCounterActions } from '../model/slice/counterSlice';
 
@@ -21,7 +22,7 @@ export const Counter = () => {
     };
 
     return (
-        <div>
+        <VStack>
             <h1 data-testid="value-title">{counterValue}</h1>
             <Button onClick={handleAddFive} data-testid="increment-btn5">
                 {t('add5')}
@@ -32,6 +33,6 @@ export const Counter = () => {
             <Button data-testid="decrement-btn" onClick={handleDec}>
                 {t('decrement')}
             </Button>
-        </div>
+        </VStack>
     );
 };

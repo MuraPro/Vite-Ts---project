@@ -102,32 +102,32 @@ npm run start:dev - запуск сервера + frontend проекта в dev
 Пример:
 
 ```typescript jsx
-import { ThemeDecorator } from "@/shared/config/storybook/ThemeDecorator/ThemeDecorator";
-import { Theme } from "@/shared/const/theme";
-import { Button, ButtonTheme } from "./Button";
-import type { Meta, StoryObj } from "@storybook/react";
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { Theme } from '@/shared/const/theme';
+import { Button, ButtonTheme } from './Button';
+import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Button> = {
-  title: "shared/Button",
-  component: Button,
-  parameters: {
-    layout: "fullscreen",
-  },
-  tags: ["autodocs"],
-  argTypes: {
-    backgroundColor: { control: "color" },
-  },
-  args: {
-    theme: ButtonTheme.CLEAR,
-  },
+    title: 'shared/Button',
+    component: Button,
+    parameters: {
+        layout: 'fullscreen',
+    },
+    tags: ['autodocs'],
+    argTypes: {
+        backgroundColor: { control: 'color' },
+    },
+    args: {
+        theme: ButtonTheme.CLEAR,
+    },
 };
 
 export default meta;
 type Story = StoryObj<typeof Button>;
 
 export const Primary: Story = {
-  args: { children: "Text", theme: ButtonTheme.PRIMARY },
-  decorators: [ThemeDecorator(Theme.LIGHT)],
+    args: { children: 'Text', theme: ButtonTheme.PRIMARY },
+    decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 ```
 
@@ -167,6 +167,26 @@ Cборщик адаптированы под основные фичи прил
 
 Для асинхронного подключения редюсеров (чтобы не тянуть их в общий бандл) используется
 [DynamicModuleLoader](/src/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader.tsx)
+
+---
+
+### Работа с feature-flags
+
+Разрешено использование feature flags только с помощью хелпера toggleFeatures
+
+в него передается объект с опциями
+
+{
+name: название фича-флага,
+on: функция, которая отработает после Включения фичи
+of: функция, которая отработает после ВЫключения фичи
+}
+
+Для автоматического удаления фичи использовать скрипт remove-feature.ts,
+который принимает 2 аргумента
+
+1. Название удаляемого фича-флага
+2. Состояние (on\off)
 
 ---
 
