@@ -2385,7 +2385,7 @@
         "USER"
       ],
       "features": {
-        "isArticleRatingEnabled": true,
+        "isArticleRatingEnabled": false,
         "isCounterEnabled": false
       },
       "avatar": "https://sotni.ru/wp-content/uploads/2023/08/prikolnye-avatarki-10.webp",
