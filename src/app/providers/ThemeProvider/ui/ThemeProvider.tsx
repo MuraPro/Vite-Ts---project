@@ -1,39 +1,54 @@
-import { ReactNode, useEffect, useMemo, useState } from 'react';
-import { useJsonSettings } from '@/entities/User';
-import { Theme } from '@/shared/const/theme';
-import { ThemeContext } from '../../../../shared/lib/context/ThemeContext';
+import { ReactNode, useEffect, useState } from 'react';
+import { useJsonSettings, saveJsonSettings } from '@/entities/User'; // Получаем тему пользователя из бэкенда
+import { Theme } from '@/shared/const/theme'; // Список доступных тем
+import { PageLoader } from '@/shared/ui/PageLoader'; // Лоадер на случай задержки
+import { ThemeContext } from '../../../../shared/lib/context/ThemeContext'; // Контекст для темы
 
 interface ThemeProviderProps {
     initialTheme?: Theme;
     children: ReactNode;
 }
 
-const ThemeProvider = (props: ThemeProviderProps) => {
-    const { initialTheme, children } = props;
-    const { theme: defaultTheme } = useJsonSettings();
-    const [isThemeInited, setThemeInited] = useState(false);
+// Функция для получения сохраненной темы из localStorage
+const getStoredTheme = (): Theme | null => {
+    return (localStorage.getItem('theme') as Theme) || null;
+};
 
-    const [theme, setTheme] = useState<Theme>(
-        initialTheme || defaultTheme || Theme.DARK,
-    );
+const ThemeProvider = ({ initialTheme, children }: ThemeProviderProps) => {
+    const { theme: userTheme } = useJsonSettings(); // saveJsonSettings — функция для сохранения данных пользователя
+    const [theme, setTheme] = useState<Theme | null>(null); // Состояние текущей темы
 
+    // Установка темы при загрузке
     useEffect(() => {
-        if (!isThemeInited && defaultTheme) {
-            setTheme(defaultTheme);
-            setThemeInited(true);
-        }
-    }, [defaultTheme, isThemeInited]);
+        const storedTheme = getStoredTheme(); // Получаем тему из localStorage
 
-    const defaultProps = useMemo(
-        () => ({
-            theme,
-            setTheme,
-        }),
-        [theme],
-    );
+        if (userTheme) {
+            // Если пользовательская тема доступна из бэкенда
+            setTheme(userTheme);
+            localStorage.setItem('theme', userTheme); // Сохраняем в localStorage
+        } else if (storedTheme) {
+            // Если тема есть в localStorage, но отсутствует у пользователя
+            setTheme(storedTheme);
+        } else {
+            // Если ничего не найдено, используем initialTheme или темную тему по умолчанию
+            setTheme(initialTheme || Theme.DARK);
+        }
+    }, [userTheme, initialTheme]);
+
+    // Обновление темы и синхронизация с бэкендом + localStorage
+    const updateTheme = (newTheme: Theme) => {
+        setTheme(newTheme);
+        localStorage.setItem('theme', newTheme); // Сохранение в localStorage
+        saveJsonSettings({ theme: newTheme }); // Сохранение на бэкенде
+    };
+
+    // Пока тема не определена, показываем лоадер
+    if (!theme) {
+        return <PageLoader />;
+    }
 
     return (
-        <ThemeContext.Provider value={defaultProps}>
+        <ThemeContext.Provider value={{ theme, setTheme: updateTheme }}>
             {children}
         </ThemeContext.Provider>
     );

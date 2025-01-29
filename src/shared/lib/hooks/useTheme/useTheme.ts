@@ -13,7 +13,7 @@ export function useTheme(): UseThemeResult {
         throw new Error('useTheme must be used within a ThemeProvider');
     }
 
-    const { theme = Theme.LIGHT, setTheme } = context;
+    const { theme = Theme.DARK, setTheme } = context;
     document.body.className = theme;
 
     const toggleTheme = (saveAction?: (theme: Theme) => void) => {
