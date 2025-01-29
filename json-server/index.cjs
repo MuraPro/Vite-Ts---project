@@ -94,6 +94,61 @@ server.post('/login', (req, res) => {
     }
 });
 
+// Эндпоинт для обновления jsonSettings пользователя
+server.patch('/users/:userId', (req, res) => {
+    const { userId } = req.params;
+    const { jsonSettings } = req.body;
+    let db;
+    try {
+        db = JSON.parse(
+            fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'),
+        );
+    } catch (error) {
+        console.error('Error reading db.json:', error);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
+
+    const { users } = db;
+
+    const userIndex = users.findIndex((user) => user.id === userId);
+    if (userIndex === -1) {
+        return res.status(404).json({ message: 'Пользователь не найден' });
+    }
+
+    users[userIndex].jsonSettings = {
+        ...users[userIndex].jsonSettings,
+        ...jsonSettings,
+    };
+
+    saveDB(db);
+    res.json(db.users[userIndex]);
+});
+
+// Эндпоинт для получения данных пользователя по ID
+server.get('/users/:userId', (req, res) => {
+    const { userId } = req.params;
+
+    let db;
+    try {
+        db = JSON.parse(
+            fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'),
+        );
+    } catch (error) {
+        console.error('Error reading db.json:', error);
+        return res.status(500).json({ message: 'Internal server error' });
+    }
+
+    const { users } = db;
+
+    const user = users.find((user) => user.id === userId);
+
+    if (!user) {
+        return res.status(404).json({ message: 'Пользователь не найден' });
+    }
+
+    res.json(user);
+});
+
 // Эндпоинт для получения профиля по id (GET /profile/:id)
 server.get('/profile/:id', (req, res) => {
     const profileId = req.params.id; // Получаем id профиля из параметров URL
@@ -691,6 +746,60 @@ server.listen(8000, () => {
 //     }
 // });
 
+// // Эндпоинт для обновления jsonSettings пользователя
+// server.patch('/users/:userId', (req, res) => {
+//     const { userId } = req.params;
+//     const { jsonSettings } = req.body;
+//     let db;
+//     try {
+//         db = JSON.parse(
+//             fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'),
+//         );
+//     } catch (error) {
+//         console.error('Error reading db.json:', error);
+//         return res.status(500).json({ message: 'Internal server error' });
+//     }
+
+//     const { users } = db;
+
+//     const userIndex = users.findIndex((user) => user.id === userId);
+//     if (userIndex === -1) {
+//         return res.status(404).json({ message: 'Пользователь не найден' });
+//     }
+
+//     users[userIndex].jsonSettings = {
+//         ...users[userIndex].jsonSettings,
+//         ...jsonSettings,
+//     };
+
+//     saveDB(db);
+//     res.json(db.users[userIndex]);
+// });
+
+// // Эндпоинт для получения данных пользователя по ID
+// server.get('/users/:userId', (req, res) => {
+//     const { userId } = req.params;
+
+//     let db;
+//     try {
+//         db = JSON.parse(
+//             fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'),
+//         );
+//     } catch (error) {
+//         console.error('Error reading db.json:', error);
+//         return res.status(500).json({ message: 'Internal server error' });
+//     }
+
+//     const { users } = db;
+
+//     const user = users.find((user) => user.id === userId);
+
+//     if (!user) {
+//         return res.status(404).json({ message: 'Пользователь не найден' });
+//     }
+
+//     res.json(user);
+// });
 // // Эндпоинт для получения профиля по id (GET /profile/:id)
 // server.get('/profile/:id', (req, res) => {
 //     const profileId = req.params.id; // Получаем id профиля из параметров URL
