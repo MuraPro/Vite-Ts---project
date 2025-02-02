@@ -59,7 +59,7 @@ export const EditableProfileCardHeader = (props: ProfilePageHeaderProps) => {
                 title={t('Профиль')}
                 className={cls['profile__header-title']}
                 icon={CgProfile}
-                personalClassTitle={cls['profile__header-box']}
+                titlePersonalClass={cls['profile__header-box']}
             />
             {canEdit && (
                 <>
