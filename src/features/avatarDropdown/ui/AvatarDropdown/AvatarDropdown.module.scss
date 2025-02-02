@@ -1,6 +1,7 @@
 .dropdown__title {
-  background-color: var(--inverted-bg-color);
-  border: 1px solid var(--inverted-primary-color);
+  background-color: var(--bg-color);
+  border: 1px solid var(--inverted-bg-color);
+  border-radius: 8px;
   font: var(--font-s);
   width: 150px;
 }

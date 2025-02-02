@@ -1,15 +1,12 @@
 .langSwitcher {
-  transition:
-    color 0.4s ease,
-    border 0.4s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
 
-  &__icon {
-    margin-bottom: 2px;
-    width: 20px;
-    height: 20px;
-  }
+    &__icon {
+        margin-left: 3px;
+        width: 20px;
+        height: 20px;
+    }
 }

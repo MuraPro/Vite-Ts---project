@@ -12,6 +12,7 @@ const meta: Meta<typeof ErrorPage> = {
     tags: ['autodocs'],
     argTypes: {},
     args: {},
+    decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export default meta;

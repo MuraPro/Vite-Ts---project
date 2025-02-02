@@ -9,28 +9,17 @@ const meta: Meta<typeof CurrencySelect> = {
     title: 'entities/CurrencySelect',
     component: CurrencySelect,
     parameters: {
-        layout: 'centered',
+        layout: 'fullscreen',
     },
+    tags: ['autodocs'],
     argTypes: {
-        value: {
-            control: {
-                type: 'radio',
-                options: [
-                    Currency.RUB,
-                    Currency.EUR,
-                    Currency.USD,
-                    Currency.KRW,
-                ],
-            },
-        },
+        value: { control: 'select', options: Object.values(Currency) },
     },
 };
 
 export default meta;
+type Story = StoryObj<typeof CurrencySelect>;
 
-type Story = StoryObj<typeof meta>;
-
-// Компонент для управления состоянием выбора валюты
 const CurrencySelectStory = (args: any) => {
     const [selectedValue, setSelectedValue] = useState(args.value);
 
@@ -47,24 +36,43 @@ export const Default: Story = {
     render: (args) => <CurrencySelectStory {...args} />,
     args: {
         label: 'Укажите валюту',
-        value: Currency.USD,
+        value: Currency.RUB,
+        direction: 'bottom right',
+        style: {
+            position: 'relative',
+            top: '50px',
+            left: '50px',
+            width: '500px',
+        },
     },
 };
 
-export const LightTheme: Story = {
+export const CurrencySelectLight: Story = {
     ...Default,
     decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
-export const DarkTheme: Story = {
+export const CurrencySelectDark: Story = {
     ...Default,
     decorators: [ThemeDecorator(Theme.DARK)],
 };
 
-export const ReadOnly: Story = {
+export const CurrencySelectReadOnlyLight: Story = {
     render: (args) => <CurrencySelectStory {...args} />,
     args: {
         ...Default.args,
+        label: 'Валюта заблокирована',
         readonly: true,
     },
+    decorators: [ThemeDecorator(Theme.LIGHT)],
+};
+
+export const CurrencySelectReadOnlyDark: Story = {
+    render: (args) => <CurrencySelectStory {...args} />,
+    args: {
+        ...Default.args,
+        label: 'Валюта заблокирована',
+        readonly: true,
+    },
+    decorators: [ThemeDecorator(Theme.DARK)],
 };

@@ -21,7 +21,13 @@ export default meta;
 
 type Story = StoryObj<typeof AddCommentForm>;
 
-export const Primary: Story = {
+export const AddCommentFormDark: Story = {
+    args: {
+        onSendComment: action('onSendComment'),
+    },
+    decorators: [ThemeDecorator(Theme.DARK), StoreDecorator({})],
+};
+export const AddCommentFormLight: Story = {
     args: {
         onSendComment: action('onSendComment'),
     },

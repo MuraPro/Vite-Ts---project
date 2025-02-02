@@ -27,6 +27,7 @@ const meta: Meta<typeof AvatarDropdown> = {
     argTypes: {
         className: { control: 'text' },
     },
+    decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export default meta;

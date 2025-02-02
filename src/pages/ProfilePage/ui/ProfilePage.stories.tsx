@@ -15,6 +15,7 @@ const meta: Meta<typeof ProfilePage> = {
     argTypes: {
         className: { control: 'text' },
     },
+    decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export default meta;

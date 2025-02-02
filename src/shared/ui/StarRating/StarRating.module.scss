@@ -1,15 +1,16 @@
 .starIcon {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .normal {
-  fill: none;
+    fill: none;
 }
 
 .hovered {
-  fill: var(--inverted-primary-color);
+    transition: fill 0.4s ease;
+    fill: var(--primary-color);
 }
 
 .selected {
-  cursor: auto;
+    cursor: auto;
 }

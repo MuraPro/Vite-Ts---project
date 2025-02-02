@@ -26,6 +26,7 @@ const meta: Meta<typeof LangSwitcher> = {
                 <Story />
             </div>
         ),
+        ThemeDecorator(Theme.LIGHT),
     ],
 };
 

@@ -6,13 +6,12 @@ export enum ButtonTheme {
     CLEAR = 'clear',
     CLEAR_INVERTED = 'clearInverted',
     OUTLINE = 'outline',
+    OUTLINE_INVERTED = 'outlineInverted',
     OUTLINE_RED = 'outline_red',
     PRIMARY = 'primary',
+    PRIMARY_INVERTED = 'primaryInverted',
     SECONDARY = 'secondary',
-    DEFAULT = 'default',
-    SMALL = 'small',
-    MEDIUM = 'medium',
-    LARGE = 'large',
+    SECONDARY_INVERTED = 'secondaryInverted',
     BACKGROUND = 'background',
     BACKGROUND_INVERTED = 'backgroundInverted',
 }
@@ -32,7 +31,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export enum ButtonSize {
-    D = 'size_d',
+    SE = 'size_se',
     S = 'size_s',
     M = 'size_m',
     L = 'size_l',
@@ -45,7 +44,7 @@ export const Button = memo((props: ButtonProps) => {
         children,
         theme = ButtonTheme.CLEAR,
         square,
-        size = ButtonSize.D,
+        size = ButtonSize.S,
         ariaLabel,
         onClick,
         disabled,

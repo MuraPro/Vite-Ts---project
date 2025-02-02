@@ -18,6 +18,7 @@ const meta: Meta<typeof ArticleListItem> = {
     tags: ['autodocs'],
     argTypes: {},
     args: {},
+    decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export default meta;

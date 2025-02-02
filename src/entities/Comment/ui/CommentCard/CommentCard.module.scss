@@ -1,24 +1,25 @@
 .CommentCard {
-  padding: 10px;
-  border: 1px solid var(--inverted-primary-color);
-  color: var(--inverted-primary-color);
+    padding: 10px;
+    transition: all 0.4s ease;
+    border: 1px solid var(--primary-color);
 }
 
 .header {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .text {
-  word-wrap: break-word; /* Перенос длинных слов */
-  overflow-wrap: break-word; /* Поддержка для современных браузеров */
-  white-space: normal; /* Разрешить перенос текста */
+    transition: all 0.4s ease;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
 }
 
 .username {
-  margin-left: 10px;
+    margin-left: 10px;
 }
 
 .loading {
-  border: none;
+    border: none;
 }

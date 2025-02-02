@@ -1,15 +1,20 @@
 .Tabs {
-  display: flex;
-  gap: 8px;
-  cursor: pointer;
-  font: var(--font-m);
-  /* stylelint-disable */
-  @media (max-width: 575.9px) {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    font: var(--font-s);
-  }
-  /* stylelint-enable */
+    gap: 8px;
+    cursor: pointer;
+    font: var(--font-m);
+    /* stylelint-disable */
+    @media (max-width: 575.9px) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        font: var(--font-s);
+    }
+    /* stylelint-enable */
+}
+
+.tab {
+    transition: all 0.4s ease;
+    color: var(--primary-color);
 }

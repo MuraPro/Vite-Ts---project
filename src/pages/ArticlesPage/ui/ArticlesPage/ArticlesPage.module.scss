@@ -1,16 +1,15 @@
 .ArticlesPage {
-  color: var(--inverted-primary-color);
-  min-height: 500px;
+    min-height: 500px;
 
-  &.error {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
+    &.error {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
 }
 
 .ArticleList {
-  min-height: 650px;
-  box-sizing: border-box;
+    min-height: 650px;
+    box-sizing: border-box;
 }

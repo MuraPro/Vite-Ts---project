@@ -22,6 +22,7 @@ const meta: Meta<typeof ThemeSwitcher> = {
                 <Story />
             </div>
         ),
+        ThemeDecorator(Theme.LIGHT),
     ],
 };
 

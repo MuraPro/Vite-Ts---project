@@ -12,6 +12,7 @@ const meta: Meta<typeof ArticlesPage> = {
     tags: ['autodocs'],
     argTypes: {},
     args: {},
+    decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export default meta;

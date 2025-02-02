@@ -27,6 +27,7 @@ const meta: Meta<typeof Select> = {
                 <Story />
             </div>
         ),
+        ThemeDecorator(Theme.LIGHT),
     ],
 };
 

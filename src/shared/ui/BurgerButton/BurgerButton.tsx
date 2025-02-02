@@ -1,25 +1,29 @@
-import { memo } from 'react';
+import { ButtonHTMLAttributes, memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useCollapse } from '../../lib/hooks/useCollapse/useCollapse';
 import cls from './BurgerButton.module.scss';
-interface BurgerButtonProps {
+interface BurgerButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
     toggle?: string;
-    backgroundColor?: string;
+    style?: Object;
 }
-export const BurgerButton = memo(({ className, toggle }: BurgerButtonProps) => {
-    const { collapsed, toggleCollapse } = useCollapse();
+export const BurgerButton = memo(
+    ({ className, toggle, style }: BurgerButtonProps) => {
+        const { collapsed, toggleCollapse } = useCollapse();
 
-    const classes = collapsed
-        ? `${cls.burger} ${cls._active}`
-        : `${cls.burger}`;
-    return (
-        <div
-            className={classNames(classes, {}, [className])}
-            onClick={toggleCollapse}
-            data-testid={toggle}
-        >
-            <span></span>
-        </div>
-    );
-});
+        const classes = collapsed
+            ? `${cls.burger} ${cls._active}`
+            : `${cls.burger}`;
+        return (
+            <button
+                type="button"
+                className={classNames(classes, {}, [className])}
+                onClick={toggleCollapse}
+                data-testid={toggle}
+                style={style}
+            >
+                <span></span>
+            </button>
+        );
+    },
+);

@@ -9,30 +9,17 @@ const meta: Meta<typeof CountrySelect> = {
     title: 'entities/CountrySelect',
     component: CountrySelect,
     parameters: {
-        layout: 'centered',
+        layout: 'fullscreen',
     },
+    tags: ['autodocs'],
     argTypes: {
-        value: {
-            control: {
-                type: 'radio',
-                options: [
-                    Country.Russia,
-                    Country.USA,
-                    Country.Korea,
-                    Country.Uzbekistan,
-                    Country.Thailand,
-                    Country.Kazakhstan,
-                ],
-            },
-        },
+        value: { control: 'select', options: Object.values(Country) },
     },
 };
 
 export default meta;
+type Story = StoryObj<typeof CountrySelect>;
 
-type Story = StoryObj<typeof meta>;
-
-// Component for managing selected country state
 const CountrySelectStory = (args: any) => {
     const [selectedValue, setSelectedValue] = useState(args.value);
 
@@ -50,23 +37,42 @@ export const Default: Story = {
     args: {
         label: 'Укажите страну',
         value: Country.Russia,
+        direction: 'bottom right',
+        style: {
+            position: 'relative',
+            top: '50px',
+            left: '50px',
+            width: '500px',
+        },
     },
 };
 
-export const LightTheme: Story = {
+export const CountrySelectLight: Story = {
     ...Default,
     decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
-export const DarkTheme: Story = {
+export const CountrySelectDark: Story = {
     ...Default,
     decorators: [ThemeDecorator(Theme.DARK)],
 };
 
-export const ReadOnly: Story = {
+export const CountrySelectReadOnlyLight: Story = {
     render: (args) => <CountrySelectStory {...args} />,
     args: {
         ...Default.args,
+        label: 'Страна заблокирована',
         readonly: true,
     },
+    decorators: [ThemeDecorator(Theme.LIGHT)],
+};
+
+export const CountrySelectReadOnlyDark: Story = {
+    render: (args) => <CountrySelectStory {...args} />,
+    args: {
+        ...Default.args,
+        label: 'Страна заблокирована',
+        readonly: true,
+    },
+    decorators: [ThemeDecorator(Theme.DARK)],
 };

@@ -2,37 +2,37 @@ import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { getUserAuthData } from '@/entities/User';
-import { classNames } from '@/shared/lib/classNames/classNames';
-import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink';
+import { classNames, Mods } from '@/shared/lib/classNames/classNames';
+import { AppLink, AppLinkSize, AppLinkTheme } from '@/shared/ui/AppLink';
 import { SidebarItemType } from '../../model/types/sidebar';
 import cls from './SidebarItem.module.scss';
 
 interface SidebarItemProps {
     item: SidebarItemType;
     collapsed?: boolean;
-    prsonalClassName?: string;
     onClick?: () => void;
+    className?: string;
 }
 
 export const SidebarItem = memo(
-    ({ item, collapsed, prsonalClassName, onClick }: SidebarItemProps) => {
+    ({ item, collapsed, onClick, className }: SidebarItemProps) => {
         const { t } = useTranslation();
         const isAuth = useSelector(getUserAuthData);
 
         if (item.authOnly && !isAuth) {
             return null;
         }
+
+        const mods: Mods = {
+            [cls.collapsed]: collapsed,
+        };
         return (
             <>
                 <AppLink
-                    theme={AppLinkTheme.SECONDARY}
+                    theme={AppLinkTheme.PRIMARY}
+                    size={AppLinkSize.S}
                     to={item.path}
-                    className={classNames(
-                        `${cls.sidebar__litem} ${prsonalClassName}`,
-                        {
-                            [cls.collapsed]: collapsed,
-                        },
-                    )}
+                    className={classNames('', mods, [className])}
                     onClick={onClick}
                 >
                     <item.Icon className={cls.sidebar__icon} />

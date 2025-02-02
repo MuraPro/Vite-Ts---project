@@ -1,61 +1,65 @@
 .profile__header {
-  min-height: 80px;
-  padding: 0 10px;
-  /* stylelint-disable */
-  @media (max-width: 480px) {
-    flex-direction: column;
-  }
-  /* stylelint-enable */
-
-  &-title {
-    color: var(--inverted-primary-color);
+    min-height: 80px;
+    padding: 0 10px;
     /* stylelint-disable */
     @media (max-width: 480px) {
-      margin: 20px auto;
+        flex-direction: column;
     }
     /* stylelint-enable */
 
-    display: flex;
-    align-items: center;
-  }
+    &-title {
+        color: var(--primary-color);
+        display: flex;
+        align-items: center;
 
-  &-box {
-    display: flex;
-    align-items: center;
-  }
-
-  &-btn {
-    border-radius: 10px;
-    border: 2px solid var(--inverted-primary-color);
-    display: flex;
-    align-items: center;
-    /* stylelint-disable */
-    @media (max-width: 480px) {
-      margin-left: 0px;
-      &:first-child {
-        margin-right: 5px;
-      }
-    }
-    /* stylelint-enable */
-
-    .edit__icon {
-      transition: transform 0.2s ease-in-out;
+        /* stylelint-disable */
+        @media (max-width: 480px) {
+            margin: 20px auto;
+        }
+        /* stylelint-enable */
     }
 
-    &:hover {
-      .edit__icon {
-        transform: translateY(-3px);
-      }
+    &-box {
+        display: flex;
+        align-items: center;
     }
 
-    &:active {
-      .edit__icon {
-        transform: translateY(0);
-      }
+    &-btn {
+        padding: 10px 20px;
+        border-radius: 10px;
+        border: 2px solid var(--primary-color);
+        display: flex;
+        align-items: center;
+        font: var(--font-s);
+
+        /* stylelint-disable */
+        @media (max-width: 480px) {
+            margin-left: 0px;
+            &:first-child {
+                margin-right: 5px;
+            }
+        }
+
+        @media (max-width: 479.9px) {
+            padding: 5px 10px;
+        }
+        /* stylelint-enable */
+
+        &:hover {
+            .edit__icon {
+                transform: translateY(-3px);
+            }
+        }
+
+        &:active {
+            .edit__icon {
+                transform: translateY(0);
+            }
+        }
     }
-  }
 }
 
 .edit__icon {
-  padding: 3px;
+    padding: 3px;
+    transition: transform 0.2s ease-in-out;
 }

@@ -51,7 +51,6 @@ export const StarRating = memo((props: StarRatingProps) => {
                                 : cls.normal,
                         ],
                     )}
-                    inverted
                     Svg={StarIcon}
                     key={starNumber}
                     width={size}

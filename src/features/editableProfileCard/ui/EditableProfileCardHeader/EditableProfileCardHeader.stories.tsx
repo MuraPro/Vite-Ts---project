@@ -12,6 +12,7 @@ const meta: Meta<typeof EditableProfileCardHeader> = {
     argTypes: {
         className: { control: 'text' },
     },
+    decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export default meta;

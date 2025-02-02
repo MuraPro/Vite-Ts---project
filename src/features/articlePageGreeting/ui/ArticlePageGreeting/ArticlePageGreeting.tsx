@@ -6,6 +6,7 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { Drawer } from '@/shared/ui/Drawer';
 import { Modal } from '@/shared/ui/Modal';
 import { Text } from '@/shared/ui/Text';
+import cls from './ArticlePageGreeting.module.scss';
 
 export const ArticlePageGreeting = memo(() => {
     const { t } = useTranslation();
@@ -13,6 +14,8 @@ export const ArticlePageGreeting = memo(() => {
     const { isArticlesPageWasOpened } = useJsonSettings();
     const dispatch = useAppDispatch();
     const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+
+    console.log(isArticlesPageWasOpened);
 
     useEffect(() => {
         if (!isArticlesPageWasOpened) {
@@ -41,7 +44,12 @@ export const ArticlePageGreeting = memo(() => {
     }
 
     return (
-        <Modal lazy isOpen={isOpen} onClose={onClose}>
+        <Modal
+            lazy
+            isOpen={isOpen}
+            onClose={onClose}
+            modalPersonallClass={cls.modal__content}
+        >
             {text}
         </Modal>
     );

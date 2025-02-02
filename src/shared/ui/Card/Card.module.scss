@@ -1,22 +1,24 @@
 .Card {
-  padding: 15px;
-  border-radius: 12px;
-  border: 1px solid var(--inverted-primary-color);
-  /* stylelint-disable */
-  @media (max-width: 479.9px) {
-    padding: 10px;
-  }
-  /* stylelint-enable */
+    padding: 15px;
+    border-radius: 12px;
+    transition: all 0.4s ease;
+    border: 1px solid var(--primary-color);
+    /* stylelint-disable */
+    @media (max-width: 479.9px) {
+        padding: 10px;
+    }
+    /* stylelint-enable */
 }
 
 .normal {
-  border: 1px solid var(--inverted-primary-color);
+    transition: all 0.4s ease;
+    border: 2px solid var(--primary-color);
 }
 
 .outlined {
-  border: none;
+    border: none;
 }
 
 .max {
-  width: 100%;
+    width: 100%;
 }

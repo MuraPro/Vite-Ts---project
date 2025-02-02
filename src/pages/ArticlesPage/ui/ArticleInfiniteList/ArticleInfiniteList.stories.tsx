@@ -95,6 +95,7 @@ const meta: Meta<typeof ArticleInfiniteList> = {
         layout: 'centered',
     },
     argTypes: {},
+    decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export default meta;

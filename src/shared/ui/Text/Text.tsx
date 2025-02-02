@@ -1,4 +1,4 @@
-import { memo, ComponentType } from 'react';
+import { memo, ComponentType, ElementType } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import cls from './Text.module.scss';
@@ -23,23 +23,17 @@ export enum TextSize {
 
 interface TextProps {
     className?: string;
-    personalClassTitle?: string;
-    personalClassText?: string;
+    containerPersonalClass?: string;
+    titlePersonalClass?: string;
+    textPersonalClass?: string;
     title?: string;
     text?: string;
     theme?: TextTheme;
     align?: TextAlign;
     size?: TextSize;
-    icon?: ComponentType<{ className?: string }>; // Типизируем пропс для иконки
+    icon?: ComponentType<{ className?: string }>;
+    as?: ElementType; // Позволяет передавать тег заголовка извне
 }
-
-type HeaderTagType = 'h1' | 'h2' | 'h3';
-
-const mapSizeToHeaderTag: Record<TextSize, HeaderTagType> = {
-    [TextSize.S]: 'h3',
-    [TextSize.M]: 'h2',
-    [TextSize.L]: 'h1',
-};
 
 export const Text = memo((props: TextProps) => {
     const {
@@ -49,13 +43,14 @@ export const Text = memo((props: TextProps) => {
         theme = TextTheme.PRIMARY,
         align = TextAlign.LEFT,
         size = TextSize.M,
-        personalClassTitle,
-        personalClassText,
-        icon: Icon, // Деструктуризация иконки
+        containerPersonalClass,
+        titlePersonalClass,
+        textPersonalClass,
+        icon: Icon,
+        as: TitleTag = 'p', // По умолчанию заголовок будет `span`
     } = props;
 
     const { t } = useTranslation();
-    const HeaderTag = mapSizeToHeaderTag[size];
 
     const mods: Mods = {
         [cls[theme]]: true,
@@ -64,20 +59,26 @@ export const Text = memo((props: TextProps) => {
     };
 
     return (
-        <div className={classNames(cls.Text, mods, [className])}>
+        <div
+            className={classNames(
+                `${cls.Text} ${containerPersonalClass}`,
+                mods,
+                [className],
+            )}
+        >
             {title && (
-                <HeaderTag className={`${cls.title} ${personalClassTitle}`}>
+                <TitleTag className={`${cls.title} ${titlePersonalClass}`}>
                     {Icon && <Icon className={cls.icon} />}
-                    {t(`${title}`)}
-                </HeaderTag>
+                    {t(title)}
+                </TitleTag>
             )}
             {text && (
                 <p
-                    className={`${cls.text} ${personalClassText}`}
+                    className={`${cls.text} ${textPersonalClass}`}
                     data-testid="error"
                 >
                     {Icon && <Icon className={cls.icon} />}
-                    {t(`${text}`)}
+                    {t(text)}
                 </p>
             )}
         </div>

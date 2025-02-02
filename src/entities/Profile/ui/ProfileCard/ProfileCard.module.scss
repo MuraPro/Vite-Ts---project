@@ -1,99 +1,99 @@
 .card {
-  min-height: 100vh;
-  /* stylelint-disable */
-  @media (max-width: 480px) {
-    padding: 15px;
-  }
-  /* stylelint-enable */
-  &__header {
-    font-size: 24px;
-    font-weight: bold;
-    color: var(--inverted-primary-color);
-    margin-bottom: 24px;
-    text-align: center;
-  }
-
-  &__data {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
+    min-height: 100vh;
     /* stylelint-disable */
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr;
-    }
-    /* stylelint-enable */
-  }
-
-  &__form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    /* stylelint-disable */
-    @media (max-width: 767.9px) {
-      width: 80%;
-    }
     @media (max-width: 480px) {
-      width: 100%;
+        padding: 15px;
     }
     /* stylelint-enable */
-  }
-
-  &__error {
-    font: var(--font-s);
-    color: red;
-  }
-
-  &__label {
-    display: block;
-    margin-bottom: 10px;
-    color: var(--inverted-primary-color);
-    font: var(--font-m);
-  }
-
-  &__input {
-    width: 100%;
-    font: var(--font-s);
-    padding: 8px;
-    border-radius: 10px;
-    background-color: transparent;
-    border: 2px solid var(--inverted-secondary-color);
-    color: var(--inverted-primary-color);
-    outline: none;
-    transition:
-      border-color 0.3s ease,
-      background-color 0.3s ease;
-
-    &:-webkit-autofill,
-    &:-webkit-autofill:hover,
-    &:-webkit-autofill:focus,
-    &:-webkit-autofill:active {
-      box-shadow: 0 0 0 1000px var(--inverted-bg-color) inset !important;
-      -webkit-text-fill-color: var(--inverted-primary-color) !important;
-      color: var(--inverted-primary-color) !important;
-      caret-color: var(--inverted-primary-color) !important;
-      transition: background-color 5000s ease-in-out 0s !important;
+    &__header {
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--inverted-primary-color);
+        margin-bottom: 24px;
+        text-align: center;
     }
-  }
 
-  &__select {
-    width: 100%;
-    font: var(--font-m);
-    color: var(--inverted-primary-color);
-    outline: none;
-    transition: color 0.4s ease;
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-  }
+    &__data {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+        /* stylelint-disable */
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+        }
+        /* stylelint-enable */
+    }
 
-  &__avatar {
-    margin-bottom: 40px;
-  }
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        /* stylelint-disable */
+        @media (max-width: 767.9px) {
+            width: 80%;
+        }
+        @media (max-width: 480px) {
+            width: 100%;
+        }
+        /* stylelint-enable */
+    }
 
-  &.error {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-  }
+    &__error {
+        font: var(--font-s);
+        color: red;
+    }
+
+    &__label {
+        display: block;
+        margin-bottom: 10px;
+        color: var(--primary-color);
+        font: var(--font-m);
+    }
+
+    &__input {
+        width: 100%;
+        font: var(--font-s);
+        padding: 8px;
+        border-radius: 10px;
+        background-color: transparent;
+        border: 2px solid var(--secondary-color);
+        color: var(--primary-color);
+        outline: none;
+        transition:
+            border-color 0.3s ease,
+            background-color 0.3s ease;
+
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill:active {
+            box-shadow: 0 0 0 1000px var(--bg-color) inset !important;
+            -webkit-text-fill-color: var(--primary-color) !important;
+            color: var(--primary-color) !important;
+            caret-color: var(--primary-color) !important;
+            transition: background-color 5000s ease-in-out 0s !important;
+        }
+    }
+
+    &__select {
+        width: 100%;
+        font: var(--font-m);
+        color: var(--primary-color);
+        outline: none;
+        transition: color 0.4s ease;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    &__avatar {
+        margin-bottom: 40px;
+    }
+
+    &.error {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
 }

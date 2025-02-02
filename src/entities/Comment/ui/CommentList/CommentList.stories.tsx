@@ -12,6 +12,7 @@ const meta: Meta<typeof CommentList> = {
     tags: ['autodocs'],
     argTypes: {},
     args: {},
+    decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export default meta;
@@ -40,7 +41,7 @@ const exampleComments = [
     },
 ];
 
-export const Normal: Story = {
+export const CommentListLight: Story = {
     args: {
         comments: exampleComments,
         isLoading: false,
@@ -48,12 +49,27 @@ export const Normal: Story = {
     decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
-export const Dark: Story = {
+export const CommentListDark: Story = {
     args: {
         comments: exampleComments,
         isLoading: false,
     },
     decorators: [ThemeDecorator(Theme.DARK)],
+};
+export const CommentListLoadingDark: Story = {
+    args: {
+        comments: exampleComments,
+        isLoading: true,
+    },
+    decorators: [ThemeDecorator(Theme.DARK)],
+};
+
+export const CommentListLoadingLight: Story = {
+    args: {
+        comments: exampleComments,
+        isLoading: true,
+    },
+    decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const NoComments: Story = {

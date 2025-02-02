@@ -27,12 +27,12 @@ export const NotificationButton = memo((props: NotificationButtonProps) => {
 
     const trigger = (
         <div
-            className={cls.Notification__btn}
+            className={classNames(cls.NotificationButton, {}, [className])}
             role="button"
             tabIndex={0}
             onClick={onOpenDrawer}
         >
-            <Icon Svg={NotificationIcon} />
+            <Icon Svg={NotificationIcon} className={className} />
         </div>
     );
 

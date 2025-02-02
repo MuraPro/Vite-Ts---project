@@ -20,6 +20,7 @@ const meta: Meta<typeof NotificationButton> = {
                 <Story />
             </div>
         ),
+        ThemeDecorator(Theme.LIGHT),
     ],
 };
 

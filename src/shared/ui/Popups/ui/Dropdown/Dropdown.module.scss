@@ -11,7 +11,8 @@
   background: transparent;
   position: absolute;
   z-index: 10000;
-  border-radius: 8px;
+
+//   border-radius: 8px;
   flex-direction: column;
   display: flex;
 }
@@ -19,17 +20,21 @@
 .item {
   padding: 10px 25px;
   width: 100%;
-  border: none;
+  border-radius: 0;
   background: none;
   outline: none;
-  color: var(--inverted-primary-color);
+  color: var(--primary-color);
   cursor: pointer;
   font: var(--font-s);
+
+  &:hover {
+    color: var(--item-color);
+  }
 }
 
-.active {
-  border-radius: 8px;
-}
+// .active {
+//   border-radius: 8px;
+// }
 
 .optionsBottomLeft {
   top: 100%;

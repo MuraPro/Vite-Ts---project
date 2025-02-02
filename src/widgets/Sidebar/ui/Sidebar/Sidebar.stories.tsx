@@ -24,29 +24,49 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Light: Story = {
-    args: { className: 'cls.collapsed' },
+    args: { className: 'cls.collapsed', style: { left: '0px' } },
     decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export const Dark: Story = {
-    args: { className: 'cls.collapsed' },
+    args: { className: 'cls.collapsed', style: { left: '0px' } },
     decorators: [ThemeDecorator(Theme.DARK)],
 };
-export const WithAuth: Story = {
-    args: { className: 'cls.collapsed' },
+export const WithAuthDark: Story = {
+    args: { className: 'cls.collapsed', style: { left: '0px' } },
     decorators: [
-        ThemeDecorator(Theme.DARK),
         StoreDecorator({
             user: { authData: { id: '1', username: 'admin' } },
         }),
+        ThemeDecorator(Theme.DARK),
     ],
 };
-export const NoAuth: Story = {
-    args: { className: 'cls.collapsed' },
+
+export const WithAuthLight: Story = {
+    args: { className: 'cls.collapsed', style: { left: '0px' } },
     decorators: [
-        ThemeDecorator(Theme.DARK),
+        StoreDecorator({
+            user: { authData: { id: '1', username: 'admin' } },
+        }),
+        ThemeDecorator(Theme.LIGHT),
+    ],
+};
+export const NoAuthDark: Story = {
+    args: { className: 'cls.collapsed', style: { left: '0px' } },
+    decorators: [
         StoreDecorator({
             user: {},
         }),
+        ThemeDecorator(Theme.DARK),
+    ],
+};
+
+export const NoAuthLight: Story = {
+    args: { className: 'cls.collapsed', style: { left: '0px' } },
+    decorators: [
+        StoreDecorator({
+            user: {},
+        }),
+        ThemeDecorator(Theme.LIGHT),
     ],
 };

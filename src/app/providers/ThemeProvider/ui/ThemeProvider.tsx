@@ -15,25 +15,24 @@ const getStoredTheme = (): Theme | null => {
 };
 
 const ThemeProvider = ({ initialTheme, children }: ThemeProviderProps) => {
-    const { theme: userTheme } = useJsonSettings(); // saveJsonSettings — функция для сохранения данных пользователя
+    const { theme: userTheme } = useJsonSettings(); // Получаем тему из бэкенда
     const [theme, setTheme] = useState<Theme | null>(null); // Состояние текущей темы
 
-    // Установка темы при загрузке
+    // Устанавливаем тему только один раз при загрузке
     useEffect(() => {
+        if (theme !== null) return; // Если тема уже установлена, не меняем
+
         const storedTheme = getStoredTheme(); // Получаем тему из localStorage
 
         if (userTheme) {
-            // Если пользовательская тема доступна из бэкенда
             setTheme(userTheme);
             localStorage.setItem('theme', userTheme); // Сохраняем в localStorage
         } else if (storedTheme) {
-            // Если тема есть в localStorage, но отсутствует у пользователя
             setTheme(storedTheme);
         } else {
-            // Если ничего не найдено, используем initialTheme или темную тему по умолчанию
-            setTheme(initialTheme || Theme.DARK);
+            setTheme(initialTheme || Theme.LIGHT); // Меняем на светлую по умолчанию
         }
-    }, [userTheme, initialTheme]);
+    }, [userTheme, initialTheme, theme]);
 
     // Обновление темы и синхронизация с бэкендом + localStorage
     const updateTheme = (newTheme: Theme) => {

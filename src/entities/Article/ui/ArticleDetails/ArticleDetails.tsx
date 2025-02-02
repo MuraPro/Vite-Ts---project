@@ -13,7 +13,7 @@ import { Avatar } from '@/shared/ui/Avatar';
 import { Icon } from '@/shared/ui/Icon';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import { HStack, VStack } from '@/shared/ui/Stack';
-import { Text, TextAlign, TextSize } from '@/shared/ui/Text';
+import { Text, TextAlign, TextSize, TextTheme } from '@/shared/ui/Text';
 import { ArticleBlockType } from '../../model/consts/articleConsts';
 import {
     getArticleDetailsData,
@@ -92,18 +92,19 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
                 <Skeleton width={200} height={200} border="50%" />
                 <Skeleton width={300} height={32} />
                 <Skeleton width={600} height={24} />
-                <Skeleton width="100%" height={200} />
-                <Skeleton width="100%" height={200} />
+                <Skeleton width="100%" height={400} />
+                <Skeleton width="100%" height={400} />
             </VStack>
         );
     } else if (error) {
         content = (
-            <HStack justify={'center'} max>
-                <Text
-                    align={TextAlign.CENTER}
-                    title={t('Произошла ошибка при загрузке статьи.')}
-                />
-            </HStack>
+            <Text
+                theme={TextTheme.ERROR}
+                title={t('Произошла ошибка при загрузке статьи.')}
+                text={t('Попробуйте обновить страницу')}
+                align={TextAlign.CENTER}
+                containerPersonalClass={cls.ArticleDetails__error}
+            />
         );
     } else {
         content = (
@@ -122,8 +123,9 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
                         text={article?.subtitle}
                         size={TextSize.L}
                         align={TextAlign.CENTER}
-                        personalClassTitle={cls.article__title}
-                        personalClassText={cls.article__text}
+                        titlePersonalClass={cls.article__title}
+                        textPersonalClass={cls.article__text}
+                        as="h1"
                     />
                     <HStack gap={'8'} max>
                         <Icon className={cls.icon} Svg={EyeIcon} />

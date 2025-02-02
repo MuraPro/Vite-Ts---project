@@ -63,7 +63,7 @@ export const Rating = memo((props: RatingCardProps) => {
 
     const modalContent = (
         <>
-            <Text title={feedbackTitle} theme={TextTheme.INVERTED} />
+            <Text title={feedbackTitle} theme={TextTheme.PRIMARY} />
             <Input
                 value={feedback}
                 onChange={setFeedback}

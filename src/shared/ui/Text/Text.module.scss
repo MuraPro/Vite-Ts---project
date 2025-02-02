@@ -1,76 +1,79 @@
+.Text {
+    transition: all 0.4s ease;
+    font: var(--font-m);
+}
+
 .title {
-  font: var(--font-m);
-  color: inherit;
+    transition: all 0.4s ease;
+    color: var(--primary-color);
 }
 
 .text {
-  font: var(--font-s);
-  color: inherit;
+    transition: all 0.4s ease;
+    color: var(--primary-color);
 }
 
 .error {
-  .title {
-    color: var(--red-light);
-  }
+    .title {
+        color: var(--red-light);
+    }
 
-  .text {
-    font: var(--font-s);
-    color: var(--red-dark);
-  }
+    .text {
+        font: var(--font-s);
+        color: var(--red-light);
+    }
 }
 
 .left {
-  text-align: left;
+    text-align: left;
 }
 
 .right {
-  text-align: right;
+    text-align: right;
 }
 
 .center {
-  text-align: center;
+    text-align: center;
 }
 
 .icon {
-  margin-right: 3px;
+    margin-right: 3px;
 }
 
 .size_s {
-  .title {
-    font: var(--font-s);
-  }
-
-  .text {
-    font: var(--font-sm);
-  }
+    .title {
+        font: var(--font-s);
+    }
 }
 
 .size_m {
-  .title {
-    font: var(--font-m);
-  }
-
-  .text {
-    font: var(--font-s);
-  }
+    .title {
+        font: var(--font-m);
+    }
 }
 
 .size_l {
-  .title {
-    font: var(--font-l);
-  }
+    .title {
+        font: var(--font-l);
+    }
+}
 
-  .text {
-    font: var(--font-m);
-  }
+.primary {
+    .title {
+        color: var(--primary-color);
+    }
+
+    .text {
+        color: var(--primary-color);
+    }
 }
 
 .inverted {
-  .title {
-    color: var(--primary-color);
-  }
+    .title {
+        color: var(--inverted-primary-color);
+    }
 
-  .text {
-    color: var(--secondary-color);
-  }
+    .text {
+        color: var(--inverted-primary-color);
+    }
 }

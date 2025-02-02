@@ -12,27 +12,62 @@ const meta: Meta<typeof Text> = {
     tags: ['autodocs'],
     argTypes: {},
     args: {},
+    decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export default meta;
 
 type Story = StoryObj<typeof Text>;
 
-export const Primary: Story = {
+export const PrimaryLight: Story = {
     args: {
         title: 'Title lorem ipsun',
         text: 'Description Description Description Description',
+        theme: TextTheme.PRIMARY,
     },
     decorators: [ThemeDecorator(Theme.LIGHT)],
 };
+export const PrimaryDark: Story = {
+    args: {
+        title: 'Title lorem ipsun',
+        text: 'Description Description Description Description',
+        theme: TextTheme.PRIMARY,
+    },
+    decorators: [ThemeDecorator(Theme.DARK)],
+};
 
-export const Error: Story = {
+export const PrimaryInvertedLight: Story = {
+    args: {
+        title: 'Title lorem ipsun',
+        text: 'Description Description Description Description',
+        theme: TextTheme.INVERTED,
+    },
+    decorators: [ThemeDecorator(Theme.LIGHT)],
+};
+export const PrimaryInvertedDark: Story = {
+    args: {
+        title: 'Title lorem ipsun',
+        text: 'Description Description Description Description',
+        theme: TextTheme.INVERTED,
+    },
+    decorators: [ThemeDecorator(Theme.DARK)],
+};
+
+export const ErrorLight: Story = {
     args: {
         title: 'Title lorem ipsun',
         text: 'Description Description Description Description',
         theme: TextTheme.ERROR,
     },
     decorators: [ThemeDecorator(Theme.LIGHT)],
+};
+export const ErrorDark: Story = {
+    args: {
+        title: 'Title lorem ipsun',
+        text: 'Description Description Description Description',
+        theme: TextTheme.ERROR,
+    },
+    decorators: [ThemeDecorator(Theme.DARK)],
 };
 
 export const onlyTitle: Story = {
@@ -49,48 +84,39 @@ export const onlyText: Story = {
     decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
-export const PrimaryLight: Story = {
-    args: {
-        title: 'Title lorem ipsun',
-        text: 'Description Description Description Description',
-    },
-    decorators: [ThemeDecorator(Theme.DARK)],
-};
-
-export const onlyTitleLight: Story = {
-    args: {
-        title: 'Title lorem ipsun',
-    },
-    decorators: [ThemeDecorator(Theme.DARK)],
-};
-
-export const onlyTextLight: Story = {
-    args: {
-        text: 'Description Description Description Description',
-    },
-    decorators: [ThemeDecorator(Theme.DARK)],
-};
-export const SizeL: Story = {
+export const H1: Story = {
     args: {
         title: 'Title lorem ipsun',
         text: 'Description Description Description Description',
         size: TextSize.L,
+        as: 'h1',
     },
     decorators: [ThemeDecorator(Theme.DARK)],
 };
-export const SizeM: Story = {
+export const H2: Story = {
+    args: {
+        title: 'Title lorem ipsun',
+        text: 'Description Description Description Description',
+        size: TextSize.L,
+        as: 'h2',
+    },
+    decorators: [ThemeDecorator(Theme.DARK)],
+};
+export const H3: Story = {
+    args: {
+        title: 'Title lorem ipsun',
+        text: 'Description Description Description Description',
+        size: TextSize.L,
+        as: 'h3',
+    },
+    decorators: [ThemeDecorator(Theme.DARK)],
+};
+export const Span: Story = {
     args: {
         title: 'Title lorem ipsun',
         text: 'Description Description Description Description',
         size: TextSize.M,
-    },
-    decorators: [ThemeDecorator(Theme.DARK)],
-};
-export const SizeS: Story = {
-    args: {
-        title: 'Title lorem ipsun',
-        text: 'Description Description Description Description',
-        size: TextSize.S,
+        as: 'span',
     },
     decorators: [ThemeDecorator(Theme.DARK)],
 };

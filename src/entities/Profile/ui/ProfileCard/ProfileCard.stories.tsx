@@ -15,7 +15,7 @@ const meta: Meta<typeof ProfileCard> = {
     tags: ['autodocs'],
     argTypes: {},
     args: {},
-    decorators: [],
+    decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export default meta;

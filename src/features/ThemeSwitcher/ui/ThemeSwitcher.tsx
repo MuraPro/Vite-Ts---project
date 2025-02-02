@@ -39,9 +39,9 @@ export const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps) => {
                 className={`${cls.themeswitcher__circle} ${isChecked ? cls.dark : ''}`}
             >
                 {isChecked ? (
-                    <LightIcon className={cls.themeswitcher__icon} />
-                ) : (
                     <DarkIcon className={cls.themeswitcher__icon} />
+                ) : (
+                    <LightIcon className={cls.themeswitcher__icon} />
                 )}
             </div>
         </Button>

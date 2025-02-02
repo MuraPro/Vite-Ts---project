@@ -4,11 +4,11 @@ import {
     ListboxOptions,
     ListboxButton,
 } from '@headlessui/react';
-import { ComponentType, Fragment, ReactNode } from 'react';
+import { ComponentType, CSSProperties, Fragment, ReactNode } from 'react';
 import { MdDone } from 'react-icons/md';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { DropdownDirection } from '@/shared/types/ui';
-import { Button } from '../../../Button/Button';
+import { Button, ButtonTheme } from '../../../Button/Button';
 import { VStack } from '../../../Stack';
 import { mapDirectionClass } from '../../styles/consts';
 import popupCls from '../../styles/popup.module.scss';
@@ -21,6 +21,7 @@ export interface ListBoxItem {
 }
 
 interface ListBoxProps {
+    style?: CSSProperties;
     items?: ListBoxItem[];
     className?: string;
     value?: string;
@@ -30,6 +31,7 @@ interface ListBoxProps {
     direction?: DropdownDirection;
     label?: ReactNode;
     titlePersonalClassname?: string;
+    itemPersonalClassname?: string;
     menuPersonalClassname?: string;
     iconPersonalClassname?: string;
     icon?: ComponentType<{ className?: string }>;
@@ -37,10 +39,12 @@ interface ListBoxProps {
 
 export function ListBox(props: ListBoxProps) {
     const {
+        style,
         className,
         titlePersonalClassname,
         menuPersonalClassname,
         iconPersonalClassname,
+        itemPersonalClassname,
         items,
         value,
         defaultValue,
@@ -57,8 +61,12 @@ export function ListBox(props: ListBoxProps) {
     ];
 
     return (
-        <VStack gap="4">
-            {label && <label className={cls.label}>{label}</label>}
+        <VStack gap="4" style={style}>
+            {label && (
+                <label className={cls.label} style={style}>
+                    {label}
+                </label>
+            )}
             <Listbox
                 disabled={readonly}
                 as="div"
@@ -68,6 +76,7 @@ export function ListBox(props: ListBoxProps) {
                 ])}
                 value={value}
                 onChange={onChange}
+                style={style}
             >
                 <ListboxButton
                     as="div"
@@ -77,6 +86,7 @@ export function ListBox(props: ListBoxProps) {
                     <Button
                         className={titlePersonalClassname}
                         disabled={readonly}
+                        theme={ButtonTheme.CLEAR}
                     >
                         {Icon && <Icon className={iconPersonalClassname} />}
                         {value ?? defaultValue}
@@ -94,10 +104,13 @@ export function ListBox(props: ListBoxProps) {
                         >
                             {({ active }) => (
                                 <li
-                                    className={classNames(cls.item, {
-                                        [cls.active]: active,
-                                        [cls.disabled]: item.disabled,
-                                    })}
+                                    className={classNames(
+                                        `${cls.item} ${itemPersonalClassname}`,
+                                        {
+                                            [cls.active]: active,
+                                            [cls.disabled]: item.disabled,
+                                        },
+                                    )}
                                 >
                                     <MdDone className={cls.option__icon} />
                                     {item.content}

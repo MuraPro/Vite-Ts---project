@@ -1,5 +1,6 @@
-import { memo, useCallback } from 'react';
+import { CSSProperties, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
+import { DropdownDirection } from '@/shared/types/ui';
 import { ListBox } from '@/shared/ui/Popups';
 import { Country } from '../../model/types/country';
 import cls from './CountrySelect.module.scss';
@@ -10,6 +11,8 @@ interface CountrySelectProps {
     onChange?: (value: Country) => void;
     readonly?: boolean;
     label?: string;
+    style?: CSSProperties;
+    direction?: DropdownDirection;
 }
 
 const options = [
@@ -22,7 +25,15 @@ const options = [
 ];
 
 export const CountrySelect = memo(
-    ({ className, value, onChange, readonly, label }: CountrySelectProps) => {
+    ({
+        style,
+        direction,
+        className,
+        value,
+        onChange,
+        readonly,
+        label,
+    }: CountrySelectProps) => {
         const { t } = useTranslation();
         const onChangeHandler = useCallback(
             (value: string) => {
@@ -32,17 +43,21 @@ export const CountrySelect = memo(
         );
 
         return (
-            <ListBox
-                className={className}
-                menuPersonalClassname={cls.country__menu}
-                value={value}
-                defaultValue={t('Укажите страну')}
-                label={label}
-                items={options}
-                onChange={onChangeHandler}
-                readonly={readonly}
-                direction="top left"
-            />
+            <div style={style}>
+                <ListBox
+                    className={className}
+                    titlePersonalClassname={cls.country__title}
+                    menuPersonalClassname={cls.country__menu}
+                    itemPersonalClassname={cls.country__item}
+                    value={value}
+                    defaultValue={t('Укажите страну')}
+                    label={label}
+                    items={options}
+                    onChange={onChangeHandler}
+                    readonly={readonly}
+                    direction={direction || 'top left'}
+                />
+            </div>
         );
     },
 );

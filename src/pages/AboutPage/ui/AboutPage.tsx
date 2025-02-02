@@ -1,6 +1,5 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Counter } from '@/entities/Counter';
 import { Text, TextSize } from '@/shared/ui/Text';
 import { Page } from '@/widgets/Page';
 import classes from './AboutPage.module.scss';
@@ -14,7 +13,6 @@ const AboutPage = memo(() => {
                 size={TextSize.M}
                 className={classes.text}
             />
-            <Counter />
         </Page>
     );
 });

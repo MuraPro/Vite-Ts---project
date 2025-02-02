@@ -1,65 +1,67 @@
 .ListBox {
-  position: relative;
-  list-style: none;
+    position: relative;
+    list-style: none;
 }
 
 .options {
-  background: transparent;
-  border: 1px solid var(--inverted-primary-color);
-  position: absolute;
-  z-index: 10000;
-  border-radius: 10px;
-  width: 223px;
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    position: absolute;
+    z-index: 10000;
+    border-radius: 10px;
+    width: 223px;
 }
 
 .active {
-  border-radius: 10px;
+    border-radius: 10px;
 }
 
 .disabled {
-  opacity: 0.7;
+    opacity: 0.7;
+    pointer-events: none;
 }
 
 .optionsTop {
-  top: 40px;
+    top: 40px;
 }
 
 .label {
-  margin-right: 5px;
-  margin-bottom: 10px;
-  color: var(--inverted-primary-color);
+    margin-right: 5px;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    font: var(--font-m);
 }
 
 .item {
-  position: relative;
-  display: flex;
-  align-items: center;
-  padding: 10px 20px;
-  color: var(--inverted-primary-color);
-  cursor: pointer;
-  justify-content: space-between;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    cursor: pointer;
+    justify-content: space-between;
+    color: var(--primary-color);
 }
 
 .option__icon {
-  position: absolute;
-  right: 20px;
-  top: 12px;
-  opacity: 0;
-  visibility: hidden;
-  transition:
-    opacity 0.3s ease,
-    visibility 0.3s ease;
+    position: absolute;
+    right: 20px;
+    top: 12px;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
 }
 /* stylelint-disable */
 .item:hover .option__icon {
-  opacity: 1;
-  visibility: visible;
+    opacity: 1;
+    visibility: visible;
 }
 /* stylelint-enable */
 
 /* stylelint-disable */
 .item.active .option__icon {
-  opacity: 1;
-  visibility: visible;
+    opacity: 1;
+    visibility: visible;
 }
 /* stylelint-enable */

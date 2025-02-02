@@ -25,6 +25,7 @@ const meta: Meta<typeof Navbar> = {
                 <Story />
             </div>
         ),
+        ThemeDecorator(Theme.LIGHT),
     ],
 };
 

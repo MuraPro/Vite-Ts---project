@@ -35,36 +35,28 @@ export const Navbar = ({ className }: NavbarProps) => {
         setIsAuthModal(true);
     }, []);
 
-    //   const itemsList = useMemo(
-    //     () =>
-    //       sidebarItemsList.map((item, index) => (
-    //         <li className={cls["header__navbar-li"]} key={index}>
-    //           <SidebarItem
-    //             item={item}
-    //             key={item.path}
-    //             prsonalClassName={cls["header__navbar-link"]}
-    //           />
-    //         </li>
-    //       )),
-    //     [sidebarItemsList],
-    //   );
-
     const authButtons = authData ? (
         <HStack gap="16" className={cls.actions}>
-            <NotificationButton />
+            <NotificationButton className={cls['header__navbar-alert']} />
             <AvatarDropdown />
         </HStack>
     ) : (
         <Button
             className={cls['header__navbar-btn']}
             onClick={onShowModal}
-            theme={ButtonTheme.CLEAR}
+            theme={ButtonTheme.CLEAR_INVERTED}
             size={ButtonSize.S}
         >
-            <FaSignOutAlt size={18} className={cls['header__navbar-icon']} />
             {t('Войти')}
+            <FaSignOutAlt size={18} className={cls['header__navbar-icon']} />
         </Button>
     );
+
+    // <ToggleFeatures
+    //     feature="isAppRedesigned"
+    //     off={DeprecatedComponent}
+    //     on={NewComponent}
+    // />;
 
     return (
         <nav
@@ -75,9 +67,7 @@ export const Navbar = ({ className }: NavbarProps) => {
         >
             <ul className={cls['header__navbar-list']}>
                 <li className={cls['header__navbar-li']}>
-                    <LangSwitcher
-                        personalClassName={cls['header__navbar-lang']}
-                    />
+                    <LangSwitcher className={cls['header__navbar-lang']} />
                 </li>
                 <li className={cls['header__navbar-li']}>
                     {authButtons}

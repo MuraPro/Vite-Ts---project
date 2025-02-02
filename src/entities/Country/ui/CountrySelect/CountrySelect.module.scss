@@ -1,4 +1,19 @@
-.country__menu {
-  width: 223px;
-  background-color: var(--inverted-bg-color);
+.country {
+    &__title {
+        transition: color 0.4s ease;
+        font: var(--font-s);
+
+        &:hover {
+            color: var(--primary-color);
+        }
+    }
+
+    &__menu {
+        width: 223px;
+        background-color: var(--bg-color);
+    }
+
+    &__item {
+        font: var(--font-m);
+    }
 }

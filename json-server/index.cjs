@@ -750,18 +750,17 @@ server.listen(8000, () => {
 // server.patch('/users/:userId', (req, res) => {
 //     const { userId } = req.params;
 //     const { jsonSettings } = req.body;
+//     const dbPath = path.resolve(__dirname, 'db.json');
+
 //     let db;
 //     try {
-//         db = JSON.parse(
-//             fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'),
-//         );
+//         db = JSON.parse(fs.readFileSync(dbPath, 'UTF-8'));
 //     } catch (error) {
 //         console.error('Error reading db.json:', error);
 //         return res.status(500).json({ message: 'Internal server error' });
 //     }
 
 //     const { users } = db;
-
 //     const userIndex = users.findIndex((user) => user.id === userId);
 //     if (userIndex === -1) {
 //         return res.status(404).json({ message: 'Пользователь не найден' });
@@ -772,8 +771,15 @@ server.listen(8000, () => {
 //         ...jsonSettings,
 //     };
 
-//     saveDB(db);
-//     res.json(db.users[userIndex]);
+//     // Записываем обновленные данные обратно в db.json
+//     try {
+//         fs.writeFileSync(dbPath, JSON.stringify(db, null, 2), 'UTF-8');
+//     } catch (error) {
+//         console.error('Error writing to db.json:', error);
+//         return res.status(500).json({ message: 'Ошибка записи в базу' });
+//     }
+
+//     res.json(users[userIndex]);
 // });
 
 // // Эндпоинт для получения данных пользователя по ID

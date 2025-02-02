@@ -1,53 +1,91 @@
-@use "../fonts";
+@use '../fonts';
 
 /* stylelint-disable */
 @media (max-width: 480px) {
 }
 /* stylelint-enable */
 :root {
-  --fl: "l";
-  --fr: "r";
-  --fm: "m";
-  --fs: "s";
-  --fb: "b";
+    --l: 'l';
+    --r: 'r';
+    --m: 'm';
+    --s: 's';
+    --b: 'b';
+    --sr: 'sr';
+    --sl: 'sl';
+    --sm: 'sm';
+    --ss: 'ss';
+    --sb: 'sb';
+    --rr: 'robotor';
+    --rl: 'robotol';
+    --rm: 'robotom';
+    --rb: 'robotob';
 
-  // шрифты
-  --font-family-main: "r";
-  --font-size-sm: 12px;
-  --font-line-sm: 20px;
-  --font-sm: var(--font-size-sm) / var(--font-line-sm) var(--font-family-main);
-  --font-size-s: 16px;
-  --font-line-s: 24px;
-  --font-s: var(--font-size-s) / var(--font-line-s) var(--font-family-main);
-  --font-size-m: 24px;
-  --font-line-m: 32px;
-  --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-main);
-  --font-size-l: 32px;
-  --font-line-l: 40px;
-  --font-l: var(--font-size-l) / var(--font-line-l) var(--font-family-main);
+    // шрифты
+    --font-family-main: consolas, 'sr', 'Times New Roman', serif;
+    --font-family-text-redesigned: 'm', sans-serif;
+    --font-family-header-redesigned: 'robotor', sans-serif;
 
-  // цвета
-  --circle-bg: white;
-  --bug-btn: white;
-  --bug-bg: black;
+    //s
+    --font-size-se: 12px;
+    --font-line-se: 20px;
+    --font-sm: var(--font-size-se) / var(--font-line-se) var(--font-family-main);
 
-  // Размеры
-  --header-height: 100px;
+    //m
+    --font-size-s: 16px;
+    --font-line-s: 24px;
+    --font-s: var(--font-size-s) / var(--font-line-s) var(--font-family-main);
 
-  // z - Индексы
-  --modal-z-index: 1000;
-  --overlay-z-index: 100;
+    //l
+    --font-size-m: 24px;
+    --font-line-m: 32px;
+    --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-main);
 
-  //Модальное окно
-  --modal-bg-dark: #e8e8ea;
-  --modal-bg-light: #090949;
-  --modal-color-dark: #0232c2;
-  --modal-color-light: #04ff04;
-  --red-light: #f00;
-  --red-dark: #ce0505;
-  --switcher-bg: #000;
-  --overlay-color: rgba(0 0 0 / 60%);
+    //xl
+    --font-size-l: 32px;
+    --font-line-l: 40px;
+    --font-l: var(--font-size-l) / var(--font-line-l) var(--font-family-main);
 
-  // карточка статьи
-  --date-color: #0232c2;
+    // цвета
+    --circle-bg: white;
+    --bug-btn: white;
+    --bug-bg: black;
+
+    // Размеры
+    --header-height: 100px;
+
+    // z - Индексы
+    --modal-z-index: 1000;
+    --overlay-z-index: 100;
+
+    //Модальное окно
+    --modal-bg-dark: #e8e8ea;
+    --modal-bg-light: #090949;
+    --modal-color-dark: #0232c2;
+    --modal-color-light: #04ff04;
+    --red-light: #f00;
+    --red-dark: #ce0505;
+    --switcher-bg: #000;
+    --overlay-color: rgba(0 0 0 / 60%);
+    --red-color: red;
+
+    // карточка статьи
+    --date-color: #0232c2;
+
+    // redesigned
+
+    // s
+    --font-s-redesigned: var(--font-size-se) / var(--font-line-se)
+        var(--font-family-text-redesigned);
+
+    // m
+    --font-m-redesigned: var(--font-size-s) / var(--font-line-s)
+        var(--font-family-text-redesigned);
+
+    // l
+    --font-l-redesigned: var(--font-size-m) / var(--font-line-m)
+        var(--font-family-header-redesigned);
+
+    // xl
+    --font-xl-redesigned: var(--font-size-l) / var(--font-line-l)
+        var(--font-family-header-redesigned);
 }

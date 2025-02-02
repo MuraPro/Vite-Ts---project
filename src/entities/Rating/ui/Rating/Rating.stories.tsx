@@ -11,6 +11,7 @@ const meta: Meta<typeof Rating> = {
     },
     tags: ['autodocs'],
     argTypes: {},
+    decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export default meta;

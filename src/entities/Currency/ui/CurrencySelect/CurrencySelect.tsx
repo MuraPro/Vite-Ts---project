@@ -1,5 +1,6 @@
-import { memo, useCallback } from 'react';
+import { CSSProperties, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
+import { DropdownDirection } from '@/shared/types/ui';
 import { ListBox } from '@/shared/ui/Popups';
 import { Currency } from '../../model/types/currency';
 import cls from './CurrencySelect.module.scss';
@@ -10,6 +11,8 @@ interface CurrencySelectProps {
     onChange?: (value: Currency) => void;
     readonly?: boolean;
     label?: string;
+    style?: CSSProperties;
+    direction?: DropdownDirection;
 }
 
 const options = [
@@ -20,7 +23,15 @@ const options = [
 ];
 
 export const CurrencySelect = memo(
-    ({ className, value, onChange, readonly, label }: CurrencySelectProps) => {
+    ({
+        style,
+        direction,
+        className,
+        value,
+        onChange,
+        readonly,
+        label,
+    }: CurrencySelectProps) => {
         const onChangeHandler = useCallback(
             (value: string) => {
                 onChange?.(value as Currency);
@@ -31,17 +42,21 @@ export const CurrencySelect = memo(
         const { t } = useTranslation();
 
         return (
-            <ListBox
-                className={className}
-                menuPersonalClassname={cls.currencyu__menu}
-                value={value}
-                defaultValue={t('Укажите валюту')}
-                label={label}
-                items={options}
-                onChange={onChangeHandler}
-                readonly={readonly}
-                direction="top left"
-            />
+            <div style={style}>
+                <ListBox
+                    className={className}
+                    titlePersonalClassname={cls.currency__title}
+                    menuPersonalClassname={cls.currency__menu}
+                    itemPersonalClassname={cls.currency__item}
+                    value={value}
+                    defaultValue={t('Укажите валюту')}
+                    label={label}
+                    items={options}
+                    onChange={onChangeHandler}
+                    readonly={readonly}
+                    direction={direction || 'top left'}
+                />
+            </div>
         );
     },
 );

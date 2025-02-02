@@ -14,6 +14,7 @@ export interface ArticleCodeBlock extends ArticleBlockBase {
 export interface ArticleImageBlock extends ArticleBlockBase {
     type: ArticleBlockType.IMAGE;
     src: string;
+    altTitle?: string;
     title: string;
     text1?: string;
     text2?: string;

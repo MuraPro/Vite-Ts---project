@@ -23,6 +23,7 @@ const meta: Meta<typeof Dropdown> = {
                 <Story />
             </div>
         ),
+        ThemeDecorator(Theme.LIGHT),
     ],
 };
 

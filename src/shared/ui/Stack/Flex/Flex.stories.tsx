@@ -12,6 +12,7 @@ const meta: Meta<typeof Flex> = {
     tags: ['autodocs'],
     argTypes: {},
     args: {},
+    decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export default meta;

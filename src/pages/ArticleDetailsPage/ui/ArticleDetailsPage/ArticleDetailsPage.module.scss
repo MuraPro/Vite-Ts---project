@@ -1,20 +1,19 @@
 .ArticleDetailsPage {
-  color: var(--inverted-primary-color);
-  padding: 10px;
-  height: 100%;
+    padding: 10px;
+    height: 100%;
 }
 
 .commentTitle {
-  margin: 20px 0;
+    margin: 20px 0;
 }
 
 .recommendations {
-  margin-top: 20px;
-  display: flex; /* Убедитесь, что блок с дочерними элементами использует flex */
-  flex-wrap: nowrap; /* Запрещаем перенос элементов на новую строку */
-  overflow: auto hidden; /* Отключаем вертикальную прокрутку */ /* Включаем горизонтальную прокрутку */
-  min-height: 350px;
-  padding: 5px;
-  white-space: nowrap;
-  gap: 20px;
+    margin-top: 20px;
+    display: flex; /* Убедитесь, что блок с дочерними элементами использует flex */
+    flex-wrap: nowrap; /* Запрещаем перенос элементов на новую строку */
+    overflow: auto hidden; /* Отключаем вертикальную прокрутку */ /* Включаем горизонтальную прокрутку */
+    min-height: 350px;
+    padding: 5px;
+    white-space: nowrap;
+    gap: 20px;
 }

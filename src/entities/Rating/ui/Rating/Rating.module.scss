@@ -1,25 +1,26 @@
 .ratin__input {
-  width: 100%;
-  font: var(--font-s);
-  padding: 8px;
-  border-radius: 10px;
-  background-color: transparent;
-  border: 2px solid var(--primary-color);
-  color: var(--primary-color);
-  outline: none;
-  transition:
-    border-color 0.3s ease,
-    background-color 0.3s ease;
+    width: 100%;
+    font: var(--font-s);
+    padding: 8px;
+    border-radius: 10px;
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    outline: none;
+    transition:
+        border-color 0.4s ease,
+        background-color 0.4s ease;
 }
 
 .rating__button {
-  color: var(--primary-color);
-  border: 1px solid var(--primary-color);
-  padding: 8px 10px;
-  border-radius: 10px;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 8px 10px;
+    border-radius: 10px;
 }
 
 .rating__modal {
-  padding: 20px;
-  background: var(--bg-color);
+    transition: all 0.4s ease;
+    padding: 20px;
+    background: var(--bg-color);
 }

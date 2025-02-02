@@ -10,6 +10,7 @@ const meta: Meta<typeof ArticleRating> = {
         layout: 'fullscreen',
     },
     tags: ['autodocs'],
+    decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export default meta;

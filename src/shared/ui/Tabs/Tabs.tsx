@@ -1,4 +1,4 @@
-import { memo, ReactNode, useCallback } from 'react';
+import { CSSProperties, memo, ReactNode, useCallback } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Card, CardTheme } from '../Card/Card';
 import cls from './Tabs.module.scss';
@@ -13,10 +13,12 @@ interface TabsProps {
     tabs: TabItem[];
     value: string;
     onTabClick: (tab: TabItem) => void;
+
+    style?: CSSProperties;
 }
 
 export const Tabs = memo((props: TabsProps) => {
-    const { className, tabs, onTabClick, value } = props;
+    const { className, tabs, onTabClick, value, style } = props;
 
     const clickHandle = useCallback(
         (tab: TabItem) => () => {
@@ -26,7 +28,7 @@ export const Tabs = memo((props: TabsProps) => {
     );
 
     return (
-        <div className={classNames(cls.Tabs, {}, [className])}>
+        <div className={classNames(cls.Tabs, {}, [className])} style={style}>
             {tabs.map((tab) => (
                 <Card
                     theme={

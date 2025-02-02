@@ -12,6 +12,7 @@ const meta: Meta<typeof CommentCard> = {
     },
     tags: ['autodocs'],
     argTypes: {},
+    decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export default meta;

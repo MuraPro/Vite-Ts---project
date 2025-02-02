@@ -1,4 +1,3 @@
-import { Theme } from '../src/shared/const/theme';
 import { SuspenseDecorator } from './../src/shared/config/storybook/SuspenseDecorator/SuspenseDecorator';
 import { MockedParamsDecorator } from './../src/shared/config/storybook/MockDecorators/MockDecorators';
 import { ThemeDecorator } from './../src/shared/config/storybook/ThemeDecorator/ThemeDecorator';
@@ -23,8 +22,8 @@ export const parameters = {
 };
 
 export const decorators = [
-    MockedParamsDecorator,
     StoreDecorator({}),
+    MockedParamsDecorator,
     RouterDecorator,
     CollapseDecorator,
     ThemeDecorator({}),

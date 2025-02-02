@@ -18,17 +18,6 @@ const meta: Meta<typeof Avatar> = {
     tags: ['autodocs'],
     argTypes: {},
     args: {},
-    decorators: [
-        (Story) => (
-            <div
-                style={{
-                    padding: '20px',
-                }}
-            >
-                <Story />
-            </div>
-        ),
-    ],
 };
 
 export default meta;

@@ -7,11 +7,12 @@ import cls from './ArticleCodeBlockComponent.module.scss';
 interface ArticleCodeBlockComponentProps {
     className?: string;
     block: ArticleCodeBlock;
+    contentPersonalClassname?: string;
 }
 
 export const ArticleCodeBlockComponent = memo(
     (props: ArticleCodeBlockComponentProps) => {
-        const { className, block } = props;
+        const { className, block, contentPersonalClassname } = props;
 
         return (
             <div
@@ -19,7 +20,10 @@ export const ArticleCodeBlockComponent = memo(
                     className,
                 ])}
             >
-                <Code text={block.code} />
+                <Code
+                    text={block.code}
+                    contentPersonalClassname={contentPersonalClassname}
+                />
             </div>
         );
     },

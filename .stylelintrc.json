@@ -1,9 +1,15 @@
 {
-    "extends": ["stylelint-config-standard-scss"],
+    "extends": [
+        "stylelint-config-standard-scss",
+        "stylelint-scss",
+        "stylelint-config-recommended-scss"
+    ],
+    "plugins": ["stylelint-order"],
     "rules": {
         "block-no-empty": null,
-        "selector-class-pattern": null,
         "no-descending-specificity": null,
-        "scss/double-slash-comment-whitespace-inside": null
+        "scss/double-slash-comment-whitespace-inside": null,
+        "color-hex-length": "short",
+        "selector-class-pattern": null
     }
 }

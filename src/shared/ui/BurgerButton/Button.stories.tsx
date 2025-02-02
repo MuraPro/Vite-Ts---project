@@ -19,29 +19,21 @@ const meta: Meta<typeof BurgerButton> = {
     tags: ['autodocs'],
     argTypes: {},
     args: {},
-    decorators: [
-        CollapseDecorator,
-        ThemeDecorator(Theme.LIGHT),
-        (Story) => (
-            <div
-                style={{
-                    padding: '20px',
-                }}
-            >
-                <Story />
-            </div>
-        ),
-    ],
+    decorators: [CollapseDecorator],
 };
 
 export default meta;
 type Story = StoryObj<typeof BurgerButton>;
 
 export const Light: Story = {
-    args: {},
+    args: {
+        style: { top: '50px', left: '50px' },
+    },
     decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 export const Dark: Story = {
-    args: {},
+    args: {
+        style: { top: '50px', left: '50px' },
+    },
     decorators: [ThemeDecorator(Theme.DARK)],
 };
