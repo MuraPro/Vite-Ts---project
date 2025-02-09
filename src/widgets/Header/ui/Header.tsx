@@ -1,6 +1,6 @@
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures } from '@/shared/lib/features';
-import { BurgerButton } from '@/shared/ui/BurgerButton';
+import { BurgerButton } from '@/shared/ui/deprecated/BurgerButton';
 import { Navbar } from '../../Navbar/ui/Navbar';
 import { Sidebar } from '../../Sidebar/ui/Sidebar/Sidebar';
 import cls from './Header.module.scss';
@@ -31,7 +31,9 @@ export const Header = ({ className }: HeaderProps) => {
                         ])}
                     >
                         <div className={cls.headerRedesigned__container}>
-                            <BurgerButton />
+                            <BurgerButton
+                                className={cls.headerRedesigned__burger}
+                            />
                             <Navbar />
                         </div>
                     </header>

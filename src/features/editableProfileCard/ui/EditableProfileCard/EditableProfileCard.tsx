@@ -11,7 +11,8 @@ import {
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { VStack } from '@/shared/ui/Stack';
+import { VStack } from '@/shared/ui/deprecated/Stack';
+import { containsUnsafeChars } from '@/shared/utils/validation';
 import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
 import { getProfileForm } from '../../model/selectors/getProfileForm/getProfileForm';
 import { getProfileIsLoading } from '../../model/selectors/getProfileIsLoading/getProfileIsLoading';
@@ -49,13 +50,13 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
         const newErrors: Record<string, string> = {};
 
         if (!formData?.first || formData.first.trim().length < 2) {
-            newErrors.first = t('Имя должно содержать не менее двух символов');
+            newErrors.first = t('Имя должно быть более трех символов');
+        } else if (containsUnsafeChars(formData.first)) {
+            newErrors.first = t('Имя содержит недопустимые символы');
         }
 
-        if (!formData?.lastname || formData.lastname.trim().length < 2) {
-            newErrors.lastname = t(
-                'Фамилия должна содержать не менее двух символов',
-            );
+        if (containsUnsafeChars(formData?.lastname || '')) {
+            newErrors.lastname = t('Фамилия содержит недопустимые символы');
         }
 
         if (
@@ -65,19 +66,23 @@ export const EditableProfileCard = memo((props: EditableProfileCardProps) => {
             )
         ) {
             newErrors.email = t('Введите корректный email адрес');
+        } else if (containsUnsafeChars(formData.email)) {
+            newErrors.email = t('Email содержит недопустимые символы');
         }
 
         if (!formData?.age || !/^\d+$/.test(formData.age)) {
             newErrors.age = t('Возраст должен быть положительным числом');
         }
 
-        if (!formData?.city || formData.city.trim().length < 3) {
-            newErrors.city = t('Город должен содержать не менее трех символов');
+        if (containsUnsafeChars(formData?.city || '')) {
+            newErrors.city = t('Город содержит недопустимые символы');
         }
 
         if (!formData?.username || formData.username.trim().length < 3) {
+            newErrors.username = t('Имя должно быть более трех символов');
+        } else if (containsUnsafeChars(formData.username)) {
             newErrors.username = t(
-                'Имя должно содержать не менее трех символов',
+                'Имя пользователя содержит недопустимые символы',
             );
         }
 

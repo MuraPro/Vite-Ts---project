@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { useJsonSettings, saveJsonSettings } from '@/entities/User'; // Получаем тему пользователя из бэкенда
 import { Theme } from '@/shared/const/theme'; // Список доступных тем
-import { PageLoader } from '@/shared/ui/PageLoader'; // Лоадер на случай задержки
+import { PageLoader } from '@/shared/ui/deprecated/PageLoader'; // Лоадер на случай задержки
 import { ThemeContext } from '../../../../shared/lib/context/ThemeContext'; // Контекст для темы
 
 interface ThemeProviderProps {

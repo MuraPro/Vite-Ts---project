@@ -1,7 +1,7 @@
 import { CSSProperties, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { DropdownDirection } from '@/shared/types/ui';
-import { ListBox } from '@/shared/ui/Popups';
+import { ListBox } from '@/shared/ui/deprecated/Popups';
 import { Currency } from '../../model/types/currency';
 import cls from './CurrencySelect.module.scss';
 

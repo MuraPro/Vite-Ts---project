@@ -38,19 +38,30 @@
     }
 
     &__list {
-        margin-top: var(--header-height);
+        // margin-top: var(--header-height);
+        margin-top: 20px;
     }
 
-    &__link {
-        margin-top: 10px;
-        display: flex;
-        align-items: center;
+    &__icon {
+        transition: fill 0.4s ease;
+        // color: var(--inverted-primary-color);
+        // fill: var(--inverted-primary-color);
     }
 
     &.collapsed {
         left: 0;
     }
+    .switchers {
+        position: absolute;
+        bottom: 40px;
+        display: flex;
+        left: 70px;
+        width: 100%;
+        gap: 16px;
+    }
 }
+
+//redisigned
 
 .SidebarRedesigned {
     width: 300px;
@@ -61,14 +72,13 @@
     top: 0;
     left: -100%;
     height: 100%;
-    overflow: auto;
     transition:
         left 0.5s ease 0s,
-        background-color 0.5s ease;
+        background-color 0.4s ease;
 
     /* stylelint-disable */
     @media (max-width: 479.9px) {
-        width: 150px;
+        width: 230px;
         left: -100%;
     }
     /* stylelint-enable */
@@ -79,24 +89,55 @@
         top: 27px;
     }
 
-    &__link {
-        font: var(--font-s);
-        margin-top: 10px;
-        display: flex;
-        align-items: center;
-    }
-
     &__burger {
         position: absolute;
         top: 43px;
         right: 30px;
     }
 
+    &__burger span,
+    &__burger::before,
+    &__burger::after {
+        background-color: var(--text-redesigned);
+    }
+
     &__list {
-        margin-top: var(--header-height);
+        margin-top: 20px;
     }
 
     &.collapsed {
         left: 0;
+    }
+
+    .switchers {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        bottom: 40px;
+        left: 70px;
+        display: flex;
+        gap: 16px;
+    }
+}
+
+.appLogo {
+    padding-top: 20px;
+}
+
+.active {
+    background: linear-gradient(
+        89.97deg,
+        rgba(29, 89, 255, 0.3) 1.15%,
+        rgba(94, 211, 243, 0) 99.97%
+    );
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 2px;
+        left: 0;
+        background: var(--accent-redesigned);
+        height: 100%;
     }
 }

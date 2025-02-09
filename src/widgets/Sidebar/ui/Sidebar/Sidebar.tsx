@@ -1,17 +1,13 @@
-import {
-    CSSProperties,
-    HTMLAttributes,
-    useCallback,
-    useEffect,
-    useMemo,
-    useRef,
-} from 'react';
+import { CSSProperties, HTMLAttributes, useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
+import { LangSwitcher } from '@/features/LangSwitcher';
+import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { useCollapse } from '@/shared/lib/hooks/useCollapse/useCollapse';
-import { BurgerButton } from '@/shared/ui/BurgerButton';
-import { VStack } from '@/shared/ui/Stack';
+import { BurgerButton } from '@/shared/ui/deprecated/BurgerButton';
+import { VStack } from '@/shared/ui/deprecated/Stack';
+import { AppLogo } from '@/shared/ui/redesigned/AppLogo';
 import { getSidebarItems } from '../../model/selectors/getSidebarItems';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import cls from './Sidebar.module.scss';
@@ -26,43 +22,22 @@ export const Sidebar = ({ className, style }: SidebarProps) => {
     const { collapsed, setCollapsed } = useCollapse();
     const sidebarItemsList = useSelector(getSidebarItems);
 
-    const handleLinkHandler = useCallback(() => {
-        setCollapsed(false);
-    }, [setCollapsed]);
-
-    const containerRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (
-                containerRef.current &&
-                !containerRef.current.contains(event.target as Node)
-            ) {
-                setCollapsed(false);
-            }
-        };
-
-        document.addEventListener('mousedown', handleClickOutside);
-
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
+    const onToggle = useCallback(() => {
+        setCollapsed((prev) => !prev);
     }, [setCollapsed]);
 
     const itemsList = useMemo(
         () =>
             sidebarItemsList.map((item, index) => (
-                <li className={cls.sidebar__li} key={index}>
+                <li key={index}>
                     <SidebarItem
                         item={item}
                         collapsed={collapsed}
                         key={item.path}
-                        className={cls.sidebar__link}
-                        onClick={handleLinkHandler}
                     />
                 </li>
             )),
-        [collapsed, handleLinkHandler, sidebarItemsList],
+        [collapsed, sidebarItemsList],
     );
 
     const DeprecatedComponent = (
@@ -71,18 +46,23 @@ export const Sidebar = ({ className, style }: SidebarProps) => {
             className={classNames(cls.sidebar, { [cls.collapsed]: collapsed }, [
                 className,
             ])}
-            ref={containerRef}
             style={style}
         >
             <div className={cls.sidebar__container}>
                 <BurgerButton
                     className={cls.sidebar__burger}
                     toggle={'sidebar-toggle'}
+                    onClick={onToggle}
                 />
             </div>
+            <AppLogo className={cls.appLogo} />
             <VStack gap="8" className={cls.sidebar__list} list>
                 {itemsList}
             </VStack>
+            <div className={cls.switchers}>
+                <ThemeSwitcher />
+                <LangSwitcher className={cls.lang} />
+            </div>
         </aside>
     );
 
@@ -94,18 +74,23 @@ export const Sidebar = ({ className, style }: SidebarProps) => {
                 { [cls.collapsed]: collapsed },
                 [className],
             )}
-            ref={containerRef}
             style={style}
         >
-            <div className={cls.sidebar__container}>
+            <div className={cls.SidebarRedesigned__container}>
                 <BurgerButton
-                    className={cls.sidebar__burger}
+                    className={cls.SidebarRedesigned__burger}
                     toggle={'sidebar-toggle'}
+                    onClick={onToggle}
                 />
             </div>
-            <VStack gap="8" className={cls.sidebar__list} list>
+            <AppLogo className={cls.appLogo} />
+            <VStack gap="8" className={cls.SidebarRedesigned__list} list>
                 {itemsList}
             </VStack>
+            <div className={cls.switchers}>
+                <ThemeSwitcher />
+                <LangSwitcher className={cls.lang} />
+            </div>
         </aside>
     );
 

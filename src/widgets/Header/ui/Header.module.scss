@@ -64,4 +64,10 @@
         display: flex;
         align-items: center;
     }
+
+    &__burger span,
+    &__burger::before,
+    &__burger::after {
+        background-color: var(--text-redesigned);
+    }
 }

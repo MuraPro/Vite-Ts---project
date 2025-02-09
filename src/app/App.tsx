@@ -1,12 +1,11 @@
 import { Suspense, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { getUserInited, initAuthData } from '@/entities/User';
-// import { MainLayout } from '@/shared/layouts/MainLayout';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
-import { PageLoader } from '@/shared/ui/PageLoader';
+import { PageLoader } from '@/shared/ui/deprecated/PageLoader';
 import { Header } from '@/widgets/Header';
 import cls from './App.module.scss';
 import { AppRouter } from './providers/router';
@@ -55,6 +54,12 @@ const App = ({ className }: mainProps) => {
                             {inited && <AppRouter />}
                         </main>
                     </Suspense>
+                    {/* <Suspense fallback={<PageLoader />}>
+                        <MainLayout
+                            header={<Header />}
+                            content={<AppRouter />}
+                        />
+                    </Suspense> */}
                 </div>
             }
         />

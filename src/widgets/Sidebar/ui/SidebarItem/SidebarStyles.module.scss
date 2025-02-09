@@ -1,0 +1,42 @@
+.item {
+    transition: color 0.4s ease;
+    margin-left: 10px;
+    opacity: 1;
+    color: var(--inverted-primary-color);
+}
+
+.link {
+    margin-left: 10px;
+    opacity: 1;
+}
+
+.icon {
+    transition: fill 0.4s ease;
+    color: var(--inverted-primary-color);
+    fill: var(--inverted-primary-color);
+}
+
+.itemRedesigned {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0 16px;
+}
+
+.active {
+    background: linear-gradient(
+        89.97deg,
+        rgba(29, 89, 255, 0.3) 1.15%,
+        rgba(94, 211, 243, 0) 99.97%
+    );
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 2px;
+        left: 0;
+        background: var(--accent-redesigned);
+        height: 100%;
+    }
+}

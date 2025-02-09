@@ -2,7 +2,12 @@ import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdLanguage } from 'react-icons/md';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button, ButtonTheme } from '@/shared/ui/Button';
+import { ToggleFeatures } from '@/shared/lib/features';
+import {
+    Button as ButtonDeprecated,
+    ButtonTheme,
+} from '@/shared/ui/deprecated/Button';
+import { Button } from '@/shared/ui/redesigned/Button';
 import cls from './LangSwitcher.module.scss';
 
 interface LangSwitcherProps {
@@ -23,13 +28,19 @@ export const LangSwitcher = memo(({ className }: LangSwitcherProps) => {
     };
 
     return (
-        <Button
-            className={classNames(cls.langSwitcher, {}, [className])}
-            theme={ButtonTheme.CLEAR}
-            onClick={toggle}
-        >
-            {t('Язык')}
-            <MdLanguage size={20} className={cls.langSwitcher__icon} />
-        </Button>
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            on={<Button onClick={toggle}>{t('Язык')}</Button>}
+            off={
+                <ButtonDeprecated
+                    className={classNames(cls.langSwitcher, {}, [className])}
+                    theme={ButtonTheme.CLEAR}
+                    onClick={toggle}
+                >
+                    {t('Язык')}
+                    <MdLanguage size={20} className={cls.langSwitcher__icon} />
+                </ButtonDeprecated>
+            }
+        />
     );
 });
