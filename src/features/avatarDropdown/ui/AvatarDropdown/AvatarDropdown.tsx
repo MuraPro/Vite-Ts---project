@@ -1,7 +1,6 @@
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import {
     getUserAuthData,
     isUserAdmin,
@@ -10,9 +9,11 @@ import {
 } from '@/entities/User';
 import { getRouteAdmin, getRouteProfile } from '@/shared/const/router';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Avatar } from '@/shared/ui/deprecated/Avatar';
-import { Dropdown } from '@/shared/ui/deprecated/Popups';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { Avatar as AvatarDeprecated } from '@/shared/ui/deprecated/Avatar';
+import { Dropdown as DropdownDeprecated } from '@/shared/ui/deprecated/Popups';
+import { Avatar } from '@/shared/ui/redesigned/Avatar';
+import { Dropdown } from '@/shared/ui/redesigned/Popups';
 import cls from './AvatarDropdown.module.scss';
 
 interface AvatarDropdownProps {
@@ -21,17 +22,15 @@ interface AvatarDropdownProps {
 
 export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
     const { className } = props;
-    const navigate = useNavigate();
     const { t } = useTranslation();
-    const dispatch = useAppDispatch();
+    const dispatch = useDispatch();
     const isAdmin = useSelector(isUserAdmin);
     const isManager = useSelector(isUserManager);
     const authData = useSelector(getUserAuthData);
 
     const onLogout = useCallback(() => {
         dispatch(userActions.logout());
-        navigate('/');
-    }, [dispatch, navigate]);
+    }, [dispatch]);
 
     const isAdminPanelAvailable = isAdmin || isManager;
 
@@ -39,34 +38,49 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
         return null;
     }
 
+    const items = [
+        ...(isAdminPanelAvailable
+            ? [
+                  {
+                      content: t('Админка'),
+                      href: getRouteAdmin(),
+                  },
+              ]
+            : []),
+        {
+            content: t('Профиль'),
+            href: getRouteProfile(authData.id),
+        },
+        {
+            content: t('Выйти'),
+            onClick: onLogout,
+        },
+    ];
+
     return (
-        <Dropdown
-            direction="bottom left"
-            className={classNames(cls.dropdown, {}, [className])}
-            menuPersonalClassname={cls.dropdown__title}
-            items={[
-                ...(isAdminPanelAvailable
-                    ? [
-                          {
-                              content: t('Админка'),
-                              href: getRouteAdmin(),
-                          },
-                      ]
-                    : []),
-                {
-                    content: t('Профиль'),
-                    href: getRouteProfile(authData.id),
-                },
-                {
-                    content: t('Выйти'),
-                    onClick: onLogout,
-                },
-            ]}
-            trigger={
-                <Avatar
-                    size={30}
-                    src={authData.avatar}
-                    className={cls.dropdown__avatar}
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            on={
+                <Dropdown
+                    direction="bottom left"
+                    className={classNames('', {}, [className])}
+                    items={items}
+                    trigger={<Avatar size={40} src={authData.avatar} />}
+                />
+            }
+            off={
+                <DropdownDeprecated
+                    direction="bottom left"
+                    className={classNames('', {}, [className])}
+                    menuPersonalClassname={cls.dropdown__title}
+                    items={items}
+                    trigger={
+                        <AvatarDeprecated
+                            fallbackInverted
+                            size={30}
+                            src={authData.avatar}
+                        />
+                    }
                 />
             }
         />

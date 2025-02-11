@@ -31,12 +31,13 @@ body::-webkit-scrollbar {
 }
 
 .app {
-    background-color: var(--bg-color);
-    transition: background-color 0.4s ease;
+    background: var(--bg-color);
+    transition: all 0.4s ease;
     min-height: 100vh;
 }
 
 .app_redesigned {
+    transition: all 0.4s ease;
     background: var(--bg-redesigned);
     min-height: 100vh;
     font: var(--font-m-redesigned);

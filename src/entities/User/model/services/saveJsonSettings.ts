@@ -13,7 +13,6 @@ export const saveJsonSettings = createAsyncThunk<
     const { rejectWithValue, getState, dispatch } = thunkApi;
     const userData = getUserAuthData(getState());
     const currentSettings = getJsonSettings(getState());
-    console.log('newJsonSettings', newJsonSettings);
 
     if (!userData) {
         return rejectWithValue('');

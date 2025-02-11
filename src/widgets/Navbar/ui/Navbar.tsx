@@ -5,14 +5,11 @@ import { useSelector } from 'react-redux';
 import { getUserAuthData } from '@/entities/User';
 import { LoginModal } from '@/features/AuthByUsername';
 import { AvatarDropdown } from '@/features/avatarDropdown';
-import { LangSwitcher } from '@/features/LangSwitcher';
 import { NotificationButton } from '@/features/notificationButton';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/deprecated/Button';
-import { HStack } from '@/shared/ui/deprecated/Stack';
-// import { getSidebarItems } from "widgets/Sidebar/model/selectors/getSidebarItems";
-// import { SidebarItem } from "widgets/Sidebar/ui/SidebarItem/SidebarItem";
+import { HStack } from '@/shared/ui/redesigned/Stack';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -22,7 +19,6 @@ interface NavbarProps {
 
 export const Navbar = ({ className }: NavbarProps) => {
     const { t } = useTranslation();
-    //   const sidebarItemsList = useSelector(getSidebarItems);
 
     const [isAuthModal, setIsAuthModal] = useState(false);
     const authData = useSelector(getUserAuthData);
@@ -52,12 +48,6 @@ export const Navbar = ({ className }: NavbarProps) => {
         </Button>
     );
 
-    // <ToggleFeatures
-    //     feature="isAppRedesigned"
-    //     off={DeprecatedComponent}
-    //     on={NewComponent}
-    // />;
-
     return (
         <nav
             className={classNames(cls.header__navbar, {}, [
@@ -66,9 +56,6 @@ export const Navbar = ({ className }: NavbarProps) => {
             ])}
         >
             <ul className={cls['header__navbar-list']}>
-                <li className={cls['header__navbar-li']}>
-                    <LangSwitcher className={cls['header__navbar-lang']} />
-                </li>
                 <li className={cls['header__navbar-li']}>
                     {authButtons}
                     {isAuthModal && (

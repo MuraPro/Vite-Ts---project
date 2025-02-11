@@ -27,7 +27,7 @@ export const AppLink = memo(
             className,
             children,
             variant = 'primary',
-            size = AppLinkSize.S,
+            size = AppLinkSize.M,
             activeClassName = '',
             onClick,
             ...otherProps

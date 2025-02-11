@@ -34,7 +34,7 @@ export const LangSwitcher = memo(({ className }: LangSwitcherProps) => {
             off={
                 <ButtonDeprecated
                     className={classNames(cls.langSwitcher, {}, [className])}
-                    theme={ButtonTheme.CLEAR}
+                    theme={ButtonTheme.CLEAR_INVERTED}
                     onClick={toggle}
                 >
                     {t('Язык')}
