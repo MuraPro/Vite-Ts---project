@@ -8,7 +8,13 @@ import { AvatarDropdown } from '@/features/avatarDropdown';
 import { NotificationButton } from '@/features/notificationButton';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/deprecated/Button';
+import { ToggleFeatures } from '@/shared/lib/features';
+import {
+    Button as ButtonDeprecated,
+    ButtonSize,
+    ButtonTheme,
+} from '@/shared/ui/deprecated/Button';
+import { Button } from '@/shared/ui/redesigned/Button';
 import { HStack } from '@/shared/ui/redesigned/Stack';
 import cls from './Navbar.module.scss';
 
@@ -37,15 +43,35 @@ export const Navbar = ({ className }: NavbarProps) => {
             <AvatarDropdown />
         </HStack>
     ) : (
-        <Button
-            className={cls['header__navbar-btn']}
-            onClick={onShowModal}
-            theme={ButtonTheme.CLEAR_INVERTED}
-            size={ButtonSize.S}
-        >
-            {t('Войти')}
-            <FaSignOutAlt size={18} className={cls['header__navbar-icon']} />
-        </Button>
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            off={
+                <ButtonDeprecated
+                    className={cls['header__navbar-btn']}
+                    onClick={onShowModal}
+                    theme={ButtonTheme.CLEAR_INVERTED}
+                    size={ButtonSize.S}
+                >
+                    {t('Войти')}
+                    <FaSignOutAlt
+                        size={18}
+                        className={cls['header__navbar-icon']}
+                    />
+                </ButtonDeprecated>
+            }
+            on={
+                <Button
+                    className={cls['redisignedHeader__navbar-btn']}
+                    onClick={onShowModal}
+                >
+                    {t('Войти')}
+                    <FaSignOutAlt
+                        size={18}
+                        className={cls['header__navbar-icon']}
+                    />
+                </Button>
+            }
+        />
     );
 
     return (

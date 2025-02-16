@@ -1,19 +1,36 @@
 .trigger {
-    background: none;
+    background: transparent;
     border: none;
     outline: none;
     padding: 0;
     margin: 0;
 }
 
+.trigger__btn {
+    // background: transparent;
+    color: var(--text-redesigned);
+    font: var(--font-redisigned-m);
+}
+
 .options {
+    transition: all 0.4s ease;
     background: var(--dark-bg-redesigned);
     position: absolute;
     z-index: 10000;
     border-radius: 12px;
     box-shadow: 4px 4px 8px var(--dark-bg-redesigned);
+    min-width: 170px;
+    color: var(--text-redesigned);
 }
 
 .item {
     padding: 10px 20px;
+    list-style: none;
+    &.active {
+        background: var(--light-bg-redesigned);
+    }
+}
+
+.active {
+    background: var(--light-bg-redesigned);
 }

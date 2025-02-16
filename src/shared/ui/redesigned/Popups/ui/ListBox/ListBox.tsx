@@ -4,28 +4,30 @@ import {
     ListboxOptions,
     ListboxButton,
 } from '@headlessui/react';
-import { ComponentType, CSSProperties, Fragment, ReactNode } from 'react';
-import { MdDone } from 'react-icons/md';
+import { CSSProperties, Fragment, ReactNode, useMemo } from 'react';
+import ArrowIcon from '@/shared/assets/icons/arrow-bottom.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { DropdownDirection } from '@/shared/types/ui';
+import { Button } from '../../../../redesigned/Button';
+import { Icon } from '../../../Icon';
 import { VStack } from '../../../Stack';
 import { mapDirectionClass } from '../../styles/consts';
 import popupCls from '../../styles/popup.module.scss';
 import cls from './ListBox.module.scss';
 
-export interface ListBoxItem {
+export interface ListBoxItem<T extends string> {
     value: string;
     content: ReactNode;
     disabled?: boolean;
 }
 
-interface ListBoxProps {
+interface ListBoxProps<T extends string> {
     style?: CSSProperties;
-    items?: ListBoxItem[];
+    items?: ListBoxItem<T>[];
     className?: string;
-    value?: string;
+    value?: T;
     defaultValue?: string;
-    onChange: (value: string) => void;
+    onChange: (value: T) => void;
     readonly?: boolean;
     direction?: DropdownDirection;
     label?: ReactNode;
@@ -33,10 +35,9 @@ interface ListBoxProps {
     itemPersonalClassname?: string;
     menuPersonalClassname?: string;
     iconPersonalClassname?: string;
-    icon?: ComponentType<{ className?: string }>;
 }
 
-export function ListBox(props: ListBoxProps) {
+export function ListBox<T extends string>(props: ListBoxProps<T>) {
     const {
         style,
         className,
@@ -51,7 +52,6 @@ export function ListBox(props: ListBoxProps) {
         readonly,
         direction = 'bottom right',
         label,
-        icon: Icon, // Проп иконки
     } = props;
 
     const optionsClasses = [
@@ -59,6 +59,10 @@ export function ListBox(props: ListBoxProps) {
         menuPersonalClassname,
         popupCls.menu,
     ];
+
+    const selectedItem = useMemo(() => {
+        return items?.find((item) => item.value === value);
+    }, [items, value]);
 
     return (
         <VStack gap="4" style={style}>
@@ -80,13 +84,14 @@ export function ListBox(props: ListBoxProps) {
                     disabled={readonly}
                     className={cls.trigger}
                 >
-                    <button
-                        className={titlePersonalClassname}
+                    <Button
+                        className={`${titlePersonalClassname} ${cls.trigger__btn}`}
                         disabled={readonly}
+                        variant="filled"
+                        addonRight={<Icon Svg={ArrowIcon} />}
                     >
-                        {Icon && <Icon className={iconPersonalClassname} />}
-                        {value ?? defaultValue}
-                    </button>
+                        {selectedItem?.content ?? defaultValue}
+                    </Button>
                 </ListboxButton>
                 <ListboxOptions
                     className={classNames(cls.options, {}, optionsClasses)}
@@ -98,17 +103,19 @@ export function ListBox(props: ListBoxProps) {
                             disabled={item.disabled}
                             as={Fragment}
                         >
-                            {({ active }) => (
+                            {({ active, selected }) => (
                                 <li
                                     className={classNames(
                                         `${cls.item} ${itemPersonalClassname}`,
                                         {
                                             [cls.active]: active,
                                             [cls.disabled]: item.disabled,
+                                            [popupCls.selected]: selected,
                                         },
                                     )}
                                 >
-                                    <MdDone className={cls.option__icon} />
+                                    {/* <MdDone className={cls.option__icon} /> */}
+                                    {selected}
                                     {item.content}
                                 </li>
                             )}

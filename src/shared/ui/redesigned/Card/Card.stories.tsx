@@ -28,3 +28,19 @@ export const Light: Story = {
     args: { children: <Text title="test" text="text text" /> },
     decorators: [ThemeDecorator(Theme.LIGHT)],
 };
+
+export const BorderRoundDark: Story = {
+    args: {
+        children: <Text title="test" text="text text" />,
+        border: 'round',
+    },
+    decorators: [ThemeDecorator(Theme.DARK)],
+};
+
+export const BorderNormalDark: Story = {
+    args: {
+        children: <Text title="test" text="text text" />,
+        border: 'normal',
+    },
+    decorators: [ThemeDecorator(Theme.DARK)],
+};

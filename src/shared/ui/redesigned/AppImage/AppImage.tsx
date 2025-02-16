@@ -21,12 +21,14 @@ export const AppImage = memo((props: AppImageProps) => {
         fallback,
         ...otherProps
     } = props;
+
     const [isLoading, setIsLoading] = useState(true);
     const [hasError, setHasError] = useState(false);
 
     useLayoutEffect(() => {
+        if (!src) return;
         const img = new Image();
-        img.src = src ?? '';
+        img.src = src;
         img.onload = () => {
             setIsLoading(false);
         };

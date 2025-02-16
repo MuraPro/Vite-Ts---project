@@ -7,3 +7,15 @@
     width: 30px;
     height: 30px;
 }
+
+.ArticleViewSelector {
+    .notSelected {
+        fill: var(--inverted-primary-color);
+    }
+}
+
+.ArticleViewSelectorRedesigned {
+    .notSelected {
+        color: var(--light-bg-redesigned);
+    }
+}

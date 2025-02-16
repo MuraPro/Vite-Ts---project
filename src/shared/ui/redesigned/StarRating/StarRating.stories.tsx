@@ -11,7 +11,6 @@ const meta: Meta<typeof StarRating> = {
     },
     tags: ['autodocs'],
     argTypes: {},
-    decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export default meta;

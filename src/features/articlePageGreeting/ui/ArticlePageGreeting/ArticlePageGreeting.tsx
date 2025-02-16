@@ -15,8 +15,6 @@ export const ArticlePageGreeting = memo(() => {
     const dispatch = useAppDispatch();
     const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
-    console.log(isArticlesPageWasOpened);
-
     useEffect(() => {
         if (!isArticlesPageWasOpened) {
             setIsOpen(true);

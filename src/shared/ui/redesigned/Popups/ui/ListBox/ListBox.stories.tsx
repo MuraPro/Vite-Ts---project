@@ -25,7 +25,6 @@ const items: ListBoxItem[] = [
 
 export const ListBoxLight: Story = {
     args: {
-        label: 'Select',
         items,
         defaultValue: 'options',
         direction: 'bottom right',
@@ -36,7 +35,6 @@ export const ListBoxLight: Story = {
 
 export const ListBoxDark: Story = {
     args: {
-        label: 'Select',
         items,
         defaultValue: 'options',
         direction: 'bottom right',

@@ -1,5 +1,17 @@
 .Text {
     transition: all 0.4s ease;
+
+    & .size_s {
+        font: var(--font-s-redesigned);
+    }
+
+    & .size_m {
+        font: var(--font-m-redesigned);
+    }
+
+    & .size_l {
+        font: var(--font-l-redesigned);
+    }
 }
 
 .title {
@@ -45,22 +57,4 @@
 
 .icon {
     margin-right: 3px;
-}
-
-.size_s {
-    .title {
-        font: var(--font-s-redesigned);
-    }
-}
-
-.size_m {
-    .title {
-        font: var(--font-m-redesigned);
-    }
-}
-
-.size_l {
-    .title {
-        font: var(--font-l-redesigned);
-    }
 }

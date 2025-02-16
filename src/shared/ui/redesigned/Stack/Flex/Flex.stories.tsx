@@ -12,7 +12,6 @@ const meta: Meta<typeof Flex> = {
     tags: ['autodocs'],
     argTypes: {},
     args: {},
-    decorators: [ThemeDecorator(Theme.LIGHT)],
 };
 
 export default meta;
@@ -104,6 +103,21 @@ export const ColumnGap16: Story = {
         ),
     },
     decorators: [ThemeDecorator(Theme.LIGHT)],
+};
+export const ColumnAlignStart: Story = {
+    args: {
+        direction: 'column',
+        align: 'start',
+        children: (
+            <>
+                <div>first</div>
+                <div>first</div>
+                <div>first</div>
+                <div>first</div>
+            </>
+        ),
+    },
+    decorators: [ThemeDecorator(Theme.DARK)],
 };
 export const ColumnAlignEnd: Story = {
     args: {

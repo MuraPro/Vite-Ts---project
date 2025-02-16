@@ -26,7 +26,7 @@ export const decorators = [
     MockedParamsDecorator,
     RouterDecorator,
     CollapseDecorator,
-    ThemeDecorator({}),
+    // ThemeDecorator({}),
     StyleDecorator,
     ModalDecorator,
     SuspenseDecorator,

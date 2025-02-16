@@ -19,6 +19,14 @@
     border: 1px solid var(--accent-redesigned);
 }
 
+.normal {
+    border-radius: 12px;
+}
+
+.round {
+    border-radius: 40px;
+}
+
 .max {
     width: 100%;
 }
