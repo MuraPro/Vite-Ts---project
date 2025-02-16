@@ -15,6 +15,7 @@ import { mapDirectionClass } from '../../styles/consts';
 import popupCls from '../../styles/popup.module.scss';
 import cls from './ListBox.module.scss';
 
+// @ts-ignore
 export interface ListBoxItem<T extends string> {
     value: string;
     content: ReactNode;
@@ -43,7 +44,6 @@ export function ListBox<T extends string>(props: ListBoxProps<T>) {
         className,
         titlePersonalClassname,
         menuPersonalClassname,
-        iconPersonalClassname,
         itemPersonalClassname,
         items,
         value,
