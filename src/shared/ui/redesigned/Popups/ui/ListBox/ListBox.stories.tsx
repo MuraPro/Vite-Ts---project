@@ -17,7 +17,7 @@ export default meta;
 type Story = StoryObj<typeof ListBox>;
 
 // Пример данных для списка
-const items: ListBoxItem[] = [
+const items: ListBoxItem<string>[] = [
     { value: 'option1', content: 'Option 1' },
     { value: 'option2', content: 'Option 2' },
     { value: 'option3', content: 'Option 3', disabled: true },
