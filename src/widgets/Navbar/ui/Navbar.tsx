@@ -45,6 +45,18 @@ export const Navbar = ({ className }: NavbarProps) => {
     ) : (
         <ToggleFeatures
             feature="isAppRedesigned"
+            on={
+                <Button
+                    className={cls['redisignedHeader__navbar-btn']}
+                    onClick={onShowModal}
+                >
+                    {t('Войти')}
+                    <FaSignOutAlt
+                        size={18}
+                        className={cls['header__navbar-icon']}
+                    />
+                </Button>
+            }
             off={
                 <ButtonDeprecated
                     className={cls['header__navbar-btn']}
@@ -58,18 +70,6 @@ export const Navbar = ({ className }: NavbarProps) => {
                         className={cls['header__navbar-icon']}
                     />
                 </ButtonDeprecated>
-            }
-            on={
-                <Button
-                    className={cls['redisignedHeader__navbar-btn']}
-                    onClick={onShowModal}
-                >
-                    {t('Войти')}
-                    <FaSignOutAlt
-                        size={18}
-                        className={cls['header__navbar-icon']}
-                    />
-                </Button>
             }
         />
     );

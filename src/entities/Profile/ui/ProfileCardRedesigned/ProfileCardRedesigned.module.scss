@@ -1,0 +1,20 @@
+.card__input {
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+        box-shadow: 0 0 0 1000px var(--bg-redesigned) inset !important;
+        -webkit-text-fill-color: var(--text-redesigned) !important;
+        color: var(--text-redesigned) !important;
+        caret-color: var(--text-redesigned) !important;
+        transition: background-color 5000s ease-in-out 0s !important;
+    }
+}
+
+.profile__container {
+    /* stylelint-disable */
+    @media (max-width: 767.9px) {
+        flex-direction: column;
+    }
+    /* stylelint-enable */
+}

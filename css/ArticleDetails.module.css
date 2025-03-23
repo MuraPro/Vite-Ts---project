@@ -1,0 +1,25 @@
+.ArticleDetails {
+  min-height: 1000px;
+}
+.ArticleDetails__error {
+  margin-top: 50px;
+}
+
+.article__paragraph {
+  color: var(--inverted-primary-color);
+}
+
+.article__title {
+  margin-bottom: 1rem;
+}
+
+.article__heading {
+  color: var(--inverted-primary-color);
+}
+
+.icon {
+  -webkit-transition: fill 0.1s ease;
+  transition: fill 0.1s ease;
+  margin-right: 8px;
+  fill: var(--primary-color);
+}

@@ -1,7 +1,6 @@
-import { memo, useCallback } from 'react';
+import { memo, MutableRefObject, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ArticlePageGreeting } from '@/features/articlePageGreeting';
-import { StickyContentLayout } from '@/shared/layouts/StickyContentLayout';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import {
     DynamicModuleLoader,
@@ -22,6 +21,7 @@ import cls from './ArticlesPage.module.scss';
 
 interface ArticlesPageProps {
     className?: string;
+    triggerRef: MutableRefObject<HTMLDivElement>;
 }
 
 const reducers: ReducersList = {
@@ -34,6 +34,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     const [searchParams] = useSearchParams();
 
     const onLoadNextPart = useCallback(() => {
+        console.log('onLoadNextPart');
         dispatch(fetchNextArticlesPage());
     }, [dispatch]);
 
@@ -45,30 +46,34 @@ const ArticlesPage = (props: ArticlesPageProps) => {
         <ToggleFeatures
             feature="isAppRedesigned"
             on={
-                <StickyContentLayout
-                    left={<ViewSelectorContainer />}
-                    right={<FiltersContainer />}
-                    content={
-                        <Page
-                            data-testid="ArticlesPage"
-                            onScrollEnd={onLoadNextPart}
-                            className={classNames(
-                                cls.ArticlesPageRedesigned,
-                                {},
-                                [className],
-                            )}
-                        >
-                            <ArticleInfiniteList className={cls.ArticleList} />
-                            <ArticlePageGreeting />
-                        </Page>
-                    }
-                />
+                <div className={cls.ArticlesPage__section}>
+                    <ViewSelectorContainer
+                        className={cls.ArticlesPage__selector}
+                    />
+                    <Page
+                        data-testid="ArticlesPage"
+                        onScrollEnd={onLoadNextPart}
+                        className={classNames(cls.ArticlesPageRedesigned, {}, [
+                            className,
+                        ])}
+                    >
+                        <ArticleInfiniteList
+                            className={`${cls.list} _container`}
+                        />
+                        <ArticlePageGreeting />
+                    </Page>
+                    <FiltersContainer className={cls.ArticlesPage__filters} />
+                </div>
             }
             off={
                 <Page
                     data-testid="ArticlesPage"
                     onScrollEnd={onLoadNextPart}
-                    className={classNames(cls.ArticlesPage, {}, [className])}
+                    className={classNames(
+                        `_container ${cls.ArticlesPage}`,
+                        {},
+                        [className],
+                    )}
                 >
                     <ArticlesPageFilters />
                     <ArticleInfiniteList className={cls.ArticleList} />

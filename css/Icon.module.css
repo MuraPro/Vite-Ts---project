@@ -1,0 +1,25 @@
+.Icon {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  color: var(--icon-redesigned);
+}
+.Icon:hover {
+  color: var(--accent-redesigned);
+}
+
+.button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+}
+
+.button:hover .Icon {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  color: var(--accent-redesigned);
+} var(--inverted-primary-color);
+  color: var(--inverted-primary-color);
+}

@@ -4,12 +4,14 @@
     outline: none;
     padding: 0;
     margin: 0;
+    transition: all 0.4s ease;
 }
 
 .trigger__btn {
     // background: transparent;
     color: var(--text-redesigned);
     font: var(--font-redisigned-m);
+    transition: all 0.4s ease;
 }
 
 .options {

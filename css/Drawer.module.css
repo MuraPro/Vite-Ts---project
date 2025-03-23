@@ -1,0 +1,35 @@
+.Drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.opened {
+  pointer-events: auto;
+  opacity: 1;
+  z-index: var(--modal-z-index);
+}
+.opened .content {
+  -webkit-transform: translateY(0%);
+      -ms-transform: translateY(0%);
+          transform: translateY(0%);
+}
+
+.sheet {
+  z-index: var(--modal-z-index);
+  position: fixed;
+  left: 2vw;
+  height: calc(100vh + 150px);
+  width: 96vw;
+  border-radius: 12px 12px 0;
+  background: var(--bg-color);
+  -ms-touch-action: none;
+      touch-action: none;
+  padding: 15px;
+}

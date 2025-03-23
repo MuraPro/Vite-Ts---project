@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Code } from '@/shared/ui/deprecated/Code';
+import { Code } from '@/shared/ui/redesigned/Code';
 import { ArticleCodeBlock } from '../../model/types/article';
 import cls from './ArticleCodeBlockComponent.module.scss';
 
@@ -12,7 +12,7 @@ interface ArticleCodeBlockComponentProps {
 
 export const ArticleCodeBlockComponent = memo(
     (props: ArticleCodeBlockComponentProps) => {
-        const { className, block, contentPersonalClassname } = props;
+        const { className, block } = props;
 
         return (
             <div
@@ -20,10 +20,7 @@ export const ArticleCodeBlockComponent = memo(
                     className,
                 ])}
             >
-                <Code
-                    text={block.code}
-                    contentPersonalClassname={contentPersonalClassname}
-                />
+                <Code text={block.code} />
             </div>
         );
     },

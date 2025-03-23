@@ -4,6 +4,7 @@
     z-index: 10000;
     flex-direction: column;
     display: flex;
+    transition: all 0.4s ease;
 }
 
 .item {
@@ -15,6 +16,7 @@
     color: var(--text-redesigned);
     cursor: pointer;
     font: var(--font-m-redesigned);
+    transition: all 0.4s ease;
     &.active {
         background: var(--light-bg-redesigned);
     }

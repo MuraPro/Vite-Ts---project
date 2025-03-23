@@ -40,7 +40,7 @@ export const ArticleSortSelector = memo((props: ArticleSortSelectorProps) => {
         () => [
             {
                 value: ArticleSortField.CREATED,
-                content: t('дате создания'),
+                content: t('дате'),
             },
             {
                 value: ArticleSortField.TITLE,

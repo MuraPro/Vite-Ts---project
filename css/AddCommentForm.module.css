@@ -1,0 +1,48 @@
+.AddCommentForm {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  border: 1px solid var(--primary-color);
+  padding: 20px;
+}
+
+.comment_btn {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  border-radius: 25px;
+  padding: 5px 10px;
+}
+
+.comment_input {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  color: var(--primary-color);
+  font: var(--font-s);
+  border-bottom: 1px solid var(--primary-color);
+  margin-right: 20px;
+  border-radius: 0;
+}
+
+.comment_plaseholder {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  color: var(--primary-color);
+  width: 40%;
+  font: var(--font-m);
+  /* stylelint-disable */
+  /* stylelint-enable */
+}
+@media (max-width: 767.9px) {
+  .comment_plaseholder {
+    margin-right: 20px;
+  }
+}
+@media (max-width: 575.9px) {
+  .comment_plaseholder {
+    display: none;
+  }
+}

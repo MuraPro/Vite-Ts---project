@@ -1,0 +1,5 @@
+.notFoundPage {
+  font: var(--font-m);
+  height: 100%;
+  color: var(--inverted-primary-color);
+}

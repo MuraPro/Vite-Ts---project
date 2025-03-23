@@ -3,7 +3,13 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { ArticleList } from '@/entities/Article';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Text, TextAlign, TextTheme } from '@/shared/ui/deprecated/Text';
+import { ToggleFeatures } from '@/shared/lib/features';
+import {
+    Text as TextDeprecated,
+    TextAlign,
+    TextTheme,
+} from '@/shared/ui/deprecated/Text';
+import { Text } from '@/shared/ui/redesigned/Text';
 import { Page } from '@/widgets/Page';
 import {
     getArticlesPageError,
@@ -11,7 +17,6 @@ import {
     getArticlesPageView,
 } from '../../model/selectors/articlesPageSelectors';
 import { getArticles } from '../../model/slices/articlesPageSlice';
-import cls from './ArticleInfiniteList.module.scss';
 
 interface ArticleInfiniteListProps {
     className?: string;
@@ -27,17 +32,25 @@ export const ArticleInfiniteList = memo((props: ArticleInfiniteListProps) => {
 
     if (error) {
         return (
-            <Page
-                className={classNames(cls.ArticlesPage, {}, [
-                    className,
-                    cls.error,
-                ])}
-            >
-                <Text
-                    theme={TextTheme.ERROR}
-                    title={t('Произошла ошибка')}
-                    text={t('Попробуйте обновить страницу')}
-                    align={TextAlign.CENTER}
+            <Page className={classNames('', {}, [className])}>
+                <ToggleFeatures
+                    feature="isAppRedesigned"
+                    off={
+                        <TextDeprecated
+                            theme={TextTheme.ERROR}
+                            title={t('Произошла ошибка')}
+                            text={t('Попробуйте обновить страницу')}
+                            align={TextAlign.CENTER}
+                        />
+                    }
+                    on={
+                        <Text
+                            variant={'error'}
+                            title={t('Произошла ошибка')}
+                            text={t('Попробуйте обновить страницу')}
+                            align={TextAlign.CENTER}
+                        />
+                    }
                 />
             </Page>
         );

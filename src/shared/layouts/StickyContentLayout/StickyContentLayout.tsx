@@ -7,16 +7,18 @@ interface StickyContentLayoutProps {
     left?: ReactElement;
     content: ReactElement;
     right?: ReactElement;
+    toolbar?: ReactElement;
 }
 
 export const StickyContentLayout = memo((props: StickyContentLayoutProps) => {
-    const { className, content, left, right } = props;
+    const { className, content, left, right, toolbar } = props;
 
     return (
         <div className={classNames(cls.MainLayout, {}, [className])}>
-            {right && <div className={cls.left}>{left}</div>}
+            {left && <div className={cls.left}>{left}</div>}
             <div className={cls.content}>{content}</div>
-            {left && <div className={cls.right}>{right}</div>}
+            {right && <div className={cls.right}>{right}</div>}
+            {toolbar && <div className={cls.toolbar}>{toolbar}</div>}
         </div>
     );
 });

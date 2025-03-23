@@ -1,0 +1,27 @@
+.notSelected:focus {
+  fill: var(--inverted-primary-color);
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+.ArticleViewSelector__icon {
+  fill: var(--primary-color);
+  width: 30px;
+  height: 30px;
+}
+
+.ArticleViewSelector .notSelected {
+  fill: var(--inverted-primary-color);
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+.ArticleViewSelectorRedesigned {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+.ArticleViewSelectorRedesigned .notSelected {
+  color: var(--light-bg-redesigned);
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}

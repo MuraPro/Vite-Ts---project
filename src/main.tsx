@@ -8,6 +8,7 @@ import { ThemeProvider } from '@/app/providers/ThemeProvider';
 import App from './app/App';
 import './shared/config/i18n/i18n';
 import './app/styles/index.scss';
+import { ForceUpdateProvider } from './shared/lib/render/forceUpdate';
 
 const container = document.getElementById('root');
 
@@ -22,13 +23,15 @@ root.render(
     <BrowserRouter>
         <StoreProvider>
             <ErrorBoundary>
-                <ModalProvider>
-                    <ThemeProvider>
-                        <CollapseProvider>
-                            <App />
-                        </CollapseProvider>
-                    </ThemeProvider>
-                </ModalProvider>
+                <ForceUpdateProvider>
+                    <ModalProvider>
+                        <ThemeProvider>
+                            <CollapseProvider>
+                                <App />
+                            </CollapseProvider>
+                        </ThemeProvider>
+                    </ModalProvider>
+                </ForceUpdateProvider>
             </ErrorBoundary>
         </StoreProvider>
     </BrowserRouter>,

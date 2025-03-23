@@ -1,7 +1,9 @@
 import { CSSProperties, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
+import { ToggleFeatures } from '@/shared/lib/features';
 import { DropdownDirection } from '@/shared/types/ui';
-import { ListBox } from '@/shared/ui/deprecated/Popups';
+import { ListBox as ListBoxDeprecated } from '@/shared/ui/deprecated/Popups';
+import { ListBox } from '@/shared/ui/redesigned/Popups';
 import { Currency } from '../../model/types/currency';
 import cls from './CurrencySelect.module.scss';
 
@@ -23,15 +25,7 @@ const options = [
 ];
 
 export const CurrencySelect = memo(
-    ({
-        style,
-        direction,
-        className,
-        value,
-        onChange,
-        readonly,
-        label,
-    }: CurrencySelectProps) => {
+    ({ style, className, value, onChange, readonly }: CurrencySelectProps) => {
         const onChangeHandler = useCallback(
             (value: string) => {
                 onChange?.(value as Currency);
@@ -41,20 +35,30 @@ export const CurrencySelect = memo(
 
         const { t } = useTranslation();
 
+        const props = {
+            className,
+            value,
+            defaultValue: t('Укажите валюту'),
+            label: t('Укажите валюту'),
+            items: options,
+            onChange: onChangeHandler,
+            readonly,
+            direction: 'top right' as const,
+        };
+
         return (
             <div style={style}>
-                <ListBox
-                    className={className}
-                    titlePersonalClassname={cls.currency__title}
-                    menuPersonalClassname={cls.currency__menu}
-                    itemPersonalClassname={cls.currency__item}
-                    value={value}
-                    defaultValue={t('Укажите валюту')}
-                    label={label}
-                    items={options}
-                    onChange={onChangeHandler}
-                    readonly={readonly}
-                    direction={direction || 'top left'}
+                <ToggleFeatures
+                    feature="isAppRedesigned"
+                    on={<ListBox {...props} />}
+                    off={
+                        <ListBoxDeprecated
+                            titlePersonalClassname={cls.currency__title}
+                            menuPersonalClassname={cls.currency__menu}
+                            itemPersonalClassname={cls.currency__item}
+                            {...props}
+                        />
+                    }
                 />
             </div>
         );

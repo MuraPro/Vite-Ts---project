@@ -3,10 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { useMediaQuery } from 'react-responsive';
 import { saveJsonSettings, useJsonSettings } from '@/entities/User';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { Drawer } from '@/shared/ui/deprecated/Drawer';
-import { Modal } from '@/shared/ui/deprecated/Modal';
 import { Text } from '@/shared/ui/deprecated/Text';
-import cls from './ArticlePageGreeting.module.scss';
+import { Drawer } from '@/shared/ui/redesigned/Drawer';
+import { Modal } from '@/shared/ui/redesigned/Modal';
 
 export const ArticlePageGreeting = memo(() => {
     const { t } = useTranslation();
@@ -42,12 +41,7 @@ export const ArticlePageGreeting = memo(() => {
     }
 
     return (
-        <Modal
-            lazy
-            isOpen={isOpen}
-            onClose={onClose}
-            modalPersonallClass={cls.modal__content}
-        >
+        <Modal lazy isOpen={isOpen} onClose={onClose}>
             {text}
         </Modal>
     );

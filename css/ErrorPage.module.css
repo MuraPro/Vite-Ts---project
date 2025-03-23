@@ -1,0 +1,31 @@
+.ErrorPage {
+  width: 100%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.ErrorPage p {
+  font: var(--font-l);
+  color: var(--inverted-primary-color);
+  margin-bottom: 20px;
+  -webkit-transition: color 0.4s ease;
+  transition: color 0.4s ease;
+}
+.ErrorPage button {
+  padding: 10px;
+  font: var(--font-s);
+  background-color: var(--bug-bg);
+  color: var(--bug-btn);
+  border-radius: 5px;
+}

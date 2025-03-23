@@ -1,0 +1,168 @@
+.Button {
+  cursor: pointer;
+  color: var(--text-redesigned);
+  padding: 8px 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Button:hover {
+  color: var(--accent-redesigned);
+}
+.Button:hover .addonLeft svg,
+.Button:hover .addonRight svg {
+  color: var(--accent-redesigned);
+}
+
+.withAddon {
+  padding: 0 16px;
+}
+
+.addonLeft,
+.addonRight {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.addonRight svg,
+.addonLeft svg {
+  color: var(--hint-redesigned);
+}
+
+.clear {
+  padding: 0;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.filled {
+  background: var(--light-bg-redesigned);
+  border: none;
+  outline: none;
+  border-radius: 34px;
+}
+
+.outline {
+  background: none;
+  border: 1px solid var(--icon-redesigned);
+  border-radius: 34px;
+}
+.outline:hover {
+  border: 1px solid var(--accent-redesigned);
+}
+
+.square {
+  padding: 0;
+}
+
+.square.m {
+  width: var(--font-line-m);
+  height: var(--font-line-m);
+}
+
+.square.l {
+  width: var(--font-line-l);
+  height: var(--font-line-l);
+}
+
+.square.xl {
+  width: var(--font-line-xl);
+  height: var(--font-line-xl);
+}
+
+.m {
+  font: var(--font-m-redesigned);
+}
+
+.l {
+  font: var(--font-l-redesigned);
+}
+
+.xl {
+  font: var(--font-xl-redesigned);
+}
+
+.disabled {
+  opacity: 0.5;
+}
+
+.fullWidth {
+  width: 100%;
+}ht);
+  color: var(--red-light);
+  background: none;
+}
+
+.background {
+  background: var(--bg-color);
+  border: none;
+}
+
+.backgroundInverted {
+  background: var(--inverted-bg-color);
+  border: none;
+}
+
+.square {
+  padding: 0;
+}
+
+.square.size_d {
+  border: 1px solid var(--bg-color);
+  color: var(--bg-color);
+  padding: 10px 20px;
+}
+
+.square.size_s {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--bg-color);
+  color: var(--bg-color);
+  padding: 2px;
+}
+
+.square.size_m {
+  width: 60px;
+  height: 60px;
+  border: 1px solid var(--bg-color);
+  color: var(--bg-color);
+  padding: 4px;
+}
+
+.square.size_l {
+  width: 80px;
+  height: 80px;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  padding: 5px;
+}
+
+.size_se {
+  font: var(--font-se);
+}
+
+.size_s {
+  font: var(--font-s);
+}
+
+.size_m {
+  font: var(--font-m);
+}
+
+.size_l {
+  font: var(--font-l);
+}
+
+.disabled {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.fullWidth {
+  width: 100%;
+}

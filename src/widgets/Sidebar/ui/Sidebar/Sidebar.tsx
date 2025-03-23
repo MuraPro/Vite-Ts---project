@@ -6,7 +6,6 @@ import {
     useMemo,
     useRef,
 } from 'react';
-import { useSelector } from 'react-redux';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -15,7 +14,7 @@ import { useCollapse } from '@/shared/lib/hooks/useCollapse/useCollapse';
 import { BurgerButton } from '@/shared/ui/deprecated/BurgerButton';
 import { AppLogo } from '@/shared/ui/redesigned/AppLogo';
 import { VStack } from '@/shared/ui/redesigned/Stack';
-import { getSidebarItems } from '../../model/selectors/getSidebarItems';
+import { useSidebarItems } from '../../model/selectors/getSidebarItems';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import cls from './Sidebar.module.scss';
 
@@ -27,7 +26,7 @@ interface SidebarProps extends HTMLAttributes<HTMLElement> {
 
 export const Sidebar = ({ className, style }: SidebarProps) => {
     const { collapsed, setCollapsed } = useCollapse();
-    const sidebarItemsList = useSelector(getSidebarItems);
+    const sidebarItemsList = useSidebarItems();
 
     const onToggle = useCallback(() => {
         setCollapsed((prev) => !prev);

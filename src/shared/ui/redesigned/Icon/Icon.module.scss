@@ -1,4 +1,5 @@
 .Icon {
+    transition: all 0.4s ease;
     color: var(--icon-redesigned);
     &:hover {
         color: var(--accent-redesigned);
@@ -15,5 +16,6 @@
 }
 
 .button:hover .Icon {
+    transition: all 0.4s ease;
     color: var(--accent-redesigned);
 }

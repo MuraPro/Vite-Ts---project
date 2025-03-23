@@ -11,15 +11,12 @@ interface MainLayoutProps {
 }
 
 export const MainLayout = memo((props: MainLayoutProps) => {
-    const { className, content, toolbar, header } = props;
+    const { className, content, header } = props;
 
     return (
         <div className={classNames(cls.MainLayout, {}, [className])}>
             <div className={cls.header}>{header}</div>
-            <main className={cls.content}>{content}</main>
-            <div className={cls.rightbar}>
-                <div className={cls.toolbar}>{toolbar}</div>
-            </div>
+            <div className={cls.content}>{content}</div>
         </div>
     );
 });

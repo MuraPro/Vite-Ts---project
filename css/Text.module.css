@@ -1,0 +1,63 @@
+.Text {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+.Text .size_s {
+  font: var(--font-s-redesigned);
+}
+.Text .size_m {
+  font: var(--font-m-redesigned);
+}
+.Text .size_l {
+  font: var(--font-l-redesigned);
+}
+
+.title {
+  color: var(--text-redesigned);
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+.text {
+  color: var(--text-redesigned);
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+.error .title {
+  color: var(--red-light);
+}
+.error .text {
+  font: var(--font-s);
+  color: var(--red-light);
+}
+
+.accent .title {
+  color: var(--accent-redesigned);
+}
+.accent .text {
+  color: var(--accent-redesigned);
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.center {
+  text-align: center;
+}
+
+.icon {
+  margin-right: 3px;
+}
+
+.bold .title,
+.bold .text {
+  font-weight: 700;
+}nverted .text {
+  color: var(--inverted-primary-color);
+}

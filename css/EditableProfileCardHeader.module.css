@@ -1,0 +1,83 @@
+.profile__header {
+  min-height: 80px;
+  padding: 0 10px;
+  /* stylelint-disable */
+  /* stylelint-enable */
+}
+@media (max-width: 480px) {
+  .profile__header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+.profile__header-title {
+  color: var(--primary-color);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  /* stylelint-disable */
+  /* stylelint-enable */
+}
+@media (max-width: 480px) {
+  .profile__header-title {
+    margin: 20px auto;
+  }
+}
+.profile__header-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.profile__header-btn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 2px solid var(--primary-color);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font: var(--font-s);
+  /* stylelint-disable */
+  /* stylelint-enable */
+}
+@media (max-width: 480px) {
+  .profile__header-btn {
+    margin-left: 0px;
+  }
+  .profile__header-btn:first-child {
+    margin-right: 5px;
+  }
+}
+@media (max-width: 479.9px) {
+  .profile__header-btn {
+    padding: 5px 10px;
+  }
+}
+.profile__header-btn:hover .edit__icon {
+  -webkit-transform: translateY(-3px);
+      -ms-transform: translateY(-3px);
+          transform: translateY(-3px);
+}
+.profile__header-btn:active .edit__icon {
+  -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.edit__icon {
+  padding: 3px;
+  -webkit-transition: -webkit-transform 0.2s ease-in-out;
+  transition: -webkit-transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+}

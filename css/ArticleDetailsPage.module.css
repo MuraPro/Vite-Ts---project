@@ -1,0 +1,23 @@
+@charset "UTF-8";
+.ArticleDetailsPage {
+  padding: 10px;
+  height: 100%;
+}
+
+.commentTitle {
+  margin: 20px 0;
+}
+
+.recommendations {
+  margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; /* Убедитесь, что блок с дочерними элементами использует flex */
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap; /* Запрещаем перенос элементов на новую строку */
+  overflow: auto hidden; /* Отключаем вертикальную прокрутку */ /* Включаем горизонтальную прокрутку */
+  min-height: 350px;
+  padding: 5px;
+  white-space: nowrap;
+  gap: 20px;
+}

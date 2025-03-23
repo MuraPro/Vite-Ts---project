@@ -1,76 +1,76 @@
 * {
-  padding: 0;
-  margin: 0;
-  border: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
 }
 
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 :focus,
 :active {
-  outline: none;
+    outline: none;
 }
 
 a:focus,
 a:active {
-  outline: none;
+    outline: none;
 }
 
 html,
 body {
-  width: 100%;
-  text-size-adjust: 100%;
+    width: 100%;
+    text-size-adjust: 100%;
 }
 
 input,
 button,
 textarea {
-  font-family: inherit;
+    font-family: inherit;
 }
 
 [hidden] {
-  display: none;
+    display: none;
 }
 
 input::-ms-clear {
-  display: none;
+    display: none;
 }
 
 button {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 button::-moz-focus-inner {
-  padding: 0;
-  border: 0;
+    padding: 0;
+    border: 0;
 }
 
 a,
 a:visited {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 a:hover {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 ul li {
-  list-style: none;
+    list-style: none;
 }
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  box-shadow: 0 0 0 1000px var(--bg-color) inset !important;
-  -webkit-text-fill-color: var(--primary-color) !important;
-  color: var(--primary-color) !important;
-  caret-color: var(--primary-color) !important; /* Добавьте эту строку */
-  transition: background-color 5000s ease-in-out 0s !important;
+    box-shadow: 0 0 0 1000px var(--bg-color) inset !important;
+    -webkit-text-fill-color: var(--primary-color) !important;
+    color: var(--primary-color) !important;
+    caret-color: var(--primary-color) !important;
+    transition: background-color 5000s ease-in-out 0s !important;
 }
 
 /* -------------------- */

@@ -1,19 +1,88 @@
+// .ArticleDetailsPage {
+//     padding: 10px;
+//     height: 100%;
+//     max-width: 1400px;
+//     margin: 0 auto;
+// }
+
+// .commentTitle {
+//     margin: 20px 0;
+// }
+
+// .recommendations {
+//     margin-top: 20px;
+//     display: flex; /* Убедитесь, что блок с дочерними элементами использует flex */
+//     flex-wrap: nowrap; /* Запрещаем перенос элементов на новую строку */
+//     overflow: auto hidden; /* Отключаем вертикальную прокрутку */ /* Включаем горизонтальную прокрутку */
+//     min-height: 350px;
+//     padding: 5px;
+//     white-space: nowrap;
+//     gap: 20px;
+// }
+
+// .ArticleDetailsPage__btn {
+//     margin-bottom: 20px;
+//     padding: 10px 20px;
+// }
+
+// .iconBack {
+//     transform: rotate(-90deg); /* Поворот на 90 градусов влево */
+//     transition: fill 0.3s ease;
+//     &:hover {
+//         fill: var(--accent-redesigned);
+//     }
+// }
+
 .ArticleDetailsPage {
-    padding: 10px;
-    height: 100%;
-}
-
-.commentTitle {
-    margin: 20px 0;
-}
-
-.recommendations {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 0 16px;
     margin-top: 20px;
-    display: flex; /* Убедитесь, что блок с дочерними элементами использует flex */
-    flex-wrap: nowrap; /* Запрещаем перенос элементов на новую строку */
-    overflow: auto hidden; /* Отключаем вертикальную прокрутку */ /* Включаем горизонтальную прокрутку */
-    min-height: 350px;
-    padding: 5px;
-    white-space: nowrap;
-    gap: 20px;
+    /* stylelint-disable */
+    @media (max-width: 576px) {
+        padding: 5px;
+    }
+    /* stylelint-enable */
+}
+
+.iconBack {
+    transform: rotate(-90deg);
+    transition: fill 0.3s ease;
+    z-index: 100;
+    &:hover {
+        fill: var(--accent-redesigned);
+    }
+    margin-top: 10px;
+    /* stylelint-disable */
+    @media (max-width: 576px) {
+        & {
+            position: fixed;
+            top: 100px;
+            left: 10px;
+            z-index: 100;
+        }
+    }
+    /* stylelint-enable */
+}
+
+.AdditionalInfoContainer {
+    flex-shrink: 0;
+}
+
+.toolbar {
+    position: sticky;
+    top: calc(100px + 20px);
+    left: 0;
+    z-index: 100;
+    padding: 8px 16px;
+
+    /* stylelint-disable */
+    @media (max-width: 576px) {
+        & {
+            display: none;
+        }
+    }
+    /* stylelint-enable */
 }

@@ -2,27 +2,31 @@
     min-height: 100vh;
     display: grid;
     grid-template-areas: 'sidebar content rightbar';
-    grid-template-columns: 300px 1fr 176px;
+    grid-template-columns: min-content 1fr 100px;
+    margin-top: var(--header-height);
+}
+
+.sidebar {
+    grid-area: sidebar;
+    padding: 32px;
+    max-width: 284px;
 }
 
 .content {
-    margin-top: var(--header-height);
     grid-area: content;
-    width: 1400px;
     justify-self: center;
-    padding: 32px;
-    display: flex;
+    width: 100%;
 }
 
 .rightbar {
-    margin-top: var(--header-height);
     grid-area: rightbar;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
 }
 
-.rightbar {
+.rightbar,
+.sidebar {
     position: sticky;
     top: 0;
     height: 100vh;
@@ -30,4 +34,5 @@
 
 .toolbar {
     height: 100%;
+    width: 100%;
 }

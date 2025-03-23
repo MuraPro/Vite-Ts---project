@@ -43,6 +43,27 @@
     border-radius: 34px;
 }
 
+.outline {
+    background: none;
+    border-radius: 34px;
+
+    &:hover {
+        border: 2px solid var(--accent-redesigned);
+    }
+
+    &.normal {
+        border: 2px solid var(--icon-redesigned);
+    }
+
+    &.error {
+        border: 2px solid var(--cancel-redesigned);
+    }
+
+    &.success {
+        border: 2px solid var(--save-redesigned);
+    }
+}
+
 .square {
     padding: 0;
 }

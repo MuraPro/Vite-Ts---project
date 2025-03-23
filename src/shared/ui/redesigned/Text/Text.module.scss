@@ -1,25 +1,27 @@
 .Text {
     transition: all 0.4s ease;
 
-    & .size_s {
+    &.size_s {
         font: var(--font-s-redesigned);
     }
 
-    & .size_m {
+    &.size_m {
         font: var(--font-m-redesigned);
     }
 
-    & .size_l {
+    &.size_l {
         font: var(--font-l-redesigned);
     }
 }
 
 .title {
     color: var(--text-redesigned);
+    transition: all 0.4s ease;
 }
 
 .text {
     color: var(--text-redesigned);
+    transition: all 0.4s ease;
 }
 
 .error {
@@ -57,4 +59,11 @@
 
 .icon {
     margin-right: 3px;
+}
+
+.bold {
+    .title,
+    .text {
+        font-weight: 700;
+    }
 }

@@ -1,0 +1,50 @@
+.themeswitcher {
+  position: relative;
+  width: 80px;
+  height: 40px;
+  background-color: var(--switcher-bg);
+  border-radius: 40px;
+  -webkit-transition: background-color 0.4s ease;
+  transition: background-color 0.4s ease;
+}
+.themeswitcher__circle {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 30px;
+  height: 30px;
+  background-color: var(--circle-bg);
+  border-radius: 50%;
+  -webkit-transition: all 0.7s;
+  transition: all 0.7s;
+  -webkit-transform-origin: center center;
+      -ms-transform-origin: center center;
+          transform-origin: center center;
+  -webkit-transform: rotate(5deg);
+      -ms-transform: rotate(5deg);
+          transform: rotate(5deg);
+}
+.themeswitcher__circle.dark {
+  -webkit-transform: translateX(40px) rotate(-180deg);
+      -ms-transform: translateX(40px) rotate(-180deg);
+          transform: translateX(40px) rotate(-180deg);
+  -webkit-transform-origin: center center;
+      -ms-transform-origin: center center;
+          transform-origin: center center;
+}
+.themeswitcher svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: -webkit-transform 0.4s ease;
+  transition: -webkit-transform 0.4s ease;
+  transition: transform 0.4s ease;
+  transition: transform 0.4s ease, -webkit-transform 0.4s ease;
+  -webkit-transform-origin: center center;
+      -ms-transform-origin: center center;
+          transform-origin: center center;
+  will-change: transform;
+}

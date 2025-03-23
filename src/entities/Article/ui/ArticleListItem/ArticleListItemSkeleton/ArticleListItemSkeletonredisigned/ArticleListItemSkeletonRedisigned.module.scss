@@ -1,0 +1,95 @@
+.ArticleListItemRedesigned {
+    &.BIG {
+        width: 100%;
+    }
+
+    &.SMALL {
+        &:hover {
+            opacity: 0.9;
+            transform: scale(1.01);
+
+            .date {
+                display: block;
+            }
+        }
+
+        .card {
+            width: 240px;
+            min-height: 350px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 20px;
+            position: relative;
+
+            /* stylelint-disable */
+            @media (max-width: 575.9px) {
+                width: 300px;
+            }
+            /* stylelint-enable */
+        }
+
+        .imageWrapper {
+            height: 200px;
+            position: relative;
+            /* stylelint-disable */
+            @media (max-width: 575.9px) {
+                height: 250px;
+            }
+            /* stylelint-enable */
+        }
+
+        .img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .info {
+            padding: 8px 8px 16px 8px;
+            height: 100%;
+        }
+
+        .footer {
+            height: 100%;
+            justify-content: flex-end;
+        }
+
+        .userName {
+            width: 103px;
+            overflow: hidden;
+        }
+
+        .avatar {
+            border-radius: 50%;
+        }
+
+        .views {
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+        }
+
+        .date {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            display: none;
+        }
+
+        .title {
+            margin-top: 8px;
+        }
+
+        .title p {
+            width: 200px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}

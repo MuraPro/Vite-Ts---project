@@ -1,0 +1,87 @@
+.header {
+  width: 100%;
+  height: var(--header-height);
+  background-color: var(--inverted-bg-color);
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+.header__container {
+  width: 100%;
+  height: var(--header-height);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 20px;
+  /* stylelint-disable */
+  /* stylelint-enable */
+}
+@media (max-width: 767.9px) {
+  .header__container {
+    padding: 0 10px;
+  }
+}
+.header__logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.header__burger span, .header__burger::before, .header__burger::after {
+  background-color: var(--inverted-primary-color);
+}
+
+.headerRedesigned {
+  width: 100%;
+  height: var(--header-height);
+  background: var(--light-bg-redesigned);
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+.headerRedesigned__container {
+  width: 100%;
+  height: var(--header-height);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 20px;
+  /* stylelint-disable */
+  /* stylelint-enable */
+}
+@media (max-width: 767.9px) {
+  .headerRedesigned__container {
+    padding: 0 10px;
+  }
+}
+.headerRedesigned__logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.headerRedesigned__burger span, .headerRedesigned__burger::before, .headerRedesigned__burger::after {
+  background-color: var(--text-redesigned);
+}

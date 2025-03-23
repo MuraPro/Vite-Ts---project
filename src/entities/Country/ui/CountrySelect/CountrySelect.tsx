@@ -1,7 +1,9 @@
 import { CSSProperties, memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
+import { ToggleFeatures } from '@/shared/lib/features';
 import { DropdownDirection } from '@/shared/types/ui';
-import { ListBox } from '@/shared/ui/deprecated/Popups';
+import { ListBox as ListBoxDeprecated } from '@/shared/ui/deprecated/Popups';
+import { ListBox } from '@/shared/ui/redesigned/Popups';
 import { Country } from '../../model/types/country';
 import cls from './CountrySelect.module.scss';
 
@@ -25,15 +27,7 @@ const options = [
 ];
 
 export const CountrySelect = memo(
-    ({
-        style,
-        direction,
-        className,
-        value,
-        onChange,
-        readonly,
-        label,
-    }: CountrySelectProps) => {
+    ({ style, className, value, onChange, readonly }: CountrySelectProps) => {
         const { t } = useTranslation();
         const onChangeHandler = useCallback(
             (value: string) => {
@@ -42,20 +36,30 @@ export const CountrySelect = memo(
             [onChange],
         );
 
+        const props = {
+            className,
+            value,
+            defaultValue: t('Укажите страну'),
+            label: t('Укажите страну'),
+            items: options,
+            onChange: onChangeHandler,
+            readonly,
+            direction: 'top right' as const,
+        };
+
         return (
             <div style={style}>
-                <ListBox
-                    className={className}
-                    titlePersonalClassname={cls.country__title}
-                    menuPersonalClassname={cls.country__menu}
-                    itemPersonalClassname={cls.country__item}
-                    value={value}
-                    defaultValue={t('Укажите страну')}
-                    label={label}
-                    items={options}
-                    onChange={onChangeHandler}
-                    readonly={readonly}
-                    direction={direction || 'top left'}
+                <ToggleFeatures
+                    feature="isAppRedesigned"
+                    on={<ListBox {...props} />}
+                    off={
+                        <ListBoxDeprecated
+                            titlePersonalClassname={cls.country__title}
+                            menuPersonalClassname={cls.country__menu}
+                            itemPersonalClassname={cls.country__item}
+                            {...props}
+                        />
+                    }
                 />
             </div>
         );

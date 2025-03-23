@@ -1,9 +1,9 @@
-import { createSelector } from '@reduxjs/toolkit';
 import { FaHome } from 'react-icons/fa';
 import { HiInformationCircle } from 'react-icons/hi';
 import { ImProfile } from 'react-icons/im';
 // import { IoIosCreate } from "react-icons/io";
 import { RiArticleFill } from 'react-icons/ri';
+import { useSelector } from 'react-redux';
 import { getUserAuthData } from '@/entities/User';
 import ArticleIcon from '@/shared/assets/icons/article.svg';
 import ProfileIcon from '@/shared/assets/icons/avatar.svg';
@@ -22,7 +22,8 @@ import {
 import { toggleFeatures } from '@/shared/lib/features';
 import { SidebarItemType } from '../types/sidebar';
 
-export const getSidebarItems = createSelector(getUserAuthData, (userData) => {
+export const useSidebarItems = () => {
+    const userData = useSelector(getUserAuthData);
     const sidebarItemsList: SidebarItemType[] = [
         {
             path: getRouteMain(),
@@ -81,4 +82,4 @@ export const getSidebarItems = createSelector(getUserAuthData, (userData) => {
     }
 
     return sidebarItemsList;
-});
+};

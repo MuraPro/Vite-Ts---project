@@ -1,0 +1,39 @@
+.AppLink {
+  -webkit-transition: color 0.4s ease;
+  transition: color 0.4s ease;
+}
+
+.primary {
+  color: var(--text-redesigned);
+}
+.primary:hover {
+  color: var(--accent-redesigned);
+}
+
+.red {
+  color: var(--cancel-redesigned);
+}
+.red:hover {
+  opacity: 0.8;
+}
+
+.size_s {
+  font: var(--font-s-redesigned);
+}
+
+.size_m {
+  font: var(--font-m-redesigned);
+}
+
+.size_l {
+  font: var(--font-l-redesigned);
+}
+
+.size_xl {
+  font: var(--font-xl-redesigned);
+}
+}
+
+.size_l {
+  font: var(--font-l);
+}

@@ -1,81 +1,62 @@
-import { MutableRefObject, useEffect } from 'react';
+//
+import { MutableRefObject, useEffect, useRef } from 'react';
 
 export interface UseInfiniteScrollOptions {
     callback?: () => void;
-    wrapperRef?: MutableRefObject<HTMLElement | null>;
+    triggerRef: MutableRefObject<HTMLElement>;
+    wrapperRef?: MutableRefObject<HTMLElement>;
 }
 
-export function useInfiniteScrollWithScroll({
+export function useInfiniteScroll({
     callback,
     wrapperRef,
+    triggerRef,
 }: UseInfiniteScrollOptions) {
-    //   useEffect(() => {
-    //     const wrapperElement = wrapperRef?.current || window;
-
-    //     const handleScroll = () => {
-    //       let scrollTop: number;
-    //       let scrollHeight: number;
-    //       let clientHeight: number;
-
-    //       if (wrapperElement instanceof HTMLElement) {
-    //         scrollTop = wrapperElement.scrollTop;
-    //         scrollHeight = wrapperElement.scrollHeight;
-    //         clientHeight = wrapperElement.clientHeight;
-    //       } else {
-    //         scrollTop = window.scrollY;
-    //         scrollHeight = document.documentElement.scrollHeight;
-    //         clientHeight = window.innerHeight;
-    //       }
-
-    //       if (scrollTop + clientHeight >= scrollHeight - 10) {
-    //         console.log("Triggering callback");
-    //         callback?.();
-    //       }
-    //     };
-
-    //     // Принудительное срабатывание обработчика после добавления
-    //     handleScroll();
-
-    //     wrapperElement.addEventListener("scroll", handleScroll);
-
-    //     return () => {
-    //       wrapperElement.removeEventListener("scroll", handleScroll);
-    //     };
-    //   }, [callback, wrapperRef]);
+    const observer = useRef<IntersectionObserver | null>(null);
 
     useEffect(() => {
-        const wrapperElement = wrapperRef?.current || window;
+        const wrapperElement = wrapperRef?.current || null;
+        const triggerElement = triggerRef.current;
 
-        const handleScroll = () => {
-            let scrollTop: number;
-            let scrollHeight: number;
-            let clientHeight: number;
+        if (callback && triggerElement) {
+            const options = {
+                root: wrapperElement,
+                rootMargin: '0px',
+                threshold: 1.0,
+            };
 
-            if (wrapperElement instanceof HTMLElement) {
-                scrollTop = wrapperElement.scrollTop;
-                scrollHeight = wrapperElement.scrollHeight;
-                clientHeight = wrapperElement.clientHeight;
-            } else {
-                scrollTop = window.scrollY;
-                scrollHeight = document.documentElement.scrollHeight;
-                clientHeight = window.innerHeight;
-            }
+            // Функция срабатывания для наблюдателя
+            const handleIntersection = ([
+                entry,
+            ]: IntersectionObserverEntry[]) => {
+                if (entry.isIntersecting) {
+                    // После срабатывания запускаем callback
+                    callback();
+                    // Мы сбрасываем observer, чтобы привязать его к новому триггеру
+                    if (observer.current && triggerElement) {
+                        observer.current.unobserve(triggerElement); // Убираем старое наблюдение
+                        observer.current.observe(triggerElement); // Привязываем снова
+                    }
+                }
+            };
 
-            if (scrollTop + clientHeight >= scrollHeight - 10) {
-                callback?.();
-            }
-        };
+            observer.current = new IntersectionObserver(
+                handleIntersection,
+                options,
+            );
 
-        const handleResizeOrScroll = () => {
-            handleScroll();
-        };
+            // Начинаем наблюдение за триггером
+            observer.current.observe(triggerElement);
 
-        wrapperElement.addEventListener('scroll', handleScroll);
-        window.addEventListener('resize', handleResizeOrScroll);
+            return () => {
+                // Очистка observer на удаление компонента
+                if (observer.current && triggerElement) {
+                    observer.current.unobserve(triggerElement);
+                }
+            };
+        }
+    }, [callback, triggerRef, wrapperRef]);
 
-        return () => {
-            wrapperElement.removeEventListener('scroll', handleScroll);
-            window.removeEventListener('resize', handleResizeOrScroll);
-        };
-    }, [callback, wrapperRef]);
+    // Если callback выполнен, можно сбросить или обновить данные триггера.
+    // В зависимости от нужд, можно добавить дополнительные действия здесь.
 }

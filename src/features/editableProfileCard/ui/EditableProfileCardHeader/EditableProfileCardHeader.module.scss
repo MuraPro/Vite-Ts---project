@@ -14,7 +14,16 @@
 
         /* stylelint-disable */
         @media (max-width: 480px) {
-            margin: 20px auto;
+            // margin: 20px auto;
+            display: none;
+        }
+        /* stylelint-enable */
+    }
+    &-container {
+        justify-content: space-between;
+        /* stylelint-disable */
+        @media (max-width: 480px) {
+            justify-content: center;
         }
         /* stylelint-enable */
     }

@@ -10,7 +10,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { DropdownDirection } from '@/shared/types/ui';
 import { Button } from '../../../../redesigned/Button';
 import { Icon } from '../../../Icon';
-import { VStack } from '../../../Stack';
+import { HStack } from '../../../Stack';
 import { mapDirectionClass } from '../../styles/consts';
 import popupCls from '../../styles/popup.module.scss';
 import cls from './ListBox.module.scss';
@@ -65,7 +65,7 @@ export function ListBox<T extends string>(props: ListBoxProps<T>) {
     }, [items, value]);
 
     return (
-        <VStack gap="4" style={style}>
+        <HStack gap="8" style={style}>
             <label style={style}>{label}</label>
 
             <Listbox
@@ -123,6 +123,6 @@ export function ListBox<T extends string>(props: ListBoxProps<T>) {
                     ))}
                 </ListboxOptions>
             </Listbox>
-        </VStack>
+        </HStack>
     );
 }

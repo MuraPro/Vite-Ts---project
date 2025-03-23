@@ -8,6 +8,7 @@ interface IconBaseProps extends SvgProps {
     className?: string;
     Svg: React.VFC<React.SVGProps<SVGSVGElement>>;
     style?: CSSProperties;
+    buttonClassName?: string;
 }
 
 interface NonClickableIconProps extends IconBaseProps {
@@ -28,6 +29,7 @@ export const Icon = memo((props: IconProps) => {
         width = 32,
         height = 32,
         clickable,
+        buttonClassName,
         style,
         ...otherProps
     } = props;
@@ -47,7 +49,7 @@ export const Icon = memo((props: IconProps) => {
         return (
             <button
                 type="button"
-                className={cls.button}
+                className={`${cls.button} ${buttonClassName}`}
                 onClick={props.onClick}
                 style={{ height, width }}
             >

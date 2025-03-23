@@ -1,0 +1,22 @@
+.Code {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  border: 1px solid var(--inverted-primary-color);
+  padding: 20px;
+  position: relative;
+  background: var(--code-bg);
+  overflow: auto;
+  color: var(--inverted-primary-color);
+}
+
+.copyBtn {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+.copyIcon path {
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  stroke: var(--inverted-primary-color);
+}

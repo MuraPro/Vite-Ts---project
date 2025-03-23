@@ -1,0 +1,10 @@
+.header {
+    width: 100%;
+    height: var(--header-height);
+    background: var(--light-bg-redesigned);
+    transition: all 0.4s ease;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}

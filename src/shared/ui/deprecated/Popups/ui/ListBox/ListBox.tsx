@@ -4,7 +4,13 @@ import {
     ListboxOptions,
     ListboxButton,
 } from '@headlessui/react';
-import { ComponentType, CSSProperties, Fragment, ReactNode } from 'react';
+import {
+    ComponentType,
+    CSSProperties,
+    Fragment,
+    ReactNode,
+    useMemo,
+} from 'react';
 import { MdDone } from 'react-icons/md';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { DropdownDirection } from '@/shared/types/ui';
@@ -65,6 +71,10 @@ export function ListBox(props: ListBoxProps) {
         menuPersonalClassname,
     ];
 
+    const selectedItem = useMemo(() => {
+        return items?.find((item) => item.value === value);
+    }, [items, value]);
+
     return (
         <VStack gap="4" style={style}>
             {label && (
@@ -94,7 +104,7 @@ export function ListBox(props: ListBoxProps) {
                         theme={ButtonTheme.CLEAR}
                     >
                         {Icon && <Icon className={iconPersonalClassname} />}
-                        {value ?? defaultValue}
+                        {selectedItem?.content ?? defaultValue}
                     </Button>
                 </ListboxButton>
                 <ListboxOptions

@@ -15,6 +15,11 @@ export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd());
 
     return {
+        server: {
+            watch: {
+                usePolling: true, // Улучшает отслеживание изменений
+            },
+        },
         build: {
             rollupOptions: {
                 input: {

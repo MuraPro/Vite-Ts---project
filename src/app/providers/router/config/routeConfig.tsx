@@ -1,6 +1,6 @@
 import { UserRole } from '@/entities/User';
 import { AboutPage } from '@/pages/AboutPage';
-import { AdminPanelPage } from '@/pages/AdminPanelPage';
+// import { AdminPanelPage } from '@/pages/AdminPanelPage';
 import { ArticleDetailsPage } from '@/pages/ArticleDetailsPage';
 import { ArticleEditPage } from '@/pages/ArticleEditPage';
 import { ArticlesPage } from '@/pages/ArticlesPage';
@@ -8,6 +8,7 @@ import { ForbiddenPage } from '@/pages/ForbiddenPage';
 import { MainPage } from '@/pages/MainPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
 import { ProfilePage } from '@/pages/ProfilePage';
+import { SettingsPage } from '@/pages/SettingsPage';
 import {
     AppRoutes,
     getRouteAbout,
@@ -19,6 +20,7 @@ import {
     getRouteArticles,
     getRouteMain,
     getRouteProfile,
+    // getRouteSettings,
 } from '@/shared/const/router';
 import { AppRoutesProps } from '@/shared/types/router';
 
@@ -27,6 +29,10 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
         path: getRouteMain(),
         element: <MainPage />,
     },
+    // [AppRoutes.SETTINGS]: {
+    //     path: getRouteSettings(),
+    //     element: <SettingsPage />,
+    // },
     [AppRoutes.ABOUT]: {
         path: getRouteAbout(),
         element: <AboutPage />,
@@ -58,7 +64,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     },
     [AppRoutes.ADMIN_PANEL]: {
         path: getRouteAdmin(),
-        element: <AdminPanelPage />,
+        element: <SettingsPage />,
         authOnly: true,
         roles: [UserRole.MANAGER, UserRole.ADMIN],
     },

@@ -1,0 +1,124 @@
+.sidebar {
+  width: 300px;
+  padding: 20px;
+  z-index: 100;
+  background: var(--inverted-bg-color);
+  position: fixed;
+  top: 0;
+  left: -100%;
+  height: 100%;
+  overflow: auto;
+  -webkit-transition: left 0.5s ease 0s, background-color 0.4s ease;
+  transition: left 0.5s ease 0s, background-color 0.4s ease;
+  /* stylelint-disable */
+  /* stylelint-enable */
+}
+@media (max-width: 479.9px) {
+  .sidebar {
+    width: 150px;
+    left: -100%;
+  }
+}
+.sidebar__logo {
+  position: absolute;
+  right: 55px;
+  top: 27px;
+}
+.sidebar__burger {
+  position: absolute;
+  top: 43px;
+  right: 30px;
+}
+.sidebar__burger span, .sidebar__burger::before, .sidebar__burger::after {
+  background-color: var(--inverted-primary-color);
+}
+.sidebar__list {
+  margin-top: 20px;
+}
+.sidebar__icon {
+  -webkit-transition: fill 0.4s ease;
+  transition: fill 0.4s ease;
+}
+.sidebar.collapsed {
+  left: 0;
+}
+.sidebar .switchers {
+  position: absolute;
+  bottom: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  left: 70px;
+  width: 100%;
+  gap: 16px;
+}
+
+.SidebarRedesigned {
+  width: 300px;
+  padding: 20px;
+  z-index: 100;
+  background: var(--light-bg-redesigned);
+  position: fixed;
+  top: 0;
+  left: -100%;
+  height: 100%;
+  -webkit-transition: left 0.5s ease 0s, background-color 0.4s ease;
+  transition: left 0.5s ease 0s, background-color 0.4s ease;
+  /* stylelint-disable */
+  /* stylelint-enable */
+}
+@media (max-width: 479.9px) {
+  .SidebarRedesigned {
+    width: 230px;
+    left: -100%;
+  }
+}
+.SidebarRedesigned__logo {
+  position: absolute;
+  right: 55px;
+  top: 27px;
+}
+.SidebarRedesigned__burger {
+  position: absolute;
+  top: 43px;
+  right: 30px;
+}
+.SidebarRedesigned__burger span, .SidebarRedesigned__burger::before, .SidebarRedesigned__burger::after {
+  background-color: var(--text-redesigned);
+}
+.SidebarRedesigned__list {
+  margin-top: 20px;
+}
+.SidebarRedesigned.collapsed {
+  left: 0;
+}
+.SidebarRedesigned .switchers {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  bottom: 40px;
+  left: 70px;
+  display: flex;
+  gap: 16px;
+}
+
+.appLogo {
+  padding-top: 20px;
+}
+
+.active {
+  background: linear-gradient(89.97deg, rgba(29, 89, 255, 0.3) 1.15%, rgba(94, 211, 243, 0) 99.97%);
+  position: relative;
+}
+.active::before {
+  content: "";
+  position: absolute;
+  width: 2px;
+  left: 0;
+  background: var(--accent-redesigned);
+  height: 100%;
+}

@@ -18,15 +18,16 @@ interface TextProps {
     variant?: TextVariant;
     align?: TextAlign;
     size?: TextSize;
+    bold?: boolean;
     icon?: ComponentType<{ className?: string }>;
     as?: ElementType; // Позволяет передавать тег заголовка извне
     'data-testid'?: string;
 }
 
 const mapSizeToClass: Record<TextSize, string> = {
-    s: 'size_s',
-    m: 'size_m',
-    l: 'size_l',
+    s: cls.size_s,
+    m: cls.size_m,
+    l: cls.size_l,
 };
 
 export const Text = memo((props: TextProps) => {
@@ -41,6 +42,7 @@ export const Text = memo((props: TextProps) => {
         titlePersonalClass,
         textPersonalClass,
         icon: Icon,
+        bold,
         'data-testid': dataTestId = 'Text',
         as: TitleTag = 'p', // По умолчанию заголовок будет `p`
     } = props;
@@ -55,7 +57,7 @@ export const Text = memo((props: TextProps) => {
         <div
             className={classNames(
                 `${cls.Text} ${containerPersonalClass}`,
-                {},
+                { [cls.bold]: bold },
                 additionalClasses,
             )}
         >

@@ -2315,6 +2315,48 @@
       "userId": "1",
       "text": "gfdgdfgfd",
       "id": 2
+    },
+    {
+      "articleId": "2",
+      "userId": "1",
+      "text": "gfdgfdgfdg",
+      "id": 3
+    },
+    {
+      "articleId": "2",
+      "userId": "1",
+      "text": "fredfdsf",
+      "id": 4
+    },
+    {
+      "articleId": "2",
+      "userId": "1",
+      "text": "fdsfdsfds",
+      "id": 5
+    },
+    {
+      "articleId": "2",
+      "userId": "1",
+      "text": "fdfdsfds",
+      "id": 6
+    },
+    {
+      "articleId": "2",
+      "userId": "1",
+      "text": "eeee",
+      "id": 7
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "lokkokl;[",
+      "id": 8
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "gffdgfdg",
+      "id": 9
     }
   ],
   "users": [
@@ -2331,7 +2373,7 @@
       },
       "avatar": "https://img.freepik.com/free-photo/funny-monkey-with-glasses-studio_23-2150844104.jpg",
       "jsonSettings": {
-        "theme": "app_dark_theme",
+        "theme": "app_light_theme",
         "isArticlesPageWasOpened": true
       }
     },
@@ -2343,7 +2385,8 @@
         "USER"
       ],
       "features": {
-        "isArticleRatingEnabled": true
+        "isArticleRatingEnabled": true,
+        "isAppRedesigned": true
       },
       "avatar": "https://sotni.ru/wp-content/uploads/2023/08/prikolnye-avatarki-10.webp",
       "jsonSettings": {
@@ -2371,11 +2414,11 @@
   "profile": [
     {
       "id": "1",
-      "first": "Dilmuradd",
+      "first": "Dilmurad",
       "lastname": "Masharipov",
       "age": "36",
-      "currency": "KRW",
-      "country": "South Korea",
+      "currency": "RUB",
+      "country": "Russia",
       "city": "Gwandju",
       "username": "admin",
       "avatar": "https://img.freepik.com/free-photo/funny-monkey-with-glasses-studio_23-2150844104.jpg",
@@ -2383,9 +2426,9 @@
     },
     {
       "id": "2",
-      "first": "Dilmurad",
-      "lastname": "Masharipov",
-      "age": "38",
+      "first": "MASHARIPOV",
+      "lastname": "DILMURAD",
+      "age": "37",
       "currency": "RUB",
       "country": "Russia",
       "city": "Moscow",
@@ -2406,7 +2449,14 @@
       "email": "Chalanamdo@gmail.com"
     }
   ],
-  "article-ratings": [],
+  "article-ratings": [
+    {
+      "id": "1",
+      "articleId": "1",
+      "userId": "1",
+      "rate": 3
+    }
+  ],
   "profile-ratings": [
     {
       "id": "1",

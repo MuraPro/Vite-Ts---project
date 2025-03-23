@@ -1,5 +1,6 @@
 .notSelected:focus {
     fill: var(--inverted-primary-color);
+    transition: all 0.4s ease;
 }
 
 .ArticleViewSelector__icon {
@@ -11,11 +12,14 @@
 .ArticleViewSelector {
     .notSelected {
         fill: var(--inverted-primary-color);
+        transition: all 0.4s ease;
     }
 }
 
 .ArticleViewSelectorRedesigned {
+    transition: all 0.4s ease;
     .notSelected {
         color: var(--light-bg-redesigned);
+        transition: all 0.4s ease;
     }
 }

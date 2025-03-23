@@ -1,0 +1,21 @@
+.Page {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding: 20px 20px 20px 45px;
+  height: calc(100vh - var(--navbar-height));
+  overflow-y: auto;
+  -ms-flex-negative: 100;
+      flex-shrink: 100;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.PageRedesigned {
+  overflow-y: auto;
+}
+
+.trigger {
+  height: 20px;
+  margin: 10px;
+}

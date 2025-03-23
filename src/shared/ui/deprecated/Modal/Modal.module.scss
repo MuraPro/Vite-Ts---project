@@ -16,6 +16,7 @@
         transition: 0.4s transform;
         transform: scale(0.5);
         z-index: var(--modal-z-index);
+        background: var(--bg-color);
     }
 }
 

@@ -1,0 +1,9 @@
+.card__input:-webkit-autofill, .card__input:-webkit-autofill:hover, .card__input:-webkit-autofill:focus, .card__input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px var(--bg-redesigned) inset !important;
+          box-shadow: 0 0 0 1000px var(--bg-redesigned) inset !important;
+  -webkit-text-fill-color: var(--text-redesigned) !important;
+  color: var(--text-redesigned) !important;
+  caret-color: var(--text-redesigned) !important;
+  -webkit-transition: background-color 5000s ease-in-out 0s !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}

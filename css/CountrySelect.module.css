@@ -1,0 +1,15 @@
+.country__title {
+  -webkit-transition: color 0.4s ease;
+  transition: color 0.4s ease;
+  font: var(--font-s);
+}
+.country__title:hover {
+  color: var(--primary-color);
+}
+.country__menu {
+  width: 223px;
+  background-color: var(--bg-color);
+}
+.country__item {
+  font: var(--font-m);
+}
