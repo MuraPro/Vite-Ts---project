@@ -14,7 +14,7 @@ interface ArticleListItemSkeletonProps {
 export const ArticleListItemSkeletonRedisigned = memo(
     (props: ArticleListItemSkeletonProps) => {
         const { className, view } = props;
-        const [windowSize, setWindowSize] = useState({
+        const [_, setWindowSize] = useState({
             width: window.innerWidth,
             height: window.innerHeight,
         });
