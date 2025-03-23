@@ -21,7 +21,6 @@ import cls from './ArticlesPage.module.scss';
 
 interface ArticlesPageProps {
     className?: string;
-    triggerRef: MutableRefObject<HTMLDivElement>;
 }
 
 const reducers: ReducersList = {
