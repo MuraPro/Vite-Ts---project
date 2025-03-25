@@ -89,14 +89,12 @@ export const EditableProfileCardHeader = (props: ProfilePageHeaderProps) => {
                                         <Button
                                             onClick={onCancelEdit}
                                             data-testid="EditableProfileCardHeader.CancelButton"
-                                            color="error"
                                         >
                                             {t('Отменить')}
                                         </Button>
                                         <Button
                                             onClick={onSave}
                                             data-testid="EditableProfileCardHeader.SaveButton"
-                                            color="success"
                                         >
                                             {t('Сохранить')}
                                         </Button>

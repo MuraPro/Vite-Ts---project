@@ -59,10 +59,11 @@ export const Sidebar = ({ className, style }: SidebarProps) => {
                         item={item}
                         collapsed={collapsed}
                         key={item.path}
+                        onClick={onToggle}
                     />
                 </li>
             )),
-        [collapsed, sidebarItemsList],
+        [collapsed, sidebarItemsList, onToggle],
     );
 
     const DeprecatedComponent = (
