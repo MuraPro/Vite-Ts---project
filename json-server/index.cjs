@@ -94,14 +94,16 @@ server.post('/login', (req, res) => {
     }
 });
 
-// Эндпоинт для обновления jsonSettings пользователя
 server.patch('/users/:userId', (req, res) => {
-    const { userId } = req.params;
-    const { jsonSettings } = req.body;
+    const { userId } = req.params; // Получаем userId из параметров пути
+    const { features } = req.body; // Получаем флаги из тела запроса
+
+    // Путь к файлу базы данных
     const dbPath = path.resolve(__dirname, 'db.json');
 
     let db;
     try {
+        // Чтение данных из базы
         db = JSON.parse(fs.readFileSync(dbPath, 'UTF-8'));
     } catch (error) {
         console.error('Error reading db.json:', error);
@@ -109,17 +111,19 @@ server.patch('/users/:userId', (req, res) => {
     }
 
     const { users } = db;
+    // Ищем пользователя по id
     const userIndex = users.findIndex((user) => user.id === userId);
     if (userIndex === -1) {
         return res.status(404).json({ message: 'Пользователь не найден' });
     }
 
-    users[userIndex].jsonSettings = {
-        ...users[userIndex].jsonSettings,
-        ...jsonSettings,
+    // Обновляем флаги пользователя
+    users[userIndex].features = {
+        ...users[userIndex].features,
+        ...features, // Обновляем только переданные флаги
     };
 
-    // Записываем обновленные данные обратно в db.json
+    // Записываем изменения в базу данных
     try {
         fs.writeFileSync(dbPath, JSON.stringify(db, null, 2), 'UTF-8');
     } catch (error) {
@@ -127,6 +131,7 @@ server.patch('/users/:userId', (req, res) => {
         return res.status(500).json({ message: 'Ошибка записи в базу' });
     }
 
+    // Отправляем обновленного пользователя
     res.json(users[userIndex]);
 });
 
@@ -154,6 +159,67 @@ server.get('/users/:userId', (req, res) => {
 
     res.json(user);
 });
+
+// Эндпоинт для обновления jsonSettings пользователя
+// server.patch('/users/:userId', (req, res) => {
+//     const { userId } = req.params;
+//     const { jsonSettings } = req.body;
+//     const dbPath = path.resolve(__dirname, 'db.json');
+
+//     let db;
+//     try {
+//         db = JSON.parse(fs.readFileSync(dbPath, 'UTF-8'));
+//     } catch (error) {
+//         console.error('Error reading db.json:', error);
+//         return res.status(500).json({ message: 'Internal server error' });
+//     }
+
+//     const { users } = db;
+//     const userIndex = users.findIndex((user) => user.id === userId);
+//     if (userIndex === -1) {
+//         return res.status(404).json({ message: 'Пользователь не найден' });
+//     }
+
+//     users[userIndex].jsonSettings = {
+//         ...users[userIndex].jsonSettings,
+//         ...jsonSettings,
+//     };
+
+//     // Записываем обновленные данные обратно в db.json
+//     try {
+//         fs.writeFileSync(dbPath, JSON.stringify(db, null, 2), 'UTF-8');
+//     } catch (error) {
+//         console.error('Error writing to db.json:', error);
+//         return res.status(500).json({ message: 'Ошибка записи в базу' });
+//     }
+
+//     res.json(users[userIndex]);
+// });
+
+// // Эндпоинт для получения данных пользователя по ID
+// server.get('/users/:userId', (req, res) => {
+//     const { userId } = req.params;
+
+//     let db;
+//     try {
+//         db = JSON.parse(
+//             fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'),
+//         );
+//     } catch (error) {
+//         console.error('Error reading db.json:', error);
+//         return res.status(500).json({ message: 'Internal server error' });
+//     }
+
+//     const { users } = db;
+
+//     const user = users.find((user) => user.id === userId);
+
+//     if (!user) {
+//         return res.status(404).json({ message: 'Пользователь не найден' });
+//     }
+
+//     res.json(user);
+// });
 
 // Эндпоинт для получения профиля по id (GET /profile/:id)
 server.get('/profile/:id', (req, res) => {
